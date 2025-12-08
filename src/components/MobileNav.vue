@@ -77,8 +77,8 @@ onUnmounted(() => {
 </script>
 
 <style lang="scss" scoped>
-$menu-padding-x: 2rem;
-$menu-padding-y: 2rem;
+$menu-padding-x: 0;
+$menu-padding-y: 0;
 $menu-layer-width: 40px;
 $menu-layer-height: 4px;
 $menu-layer-spacing: 6px;
@@ -97,19 +97,27 @@ $menu-active-hover-filter: $menu-hover-filter;
     top: 0;
     right: 0;
     padding: $menu-padding-y $menu-padding-x;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
-    transition-property: opacity, filter;
+    transition-property: opacity, filter, background-color;
     transition-duration: $transition-fast;
     transition-timing-function: linear;
     font: inherit;
     color: inherit;
     text-transform: none;
-    background-color: transparent;
+    background-color: $color-gray-8;
     border: 0;
-    margin: 0;
+    border-radius: 50%;
+    margin: $spacing-sm;
+    width: 4rem;
+    height: 4rem;
+    min-width: 4rem;
+    min-height: 4rem;
     overflow: visible;
     z-index: $z-index-overlay;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 
     &:focus {
       outline: 0;
@@ -140,12 +148,9 @@ $menu-active-hover-filter: $menu-hover-filter;
     }
 
     &:focus-visible {
-      .mobile-nav__box {
-        outline: 2px solid $color-highlight-5 !important;
-        outline-offset: 0.5rem;
-        border-radius: 2px;
-        @include transition(all);
-      }
+      outline: 2px solid $color-highlight-5;
+      outline-offset: 2px;
+      @include transition(all);
     }
   }
 

@@ -10,8 +10,8 @@
         "url": "/"
       },
       {
-        "name": "Work",
-        "url": "/work"
+        "name": "Resume",
+        "url": "/resume"
       },
       {
         "name": "Music",
@@ -20,118 +20,175 @@
     ],
     "home": [
       {
-        "heading": "Welcome",
+        "heading": "Hi, I'm Tyler",
         "headingLevel": 2,
         "content": [
-          "I'm a front-end engineer with over 20 years of experience building web applications for companies like Vanguard, Bank of America, and Best Egg. I currently lead a team at Best Egg working on customer-facing applications."
+          "I'm a front-end engineer with 20+ years of experience building web applications for companies like Vanguard, Bank of America, and Best Egg. I currently lead an engineering team at Best Egg.",
+          "When I'm not coding, I'm usually behind a drum kit. I've toured nationally with a major-label band, played thousands of gigs, and I'm now exploring ways to share what I've learned about drumming with others."
         ]
       },
       {
-        "heading": "About me",
+        "heading": "What I do",
         "headingLevel": 2,
+        "content": []
+      },
+      {
+        "heading": "Engineering",
+        "headingLevel": 4,
         "content": [
-          "I've been working in web development for most of my adult life. It started as a hobby in the 1990s and became a career after I graduated from the University of Delaware with a degree in Business Administration (Finance/Accounting). I've held various roles and worked on many different types of projects, and I still enjoy the constantly-evolving nature of web development.",
-          "Currently, I work with Angular and TypeScript at Best Egg, a fintech company in the personal loan space. My past work has included building design systems at Vanguard, creating email campaigns for Bank of America, developing SharePoint sites for DuPont and Chemours, and building web-based interfaces for scientific instruments at Agilent.",
-          "When I'm not coding, you'll probably find me playing drums or bass. I'm the father of two great kids, an avid cyclist and runner, and a craft beer enthusiast. I often trade sleep for late-night TV, listening to vinyl, or tinkering with side projects."
+          "I build front-end applications with Angular, Vue.js, and TypeScript. I've worked on design systems, authentication and authorization systems, payment processing interfaces for financial transactions, email campaigns, real-time instrument control interfaces, and customer-facing applications serving millions of users.",
+          "My focus is on building maintainable systems, mentoring engineers, and solving complex technical problems.",
+          "<a href='/resume'>View my full resume →</a>"
         ]
       },
       {
-        "heading": "A brief detour",
-        "headingLevel": 2,
+        "heading": "Music",
+        "headingLevel": 4,
         "content": [
-          "From 2005 to 2008, I took a break from full-time tech work to pursue music. My band, The Crash Motive, signed with Wind-up Records and we got some cool placements including the Super Bowl, Madden NFL, and The Fantastic Four. It was an incredible experience, but I eventually came back to what I love—building things for the web."
+          "I've been playing drums for most of my life. The Crash Motive (Wind-up Records/Sony BMG) got placements in the Super Bowl, Madden, and The Fantastic Four. I also co-founded SpeakerCity, a top-40/wedding band that became one of the busiest acts in the Mid-Atlantic region.",
+          "<a href='/music'>More about my music →</a>"
+        ]
+      },
+      {
+        "heading": "Beyond work",
+        "headingLevel": 3,
+        "content": [
+          "I'm a father of two, an avid cyclist and runner, a craft beer enthusiast, and a vinyl collector. I graduated from the University of Delaware with a degree in Business Administration (Finance/Accounting).",
+          "I'm based in Kennett Square, Pennsylvania."
         ]
       }
     ],
-    "work": [
+    "resume": [
       {
-        "heading": "Work",
+        "heading": "Resume",
         "headingLevel": 2,
         "content": [
-          "I've been fortunate to work on interesting projects for some great companies over the years."
+          "20+ years of experience building web applications for companies like Best Egg, Vanguard, Bank of America, Agilent Technologies, DuPont, and Chemours."
         ]
       },
       {
-        "heading": "Best Egg (2022 - Present)",
+        "heading": "Best Egg",
         "headingLevel": 3,
-        "subheading": "Senior Lead Software Engineer",
+        "subheading": "Senior Lead Software Engineer II · 2024 - Present",
         "content": [
-          "I lead a small team working on customer-facing applications for verifications, servicing, and authentication.",
-          "• Build features with A/B testing to help inform product decisions",
-          "• Set up monitoring and observability with FullStory and DataDog",
-          "• Refactor and improve our Angular applications",
-          "• Mentor junior engineers and help establish team standards",
-          "• Work with tools like Cursor and Claude to improve development speed",
-          "<strong>Tech:</strong> Angular, TypeScript, Jest, GitHub Actions, Node.js, Storybook"
+          "Lead a cross-functional engineering team responsible for customer-facing applications in verifications, servicing, and authentication serving millions of users.",
+          "• Mentor engineers through hands-on guidance, code reviews, and knowledge-sharing",
+          "• Develop customer-facing features with A/B testing integration for data-driven experimentation",
+          "• Implement comprehensive observability through enterprise events, FullStory, and DataDog",
+          "• Establish engineering standards and architectural patterns",
+          "• Drive adoption of AI-assisted development tools like Cursor with Claude",
+          "• Recognized with Golden Egg Award for \"BE a Builder of Great Teams\" (Q3 2023)",
+          "<strong>Tech:</strong> Angular, TypeScript, Jest, Karma, GitHub Actions, Node.js, Storybook, DataDog, FullStory"
         ]
       },
       {
-        "heading": "Vanguard (2019 - 2022)",
+        "heading": "Vanguard",
         "headingLevel": 3,
-        "subheading": "Senior Front-End Developer",
+        "subheading": "Senior Front-End Developer · 2019 - 2022",
         "content": [
-          "I worked on Vanguard's Financial Advisor Services design system during a division-wide rebrand.",
-          "• Built Vue.js components and a NestJS prototype application",
-          "• Created a web component version that worked across Vue, Angular, React, and AEM",
-          "• Worked with Angular teams to help them adopt the design system",
-          "• Set up CI/CD deployment with AWS",
-          "<strong>Tech:</strong> Vue.js, NestJS, Web Components, Storybook, Angular, AWS"
+          "Senior technical contributor for Vanguard's Financial Advisor Services design system, supporting thousands of financial advisors serving millions of clients.",
+          "• Drove technical implementation of FAS design system through division-wide rebrand",
+          "• Architected web component solution with Angular-compatible custom element wrapper, enabling cross-framework integration (Vue, Angular, React, Adobe Experience Manager) and eliminating framework-specific support teams",
+          "• Architected and developed Vue.js/NestJS application prototype that became the standard foundation for all FAS single-page applications",
+          "• Presented integration strategy to IT leadership and drove adoption across three Angular development teams",
+          "• Implemented CI/CD deployment infrastructure for internal documentation using AWS services",
+          "<strong>Tech:</strong> Vue.js, NestJS, Web Components, Storybook, Angular, Custom Elements, AWS, CI/CD"
         ]
       },
       {
-        "heading": "Trellist (2014 - 2017)",
+        "heading": "Technical Writers, Inc.",
         "headingLevel": 3,
-        "subheading": "Digital Development Services",
+        "subheading": "Web Application Developer · 2017 - 2019",
         "content": [
-          "I wore multiple hats doing front-end, email, SharePoint, and systems work for various clients.",
-          "• Built responsive websites and landing pages for Bank of America, David's Bridal, Chemours, and Blue Cross Blue Shield",
-          "• Developed adaptive HTML email campaigns for Bank of America's rewards programs",
-          "• Created SharePoint intranet sites for Chemours and Everything But Water",
-          "• Managed a security auditing system for DuPont and worked with IBM on server migration",
-          "<strong>Tech:</strong> HTML, CSS, JavaScript, jQuery, SharePoint"
+          "Served as on-site front-end specialist consulting with Agilent Technologies's R&D software team to develop instrument control interfaces for global product lines.",
+          "• Developed web-based instrument control UI for Agilent's flagship Gas Chromatography hardware using Sencha/Ext JS, implementing real-time monitoring and control through WebSocket connections",
+          "• Created data visualization features including live instrument data graphing and visual hardware configuration displays",
+          "• Designed custom SVG icons and CSS styling aligned with Agilent's product design standards",
+          "• Architected automated build system for Adobe RoboHelp documentation delivery across Gas Chromatography, Mass Spectrometry, and Sampler product lines, supporting 8+ languages with dynamic template generation, theming, and command-line automation for multi-language localization",
+          "<strong>Tech:</strong> JavaScript, Sencha/Ext JS, HTML5, CSS/SCSS, SVG, WebSockets, Adobe RoboHelp, Command-line scripting"
         ]
       },
       {
-        "heading": "Agilent Technologies (2017 - 2019)",
+        "heading": "Trellist Marketing and Technology",
         "headingLevel": 3,
-        "subheading": "Web Application Developer",
+        "subheading": "Digital Development Services · 2014 - 2017",
         "content": [
-          "I worked with Agilent's R&D team to build a web-based control interface for their Gas Chromatography hardware.",
-          "• Built real-time instrument control UI using Sencha/Ext JS",
-          "• Implemented WebSocket connections for live data",
-          "• Created data visualizations and hardware configuration displays",
-          "• Designed custom SVG icons and CSS styling",
-          "<strong>Tech:</strong> JavaScript, Sencha/Ext JS, HTML, CSS, SVG, WebSockets"
+          "Served in multiple technical roles for Fortune 500 and enterprise clients.",
+          "<strong>Front-End Development:</strong>",
+          "• Developed responsive websites and landing pages for enterprise clients like Bank of America, David's Bridal, Chemours, and Blue Cross Blue Shield Global, reaching millions of users",
+          "• Established front-end development standards and best practices across the digital team",
+          "<strong>Email Development:</strong>",
+          "• Architected and developed \"adaptive\" HTML email campaigns for Bank of America's Loyalty, Cash Rewards, and Travel Rewards programs, reaching millions of customers with full cross-platform compatibility",
+          "• Led technical strategy for email development, optimizing for deliverability, accessibility, and cross-client consistency",
+          "<strong>Systems Management:</strong>",
+          "• Served as Systems Owner for DuPont's SharePoint security auditing system, delivering weekly stakeholder reports and managing server migration with IBM consultants",
+          "<strong>SharePoint Development:</strong>",
+          "• Developed SharePoint intranet solutions for Chemours and Everything But Water",
+          "• Coordinated time-sensitive deployments of highly sensitive internal communications with Chemours' communications leadership, requiring off-hours execution",
+          "<strong>Tech:</strong> HTML5, CSS/SCSS, JavaScript, jQuery, SharePoint, Responsive Design, Email Development"
         ]
       },
       {
-        "heading": "Agilent Technologies (2007 - 2014)",
+        "heading": "Technical Writers, Inc.",
         "headingLevel": 3,
-        "subheading": "Front-End Developer / Senior Technical Writer",
+        "subheading": "Various Technical Roles · 2003 - 2014",
         "content": [
-          "I built web-based documentation delivery systems and did technical writing for Agilent's product lines.",
-          "• Created standalone web apps that ran from USB drives and DVDs",
-          "• Built automated systems for Adobe RoboHelp supporting 8+ languages",
-          "• Wrote technical documentation using Adobe FrameMaker",
-          "• Created UI icons and diagrams for R&D teams",
-          "<strong>Tech:</strong> HTML, CSS, JavaScript, Adobe RoboHelp, Adobe FrameMaker, Illustrator, Photoshop"
+          "11-year consulting role providing technical writing and web development services, primarily for Agilent Technologies. Full-time 2003-2005 and 2007-2014, part-time 2005-2007 while pursuing music full-time with The Crash Motive.",
+          "<strong>Front-End Developer / Senior Technical Writer (Agilent, 2007-2014):</strong>",
+          "• Designed standalone web-based document delivery applications distributed via USB/DVD for global product lines",
+          "• Architected custom HTML templates and automated build systems for Adobe RoboHelp, streamlining multi-product documentation delivery",
+          "• Authored technical documentation using Adobe FrameMaker and converted to web-ready HTML",
+          "• Created software UI icons, technical diagrams, and visual assets for R&D teams",
+          "<strong>Technical Writer / Web Developer (Part-time, 2005-2007):</strong>",
+          "• Maintained part-time work while touring nationally with The Crash Motive (Wind-up Records)",
+          "• Provided ongoing documentation and web development support",
+          "<strong>Technical Writer / Web Developer (2003-2005):</strong>",
+          "• Produced regulatory documentation and compliance materials for pharmaceutical clients",
+          "• Developed and maintained corporate web presence",
+          "<strong>Tech:</strong> HTML, CSS, JavaScript, Adobe RoboHelp, Adobe FrameMaker, Adobe Illustrator, Adobe Photoshop"
         ]
       },
       {
-        "heading": "The Crash Motive (2005 - 2008)",
+        "heading": "The Crash Motive",
         "headingLevel": 3,
-        "subheading": "Drummer & Co-founder",
+        "subheading": "Drummer, Studio Musician & Co-founder · 2005 - 2008",
         "content": [
-          "I co-founded a rock band that signed with Wind-up Records (Sony BMG distribution).",
-          "• Performed on studio recordings and arranged drum parts",
-          "• Toured nationally and opened for bands like All American Rejects and Collective Soul",
-          "• Ran targeted MySpace campaigns to drive tour attendance",
-          "• Helped negotiate deals and manage business relationships",
-          "<strong>Notable placements:</strong> Super Bowl XLII (Fox), Madden NFL 2007 (EA Sports), The Fantastic Four (20th Century Fox), 30+ professional sports stadiums, network TV (NBC, FOX, CBS, ESPN)"
+          "Co-founding member and drummer for The Crash Motive (formerly Omnisoul), a nationally touring original rock band. Grew the business from independent operation to major label partnership, ultimately signing comprehensive recording, distribution, touring, merchandising, and publishing deals with Wind-up Records and Sony BMG.",
+          "• Performed drum parts on studio recordings and arranged drum compositions for albums and singles",
+          "• Toured nationally and performed extensively at major venues, opening for nationally recognized acts",
+          "• Performed at high-profile industry showcases with globally recognized artists and music executives",
+          "• Developed and executed targeted digital marketing campaigns using MySpace's location and interest-based features to drive tour attendance and radio engagement in key markets",
+          "• Secured high-profile music placements including Super Bowl XLII (Fox), Madden NFL 2007 (EA Sports), and The Fantastic Four movie/soundtrack (20th Century Fox)",
+          "• Licensed music for use in 30+ professional sports stadiums (NFL, MLB, NCAA, NHL)",
+          "• Placed music in network television programming including NBC, FOX, and CBS promotional campaigns (2006-2008), 2008 Olympic Trials (NBC), NFL Live, NFL Rewind, and Baseball Tonight (ESPN)",
+          "• Negotiated and managed business partnerships with major label executives, booking agents, and licensing representatives"
         ]
       },
       {
-        "heading": "Tech stack",
+        "heading": "Wilmington Trust Company",
+        "headingLevel": 3,
+        "subheading": "IT Division Intranet Webmaster & IT Service Tech · 2000 - 2003",
+        "content": [
+          "Started as an intern for the Online Portfolio Group (2000-2001) while completing undergraduate studies, then brought on full-time as IT Division Intranet Webmaster and first-level IT service tech (2001-2003).",
+          "<strong>IT Division Intranet Webmaster (2001-2003):</strong>",
+          "• Redesigned and developed the IT Service & Support Division intranet website in Flash",
+          "• Designed and developed the Online Portfolio Trust Management Group intranet site",
+          "• Designed and developed a custom call logging front-end application with Microsoft Access, Visual Basic and SQL Server, used in production across multiple service and support departments",
+          "• Provided first-level internal tech support for software, network accounts, technical issues, and hardware failures",
+          "<strong>Intern for Online Portfolio Group (2000-2001):</strong>",
+          "• Supported the Online Portfolio Group with production Microsoft Access call logging application and web development projects while completing undergraduate studies",
+          "<strong>Tech:</strong> HTML, CSS, JavaScript, Flash, Microsoft Access, Visual Basic, SQL Server"
+        ]
+      },
+      {
+        "heading": "Education",
+        "headingLevel": 3,
+        "content": [
+          "<strong>University of Delaware</strong><br>Bachelor of Science, Business Administration<br>Concentrations: Accounting and Finance<br><em>College of Business & Economics</em>"
+        ]
+      },
+      {
+        "heading": "Technical Skills",
         "headingLevel": 3,
         "contentStyle": "inline",
         "content": [
@@ -139,20 +196,24 @@
           "TypeScript",
           "Angular",
           "Vue.js",
-          "HTML",
+          "HTML5",
           "CSS/SCSS",
           "Web Components",
-          "Sencha/Ext JS",
-          "jQuery",
+          "Design Systems",
+          "Storybook",
           "Jest",
           "Cypress",
+          "Karma",
           "Node.js",
           "NestJS",
-          "Storybook",
           "Git",
           "GitHub Actions",
           "CI/CD",
-          "Accessibility",
+          "Accessibility (WCAG)",
+          "A/B Testing",
+          "Observability",
+          "Sencha/Ext JS",
+          "jQuery",
           "SharePoint",
           "Adobe RoboHelp",
           "Adobe FrameMaker"
