@@ -169,7 +169,7 @@ const toggleRole = (entryIdx, roleIdx) => {
   }
 
   &__left:has(.role__caret--open) + .role__subheading {
-    color: $color-highlight-2;
+    color: var(--color-active-nav);
   }
 
   &__caret {

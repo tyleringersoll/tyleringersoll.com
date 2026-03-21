@@ -32,6 +32,9 @@ html.light-mode {
   --color-focus: #0055cc;
 }
 
-html {
-  transition: background-color 0.3s ease, color 0.3s ease;
+.theme-transitioning,
+.theme-transitioning *,
+.theme-transitioning *::before,
+.theme-transitioning *::after {
+  transition: background-color 2s ease, color 2s ease, border-color 2s ease, fill 2s ease !important;
 }

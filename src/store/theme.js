@@ -18,7 +18,11 @@ export const useThemeStore = defineStore("theme", {
     toggle() {
       this.isDark = !this.isDark;
       localStorage.setItem("theme", this.isDark ? "dark" : "light");
+      document.documentElement.classList.add("theme-transitioning");
       this._applyTheme();
+      setTimeout(() => {
+        document.documentElement.classList.remove("theme-transitioning");
+      }, 2000);
     },
     _applyTheme() {
       if (this.isDark) {

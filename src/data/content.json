@@ -23,8 +23,8 @@
         "heading": "Hi, I'm Tyler",
         "headingLevel": 2,
         "content": [
-          "I'm a frontend engineer and engineering leader. At Best Egg, I lead a team shipping customer-facing products that touch millions of users annually. I've also built for Vanguard, Bank of America, Agilent Technologies, and others.",
-          "When I'm not coding, I'm usually behind a drum kit. I toured nationally with a major-label band on Wind-up Records/Sony BMG, played thousands of gigs, and now take on remote studio sessions and post clips at tyleringersolldrums.com."
+          "I'm a frontend engineer and engineering leader. At Best Egg, I lead a team shipping customer-facing products that touch millions of users. I've also built for Vanguard, Agilent Technologies, Bank of America, and others.",
+          "When I'm not coding, I'm usually behind a drum kit. I've toured nationally with a major-label band on Wind-up Records/Sony BMG, played thousands of gigs, and now take on remote studio sessions and post clips at tyleringersolldrums.com."
         ]
       },
       {
@@ -36,7 +36,7 @@
         "heading": "Engineering",
         "headingLevel": 4,
         "content": [
-          "I build frontend applications with Angular, Vue.js, and TypeScript and lead the teams that ship them. My work spans design systems, authentication, payment processing, and customer-facing products at scale.",
+          "I build frontend applications with frameworks like Angular and Vue.js, and lead the teams that ship them. My work spans design systems, authentication, payment processing, and customer-facing products at scale.",
           "<a href='/resume'>View my full resume →</a>"
         ]
       },
@@ -311,35 +311,50 @@
         ]
       },
       {
-        "heading": "Skitzo Calypso (1996–1999)",
+        "heading": "Skitzo Calypso",
+        "years": "1996–1999",
         "headingLevel": 3,
         "content": [
-          "One of my earliest studio projects was Skitzo Calypso, an alt-hard rock band out of Bel Air, Maryland. The band was Brad Cox's project — he wrote everything and handled vocals and guitar — with Dave Pace producing and engineering at 12th Planet Recording Studio. I played drums and bass in the studio across two full albums, <em>Join the Cult</em> (1998) and <em>Premeditated Acts of Stupidity</em> (1999), and landed a track on <em>Electrophoria/P.L.A.A.G.E.S.</em> as well. The band is still active today with a deep catalog:",
+          "My first serious studio work came through Skitzo Calypso, an alt-hard rock project led by Brad Cox out of Bel Air, Maryland, with Dave Pace producing at 12th Planet Recording Studio. Brad wrote everything and handled vocals and guitar. I played drums and bass across two full albums, <em>Join the Cult</em> (1998) and <em>Premeditated Acts of Stupidity</em> (1999), and landed a track on <em>Electrophoria/P.L.A.A.G.E.S.</em> as well. It was my first real experience recording to a part rather than playing live. The band is still active today:",
           "<iframe allow='autoplay *; encrypted-media *;' frameborder='0' height='150' style='width:100%;max-width:660px;overflow:hidden;background:transparent;' sandbox='allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation' src='https://embed.music.apple.com/us/album/asphyxiation/1748465468?i=1748465472'></iframe>"
         ]
       },
       {
-        "heading": "The Healthy Doses (1998–2000)",
+        "heading": "The Healthy Doses",
+        "years": "1998–2000",
         "headingLevel": 3,
         "content": [
-          "The Healthy Doses were a jam band out of the University of Delaware scene in the late 90s, when jam was at its peak and Newark, DE had a genuinely vibrant live music circuit. We played constantly, sometimes twice a week, holding down residencies at The East End Cafe and The Deer Park Tavern, and shared the stage with The Recipe, Schleigho, Lake Trout, The Disco Biscuits, Brothers Past, The Slip, Humonculus, and others. We performed at festivals up and down the East Coast, including Phish's Camp Oswego in 1999. There are no studio recordings, but some live audio survived:",
-          "<iframe width='100%' height='450' scrolling='no' frameborder='no' allow='autoplay' src='https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/2287393&color=%230e1110&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true'></iframe>"
+          "At the same time, I was at the University of Delaware playing in a jam band. The Healthy Doses were a big part of the Newark, DE scene in the late 90s. Phish and Widespread Panic were everywhere, the East Coast festival circuit was thriving, and local spots like The East End Cafe and The Deer Park Tavern were packed every weekend. We played constantly, sometimes twice a week, shared the stage with The Recipe, Schleigho, Lake Trout, The Disco Biscuits, Brothers Past, The Slip, Humonculus, and others, and made it to festivals up and down the East Coast, including Phish's Camp Oswego in 1999. No studio recordings, but some live audio made it:",
+          "<iframe width='100%' height='450' scrolling='no' frameborder='no' allow='autoplay' src='https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/2287393&color=%230e1110&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true'></iframe>",
+          "A few members also played a live set on Main St, Newark, DE on September 2, 2000:",
+          "<iframe width='100%' height='300' scrolling='no' frameborder='no' allow='autoplay' src='https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%253Aplaylists%253A101787743&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true'></iframe>"
         ]
       },
       {
-        "heading": "Omnisoul (2002–2006)",
+        "heading": "Yuba Rift",
+        "years": "2000–2001",
         "headingLevel": 3,
         "content": [
-          "What started as a band out of the University of Delaware scene quickly became a regional force. We played The Stone Balloon, The East End Cafe, and The Deer Park Tavern regularly, won UD's Battle of the Bands, and earned support slots opening for artists like Sugar Ray, Collective Soul, Lifehouse, and the All American Rejects.",
-          "Our single \"Waiting (Save Your Life)\" became a fixture on WSTW 93.7, topping their request charts and building the momentum that eventually caught the attention of Wind-up Records.",
+          "Yuba Rift never played many shows and never really tried to. We recorded on a tape deck in the corner of a practice space in Newark, DE, and the recordings sound like it. The quality is rough, but these are some of the most open and exploratory sessions I've been part of. No commercial ambition, just a small group of people seeing where things went.",
+          "<iframe width='100%' height='450' scrolling='no' frameborder='no' allow='autoplay' src='https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%253Aplaylists%253A8377240&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true'></iframe>"
+        ]
+      },
+      {
+        "heading": "Omnisoul",
+        "years": "2002–2006",
+        "headingLevel": 3,
+        "content": [
+          "After the Healthy Doses wrapped up, I started Omnisoul with a tighter focus on original songwriting and radio. We came out of the same UD scene and played the same venues, but the approach was different. We won UD's Battle of the Bands, held down The Stone Balloon, The East End Cafe, and The Deer Park Tavern, and earned support slots with Sugar Ray, Collective Soul, Lifehouse, and the All American Rejects.",
+          "Our single \"Waiting (Save Your Life)\" became a request chart fixture on WSTW 93.7, which eventually got us in front of Wind-up Records.",
           "<iframe height='450' width='100%' title='Media player' src='https://embed.music.apple.com/us/album/happy-outside/1754410766?itscg=30200&amp;itsct=music_box_player&amp;ls=1&amp;app=music&amp;mttnsubad=1754410766&amp;theme=dark' id='embedPlayer' sandbox='allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation' allow='autoplay *; encrypted-media *; clipboard-write' style='border: 0px; border-radius: 12px; width: 100%; height: 450px; max-width: 660px;'></iframe>"
         ]
       },
       {
-        "heading": "The Crash Motive (2007–2008)",
+        "heading": "The Crash Motive",
+        "years": "2007–2008",
         "headingLevel": 3,
         "content": [
-          "When Wind-up Records (home to Evanescence, Creed, Seether, Finger Eleven) came calling, Omnisoul signed a full deal covering recording, distribution, touring, merchandising, and publishing, then rebranded as The Crash Motive. We recorded <em>Consequence</em> at Avatar Studios (formerly The Power Station) in NYC, which Billboard flagged as a key upcoming release and Drum! Magazine reviewed, praising the band's pop-with-power sensibility.",
+          "Omnisoul landed a full deal with Wind-up Records (home to Evanescence, Creed, Seether, Finger Eleven), covering recording, distribution, touring, merchandising, and publishing, and rebranded as The Crash Motive. We recorded <em>Consequence</em> at Avatar Studios (formerly The Power Station) in NYC, which Billboard flagged as a key upcoming release and Drum! Magazine reviewed, praising the band's pop-with-power sensibility.",
           "Placements from the record include:",
           "• Super Bowl XLII (Fox)",
           "• Madden NFL 2007 (EA Sports)",
@@ -350,23 +365,34 @@
         ]
       },
       {
-        "heading": "SpeakerCity (2010–2016)",
+        "heading": "SpeakerCity",
+        "years": "2010–2016",
         "headingLevel": 3,
         "content": [
-          "After the national tours and studio work with The Crash Motive, I co-founded SpeakerCity with a roster of top-tier players from the Philadelphia music scene. The goal was to build the most dynamic, high-energy event band in the Mid-Atlantic, and we didn't start small. We debuted to a crowd of over 2,000 at the University of Delaware's Bob Carpenter Center, which immediately landed us a summer residency at NorthBeach in Dewey Beach.",
-          "Over the next six years we dominated the regional circuit across the New Jersey Shore, Ocean City, Philadelphia, and D.C., playing three-hour marathon dance sets that required a deep pocket and the ability to shift instantly between modern pop, hip-hop, alternative rock, and classic R&B. That kind of stamina and stylistic range forged a playing vocabulary I still draw on today.",
+          "After the Crash Motive wound down, I co-founded SpeakerCity with a group of top-tier players from the Philadelphia area. We set out to build the most dynamic event band in the Mid-Atlantic and didn't ease into it. We debuted to over 2,000 people at the University of Delaware's Bob Carpenter Center, which immediately landed us a summer residency at NorthBeach in Dewey Beach.",
+          "Over the next six years we covered the regional circuit across the Jersey Shore, Ocean City, Philadelphia, and D.C., playing three-hour sets that moved between modern pop, hip-hop, alternative rock, and classic R&B. It pushed me to develop a stylistic range I still rely on.",
           "<div style='position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px;'><iframe style='position: absolute; top: 0; left: 0; width: 100%; height: 100%;' src='https://www.youtube.com/embed/2D9R9hRWPwM?si=o9nR8Whg3ZEDizJH' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' referrerpolicy='strict-origin-when-cross-origin' allowfullscreen></iframe></div>"
         ]
       },
       {
-        "heading": "Brad Cox Sessions (2013, 2020)",
+        "heading": "Studio Sessions with Brad Cox",
+        "years": "2013, 2020",
         "headingLevel": 3,
         "content": [
-          "I returned to the studio with Brad Cox twice after Skitzo Calypso, both times with producer Tony Correlli at The Deep End Studio in Baltimore.",
+          "Even while everything else was happening, I kept working with Brad Cox. Both sessions were with producer Tony Correlli at The Deep End Studio in Baltimore.",
           "In 2013, I played bass on \"A Night in Hell & A Sunday Morning,\" released as a Skitzo Calypso single:",
           "<iframe style='border-radius:12px; width:100%;' src='https://open.spotify.com/embed/album/6xyAVtQ5oWnMK3dFWVhiC3?utm_source=generator&theme=0' height='152' frameborder='0' allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture' loading='lazy'></iframe>",
           "In February 2020, I played drums on \"Nothing Left to Burn,\" released under Brad's project Veteran Avenue. It landed on SiriusXM.",
           "<iframe allow='autoplay *; encrypted-media *; fullscreen *; clipboard-write' frameborder='0' height='175' style='width:100%;overflow:hidden;background:transparent;border-radius:12px;' sandbox='allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation' src='https://embed.music.apple.com/us/album/no-reflection-after-sunset-ep/1602773266?i=1602773268'></iframe>"
+        ]
+      },
+      {
+        "heading": "Solo Electronic Work",
+        "years": "2000–present",
+        "headingLevel": 3,
+        "content": [
+          "Alongside everything else, I've spent about 25 years recording instrumental electronic music on my own. It's all sketches and ideas, nothing built around songs in the traditional sense. No plans to do anything with it, just something I keep coming back to.",
+          "<iframe width='100%' height='450' scrolling='no' frameborder='no' allow='autoplay' src='https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%253Aplaylists%253A344619671&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true'></iframe>"
         ]
       }
     ],
