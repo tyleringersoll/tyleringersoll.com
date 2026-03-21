@@ -89,11 +89,11 @@
 }
 
 @mixin text-link {
-  color: $color-highlight-1;
+  color: var(--color-link);
   @include transition(color);
 
   &:hover {
-    color: $color-highlight-2;
+    color: var(--color-link-hover);
   }
 
   @include focus-visible(2px);

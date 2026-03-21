@@ -73,7 +73,7 @@ const inlineStyle = computed(() => {
     margin-bottom: $spacing-sm;
     font-size: 0.9em;
     font-weight: 400;
-    color: $color-gray-2;
+    color: var(--color-text-secondary);
     font-style: italic;
     @include transition(color);
 

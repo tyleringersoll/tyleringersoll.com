@@ -1,6 +1,7 @@
 <template>
-  <nav class="mobile-nav mobile-nav--spin">
+  <nav class="mobile-nav mobile-nav--spin" aria-label="Mobile navigation">
     <button
+      ref="hamburgerBtn"
       class="mobile-nav__button"
       :class="{ 'mobile-nav__button--active': nav.isOpen }"
       type="button"
@@ -17,7 +18,11 @@
       class="mobile-nav__overlay"
       :class="{ 'mobile-nav__overlay--active': nav.isOpen }"
       @click.self="onClick"
+      v-bind="nav.isOpen ? { role: 'dialog', 'aria-modal': 'true', 'aria-label': 'Navigation menu' } : {}"
+      ref="overlayEl"
+      @keydown.tab.prevent="handleTabKey"
     >
+      <ThemeToggle v-if="nav.isOpen" class="mobile-nav__theme-toggle" />
       <ul v-if="nav.isOpen" class="mobile-nav__items">
         <li
           v-for="(item, index) in content"
@@ -34,7 +39,7 @@
 </template>
 
 <script setup>
-import { reactive, onUnmounted } from "vue";
+import { reactive, onUnmounted, ref, watch, nextTick } from "vue";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
@@ -49,6 +54,8 @@ defineProps({
 const emit = defineEmits(["nav:clicked"]);
 
 const nav = reactive({ isOpen: false });
+const hamburgerBtn = ref(null);
+const overlayEl = ref(null);
 
 const toggleMenuState = () => {
   if (nav.isOpen) {
@@ -68,6 +75,46 @@ const onKeydown = (url) => {
   router.push(url);
   onClick();
 };
+
+const FOCUSABLE_SELECTORS =
+  'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+const handleTabKey = (event) => {
+  if (!overlayEl.value) return;
+  const focusable = Array.from(overlayEl.value.querySelectorAll(FOCUSABLE_SELECTORS));
+  if (focusable.length === 0) return;
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+  if (event.shiftKey) {
+    if (document.activeElement === first) {
+      last.focus();
+    }
+  } else {
+    if (document.activeElement === last) {
+      first.focus();
+    }
+  }
+};
+
+watch(
+  () => nav.isOpen,
+  async (isOpen) => {
+    if (isOpen) {
+      await nextTick();
+      if (overlayEl.value) {
+        const focusable = overlayEl.value.querySelectorAll(FOCUSABLE_SELECTORS);
+        if (focusable.length > 0) {
+          focusable[0].focus();
+        }
+      }
+    } else {
+      await nextTick();
+      if (hamburgerBtn.value) {
+        hamburgerBtn.value.focus();
+      }
+    }
+  }
+);
 
 onUnmounted(() => {
   if (nav.isOpen) {
@@ -107,7 +154,7 @@ $menu-active-hover-filter: $menu-hover-filter;
     font: inherit;
     color: inherit;
     text-transform: none;
-    background-color: $color-gray-8;
+    background-color: var(--color-bg-primary);
     border: 0;
     border-radius: 50%;
     margin: $spacing-sm;
@@ -118,10 +165,6 @@ $menu-active-hover-filter: $menu-hover-filter;
     overflow: visible;
     z-index: $z-index-overlay;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-
-    &:focus {
-      outline: 0;
-    }
 
     &:hover {
       @if $menu-hover-use-filter == true {
@@ -235,7 +278,7 @@ $menu-active-hover-filter: $menu-hover-filter;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: $color-gray-8;
+    background-color: var(--color-bg-primary);
     transform: translateX(120vw);
     @include transition-slow(all);
     transition-delay: 0.3s;
@@ -266,10 +309,16 @@ $menu-active-hover-filter: $menu-hover-filter;
     }
   }
 
+  &__theme-toggle {
+    position: relative;
+    z-index: 1;
+    margin: 5rem $spacing-xl $spacing-sm;
+  }
+
   &__items {
     list-style-type: none;
-    margin-top: 6rem;
-    padding: $spacing-md $spacing-xl;
+    margin-top: $spacing-sm;
+    padding: 0 $spacing-xl;
     overflow: hidden;
     position: relative;
     z-index: 1;
@@ -277,7 +326,7 @@ $menu-active-hover-filter: $menu-hover-filter;
 
   &__item {
     margin: 0 0 $spacing-lg;
-    color: white;
+    color: var(--color-nav-link);
     font-size: 1rem;
     font-weight: 600;
     @include text-uppercase;
@@ -292,7 +341,7 @@ $menu-active-hover-filter: $menu-hover-filter;
   }
 
   a {
-    color: white;
+    color: var(--color-nav-link);
     font-weight: 600;
     @include text-uppercase;
     text-decoration: none;

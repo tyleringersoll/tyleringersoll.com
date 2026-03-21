@@ -1,5 +1,5 @@
 <template>
-  <nav class="navigation">
+  <nav class="navigation" aria-label="Main navigation">
     <div class="container">
       <ul class="navigation__items">
         <li
@@ -8,6 +8,9 @@
           class="navigation__item"
         >
           <router-link :to="item.url" :innerHTML="item.name" />
+        </li>
+        <li class="navigation__toggle" style="margin-left: auto">
+          <ThemeToggle />
         </li>
       </ul>
     </div>
@@ -25,23 +28,25 @@ defineProps({
 
 <style lang="scss" scoped>
 .navigation {
-  padding-bottom: $spacing-sm;
+  padding-bottom: $spacing-xs;
 
   @include respond-to(sm) {
     position: sticky;
     top: 0;
-    background-color: $color-gray-6;
+    z-index: $z-index-sticky;
+    background-color: var(--color-bg-nav);
   }
 
   &__items {
     display: flex;
     justify-content: flex-start;
+    align-items: center;
     gap: $spacing-sm;
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    border-bottom: 2px solid $color-highlight-3;
+    border-bottom: 2px solid var(--color-accent-line);
   }
 
   &__item {
@@ -58,7 +63,7 @@ defineProps({
       display: block;
       content: "";
       padding-bottom: $spacing-sm;
-      border-top: 2px solid $color-highlight-3;
+      border-top: 2px solid var(--color-accent-line);
       transform: scaleX(0);
       transform-origin: 0% 50%;
       @include transition(transform, 250ms, ease-in-out);
@@ -71,8 +76,18 @@ defineProps({
     }
   }
 
+  &__toggle {
+    display: none;
+    align-items: center;
+    align-self: center;
+
+    @include respond-to(sm) {
+      display: flex;
+    }
+  }
+
   a {
-    color: white;
+    color: var(--color-nav-link);
     font-size: 1.1rem;
     font-weight: 600;
     @include text-uppercase;
@@ -80,7 +95,7 @@ defineProps({
     cursor: pointer;
 
     &:hover {
-      color: $color-highlight-1;
+      color: var(--color-link);
     }
 
     @include focus-visible(3px);
@@ -88,7 +103,7 @@ defineProps({
 
   :deep(.router-link-exact-active) {
     display: inline-block;
-    color: $color-highlight-2;
+    color: var(--color-active-nav);
 
     @include respond-below(sm) {
       pointer-events: none;

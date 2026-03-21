@@ -12,7 +12,11 @@
         <template v-for="(role, roleIdx) in entry.roles" :key="roleIdx">
           <div
             class="role__left"
+            role="button"
+            tabindex="0"
             @click="toggleRole(entryIdx, roleIdx)"
+            @keydown.enter.prevent="toggleRole(entryIdx, roleIdx)"
+            @keydown.space.prevent="toggleRole(entryIdx, roleIdx)"
           >
             <span class="role__caret" :class="{ 'role__caret--open': isExpanded(entryIdx, roleIdx) }">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -24,7 +28,11 @@
           <component
             :is="`h${(entry.headingLevel || 3) + 1}`"
             class="role__subheading"
+            role="button"
+            tabindex="0"
             @click="toggleRole(entryIdx, roleIdx)"
+            @keydown.enter.prevent="toggleRole(entryIdx, roleIdx)"
+            @keydown.space.prevent="toggleRole(entryIdx, roleIdx)"
           >{{ roleTitle(role.subheading) }}</component>
           <transition name="role-expand">
             <div v-if="isExpanded(entryIdx, roleIdx)" class="role__content">
@@ -103,6 +111,7 @@ const toggleRole = (entryIdx, roleIdx) => {
     display: flex;
     align-items: center;
     gap: 0.4em;
+    padding-top: $spacing-sm;
     margin-bottom: $spacing-xs;
     cursor: pointer;
     user-select: none;
@@ -114,31 +123,60 @@ const toggleRole = (entryIdx, roleIdx) => {
 
   &__dates-col {
     font-size: 1rem;
-    color: $color-gray-2;
+    color: var(--color-text-secondary);
     white-space: nowrap;
     line-height: 1.2;
   }
 
   &__subheading {
     display: block;
+    width: fit-content;
+    padding-top: $spacing-sm;
     margin: 0 0 $spacing-xs;
     font-size: 1rem;
     font-weight: 700;
-    color: $color-gray-0;
+    color: var(--color-text-primary);
     cursor: pointer;
     user-select: none;
+    position: relative;
     @include transition(color);
 
-    &:hover {
-      color: $color-gray-1;
+    &::before {
+      content: "";
+      position: absolute;
+      top: calc(#{$spacing-sm} - 8px);
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: $color-highlight-3;
+      transform: scaleX(0);
+      transform-origin: 0% 50%;
+      @include transition(transform, 250ms, ease-in-out);
     }
+
+    &:hover {
+      color: $color-highlight-1;
+
+      &::before {
+        transform: scaleX(1);
+      }
+    }
+  }
+
+  &__left:hover + .role__subheading::before,
+  &__left:has(.role__caret--open) + .role__subheading::before {
+    transform: scaleX(1);
+  }
+
+  &__left:has(.role__caret--open) + .role__subheading {
+    color: $color-highlight-2;
   }
 
   &__caret {
     display: flex;
     align-items: center;
     flex-shrink: 0;
-    color: $color-gray-3;
+    color: var(--color-text-muted);
     @include transition(transform);
 
     &--open {
@@ -148,8 +186,8 @@ const toggleRole = (entryIdx, roleIdx) => {
 
   &__content {
     grid-column: 1 / -1;
-    background-color: $color-gray-7;
-    border: 1px solid $color-gray-5;
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
     border-radius: 1rem;
     padding: $spacing-sm $spacing-lg;
     margin: $spacing-sm 0 $spacing-md;
@@ -158,7 +196,7 @@ const toggleRole = (entryIdx, roleIdx) => {
 
 .tech-divider {
   border: none;
-  border-top: 1px solid $color-gray-0;
+  border-top: 1px solid var(--color-text-primary);
   margin: $spacing-md 0 $spacing-sm;
 }
 

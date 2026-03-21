@@ -3,6 +3,7 @@
     <a
       :href="props.url"
       :title="computedTitle"
+      :aria-label="props.alt"
       target="_blank"
       rel="noopener noreferrer"
       v-html="props.svg"

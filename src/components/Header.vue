@@ -50,7 +50,7 @@ defineProps({
     margin: $spacing-lg auto 0;
 
     @include respond-to(sm) {
-      margin: $spacing-lg auto;
+      margin: $spacing-lg auto $spacing-xs;
       justify-content: space-between;
     }
   }
@@ -71,7 +71,7 @@ defineProps({
     position: relative;
     width: 280px;
     height: 280px;
-    border: 2px solid $color-highlight-3;
+    border: 2px solid var(--color-accent-line);
     border-radius: 50%;
     overflow: hidden;
 
@@ -94,7 +94,7 @@ defineProps({
         display: block;
         content: "";
         padding-bottom: $spacing-sm;
-        border-top: 2px solid $color-highlight-3;
+        border-top: 2px solid var(--color-accent-line);
         transform: scaleX(0);
         transform-origin: 0% 50%;
         @include transition(transform, 250ms, ease-in-out);
@@ -104,14 +104,14 @@ defineProps({
         display: block;
         content: "";
         padding-top: $spacing-sm;
-        border-bottom: 2px solid $color-highlight-3;
+        border-bottom: 2px solid var(--color-accent-line);
         transform: scaleX(0);
-        transform-origin: 50% 0%;
+        transform-origin: 100% 0%;
         @include transition(transform, 250ms, ease-in-out);
       }
 
       &:hover {
-        color: $color-highlight-1;
+        color: var(--color-link);
 
         &::before,
         &::after {

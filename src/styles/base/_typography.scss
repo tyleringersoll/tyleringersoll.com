@@ -10,8 +10,8 @@
 }
 
 body {
-  background-color: $color-gray-6;
-  color: $color-gray-0;
+  background-color: var(--color-bg-nav);
+  color: var(--color-text-primary);
   font-size: $font-size-base;
   line-height: $line-height-base;
 
@@ -32,18 +32,18 @@ h5 {
 
 h1 {
   font-size: 2.5rem;
-  color: $color-gray-0;
+  color: var(--color-text-primary);
 }
 
 h2 {
   margin-bottom: $spacing-lg;
   font-size: 1.75rem;
-  color: $color-highlight-3;
+  color: var(--color-accent-line);
 
   &.first-heading {
     @include respond-below(sm) {
       padding-top: $spacing-lg;
-      border-top: 2px solid $color-highlight-3;
+      border-top: 2px solid var(--color-accent-line);
     }
   }
 }
@@ -51,7 +51,7 @@ h2 {
 h3 {
   margin-bottom: $spacing-xl;
   font-size: 1.25rem;
-  color: $color-highlight-3;
+  color: var(--color-accent-line);
 }
 
 h4 {

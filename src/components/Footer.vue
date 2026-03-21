@@ -53,7 +53,7 @@ const processedLegal = computed(() => {
 .footer {
   margin: auto 0 0;
   padding: $spacing-lg 0;
-  background-color: $color-gray-7;
+  background-color: var(--color-bg-secondary);
 
   &__social {
     margin: $spacing-sm 0 0;
