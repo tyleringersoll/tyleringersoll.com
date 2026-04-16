@@ -15,8 +15,8 @@ export default {
         heading: "Hi, I'm Tyler",
         headingLevel: 2,
         content: [
-          "I'm a frontend architect and engineering leader. Currently, I lead teams at Best Egg building customer-facing products that handle millions of interactions. In the past, I've built solutions for Vanguard, Agilent Technologies, Bank of America, and others.",
-          "When I'm not coding, I'm behind a drum kit. I have been playing for thirty years, doing everything from national tours with Wind-up Records to tracking remote sessions out of my studio in Pennsylvania."
+          "I'm a frontend architect and engineering leader. Currently, I lead a team at Best Egg building customer-facing products that handle millions of user interactions. In the past, I've built solutions for Vanguard, Agilent Technologies, Bank of America, and others.",
+          "When I put down the laptop, I'm usually found behind a drum kit. I've spent the last three decades touring, recording, and producing music."
         ]
       },
       {
@@ -28,7 +28,7 @@ export default {
         heading: "Engineering",
         headingLevel: 4,
         content: [
-          "I build frontend applications using frameworks like Angular and Vue.js, and I guide the teams that ship them. My work usually involves design systems, authentication, payment processing, and scaling customer-facing products.",
+          "I build frontend applications using frameworks like Angular and Vue.js, and I guide the teams that ship them. My work expertise spans from core authentication flows and payment processing, to specialized third-party fintech integrations and real-time hardware control software. Over my career, I’ve handled just about every aspect of the frontend ecosystem, including coding high-volume HTML email campaigns and driving division-wide design system rollouts.",
           "<a href='/resume'>View my full resume →</a>"
         ]
       },
@@ -36,7 +36,7 @@ export default {
         heading: "Music",
         headingLevel: 4,
         content: [
-          "I've been playing professionally for thirty years. With The Crash Motive on Wind-up Records, I had sync placements in the Super Bowl, Madden NFL, and The Fantastic Four. Today, I track remote drum sessions from a custom-built hybrid studio in Pennsylvania, bridging analog API preamps with zero-latency acoustic to MIDI conversion.",
+          "My past work includes touring nationally under Wind-up Records with The Crash Motive, where our tracks landed placements in the Super Bowl, Madden NFL, and The Fantastic Four movie and soundtrack. Currently, I track remote drum sessions from a custom-built hybrid studio, pairing live cymbals mic'd through analog API preamps with zero-latency MIDI tracking.",
           "<a href='/music'>More about my music →</a>"
         ]
       },
@@ -44,7 +44,7 @@ export default {
         heading: "Beyond work",
         headingLevel: 3,
         content: [
-          "When I step away from the keyboard and the kit, I'm usually on the bike logging miles on Zwift or trying to keep up with my two kids. I'm a craft beer fan, a vinyl collector, and proudly based in Kennett Square, Pennsylvania."
+          "When I'm not writing code or tracking drums, you can usually find me logging miles on one of my bikes, or trying to keep up with my two kids. I'm a craft beer and bourbon fan, enjoy firing up the grill, and am based in Kennett Square, Pennsylvania."
         ]
       }
     ],
@@ -56,7 +56,7 @@ export default {
           "Frontend architect and engineering leader focused on driving technical strategy and shipping applications at scale. I build high-performing teams, align product cycles with business goals, and set development standards that speed up delivery. My background spans fintech, financial services, and enterprise software, where I've modernized legacy architectures, built enterprise design systems, and managed critical third-party integrations."
         ]
       },
-    {
+      {
         heading: "Best Egg",
         headingLevel: 3,
         years: "2022 - Present",

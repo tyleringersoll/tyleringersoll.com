@@ -134,8 +134,8 @@ const toggleRole = (entryIdx, roleIdx) => {
       bottom: 0;
       left: calc(var(--col-date) + var(--col-gap) + var(--col-axis) / 2);
       width: 1px;
-      background: var(--color-border);
-      opacity: 0.45;
+      background: var(--color-text-muted);
+      opacity: 0.4;
       pointer-events: none;
     }
   }
@@ -170,7 +170,7 @@ const toggleRole = (entryIdx, roleIdx) => {
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.12em;
-    color: var(--color-text-muted);
+    color: var(--color-text-secondary);
     white-space: nowrap;
     line-height: 1.4;
     @include transition(color);
@@ -194,12 +194,12 @@ const toggleRole = (entryIdx, roleIdx) => {
     width: 1.5rem;
     height: 1.5rem;
     border-radius: 50%;
-    border: 1px solid var(--color-border);
+    border: 1px solid var(--color-text-muted);
     background: var(--color-bg-nav);
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    color: var(--color-text-muted);
+    color: var(--color-text-secondary);
     transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
   }
 
