@@ -26,7 +26,7 @@ export default {
         headingLevel: 2,
         content: []
       },
-     {
+      {
         id: "engineering",
         heading: "Engineering",
         headingLevel: 4,
@@ -40,8 +40,8 @@ export default {
         heading: "Music",
         headingLevel: 4,
         content: [
-          "My past work includes touring nationally under Wind-up Records with The Crash Motive, where our tracks landed placements in the Super Bowl, Madden NFL, and The Fantastic Four movie and soundtrack. Currently, I track remote drum sessions from a custom-built hybrid studio, pairing live cymbals mic’d through analog API preamps with zero-latency MIDI tracking.",
-          "<a href=’/music’>More about my music →</a>"
+          "My past work includes touring nationally with my band under label support. As The Crash Motive, our tracks landed sync placements in Super Bowl XLII, Madden NFL, and The Fantastic Four movie and soundtrack. Today, I track remote drum sessions from a purpose-built hybrid studio, pairing live Zildjian cymbals mic’d through an API 3124V preamp with a flawless MIDI performance.",
+          "<a href='/music'>More about my music →</a>"
         ]
       },
       {
@@ -79,13 +79,13 @@ export default {
       music: {
         placementsLabel: "Music Sync Placements",
         placements: [
-          { icon: "star", label: "Super Bowl LVII", url: "/music#the-crash-motive" },
+          { icon: "star", label: "Super Bowl XLII", url: "/music#the-crash-motive" },
           { icon: "gamepad", label: "Madden NFL", url: "/music#the-crash-motive" },
           { icon: "film", label: "Fantastic Four (Movie & Soundtrack)", url: "/music#the-crash-motive" }
         ],
         studioLabel: "Hybrid Studio Setup",
         studio: {
-          text: "Mesh heads with Roland triggers for zero-latency MIDI. Live Zildjian cymbals mic’d through an API 3124 preamp. Real room sound, tracked remotely.",
+          text: "Roland mesh heads and triggers for zero-latency MIDI, paired with live Zildjian cymbals mic’d through an API 3124V preamp. A breathing, human groove with total digital control.",
           url: "https://tyleringersolldrums.com",
           external: true,
           ctaText: "Explore the Studio"
@@ -258,13 +258,13 @@ export default {
           {
             subheading: "Drummer, Studio Musician & Founding Member · 2002 - 2008",
             content: [
-              "Helped build the band from an independent college act (originally Omnisoul) into a major label touring rock band. We signed a comprehensive deal with Wind-up Records in 2005 and rebranded as The Crash Motive in 2006.",
+              "Helped build the band from an independent college act into a major label touring rock band, signing a comprehensive deal with Wind-up Records in 2005.",
               "• Dominated the regional scene early on, winning the University of Delaware's Battle of the Bands and holding a 31-day #1 requested spot on WSTW 93.7.",
               "• Performed drum parts on studio recordings and arranged drum compositions for albums and singles.",
-              "• Toured nationally and performed extensively at major venues, opening for recognized acts like Sugar Ray, The All American Rejects, Collective Soul, and Lifehouse.",
-              "• Secured music placements including Super Bowl XLII, Madden NFL 2007, and The Fantastic Four soundtrack.",
+              "• Toured nationally and performed extensively at major venues, opening for recognized acts like Sugar Ray, The All-American Rejects, Collective Soul, and Lifehouse.",
+              "• Secured high-profile sync placements, including Super Bowl XLII, Madden NFL 2007, and The Fantastic Four soundtrack.",
+              "• Placed music in network television programming, including CBS's Joan of Arcadia, NBC's Friday Night Lights promos, and ESPN's NFL Live.",
               "• Licensed music for use in over 30 professional sports stadiums across the NFL, MLB, NCAA, and NHL.",
-              "• Placed music in network television programming including NBC, FOX, and CBS promotional campaigns.",
               "• Negotiated and managed business partnerships with label executives, booking agents, and licensing representatives."
             ]
           }
@@ -359,7 +359,7 @@ export default {
         headingLevel: 2,
         heading: "Music",
         content: [
-          "I've been playing drums professionally for thirty years, from club residencies in Newark, DE to national tours and major-label studio work. Sync placements include the Super Bowl, Madden NFL, The Fantastic Four, and campaigns across NBC, FOX, CBS, and ESPN. Today I work out of my home studio in Pennsylvania and track remotely for artists and producers who want drums that feel like they were cut in a real room. More at <a href='https://tyleringersolldrums.com' target='_blank' rel='noopener noreferrer'>tyleringersolldrums.com</a> or <a href='/contact'>get in touch</a>."
+          "Thirty years of credits across touring, major label releases, and sync placements. From club residencies in Newark, DE to tracking in legendary rooms, my focus has always been delivering exactly what the track needs. Today, I balance live performances with remote tracking from my custom hybrid studio in Pennsylvania. More at <a href='https://tyleringersolldrums.com' target='_blank' rel='noopener noreferrer'>tyleringersolldrums.com</a> or <a href='/contact'>get in touch</a>."
         ]
       },
       {
@@ -367,7 +367,7 @@ export default {
         years: "2024–present",
         headingLevel: 3,
         content: [
-          "A 2024 reunion show with Omnisoul at World Cafe Live in Philadelphia brought everything back into focus. It reminded me exactly why I started playing, and led to 18 months of researching, building, and refining a state-of-the-art hybrid drum rig from the ground up. Today, I am tracking remotely from my home studio, bringing decades of live experience and major-label studio standards to every session I take on. The rig runs mesh heads with Roland triggers for a clean MIDI performance alongside full-volume Zildjian cymbals mic'd through an API 3124 preamp. More at <a href='https://tyleringersolldrums.com' target='_blank' rel='noopener noreferrer'>tyleringersolldrums.com</a>."
+          "A 2024 reunion show with Omnisoul brought everything back into focus and led to 18 months of building a state-of-the-art hybrid drum rig. Today, I track remotely, bringing decades of live experience to every session. The rig runs Roland triggers and mesh heads through an Audiofront eDrumIn 8 for a clean MIDI performance, alongside live Zildjian cymbals mic'd through an API 3124V preamp. You get a breathing, human groove with total digital control."
         ]
       },
       {
@@ -402,7 +402,7 @@ export default {
         years: "2005–2008",
         headingLevel: 3,
         content: [
-          "Rebranding as The Crash Motive, the band signed a comprehensive deal with Wind-up Records and tracked our debut album, <em>Consequence</em>, in New York and LA. Cutting tracks alongside respected producers like Don Gilmore and Gregg Wattenberg taught me exactly what is expected at the highest levels of the industry. Seeing those same drum parts land in Super Bowl XLII and Madden NFL campaigns proved how crucial it is to craft a groove that translates on a massive scale.",
+          "Rebranding as The Crash Motive, the band toured nationally under label support with Wind-up Records. We tracked our debut album, <em>Consequence</em>, at Avatar Studios in NYC and The Pass in LA. The release earned strong critical praise, with Drum! magazine noting the album 'demonstrates the sort of pop-with-power sensibility that career dreams are made of.' Seeing those same drum parts land in Super Bowl XLII, Madden NFL, and network placements across CBS and ESPN proved how crucial it is to craft a groove that translates on a massive scale.",
           "<iframe height='450' width='100%' title='Media player' src='https://embed.music.apple.com/us/album/consequence/1444007166?itscg=30200&itsct=music_box_player&ls=1&app=music&mttnsubad=1444007166&theme=dark' id='embedPlayer' sandbox='allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation' allow='autoplay *; encrypted-media *; clipboard-write' style='border: 0px; border-radius: 12px; width: 100%; height: 450px; max-width: 660px;'></iframe>"
         ]
       },
@@ -447,32 +447,33 @@ export default {
     ],
     contact: [
       {
-        heading: "Get in touch",
+        heading: "Let's build something",
         headingLevel: 2,
         content: [
-          "Whether it's engineering, drumming, or just to say hello — email is the fastest way to reach me."
+          "Whether you're scaling an engineering team or producing a record, I'm always open to talking shop. Reach out below and let me know how I can help."
         ]
       },
       {
-        heading: "Engineering",
+        heading: "Engineering & Leadership",
         headingLevel: 3,
         content: [
-          "If you want to talk engineering, I'm always up for a good conversation."
+          "I'm always open to discussing frontend architecture, team growth, and modern web standards. If you're a recruiter, founder, or fellow engineer tackling complex scaling challenges, let's connect."
         ],
         links: [
-          { label: "tyler@ingersoll.dev", url: "mailto:tyler@ingersoll.dev" },
+          { label: "Email Tyler", url: "mailto:tyler@ingersoll.dev" },
           { label: "LinkedIn", url: "https://www.linkedin.com/in/tyleringersoll", external: true },
           { label: "GitHub", url: "https://github.com/tyleringersoll", external: true }
         ]
       },
       {
-        heading: "Studio Sessions",
+        heading: "Remote Drum Tracks",
         headingLevel: 3,
         content: [
-          "Remote drum sessions from my home studio in Pennsylvania. Live Zildjian cymbals mic'd through an API 3124, plus a clean MIDI performance you can route into any sample library. I can also track bass in the same session. Stems delivered within a week. More at <a href='https://tyleringersolldrums.com' target='_blank' rel='noopener noreferrer'>tyleringersolldrums.com</a>."
+          "Professional, room-tracked drums delivered from a purpose-built hybrid setup. You get the overtone wash of live Zildjian cymbals through an analog API 3124V preamp, paired with a clean MIDI performance for total sample control. Bass tracking is also available. Stems are delivered within a week."
         ],
         links: [
-          { label: "tyler@ingersoll.dev", url: "mailto:tyler@ingersoll.dev" }
+          { label: "Book a Session", url: "mailto:tyler@ingersoll.dev" },
+          { label: "Studio Website", url: "https://tyleringersolldrums.com", external: true }
         ]
       }
     ],
