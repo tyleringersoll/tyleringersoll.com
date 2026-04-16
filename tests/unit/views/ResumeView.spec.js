@@ -122,55 +122,51 @@ describe("ResumeView.vue", () => {
     expect(wrapper.find(".role__dates-col").text()).toBe("");
   });
 
-  it("role content is hidden initially (.role__content not in DOM)", () => {
+  it("role is collapsed initially (no .role--expanded class)", () => {
     const wrapper = mountView({
       content: { resume: [makeEmployerEntry()] },
       isLoading: false,
     });
-    expect(wrapper.find(".role__content").exists()).toBe(false);
+    expect(wrapper.find(".role--expanded").exists()).toBe(false);
   });
 
-  it("clicking .role__left reveals .role__content", async () => {
-    const wrapper = mountView({
-      content: { resume: [makeEmployerEntry()] },
-      isLoading: false,
-    });
-    await wrapper.find(".role__left").trigger("click");
-    expect(wrapper.find(".role__content").exists()).toBe(true);
-  });
-
-  it("clicking .role__left again collapses .role__content", async () => {
+  it("clicking .role__left expands the role", async () => {
     const wrapper = mountView({
       content: { resume: [makeEmployerEntry()] },
       isLoading: false,
     });
     await wrapper.find(".role__left").trigger("click");
-    expect(wrapper.find(".role__content").exists()).toBe(true);
-    await wrapper.find(".role__left").trigger("click");
-    expect(wrapper.find(".role__content").exists()).toBe(false);
+    expect(wrapper.find(".role--expanded").exists()).toBe(true);
   });
 
-  it("clicking .role__subheading also toggles content", async () => {
+  it("clicking .role__left again collapses the role", async () => {
+    const wrapper = mountView({
+      content: { resume: [makeEmployerEntry()] },
+      isLoading: false,
+    });
+    await wrapper.find(".role__left").trigger("click");
+    expect(wrapper.find(".role--expanded").exists()).toBe(true);
+    await wrapper.find(".role__left").trigger("click");
+    expect(wrapper.find(".role--expanded").exists()).toBe(false);
+  });
+
+  it("clicking .role__subheading also toggles expansion", async () => {
     const wrapper = mountView({
       content: { resume: [makeEmployerEntry()] },
       isLoading: false,
     });
     await wrapper.find(".role__subheading").trigger("click");
-    expect(wrapper.find(".role__content").exists()).toBe(true);
+    expect(wrapper.find(".role--expanded").exists()).toBe(true);
     await wrapper.find(".role__subheading").trigger("click");
-    expect(wrapper.find(".role__content").exists()).toBe(false);
+    expect(wrapper.find(".role--expanded").exists()).toBe(false);
   });
 
-  it(".role__caret--open class added when expanded, removed when collapsed", async () => {
+  it("renders .role__node on the timeline axis", () => {
     const wrapper = mountView({
       content: { resume: [makeEmployerEntry()] },
       isLoading: false,
     });
-    expect(wrapper.find(".role__caret--open").exists()).toBe(false);
-    await wrapper.find(".role__left").trigger("click");
-    expect(wrapper.find(".role__caret--open").exists()).toBe(true);
-    await wrapper.find(".role__left").trigger("click");
-    expect(wrapper.find(".role__caret--open").exists()).toBe(false);
+    expect(wrapper.find(".role__node").exists()).toBe(true);
   });
 
   it("multiple roles can be expanded simultaneously", async () => {
@@ -189,8 +185,7 @@ describe("ResumeView.vue", () => {
     const roleLefts = wrapper.findAll(".role__left");
     await roleLefts[0].trigger("click");
     await roleLefts[1].trigger("click");
-    const contents = wrapper.findAll(".role__content");
-    expect(contents).toHaveLength(2);
+    expect(wrapper.findAll(".role--expanded")).toHaveLength(2);
   });
 
   it("roles from different employers tracked independently (entryIdx)", async () => {
@@ -205,15 +200,11 @@ describe("ResumeView.vue", () => {
       isLoading: false,
     });
     const roleLefts = wrapper.findAll(".role__left");
-    // Expand only the second employer's role
     await roleLefts[1].trigger("click");
-    const contents = wrapper.findAll(".role__content");
-    expect(contents).toHaveLength(1);
-    // Collapse second, expand first
+    expect(wrapper.findAll(".role--expanded")).toHaveLength(1);
     await roleLefts[1].trigger("click");
     await roleLefts[0].trigger("click");
-    const contents2 = wrapper.findAll(".role__content");
-    expect(contents2).toHaveLength(1);
+    expect(wrapper.findAll(".role--expanded")).toHaveLength(1);
   });
 
   it("renders .tech-divider hr before Tech lines", async () => {
