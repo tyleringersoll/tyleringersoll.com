@@ -31,7 +31,7 @@ export default {
         heading: "Engineering",
         headingLevel: 4,
         content: [
-          "I build frontend applications using frameworks like Angular and Vue.js, and I guide the team that ships them. My expertise spans from core identity and payment processing, to specialized third-party fintech integrations and real-time hardware control software. Over my career, I’ve worked across most of the frontend ecosystem—whether that means rolling out division-wide design systems or modernizing legacy architectures so they can scale securely.",
+          "I build frontend applications using frameworks like Angular and Vue.js, and I guide the teams that ship them. My expertise spans from core identity and payment processing, to specialized third-party fintech integrations and real-time hardware control software. Over my career, I’ve worked across most of the frontend ecosystem—whether that means rolling out division-wide design systems or modernizing legacy architectures so they can scale securely.",
           "<a href='/resume'>View my full resume →</a>"
         ]
       },
@@ -40,7 +40,7 @@ export default {
         heading: "Music",
         headingLevel: 4,
         content: [
-          "I’ve spent a big part of my life behind a drum kit. From touring the country and hearing my tracks pop up during the Super Bowl, to building out a custom hybrid recording rig at home, making music has always been a constant. Now, I spend most of my studio time tracking drums for videos and playing on remote sessions for other artists."
+          "I’ve spent a big part of my life behind a drum kit. From touring the country and hearing my drums pop up during the Super Bowl, to building out a custom hybrid recording rig at home, making music has always been a constant. Now, I spend my time tracking drums in my studio."
         ]
       },
       {
@@ -48,7 +48,7 @@ export default {
         heading: "Beyond work",
         headingLevel: 3,
         content: [
-          "When I’m not writing code or tracking drums, you can usually find me logging miles on one of my bikes, or trying to keep up with my two kids. I’m a craft beer and bourbon fan, enjoy firing up the grill, and am based in Kennett Square, Pennsylvania."
+          "When I’m not writing code or tracking drums, you can usually find me riding one of my bikes, or trying to keep up with my two kids. I’m a craft beer and bourbon fan, enjoy firing up the grill, and am based in Kennett Square, Pennsylvania."
         ]
       }
     ],
@@ -83,9 +83,9 @@ export default {
           { icon: "film", label: "Fantastic Four (Movie & Soundtrack)", url: "/music#the-crash-motive" },
           { icon: "tv", label: "Network TV (CBS, NBC, ESPN)", url: "/music#the-crash-motive" }
         ],
-        studioLabel: "Hybrid Studio Setup",
+        studioLabel: "Hybrid Drum Tracking Setup",
        studio: {
-          text: "I've spent 18+ months designing and refining a hybrid drum recording technique that I'm finally close to perfecting. By pairing real cymbals with triggered mesh heads, it captures live room energy with total MIDI control. Want to learn more about how it works?",
+          text: "I've spent almost two years designing and refining a hybrid drum recording technique that I'm finally close to perfecting. By pairing real cymbals with nearly silent mesh heads that trigger precise MIDI data, I can capture live room energy with total post-performance control. Want to learn more about how this setup works?",
           url: "https://tyleringersolldrums.com",
           external: true,
           ctaText: "Explore My Drum Studio"
@@ -111,7 +111,7 @@ export default {
         heading: "Resume",
         headingLevel: 2,
         content: [
-          "Frontend architect and engineering leader focused on guiding technical strategy and delivering scalable applications. I care deeply about building a strong, focused team, aligning our work with actual business needs, and setting standards that make development smoother. My background spans fintech, financial services, and enterprise software, where I've modernized legacy architectures, built enterprise design systems, and managed critical third-party integrations."
+          "Frontend architect and engineering leader focused on guiding technical strategy and delivering scalable applications. I care deeply about building a strong, focused team, aligning our work with actual business needs, and setting standards that make development smoother. My background spans fintech, scientific instrumentation, and enterprise software, where I've modernized legacy architectures, built enterprise design systems, and managed critical third-party integrations."
         ]
       },
       {
@@ -122,14 +122,14 @@ export default {
           {
             subheading: "Director II, Software Engineering · 2026 - Present",
             content: [
-              "As Director II of Software Engineering, I support the teams building Best Egg's customer-facing identity verification, payment servicing, and authentication applications, which handle millions of interactions annually.",
+              "As Director II of Software Engineering, I support the team building Best Egg's customer-facing identity verification, payment servicing, and authentication applications, which handle millions of interactions annually.",
               "• Guide technical direction and delivery for core customer platforms, focusing on stability and performance at scale.",
-              "• Manage engineering teams and establish technical priorities, collaborating cross-functionally with other pods to align delivery with broader business goals.",
+              "• Manage an engineering team and establish technical priorities, collaborating cross-functionally with other pods to align delivery with broader business goals.",
               "• Drive team growth and scale engineering capacity to meet expanding technical demands, leading candidate evaluations and key hiring decisions.",
               "• Support the team's adoption of AI-assisted development tools like Cursor AI and GitHub Copilot, establishing shared standards that help improve our daily workflow and code quality.",
               "<strong>Engineering areas:</strong>",
               "• Customer verifications: identity verification and fraud prevention",
-              "• Payment servicing: payment processing, auto pay, payment methods, due date changes, flexible relief programs",
+              "• Payment servicing: payment processing, auto pay, payment methods, due date changes",
               "• Authentication: login, signup, password recovery, customer servicing hub",
               "<strong>Tech:</strong> Angular, TypeScript, Jasmine, GitHub Actions, Node.js, Nginx, Django, Python, DataDog, FullStory"
             ]
@@ -137,12 +137,12 @@ export default {
           {
             subheading: "Senior Lead Software Engineer II · 2024 - 2026",
             content: [
-              "As a Senior Lead Software Engineer, I helped direct frontend engineering for Best Egg's core applications, partnering closely with product and UX to shape our roadmap while mentoring engineers across the company.",
-              "• Managed the technical lifecycle for critical third-party fintech integrations like MX and Method Financial, driving the process from architectural design through production rollout.",
-              "• Strengthened frontend security by implementing a Level 3 Content Security Policy (CSP) utilizing dynamic nonces, and operationalized the deployment by integrating automated violation reporting and alerting through DataDog.",
+              "As Senior Lead Software Engineer II, I helped direct frontend engineering for Best Egg's core applications, partnering closely with product and UX to shape our roadmap while mentoring engineers across the company.",
+              "• Managed the technical lifecycle for critical third-party fintech integrations like MX and Method Financial, driving the process from frontend architectural design through production rollout.",
+              "• Strengthened frontend security by implementing a Level 3 Content Security Policy (CSP) utilizing dynamic nonces, and operationalized the deployment by integrating violation reporting and alerting through DataDog.",
               "<strong>Engineering areas:</strong>",
               "• Customer verifications: identity verification and fraud prevention",
-              "• Payment servicing: payment processing, auto pay, payment methods, due date changes, flexible relief programs",
+              "• Payment servicing: payment processing, auto pay, payment methods, due date changes",
               "• Authentication: login, signup, password recovery, customer servicing hub",
               "<strong>Tech:</strong> Angular, TypeScript, Jasmine, GitHub Actions, Node.js, Nginx, Django, Python, DataDog, FullStory"
             ]
@@ -150,12 +150,11 @@ export default {
           {
             subheading: "Senior Lead Software Engineer I · 2022 - 2024",
             content: [
-              "I joined Best Egg to help modernize a legacy Angular codebase and build the foundation our team uses today. I worked to update the architecture, migrate the design system, and establish lasting development patterns.",
+              "As Senior Lead Software Engineer I, I joined Best Egg to help modernize legacy Angular codebases and build the foundation our teams use today. I worked to update the architecture and libraries and establish lasting development patterns.",
               "• Drove an architectural update that implemented lazy-loaded modules, reduced main bundle sizes, and migrated the platform from Bootstrap to Angular Material.",
-              "• Built a unified design system with Storybook and Tailwind CSS, publishing a shared library of brand-compliant components for the engineering organization.",
               "• Collaborated to architect and launch No-Auth Quick Pay and automated payment scheduling, simplifying the payment experience for customers.",
               "• Golden Egg Award for \"BE a Builder of Great Teams\" (Q3 2023).",
-              "<strong>Tech:</strong> Angular, TypeScript, Angular Material, Storybook, Tailwind CSS, Jasmine, GitHub Actions, Docker, Nginx, Node.js"
+              "<strong>Tech:</strong> Angular, TypeScript, Angular Material, Tailwind CSS, Jasmine, GitHub Actions, Docker, Nginx, Node.js"
             ]
           }
         ]
@@ -186,9 +185,9 @@ export default {
           {
             subheading: "Web Application Developer · 2017 - 2019",
             content: [
-              "Embedded with Agilent Technologies's R&D software team as the sole frontend specialist, building web-based instrument control interfaces shipped globally with Agilent's flagship hardware product lines.",
-              "• Built the web-based instrument control UI for Agilent's Gas Chromatography hardware using Sencha/Ext JS, implementing real-time monitoring via WebSockets.",
-              "• Created data visualization tools for live instrument data graphing and visual hardware configuration displays.",
+              "Embedded with Agilent Technologies's R&D software engineering team as the sole frontend specialist, building web-based instrument control interfaces shipped globally with Agilent's flagship hardware product lines.",
+              "• Drove the frontend development for Agilent's Gas Chromatography web UI, partnering with a large engineering team to implement real-time WebSocket monitoring and control using Sencha/Ext JS.",
+              "• Created data visualization for live instrument data graphing and visual hardware configuration displays.",
               "• Designed custom SVG icons and CSS styling aligned with Agilent's product design standards.",
               "• Designed an automated build system for Adobe RoboHelp documentation across multiple product lines. This supported over eight languages with dynamic template generation and command-line automation.",
               "<strong>Tech:</strong> JavaScript, Sencha/Ext JS, HTML5, CSS/SCSS, SVG, WebSockets, Adobe RoboHelp, Command-line scripting"
@@ -204,10 +203,10 @@ export default {
           {
             subheading: "Digital Development Services · 2014 - 2017",
             content: [
-              "As a frontend specialist embedded across multiple concurrent engagements, I shipped web, email, and enterprise solutions for Fortune 500 brands including Bank of America, David's Bridal, Chemours, and DuPont, reaching tens of millions of users.",
-              "• Built responsive websites and landing pages for enterprise clients like Bank of America, David's Bridal, and Chemours.",
-              "• Developed adaptive HTML email campaigns for Bank of America's rewards programs, optimizing for deliverability and cross-client compatibility.",
-              "• Acted as Systems Owner for DuPont's SharePoint security auditing system, managing weekly reports and server migrations alongside IBM consultants.",
+              "Working across multiple agency projects, I delivered web, email, and enterprise solutions for Fortune 500 brands including Bank of America, David's Bridal, Chemours, Blue Cross Blue Shield Global, and DuPont, ultimately reaching tens of millions of users.",
+              "• Built responsive websites and landing pages for enterprise clients like Bank of America, David's Bridal, NASA Federal Credit Union,and Chemours.",
+              "• Developed adaptive HTML email campaigns for Bank of America's rewards and retention programs, optimizing for deliverability and cross-client compatibility.",
+              "• Acted as Systems Owner for DuPont's SharePoint security auditing system, managing weekly reports and a server migrations alongside IBM consultants.",
               "• Developed SharePoint intranet solutions for Chemours and Everything But Water.",
               "• Managed off-hours, time-sensitive deployments for highly sensitive internal communications with Chemours leadership.",
               "<strong>Tech:</strong> HTML5, CSS/SCSS, JavaScript, jQuery, SharePoint, Responsive Design, Email Development"
@@ -240,7 +239,7 @@ export default {
           {
             subheading: "Frontend Developer / Senior Technical Writer · 2007 - 2014",
             content: [
-              "As a long-term embedded consultant with Agilent Technologies's R&D team, I delivered frontend applications and technical documentation for global scientific instrumentation product lines.",
+              "As a long-term embedded consultant with Agilent Technologies's R&D software engineering team, I delivered frontend applications and technical documentation for global scientific instrumentation product lines.",
               "• Designed standalone web-based document delivery applications distributed via USB or DVD for global product lines.",
               "• Architected custom HTML templates and automated build systems, streamlining multi-product documentation delivery across Gas Chromatography, Mass Spectrometry, and Sampler product lines.",
               "• Authored technical documentation using Adobe FrameMaker and converted it to web-ready HTML.",
