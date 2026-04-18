@@ -1,0 +1,10 @@
+@import "../abstracts/mixins";
+
+.justified {
+  text-align: justify;
+}
+
+.visually-hidden {
+  @include visually-hidden;
+}
+
