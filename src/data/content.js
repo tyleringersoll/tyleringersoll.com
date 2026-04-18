@@ -11,7 +11,7 @@ export default {
       { name: "Contact", url: "/contact" }
     ],
     home: [
-    {
+      {
         id: "hero",
         heading: "Hi, I’m Tyler",
         headingLevel: 2,
@@ -26,7 +26,7 @@ export default {
         headingLevel: 2,
         content: []
       },
-     {
+      {
         id: "engineering",
         heading: "Engineering",
         headingLevel: 4,
@@ -35,7 +35,7 @@ export default {
           "<a href='/resume'>View my full resume →</a>"
         ]
       },
-     {
+      {
         id: "music",
         heading: "Music",
         headingLevel: 4,
@@ -75,7 +75,7 @@ export default {
         ],
         cta: "View Full Resume"
       },
-     music: {
+      music: {
         placementsLabel: "Music Sync Placements",
         placements: [
           { icon: "star", label: "Super Bowl XLII", url: "/music#the-crash-motive" },
@@ -84,7 +84,7 @@ export default {
           { icon: "tv", label: "Network TV (CBS, NBC, ESPN)", url: "/music#the-crash-motive" }
         ],
         studioLabel: "Hybrid Drum Tracking Setup",
-       studio: {
+        studio: {
           text: "I've spent almost two years designing and refining a hybrid drum recording technique that I'm finally close to perfecting. By pairing real cymbals with nearly silent mesh heads that trigger precise MIDI data, I can capture live room energy with total post-performance control. Want to learn more about how this setup works?",
           url: "https://tyleringersolldrums.com",
           external: true,
@@ -222,7 +222,7 @@ export default {
           {
             subheading: "Drummer, DJ, & Co-Founder · 2010 - 2016",
             content: [
-              "I co-founded SpeakerCity and helped grow it into a highly active event band in the Mid-Atlantic. What started with a large debut at the University of Delaware quickly turned into a steady schedule of two to three shows a week.",
+              "I co-founded SpeakerCity and helped grow it into a highly active event band in the Mid-Atlantic. What started with a 2000-person debut at the University of Delaware quickly turned into a steady schedule of two to three shows a week.",
               "As we transitioned from the regional club circuit into a high-end wedding and corporate band, our calendar grew to include week-long residencies in Key West, large-scale university events, and performances at major regional sports venues.",
               "• Performed as drummer and DJ at weddings, corporate events, and club venues throughout the Mid-Atlantic.",
               "• Composed and produced musical sequences with click tracks, serving as the production backbone for live performances.",
@@ -239,8 +239,8 @@ export default {
           {
             subheading: "Frontend Developer / Senior Technical Writer · 2007 - 2014",
             content: [
-              "As a long-term embedded consultant with Agilent Technologies's R&D software engineering team, I delivered frontend applications and technical documentation for global scientific instrumentation product lines.",
-              "• Designed standalone web-based document delivery applications distributed via USB or DVD for global product lines.",
+              "As a long-term embedded consultant with Agilent Technologies's R&D software engineering team, I delivered frontend applications and technical documentation for global scientific instrument product lines.",
+              "• Designed standalone web-based document delivery applications distributed via USB, DVD, or installed via InstallShield for global product lines.",
               "• Architected custom HTML templates and automated build systems, streamlining multi-product documentation delivery across Gas Chromatography, Mass Spectrometry, and Sampler product lines.",
               "• Authored technical documentation using Adobe FrameMaker and converted it to web-ready HTML.",
               "• Created software UI icons, technical diagrams, and visual assets for R&D teams.",
@@ -258,7 +258,7 @@ export default {
             subheading: "Drummer, Studio Musician & Founding Member · 2002 - 2008",
             content: [
               "Helped grow the band from an independent college act into a national touring rock band with label support. We signed a comprehensive deal with Wind-up Records in 2005 and rebranded as The Crash Motive in 2006.",
-              "• Built a strong regional following early on, winning the University of Delaware's Battle of the Bands and holding a 31-day #1 requested spot on WSTW 93.7.",
+              "• Built a strong regional following early on, winning the University of Delaware's Battle of the Bands and holding a 31-day #1 requested song run on WSTW 93.7.",
               "• Performed drum parts on studio recordings and arranged drum compositions for albums and singles.",
               "• Toured nationally and performed extensively at major venues, opening for recognized acts like Sugar Ray, The All-American Rejects, Collective Soul, and Lifehouse.",
               "• Secured high-profile sync placements, including Super Bowl XLII, Madden NFL 2007, and The Fantastic Four soundtrack.",
@@ -277,7 +277,7 @@ export default {
           {
             subheading: "Technical Writer / Web Developer · 2003 - 2005",
             content: [
-              "Embedded on-site at AstraZeneca, I supported the global pharmaceutical regulatory submission team by packaging official FDA submissions and building their global regulatory intranet site.",
+              "Embedded on-site at AstraZeneca, I supported the global pharmaceutical regulatory submission team by packaging official FDA submissions and contributing to their global regulatory intranet site.",
               "• Designed and built the global regulatory intranet site to centralize team content and establish an internal digital presence.",
               "• Packaged complex regulatory and compliance documentation for official FDA submissions.",
               "• Managed project timelines and documentation workflows across the team.",
@@ -358,69 +358,16 @@ export default {
         headingLevel: 2,
         heading: "Music",
         content: [
-          "Thirty years of credits across touring, major label releases, and sync placements. From club residencies in Newark, DE to tracking in legendary rooms, my focus has always been delivering exactly what the track needs. Today, I balance live performances with remote tracking from my custom hybrid studio in Pennsylvania. More at <a href='https://tyleringersolldrums.com' target='_blank' rel='noopener noreferrer'>tyleringersolldrums.com</a> or <a href='/contact'>get in touch</a>."
+          "Thirty years of credits across touring, major label releases, and sync placements. From club residencies in Newark, DE to tracking in legendary rooms, my focus is always the same: deliver exactly what every track needs, and keep the session relaxed and fun. Today, I balance live gigs with remote tracking from my studio in Pennsylvania. More at <a href='https://tyleringersolldrums.com' target='_blank' rel='noopener noreferrer'>tyleringersolldrums.com</a> or <a href='/contact'>get in touch</a>."
         ]
       },
       {
-        heading: "Back in the Studio",
-        years: "2024–present",
+        heading: "Skitzo Calypso",
+        years: "1996–1999",
         headingLevel: 3,
         content: [
-          "A 2024 reunion show with Omnisoul brought everything back into focus and led to 18 months of building a state-of-the-art hybrid drum rig. Today, I track remotely, bringing decades of live experience to every session. The rig runs Roland triggers and mesh heads through an Audiofront eDrumIn 8 for a clean MIDI performance, alongside live Zildjian cymbals mic'd through an API 3124V preamp. You get a breathing, human groove with total digital control."
-        ]
-      },
-      {
-        heading: "Veteran Avenue",
-        years: "2020",
-        headingLevel: 3,
-        content: [
-          "Live drums were recorded for Brad Cox's Veteran Avenue project on the track \"Nothing Left to Burn\" in February 2020. The session was produced and engineered by Grammy-nominated engineer Tony Correlli at The Deep End Studio in Baltimore, resulting in a release that landed in rotation on SiriusXM.",
-          "<iframe allow='autoplay *; encrypted-media *; fullscreen *; clipboard-write' frameborder='0' height='175' style='width:100%;overflow:hidden;background:transparent;border-radius:12px;' sandbox='allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation' src='https://embed.music.apple.com/us/album/no-reflection-after-sunset-ep/1602773266?i=1602773268'></iframe>"
-        ]
-      },
-      {
-        heading: "Brad Cox / Skitzo Calypso",
-        years: "2013",
-        headingLevel: 3,
-        content: [
-          "Stepping off the drum kit, I tracked bass for the single \"A Night in Hell & A Sunday Morning\" in 2013. The track was released as a Skitzo Calypso single, with production and engineering handled by Tony Correlli at The Deep End Studio in Baltimore.",
-          "<iframe style='border-radius:12px; width:100%;' src='https://open.spotify.com/embed/album/6xyAVtQ5oWnMK3dFWVhiC3?utm_source=generator&theme=0' height='152' frameborder='0' allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture' loading='lazy'></iframe>"
-        ]
-      },
-      {
-        heading: "SpeakerCity",
-        years: "2010–2016",
-        headingLevel: 3,
-        content: [
-          "Co-founding SpeakerCity in 2010 led to building one of the most in-demand event bands in the Mid-Atlantic. Playing high-energy, three-hour sets night after night forced a seamless transition between pop, rock, hip-hop, and R&B while keeping the pocket deep. The band anchored the regional circuit across the Jersey Shore, Ocean City, Philadelphia, and D.C. By 2016, I shifted my focus toward my family and a career leading software engineering teams, pausing the live performances but never stopping listening.",
-          "<div style='position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px;'><iframe style='position: absolute; top: 0; left: 0; width: 100%; height: 100%;' src='https://www.youtube.com/embed/2D9R9hRWPwM?si=o9nR8Whg3ZEDizJH' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' referrerpolicy='strict-origin-when-cross-origin' allowfullscreen></iframe></div>"
-        ]
-      },
-     {
-        heading: "The Crash Motive",
-        years: "2005–2008",
-        headingLevel: 3,
-        content: [
-          "Rebranding as The Crash Motive, the band toured nationally under label support with Wind-up Records. We tracked our debut album, <em>Consequence</em>, at Avatar Studios in NYC and The Pass in LA. The release earned strong critical praise, with Drum! magazine noting the album 'demonstrates the sort of pop-with-power sensibility that career dreams are made of.' Having those drum parts land in Super Bowl XLII, Madden NFL, and network spots on CBS and ESPN was an incredible experience, and a great lesson in crafting grooves that translate on a larger stage.",
-          "<iframe height='450' width='100%' title='Media player' src='https://embed.music.apple.com/us/album/consequence/1444007166?itscg=30200&itsct=music_box_player&ls=1&app=music&mttnsubad=1444007166&theme=dark' id='embedPlayer' sandbox='allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation' allow='autoplay *; encrypted-media *; clipboard-write' style='border: 0px; border-radius: 12px; width: 100%; height: 450px; max-width: 660px;'></iframe>"
-        ]
-      },
-      {
-        heading: "Omnisoul",
-        years: "2002–2006",
-        headingLevel: 3,
-        content: [
-          "Entering Omnisoul in 2002 brought a tighter focus on original songwriting and radio success. The band dominated the local scene, winning the University of Delaware's Battle of the Bands and earning support slots with Sugar Ray, The All American Rejects, Collective Soul, and Lifehouse. We recorded a label-shopping EP with Grammy-winning engineer Phil Nicolo that ignited major label interest. Our single \"Waiting (Save Your Life)\" held the number one most requested spot on WSTW 93.7 for 31 consecutive days, a station record that still stands.",
-          "<iframe height='450' width='100%' title='Media player' src='https://embed.music.apple.com/us/album/happy-outside/1754410766?itscg=30200&itsct=music_box_player&ls=1&app=music&mttnsubad=1754410766&theme=dark' id='embedPlayer' sandbox='allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation' allow='autoplay *; encrypted-media *; clipboard-write' style='border: 0px; border-radius: 12px; width: 100%; height: 450px; max-width: 660px;'></iframe>"
-        ]
-      },
-      {
-        heading: "Yuba Rift",
-        years: "2000–2001",
-        headingLevel: 3,
-        content: [
-          "Yuba Rift was built around open and exploratory sessions. Recorded on a tape deck in the corner of a practice space in Newark, DE, the recordings capture a highly improvisational approach. There was no commercial ambition behind the project, simply a small group of musicians exploring ideas and seeing where the music naturally went.",
-          "<iframe width='100%' height='450' scrolling='no' frameborder='no' allow='autoplay' src='https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%253Aplaylists%253A8377240&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true'></iframe>"
+          "My foundation was built in the Maryland jazz and rock scenes, leading to my first serious studio work with the alt-hard rock project Skitzo Calypso. Led by Brad Cox and produced by Dave Pace at 12th Planet Recording Studio, I handled both drum and bass duties across two full albums, <em>Join the Cult</em> (1998) and <em>Premeditated Acts of Stupidity</em> (1999). This period was my first real experience recording to a specific part rather than simply playing live.",
+          "<iframe allow='autoplay *; encrypted-media *;' frameborder='0' height='150' style='width:100%;max-width:660px;overflow:hidden;background:transparent;' sandbox='allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation' src='https://embed.music.apple.com/us/album/asphyxiation/1748465468?i=1748465472'></iframe>"
         ]
       },
       {
@@ -435,12 +382,65 @@ export default {
         ]
       },
       {
-        heading: "Skitzo Calypso",
-        years: "1996–1999",
+        heading: "Yuba Rift",
+        years: "2000–2001",
         headingLevel: 3,
         content: [
-          "My foundation was built in the Maryland jazz and rock scenes, leading to my first serious studio work with the alt-hard rock project Skitzo Calypso. Led by Brad Cox and produced by Dave Pace at 12th Planet Recording Studio, I handled both drum and bass duties across two full albums, <em>Join the Cult</em> (1998) and <em>Premeditated Acts of Stupidity</em> (1999). This period was my first real experience recording to a specific part rather than simply playing live.",
-          "<iframe allow='autoplay *; encrypted-media *;' frameborder='0' height='150' style='width:100%;max-width:660px;overflow:hidden;background:transparent;' sandbox='allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation' src='https://embed.music.apple.com/us/album/asphyxiation/1748465468?i=1748465472'></iframe>"
+          "Yuba Rift was built around open and exploratory sessions. Recorded on a tape deck in the corner of a practice space in Newark, DE, the recordings capture a highly improvisational approach. There was no commercial ambition behind the project, simply a small group of musicians exploring ideas and seeing where the music naturally went.",
+          "<iframe width='100%' height='450' scrolling='no' frameborder='no' allow='autoplay' src='https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%253Aplaylists%253A8377240&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true'></iframe>"
+        ]
+      },
+      {
+        heading: "Omnisoul",
+        years: "2002–2006",
+        headingLevel: 3,
+        content: [
+          "Entering Omnisoul in 2002 brought a tighter focus on original songwriting and radio success. The band dominated the local scene, winning the University of Delaware's Battle of the Bands and earning support slots with Sugar Ray, The All American Rejects, Collective Soul, and Lifehouse. We recorded a label-shopping EP with Grammy-winning engineer Phil Nicolo that ignited major label interest. Our single \"Waiting (Save Your Life)\" held the number one most requested spot on WSTW 93.7 for 31 consecutive days, a station record that still stands.",
+          "<iframe height='450' width='100%' title='Media player' src='https://embed.music.apple.com/us/album/happy-outside/1754410766?itscg=30200&itsct=music_box_player&ls=1&app=music&mttnsubad=1754410766&theme=dark' id='embedPlayer' sandbox='allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation' allow='autoplay *; encrypted-media *; clipboard-write' style='border: 0px; border-radius: 12px; width: 100%; height: 450px; max-width: 660px;'></iframe>"
+        ]
+      },
+      {
+        heading: "The Crash Motive",
+        years: "2005–2008",
+        headingLevel: 3,
+        content: [
+          "Rebranding as The Crash Motive, the band toured nationally under label support with Wind-up Records. We tracked our debut album, <em>Consequence</em>, at Avatar Studios in NYC and The Pass in LA. The release earned strong critical praise, with Drum! magazine noting the album 'demonstrates the sort of pop-with-power sensibility that career dreams are made of.' Having those drum parts land in Super Bowl XLII, Madden NFL, and network spots on CBS and ESPN was an incredible experience, and a great lesson in crafting grooves that translate on a larger stage.",
+          "<iframe height='450' width='100%' title='Media player' src='https://embed.music.apple.com/us/album/consequence/1444007166?itscg=30200&itsct=music_box_player&ls=1&app=music&mttnsubad=1444007166&theme=dark' id='embedPlayer' sandbox='allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation' allow='autoplay *; encrypted-media *; clipboard-write' style='border: 0px; border-radius: 12px; width: 100%; height: 450px; max-width: 660px;'></iframe>"
+        ]
+      },
+      {
+        heading: "SpeakerCity",
+        years: "2010–2016",
+        headingLevel: 3,
+        content: [
+          "Co-founding SpeakerCity in 2010 led to building a consistently booked event band in the Mid-Atlantic. Playing high-energy, three-hour sets night after night required seamless transitions between pop, rock, hip-hop, and R&B while keeping the pocket deep. We anchored the regional circuit across the Jersey Shore, Philadelphia, and D.C., while also traveling for shows in Key West and playing large-scale events at universities and sports complexes.",
+          "<div style='position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px;'><iframe style='position: absolute; top: 0; left: 0; width: 100%; height: 100%;' src='https://www.youtube.com/embed/2D9R9hRWPwM?si=o9nR8Whg3ZEDizJH' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' referrerpolicy='strict-origin-when-cross-origin' allowfullscreen></iframe></div>"
+        ]
+      },
+      {
+        heading: "Brad Cox / Skitzo Calypso",
+        years: "2013",
+        headingLevel: 3,
+        content: [
+          "Stepping off the drum kit, I tracked bass for the single \"A Night in Hell & A Sunday Morning\" in 2013. The track was released as a Skitzo Calypso single, with production and engineering handled by Tony Correlli at The Deep End Studio in Baltimore.",
+          "<iframe style='border-radius:12px; width:100%;' src='https://open.spotify.com/embed/album/6xyAVtQ5oWnMK3dFWVhiC3?utm_source=generator&theme=0' height='152' frameborder='0' allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture' loading='lazy'></iframe>"
+        ]
+      },
+      {
+        heading: "Veteran Avenue",
+        years: "2020",
+        headingLevel: 3,
+        content: [
+          "Live drums were recorded for Brad Cox's Veteran Avenue project on the track \"Nothing Left to Burn\" in February 2020. The session was produced and engineered by Grammy-nominated engineer Tony Correlli at The Deep End Studio in Baltimore, resulting in a release that landed in rotation on SiriusXM.",
+          "<iframe allow='autoplay *; encrypted-media *; fullscreen *; clipboard-write' frameborder='0' height='175' style='width:100%;overflow:hidden;background:transparent;border-radius:12px;' sandbox='allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation' src='https://embed.music.apple.com/us/album/no-reflection-after-sunset-ep/1602773266?i=1602773268'></iframe>"
+        ]
+      },
+      {
+        heading: "Remote Drum Sessions",
+        years: "2024–present",
+        headingLevel: 3,
+        content: [
+          "Playing a 2024 reunion show with Omnisoul reignited my love for playing drums, kicking off a two-year project to build a hybrid recording rig that actually sounds and feels right. Now, I spend my time tracking from my home studio in Pennsylvania. By pairing live cymbals with silent mesh heads that capture the performance as MIDI data, I bring decades of playing experience to the track while giving producers total digital control over the final sound."
         ]
       }
     ],
