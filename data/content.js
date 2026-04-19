@@ -16,8 +16,8 @@ export default {
         heading: "Hi, I’m Tyler",
         headingLevel: 2,
         content: [
-          "I’m a frontend architect and engineering leader. Currently, I lead a team at Best Egg focused on building reliable, customer-facing applications that help millions of people. Over the years, I’ve built enterprise frontend solutions for Fortune 500 brands like Vanguard, Bank of America, and DuPont.",
-          "When I'm not working my day job, I’m likely found behind a drum kit in my studio. I’ve spent the last three decades touring, recording, and producing music."
+          "Currently, I lead a team at Best Egg focused on building reliable, customer-facing applications that help millions of people. Over the years, I’ve built enterprise frontend solutions for Fortune 500 brands like Vanguard, Bank of America, and DuPont.",
+          "When I’m not working my day job, I’m likely found behind a drum kit in my studio. I’ve spent the last three decades touring with label-supported bands, recording, and producing music. Today, I track remote drum sessions for other artists from my home studio in Pennsylvania. <a href=’https://tyleringersolldrums.com’ target=’_blank’ rel=’noopener noreferrer’>Explore My Drum Studio</a>."
         ]
       },
       {
@@ -54,7 +54,7 @@ export default {
     ],
     homePage: {
       hero: {
-        eyebrow: "Frontend Engineer / Musician",
+        eyebrow: "Frontend Architect & Engineering Leader",
         primaryCta: "View My Work",
         secondaryCta: "Learn More About Me"
       },
@@ -99,12 +99,75 @@ export default {
         cta: "Get in Touch"
       }
     },
+    siteShowcase: [
+      {
+        id: "built-with",
+        heading: "Built With",
+        headingLevel: 3,
+        content: [
+          "Most of my daily production code is locked behind enterprise firewalls, so this site serves as my open-source sandbox. I went with Vue 3 and Nuxt because they hit the sweet spot between developer ergonomics and production-grade output.",
+          "• <strong>Nuxt 3 & Static Pre-rendering:</strong> Every page is pre-rendered to static HTML at build time, delivering instant first paints and full SEO without a running Node.js server.",
+          "• <strong>Vue 3 Composition API:</strong> Component logic is organized with the Composition API and script setup, keeping state management and reactivity clean and composable.",
+          "• <strong>SCSS & CSS Custom Properties:</strong> A hand-rolled design system using scoped SCSS modules and CSS custom properties powers the dual-theme color system and responsive layout.",
+          "• <strong>Purpose-Built Components:</strong> The inline SVG hero and the expand/collapse resume timeline are custom Vue components built to handle state, DOM updates, and accessibility in a way that reflects real-world engineering patterns.",
+          "• <strong>Netlify Deployment:</strong> Commits trigger automated builds and deploy pre-rendered output to Netlify's edge CDN."
+        ]
+      },
+      {
+        id: "performance",
+        heading: "Performance & Lighthouse",
+        headingLevel: 3,
+        content: [
+          "Leading an engineering team means treating performance as a fundamental requirement, not an afterthought. I brought that same standard to this site. Pre-rendering every route at build time and keeping the JavaScript payload minimal means consistently strong metrics on live audits."
+        ],
+        scores: [
+          { label: "Performance", value: 98 },
+          { label: "Accessibility", value: 100 },
+          { label: "Best Practices", value: 100 },
+          { label: "SEO", value: 100 }
+        ],
+        optimizations: [
+          "• <strong>Pre-rendered HTML:</strong> Nuxt generates fully-formed HTML at build time, so browsers render content immediately without waiting for client-side JavaScript.",
+          "• <strong>Inline SVGs:</strong> The hero illustration is built with clean, hand-coded SVG markup directly in the template, eliminating external image requests and preventing layout shifts.",
+          "• <strong>Minimal JavaScript:</strong> No heavy UI libraries or animation frameworks. The bundle stays light by leaning on native browser APIs and Vite's default tree-shaking."
+        ]
+      },
+      {
+        id: "accessibility",
+        heading: "Accessibility (A11Y)",
+        headingLevel: 3,
+        content: [
+          "Building for massive user bases at work taught me that digital quality means building for everyone. I built this site with accessibility as a baseline, not an afterthought.",
+          "• <strong>Semantic HTML:</strong> Proper heading hierarchy, landmark elements, and native interactive controls throughout.",
+          "• <strong>Keyboard Navigation:</strong> Every interactive element, including the expanding resume timeline and mobile navigation, is fully operable via keyboard with visible focus indicators.",
+          "• <strong>ARIA Where It Counts:</strong> Custom components like the timeline toggle, theme switch, and mobile menu use appropriate roles, labels, and state attributes for assistive technologies.",
+          "• <strong>Dual-Theme Contrast:</strong> Both the dark and light themes use color pairings chosen to maintain readable contrast ratios."
+        ]
+      },
+      {
+        id: "case-study",
+        heading: "The Architecture",
+        headingLevel: 3,
+        content: [
+          "Think of this site as a living component library. The dual-career layout, balancing my engineering background with my session drum work, required a thoughtful UX approach rather than a disjointed, multi-page maze.",
+          "Under the hood, it follows the same patterns I use on professional design systems. Scoped SCSS modules, CSS custom properties for dynamic theming, and component-driven state management keep the codebase maintainable as it grows.",
+          "Feel free to <a href='https://github.com/tyleringersoll/ingersoll.dev' target='_blank' rel='noopener noreferrer'>dig into the source code on GitHub</a> or explore the <a href='/resume'>interactive resume</a>."
+        ]
+      }
+    ],
     resume: [
       {
         heading: "Resume",
         headingLevel: 2,
         content: [
           "Frontend architect and engineering leader guiding technical strategy and delivering scalable applications. My background spans fintech, scientific instrumentation, and enterprise software, where I modernize legacy architectures, build enterprise design systems, and manage critical third-party integrations."
+        ]
+      },
+      {
+        heading: "Frontend Philosophy",
+        headingLevel: 3,
+        content: [
+          "Great frontend architecture isn't just about writing clean code; it's about delivering measurable business value and an effortless user experience. I care deeply about building a strong, focused team, aligning our technical strategy with actual customer needs, and setting standards that make development smoother. Whether I'm modernizing a legacy architecture or building an enterprise design system, my goal is always to create interfaces that are fast, accessible, and built to scale."
         ]
       },
       {

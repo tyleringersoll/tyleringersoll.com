@@ -185,6 +185,9 @@
       </div>
     </section>
 
+    <!-- ===================== ABOUT THIS SITE ===================== -->
+    <BentoShowcase :sections="showcase" />
+
   </div>
 </template>
 
@@ -206,6 +209,8 @@ const hero = computed(() => pg.value.hero            || {});
 const eng  = computed(() => pg.value.engineering     || {});
 const mus  = computed(() => pg.value.music           || {});
 const bey  = computed(() => pg.value.beyond          || {});
+
+const showcase = computed(() => store.content?.siteShowcase || []);
 
 const hasLink = (item) => !!item?.url;
 
@@ -813,5 +818,6 @@ const icons = {
     line-height: 1.4;
   }
 }
+
 
 </style>
