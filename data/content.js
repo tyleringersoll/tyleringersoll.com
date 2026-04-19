@@ -40,7 +40,7 @@ export default {
         heading: "Music",
         headingLevel: 4,
         content: [
-          "I’ve spent a big part of my life behind a drum kit. From touring the country and hearing my drums pop up during the Super Bowl, to building out a custom hybrid recording rig at home, making music has always been a constant. Now, I spend my time tracking drums in my studio."
+          "With over three decades behind the kit, I've moved my playing out of the venues and into the studio. After years of touring with bands under label support and playing festival-sized crowds from the Mid-Atlantic to Key West, my focus is now entirely on production. Today, I track remote sessions and shoot drum videos using a hybrid setup that pairs the energy of live cymbals with total digital control."
         ]
       },
       {
@@ -78,7 +78,7 @@ export default {
       music: {
         studioLabel: "Hybrid Drum Tracking Setup",
         studio: {
-          text: "I've spent almost two years designing and refining a hybrid drum recording technique that I'm finally close to perfecting. By pairing real cymbals with nearly silent mesh heads that trigger precise MIDI data, I can capture live room energy with total post-performance control. Want to learn more about how this setup works?",
+          text: "I spent two years engineering a silent hybrid recording rig. By pairing real cymbals with nearly-silent mesh heads and an eDRUMin interface to trigger precise MIDI data, the setup captures the energy of a live room while maintaining total post-performance control.",
           url: "https://tyleringersolldrums.com",
           external: true,
           ctaText: "Explore My Drum Studio"
