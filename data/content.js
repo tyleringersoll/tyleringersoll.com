@@ -404,14 +404,14 @@ export default {
         heading: "Let's build something",
         headingLevel: 2,
         content: [
-          "Whether you're scaling an engineering team or producing a record, I'm always open to talking shop. Reach out below and let me know how I can help."
+          "Whether you are scaling an engineering organization or producing a record, I am always open to talking shop. Choose your path below and get in touch."
         ]
       },
       {
         heading: "Engineering & Leadership",
         headingLevel: 3,
         content: [
-          "Whether you're looking to discuss frontend architecture, team growth, or how to tackle complex scaling challenges, I'm always up for a good conversation."
+          "If you want to discuss frontend architecture, team growth, or how to tackle complex scaling challenges at the enterprise level, my inbox is open."
         ],
         links: [
           { label: "Email Tyler", url: "mailto:tyler@ingersoll.dev" },
