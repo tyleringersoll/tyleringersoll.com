@@ -374,6 +374,12 @@ const icons = {
 
 .hv2-btn-wrap {
   margin-top: 2rem;
+
+  @include respond-below(sm) {
+    .hv2-btn {
+      width: 100%;
+    }
+  }
 }
 
 // ─── Utility text ─────────────────────────────────────────────────────────────
@@ -452,6 +458,14 @@ const icons = {
     gap: 1rem;
     flex-wrap: wrap;
     margin-top: 2rem;
+
+    @include respond-below(sm) {
+      flex-direction: column;
+
+      .hv2-btn {
+        width: 100%;
+      }
+    }
   }
 
   &__visual {

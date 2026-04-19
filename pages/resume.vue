@@ -173,6 +173,7 @@ watch(resumeContent, () => handleHash(route.hash));
 // ─── Section wrappers ────────────────────────────────────────────────────────
 
 .resume-section {
+  --section-bg: var(--color-bg-primary);
   padding: 2.5rem 0;
   border-bottom: 1px solid var(--color-border);
 
@@ -185,6 +186,7 @@ watch(resumeContent, () => handleHash(route.hash));
   }
 
   &--alt {
+    --section-bg: var(--color-bg-secondary);
     background-color: var(--color-bg-secondary);
   }
 }
@@ -226,6 +228,11 @@ watch(resumeContent, () => handleHash(route.hash));
   align-items: center;
   gap: 0.4rem;
   padding: 0.5rem 1.25rem;
+
+  @include respond-below(sm) {
+    width: 100%;
+    justify-content: center;
+  }
   border: 2px solid var(--color-accent-line);
   border-radius: 9999px;
   font-size: 0.82rem;
@@ -267,6 +274,7 @@ watch(resumeContent, () => handleHash(route.hash));
 
   &__name {
     margin-bottom: $spacing-md;
+    color: var(--color-text-secondary);
   }
 }
 

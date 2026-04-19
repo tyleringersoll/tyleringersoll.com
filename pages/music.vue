@@ -47,6 +47,11 @@ const musicContent = computed(() => {
   display: inline-flex;
   align-items: center;
   padding: 0.7rem 1.75rem;
+
+  @include respond-below(sm) {
+    width: 100%;
+    justify-content: center;
+  }
   border-radius: 9999px;
   font-size: 0.95rem;
   font-weight: 700;

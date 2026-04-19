@@ -113,7 +113,7 @@ defineEmits(["toggle"]);
     height: 1.5rem;
     border-radius: 50%;
     border: 1px solid var(--color-text-muted);
-    background: var(--color-bg-primary);
+    background: var(--section-bg, var(--color-bg-primary));
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -208,7 +208,7 @@ defineEmits(["toggle"]);
       grid-column: 1 / -1;
       position: relative;
       z-index: 2;
-      background: var(--color-bg-primary);
+      background: var(--section-bg, var(--color-bg-primary));
     }
   }
 

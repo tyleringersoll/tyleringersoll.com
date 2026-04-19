@@ -178,6 +178,12 @@ const processedLegal = computed(() => {
   display: flex;
   justify-content: center;
   margin-top: 0.5rem;
+
+  @include respond-below(sm) {
+    .footer-btn {
+      width: 100%;
+    }
+  }
 }
 
 .footer-btn {
