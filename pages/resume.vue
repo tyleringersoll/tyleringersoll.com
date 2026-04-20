@@ -201,6 +201,11 @@ watch(resumeContent, () => handleHash(route.hash));
     margin-top: 0;
     margin-bottom: 0;
   }
+
+  :deep(h3) {
+    margin-top: $spacing-xl;
+    margin-bottom: $spacing-md;
+  }
 }
 
 // ─── Section headings ────────────────────────────────────────────────────────
@@ -260,7 +265,8 @@ watch(resumeContent, () => handleHash(route.hash));
   }
 }
 
-.resume-intro p {
+.resume-intro p,
+.resume-inner :deep(.article p) {
   line-height: 1.75;
   color: var(--color-text-secondary);
 }

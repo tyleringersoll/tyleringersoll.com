@@ -1,11 +1,12 @@
 <template>
   <div class="app-upper">
+    <a href="#main-content" class="skip-nav">Skip to main content</a>
     <Header
       v-if="content.meta"
       :content="content.meta"
       :navigation="content.navigation || []"
     />
-    <main>
+    <main id="main-content" tabindex="-1">
       <slot />
     </main>
   </div>

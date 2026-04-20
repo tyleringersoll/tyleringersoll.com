@@ -115,7 +115,7 @@ const cardContent = computed(() =>
 
     &--primary {
       background-color: var(--color-link);
-      color: #fff;
+      color: var(--color-btn-primary-text);
       border: 2px solid var(--color-link);
 
       &:hover {

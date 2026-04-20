@@ -21,6 +21,7 @@
       v-bind="nav.isOpen ? { role: 'dialog', 'aria-modal': 'true', 'aria-label': 'Navigation menu' } : {}"
       ref="overlayEl"
       @keydown.tab.prevent="handleTabKey"
+      @keydown.escape="closeNav"
     >
       <ul v-if="nav.isOpen" class="mobile-nav__items">
         <li
@@ -70,6 +71,14 @@ const onClick = () => {
   nav.isOpen = !nav.isOpen;
   toggleMenuState();
   emit("nav:clicked", nav.isOpen);
+};
+
+const closeNav = () => {
+  if (nav.isOpen) {
+    nav.isOpen = false;
+    toggleMenuState();
+    emit("nav:clicked", false);
+  }
 };
 
 const onKeydown = (url) => {

@@ -15,6 +15,8 @@
   --color-link-hover: #{$color-highlight-2};
   --color-active-nav: #{$color-highlight-2};
   --color-focus: #{$color-highlight-5};
+  --color-btn-primary-text: #1a1a1a;
+  --color-svg-accent: #ffcc5c;
 }
 
 html.light-mode {
@@ -34,6 +36,8 @@ html.light-mode {
   --color-link-hover: #b07d00;
   --color-active-nav: #007ab5;
   --color-focus: #0055cc;
+  --color-btn-primary-text: #ffffff;
+  --color-svg-accent: #b07d00;
 }
 
 .theme-transitioning,

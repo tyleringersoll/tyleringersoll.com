@@ -56,20 +56,20 @@
               <circle cx="172" cy="18" r="9" fill="#ff6f69" opacity="0.92"/>
               <line x1="268" y1="18" x2="233" y2="228" stroke="#ff6f69" stroke-width="8" stroke-linecap="round" opacity="0.92"/>
               <circle cx="268" cy="18" r="9" fill="#ff6f69" opacity="0.92"/>
-              <ellipse cx="106" cy="72" rx="40" ry="11" stroke="#ffcc5c" stroke-width="1.5" opacity="0.55" fill="none"/>
-              <ellipse cx="106" cy="78" rx="40" ry="11" stroke="#ffcc5c" stroke-width="1" opacity="0.3" fill="none"/>
+              <ellipse cx="106" cy="72" rx="40" ry="11" style="stroke: var(--color-svg-accent)" stroke-width="1.5" opacity="0.55" fill="none"/>
+              <ellipse cx="106" cy="78" rx="40" ry="11" style="stroke: var(--color-svg-accent)" stroke-width="1" opacity="0.3" fill="none"/>
               <line x1="106" y1="89" x2="106" y2="140" stroke="#a7adba" stroke-width="2" opacity="0.35"/>
-              <ellipse cx="334" cy="72" rx="40" ry="11" stroke="#ffcc5c" stroke-width="1.5" opacity="0.55" fill="none"/>
+              <ellipse cx="334" cy="72" rx="40" ry="11" style="stroke: var(--color-svg-accent)" stroke-width="1.5" opacity="0.55" fill="none"/>
               <line x1="334" y1="83" x2="334" y2="140" stroke="#a7adba" stroke-width="2" opacity="0.35"/>
               <text x="4" y="176" font-size="15" fill="#00B7FF" opacity="0.65" font-family="monospace">{</text>
               <rect x="14" y="185" width="58" height="2.5" rx="1.2" fill="#a7adba" opacity="0.45"/>
               <rect x="18" y="195" width="42" height="2.5" rx="1.2" fill="#00B7FF" opacity="0.6"/>
               <rect x="18" y="205" width="52" height="2.5" rx="1.2" fill="#a7adba" opacity="0.38"/>
-              <rect x="18" y="215" width="34" height="2.5" rx="1.2" fill="#ffcc5c" opacity="0.5"/>
+              <rect x="18" y="215" width="34" height="2.5" rx="1.2" style="fill: var(--color-svg-accent)" opacity="0.5"/>
               <rect x="18" y="225" width="48" height="2.5" rx="1.2" fill="#a7adba" opacity="0.35"/>
               <rect x="18" y="235" width="30" height="2.5" rx="1.2" fill="#00B7FF" opacity="0.5"/>
               <rect x="18" y="245" width="44" height="2.5" rx="1.2" fill="#a7adba" opacity="0.38"/>
-              <rect x="18" y="255" width="38" height="2.5" rx="1.2" fill="#ffcc5c" opacity="0.45"/>
+              <rect x="18" y="255" width="38" height="2.5" rx="1.2" style="fill: var(--color-svg-accent)" opacity="0.45"/>
               <rect x="18" y="265" width="50" height="2.5" rx="1.2" fill="#a7adba" opacity="0.3"/>
               <rect x="18" y="275" width="40" height="2.5" rx="1.2" fill="#00B7FF" opacity="0.4"/>
               <text x="4" y="290" font-size="15" fill="#00B7FF" opacity="0.65" font-family="monospace">}</text>
@@ -79,11 +79,11 @@
               <rect x="368" y="185" width="58" height="2.5" rx="1.2" fill="#a7adba" opacity="0.45"/>
               <rect x="368" y="195" width="44" height="2.5" rx="1.2" fill="#00B7FF" opacity="0.6"/>
               <rect x="368" y="205" width="50" height="2.5" rx="1.2" fill="#a7adba" opacity="0.38"/>
-              <rect x="368" y="215" width="38" height="2.5" rx="1.2" fill="#ffcc5c" opacity="0.5"/>
+              <rect x="368" y="215" width="38" height="2.5" rx="1.2" style="fill: var(--color-svg-accent)" opacity="0.5"/>
               <rect x="368" y="225" width="56" height="2.5" rx="1.2" fill="#a7adba" opacity="0.35"/>
               <rect x="368" y="235" width="32" height="2.5" rx="1.2" fill="#00B7FF" opacity="0.5"/>
               <rect x="368" y="245" width="48" height="2.5" rx="1.2" fill="#a7adba" opacity="0.38"/>
-              <rect x="368" y="255" width="40" height="2.5" rx="1.2" fill="#ffcc5c" opacity="0.4"/>
+              <rect x="368" y="255" width="40" height="2.5" rx="1.2" style="fill: var(--color-svg-accent)" opacity="0.4"/>
               <rect x="368" y="265" width="52" height="2.5" rx="1.2" fill="#a7adba" opacity="0.3"/>
               <rect x="368" y="275" width="36" height="2.5" rx="1.2" fill="#00B7FF" opacity="0.4"/>
               <text x="422" y="290" font-size="15" fill="#00B7FF" opacity="0.65" font-family="monospace" text-anchor="end">{</text>
@@ -323,7 +323,7 @@ const icons = {
 
   &--primary {
     background-color: var(--color-link);
-    color: #fff;
+    color: var(--color-btn-primary-text);
     border: 2px solid var(--color-link);
 
     &:hover {
@@ -814,7 +814,7 @@ const icons = {
 
   &__sub {
     font-size: 0.78rem;
-    color: var(--color-text-muted);
+    color: var(--color-text-secondary);
     line-height: 1.4;
   }
 }

@@ -8,3 +8,28 @@
   @include visually-hidden;
 }
 
+.skip-nav {
+  @include visually-hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  background: var(--color-bg-primary);
+  color: var(--color-link);
+  padding: 0.75rem 1.5rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border: 2px solid var(--color-focus);
+  border-radius: 0 0 0.5rem 0;
+
+  &:focus {
+    clip: auto;
+    clip-path: none;
+    height: auto;
+    width: auto;
+    overflow: visible;
+    white-space: normal;
+  }
+}
+

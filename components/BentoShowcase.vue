@@ -109,7 +109,6 @@ const circ = 2 * Math.PI * 34;
   font-size: 1.75rem;
   font-weight: 700;
   color: var(--color-accent-line);
-  text-align: center;
   margin-bottom: 3rem;
 
   @include respond-below(sm) {
@@ -248,7 +247,7 @@ const circ = 2 * Math.PI * 34;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: var(--color-text-muted);
+    color: var(--color-text-secondary);
   }
 }
 

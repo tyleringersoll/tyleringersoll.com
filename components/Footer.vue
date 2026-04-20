@@ -147,7 +147,7 @@ const processedLegal = computed(() => {
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--color-text-muted);
+    color: var(--color-text-secondary);
     @include transition(color);
   }
 
@@ -222,7 +222,7 @@ const processedLegal = computed(() => {
     margin: 0;
     font-size: 0.8rem;
     text-align: center;
-    color: var(--color-text-muted);
+    color: var(--color-text-secondary);
   }
 }
 </style>
