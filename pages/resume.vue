@@ -38,7 +38,19 @@
             class="section-heading"
             v-html="entry.heading"
           />
-          <!-- Regular article without roles (Education, Skills) -->
+          <!-- Structured skills grid -->
+          <article v-else-if="entry.skills" class="article skills-section">
+            <h2 class="section-heading" v-html="entry.heading" />
+            <div class="skills-grid">
+              <div v-for="(items, category) in entry.skills" :key="category" class="skills-bucket">
+                <h3 class="skills-bucket__heading">{{ formatCategory(category) }}</h3>
+                <ul class="skills-bucket__list">
+                  <li v-for="skill in items" :key="skill">{{ skill }}</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+          <!-- Regular article without roles (Education, Additional Experience) -->
           <Article v-else-if="!entry.roles" :article="entry" :index="idx" />
           <!-- Employer with roles -->
           <article v-else class="article employer">
@@ -47,6 +59,21 @@
               :id="slugify(entry.heading)"
               v-html="entry.heading"
             />
+            <div v-if="entry.domain || entry.techStack" class="employer__context">
+              <div v-if="entry.domain" class="employer__domain">
+                <p class="employer__context-label">Engineering areas</p>
+                <p
+                  v-for="(item, dIdx) in entry.domain"
+                  :key="dIdx"
+                  class="article__bullet-item"
+                  v-html="formatPara(item)"
+                />
+              </div>
+              <div v-if="entry.techStack" class="employer__tech">
+                <p class="employer__context-label">Tech</p>
+                <p class="employer__tech-list" v-html="entry.techStack" />
+              </div>
+            </div>
             <Timeline>
               <TimelineItem
                 v-for="(role, roleIdx) in entry.roles"
@@ -126,6 +153,10 @@ const formatPara = (para) => {
     return trimmed.replace(/^•\s*/, '');
   }
   return para;
+};
+
+const formatCategory = (key) => {
+  return key.charAt(0).toUpperCase() + key.slice(1);
 };
 
 const isExpanded = (entryIdx, roleIdx) =>
@@ -306,5 +337,87 @@ watch(resumeContent, () => handleHash(route.hash));
     border-radius: 50%;
     background: var(--color-accent-line);
   }
+}
+
+// ─── Skills grid ──────────────────────────────────────────────────────────────
+
+.skills-section {
+  .section-heading {
+    margin-bottom: $spacing-lg;
+  }
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $spacing-lg;
+
+  @include respond-below(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-below(xs) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.skills-bucket {
+  &__heading {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-accent-line);
+    margin: 0 0 $spacing-sm;
+    padding-bottom: $spacing-xs;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      font-size: 0.88rem;
+      line-height: 1.8;
+      color: var(--color-text-secondary);
+      padding: 0;
+      margin: 0;
+    }
+  }
+}
+
+// ─── Employer domain context ─────────────────────────────────────────────────
+
+.employer__context {
+  background-color: var(--section-bg, var(--color-bg-primary));
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-accent-line);
+  border-radius: 8px;
+  padding: $spacing-md $spacing-md $spacing-sm;
+  margin-bottom: $spacing-lg;
+}
+
+.employer__context-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent-line);
+  margin: 0 0 $spacing-xs;
+}
+
+.employer__tech {
+  margin-top: $spacing-sm;
+  padding-top: $spacing-sm;
+  border-top: 1px solid var(--color-border);
+}
+
+.employer__tech-list {
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  margin: 0;
 }
 </style>

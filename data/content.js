@@ -8,6 +8,7 @@ export default {
       { name: "Home", url: "/" },
       { name: "Resume", url: "/resume" },
       { name: "Music", url: "/music" },
+      { name: "Architecture", url: "/architecture" },
       { name: "Contact", url: "/contact" }
     ],
     home: [
@@ -78,7 +79,7 @@ export default {
       music: {
         studioLabel: "Hybrid Drum Tracking Setup",
         studio: {
-          text: "I spent two years engineering a silent hybrid recording rig. By pairing real cymbals with nearly-silent mesh heads and an eDRUMin interface to trigger precise MIDI data, the setup captures the energy of a live room while maintaining total post-performance control.",
+          text: "I spent two years engineering a silent hybrid recording rig. By pairing real cymbals with nearly-silent mesh heads, each hit signals a trigger through the eDRUMin interface to output precise MIDI data. The setup captures the energy of a live room while maintaining total post-performance control.",
           url: "https://tyleringersolldrums.com",
           external: true,
           ctaText: "Explore My Drum Studio"
@@ -87,10 +88,10 @@ export default {
       },
       beyond: {
         cards: [
-          { icon: "bicycle", label: "Cyclist", sub: "Road, Gravel, MTB", url: "https://www.strava.com/athletes/3303002", external: true },
-          { icon: "users", label: "Family", sub: "Parent of Two", url: null },
-          { icon: "beer", label: "Enthusiast", sub: "Craft Beer & Bourbon", url: null },
-          { icon: "map-pin", label: "Local", sub: "Kennett Square, PA", url: null }
+          { icon: "bicycle", label: "Cyclist", sub: "Road, Gravel, MTB", detail: "I ride year-round on a mix of road, gravel, and mountain bikes across Chester County and beyond.", url: "https://www.strava.com/athletes/3303002", external: true },
+          { icon: "users", label: "Family", sub: "Parent of Two", detail: "Most weekends revolve around my two kids, whether that means soccer games, bike rides, or building something in the yard.", url: null },
+          { icon: "beer", label: "Enthusiast", sub: "Craft Beer & Bourbon", detail: "I keep a running list of favorite local breweries and always have a solid bourbon on the shelf.", url: null },
+          { icon: "map-pin", label: "Local", sub: "Kennett Square, PA", detail: "We live in the Mushroom Capital of the World, surrounded by Brandywine Valley farmland and great trails.", url: null }
         ]
       },
       connect: {
@@ -101,6 +102,26 @@ export default {
     },
     siteShowcase: [
       {
+        id: "about-site",
+        heading: "About This Site",
+        headingLevel: 3,
+        content: [
+          "Most of my daily production code is locked behind enterprise firewalls, so this site serves as my open-source sandbox. Built with Vue 3 and Nuxt 3, it balances developer ergonomics with production-grade SSR performance. Every page is pre-rendered to static HTML at build time, styled with a hand-rolled SCSS design system, and deployed to Netlify's edge CDN."
+        ],
+        scores: [
+          { label: "Performance", value: 100 },
+          { label: "Accessibility", value: 100 },
+          { label: "Best Practices", value: 100 },
+          { label: "SEO", value: 100 }
+        ],
+        cta: {
+          label: "View the Full Architecture Deep Dive",
+          url: "/architecture"
+        }
+      }
+    ],
+    architecture: [
+      {
         id: "built-with",
         heading: "Built With",
         headingLevel: 3,
@@ -108,9 +129,31 @@ export default {
           "Most of my daily production code is locked behind enterprise firewalls, so this site serves as my open-source sandbox. I went with Vue 3 and Nuxt because they hit the sweet spot between developer ergonomics and production-grade output.",
           "• <strong>Nuxt 3 & Static Pre-rendering:</strong> Every page is pre-rendered to static HTML at build time, delivering instant first paints and full SEO without a running Node.js server.",
           "• <strong>Vue 3 Composition API:</strong> Component logic is organized with the Composition API and script setup, keeping state management and reactivity clean and composable.",
+          "• <strong>Pinia State Management:</strong> A Pinia store wraps the static content file and a separate store manages theme state, keeping both reactive and accessible anywhere in the component tree without prop drilling.",
           "• <strong>SCSS & CSS Custom Properties:</strong> A hand-rolled design system using scoped SCSS modules and CSS custom properties powers the dual-theme color system and responsive layout.",
+          "• <strong>SCSS Auto-injection via Vite:</strong> Variables and mixins are injected into every component's style block automatically via Vite's preprocessorOptions.additionalData config. No @import needed in any .vue file. It is a developer ergonomics decision that eliminates boilerplate without changing the output.",
+          "• <strong>Page Transitions:</strong> A global fade transition is configured via pageTransition in nuxt.config.ts, with a dedicated _fade.scss partial handling the enter/leave animation classes Nuxt applies during route changes.",
           "• <strong>Purpose-Built Components:</strong> The inline SVG hero and the expand/collapse resume timeline are custom Vue components built to handle state, DOM updates, and accessibility in a way that reflects real-world engineering patterns.",
           "• <strong>Netlify Deployment:</strong> Commits trigger automated builds and deploy pre-rendered output to Netlify's edge CDN."
+        ]
+      },
+      {
+        id: "content-architecture",
+        heading: "Content-Driven Architecture",
+        headingLevel: 3,
+        content: [
+          "All page content lives in a single data/content.js file as a plain JavaScript export. A Pinia store wraps it to make it reactive and globally accessible. Every page uses storeToRefs and computed to derive the exact content slice it needs, with no prop drilling and no repeated data fetching.",
+          "This is a deliberate CMS-without-a-CMS pattern. The separation of concerns mirrors what a headless CMS provides: content is authored in one place, the store is the delivery layer, and components are pure renderers. Swapping in a real API or a CMS integration would only require updating the store, leaving every component untouched.",
+          "The pre-render config in nuxt.config.ts lists only the routes that exist in the data layer, keeping the build output predictable and the deployment surface minimal."
+        ]
+      },
+      {
+        id: "anti-fouc",
+        heading: "Anti-FOUC Theme Initialization",
+        headingLevel: 3,
+        content: [
+          "Theme persistence is handled by a Pinia store that reads localStorage and applies a .light-mode class to the html element. But Pinia initializes after the page paints, which means returning users with light mode saved would see a flash of the dark theme on every load.",
+          "The fix is a blocking inline script injected into the head via nuxt.config.ts. It runs synchronously before any HTML renders, reads localStorage, and applies .light-mode immediately if needed. The script executes in under a millisecond and prevents any visible flash. Without it, the Pinia-driven approach would be correct but visually broken on every page load for light-mode users."
         ]
       },
       {
@@ -121,7 +164,7 @@ export default {
           "Leading an engineering team means treating performance as a fundamental requirement, not an afterthought. I brought that same standard to this site. Pre-rendering every route at build time and keeping the JavaScript payload minimal means consistently strong metrics on live audits."
         ],
         scores: [
-          { label: "Performance", value: 99 },
+          { label: "Performance", value: 100 },
           { label: "Accessibility", value: 100 },
           { label: "Best Practices", value: 100 },
           { label: "SEO", value: 100 }
@@ -133,6 +176,15 @@ export default {
         ]
       },
       {
+        id: "deep-linking",
+        heading: "Hash-Based Deep Linking",
+        headingLevel: 3,
+        content: [
+          "The resume timeline supports URL hash navigation. Visiting /resume#best-egg automatically expands all of that employer's roles and scrolls to the section. The homepage links to specific employers this way, so the experience feels like navigating directly into a document rather than landing on a page and hunting for content.",
+          "The implementation watches route.hash, matches it against a slugified employer heading, and adds the matching entries to an expandedRoles Set. It then calls a custom useScrollToHash composable that uses nextTick plus requestAnimationFrame to wait for the DOM before computing scroll position. The offset calculation accounts for the sticky header height so the section heading is never obscured on arrival."
+        ]
+      },
+      {
         id: "accessibility",
         heading: "Accessibility (A11Y)",
         headingLevel: 3,
@@ -141,6 +193,7 @@ export default {
           "• <strong>Skip Navigation:</strong> A skip-to-content link lets keyboard and screen reader users bypass the header and jump straight to the page content.",
           "• <strong>Semantic HTML:</strong> Proper heading hierarchy, landmark elements, and native interactive controls throughout.",
           "• <strong>Keyboard Navigation:</strong> Every interactive element, including the expanding resume timeline and mobile navigation, is fully operable via keyboard with visible focus indicators. The mobile menu traps focus while open and closes on Escape.",
+          "• <strong>Inert on Collapsed Panels:</strong> The timeline uses the inert attribute on collapsed content panels, not just aria-hidden. aria-hidden removes content from the accessibility tree. inert goes further, removing keyboard focus, pointer events, and accessibility tree presence in a single attribute. It is the correct modern primitive for this pattern.",
           "• <strong>Reduced Motion:</strong> A global <code>prefers-reduced-motion</code> media query disables animations and transitions for users who request it.",
           "• <strong>ARIA Where It Counts:</strong> Custom components like the timeline toggle, theme switch, and mobile menu use appropriate roles, labels, and state attributes for assistive technologies.",
           "• <strong>Dual-Theme Contrast:</strong> Both the dark and light themes use color pairings chosen to maintain readable contrast ratios."
@@ -181,43 +234,38 @@ export default {
         heading: "Best Egg",
         headingLevel: 3,
         years: "2022 - Present",
+        domain: [
+          "• Customer verifications: identity verification and fraud prevention",
+          "• Payment servicing: payment processing, auto pay, payment methods, due date changes",
+          "• Authentication: login, signup, password recovery, customer servicing hub"
+        ],
+        techStack: "Angular, TypeScript, Jasmine, GitHub Actions, Node.js, Nginx, Django, Python, DataDog, FullStory",
         roles: [
           {
             subheading: "Director II, Software Engineering · 2026 - Present",
             content: [
-              "As Director II of Software Engineering, I lead the team building Best Egg's customer-facing identity verification, payment servicing, and authentication applications, which handle millions of interactions annually.",
+              "Promoted to Director II to own technical direction and delivery across all customer-facing platforms, expanding scope from hands-on engineering leadership to organizational strategy and team scaling.",
               "• Guide technical direction and delivery for core customer platforms, focusing on stability and performance at scale.",
               "• Manage an engineering team and establish technical priorities, collaborating cross-functionally with other pods to align delivery with broader business goals.",
               "• Drive team growth and scale engineering capacity to meet expanding technical demands, leading candidate evaluations and key hiring decisions.",
-              "• Drive the team's adoption of AI-assisted development tools like Cursor AI and GitHub Copilot, establishing shared standards that improve workflow and code quality.",
-              "<strong>Engineering areas:</strong>",
-              "• Customer verifications: identity verification and fraud prevention",
-              "• Payment servicing: payment processing, auto pay, payment methods, due date changes",
-              "• Authentication: login, signup, password recovery, customer servicing hub",
-              "<strong>Tech:</strong> Angular, TypeScript, Jasmine, GitHub Actions, Node.js, Nginx, Django, Python, DataDog, FullStory"
+              "• Drive the team's adoption of AI-assisted development tools like Cursor AI and GitHub Copilot, establishing shared standards that improve workflow and code quality."
             ]
           },
           {
             subheading: "Senior Lead Software Engineer II · 2024 - 2026",
             content: [
-              "As Senior Lead Software Engineer II, I directed frontend engineering for Best Egg's core applications, partnering closely with product and UX to shape our roadmap while mentoring engineers across the company.",
+              "Promoted to Senior Lead II to take ownership of frontend architecture and roadmap planning, partnering directly with product and UX while mentoring engineers across the company.",
               "• Managed the technical lifecycle for critical third-party fintech integrations like MX and Method Financial, driving the process from frontend architectural design through production rollout.",
-              "• Strengthened frontend security by implementing a Level 3 Content Security Policy (CSP) utilizing dynamic nonces, and operationalized the deployment by integrating violation reporting and alerting through DataDog.",
-              "<strong>Engineering areas:</strong>",
-              "• Customer verifications: identity verification and fraud prevention",
-              "• Payment servicing: payment processing, auto pay, payment methods, due date changes",
-              "• Authentication: login, signup, password recovery, customer servicing hub",
-              "<strong>Tech:</strong> Angular, TypeScript, Jasmine, GitHub Actions, Node.js, Nginx, Django, Python, DataDog, FullStory"
+              "• Strengthened frontend security by implementing a Level 3 Content Security Policy (CSP) utilizing dynamic nonces, and operationalized the deployment by integrating violation reporting and alerting through DataDog."
             ]
           },
           {
             subheading: "Senior Lead Software Engineer I · 2022 - 2024",
             content: [
-              "As Senior Lead Software Engineer I, I joined Best Egg to modernize legacy Angular codebases and build the foundation our teams use today. I updated the architecture and libraries and established lasting development patterns.",
+              "Joined Best Egg to modernize legacy Angular codebases and build the foundation our teams use today. Updated the architecture and libraries and established lasting development patterns.",
               "• Drove an architectural update that implemented lazy-loaded modules, reduced main bundle sizes, and migrated the platform from Bootstrap to Angular Material.",
               "• Collaborated to architect and launch No-Auth Quick Pay and automated payment scheduling, simplifying the payment experience for customers.",
-              "• Golden Egg Award for \"BE a Builder of Great Teams\" (Q3 2023).",
-              "<strong>Tech:</strong> Angular, TypeScript, Angular Material, Tailwind CSS, Jasmine, GitHub Actions, Docker, Nginx, Node.js"
+              "• Golden Egg Award for \"BE a Builder of Great Teams\" (Q3 2023)."
             ]
           }
         ]
@@ -331,7 +379,48 @@ export default {
         ]
       },
       {
-        heading: "Professional Music & Production",
+        heading: "Additional Experience",
+        headingLevel: 2,
+        content: [
+          "For my 30-year history as a touring and session drummer, please visit my <a href='/music'>music portfolio</a>."
+        ]
+      },
+      {
+        heading: "Education",
+        headingLevel: 2,
+        content: [
+          "<strong>University of Delaware</strong><br>Bachelor of Science, Business Administration<br>Concentrations: Accounting and Finance<br><em>College of Business & Economics</em>"
+        ]
+      },
+      {
+        heading: "Technical Skills",
+        headingLevel: 2,
+        skills: {
+          languages: ["JavaScript", "TypeScript", "HTML5", "CSS/SCSS", "SQL"],
+          frameworks: ["Angular", "Vue.js", "NestJS", "Node.js", "Web Components", "Sencha/Ext JS", "jQuery"],
+          infrastructure: ["GitHub Actions", "CI/CD", "Docker", "Nginx", "AWS", "Netlify"],
+          tools: ["Storybook", "Design Systems", "Jest", "Cypress", "Jasmine", "Git", "DataDog", "FullStory", "A/B Testing", "Accessibility (WCAG)"]
+        }
+      }
+    ],
+    music: [
+      {
+        headingLevel: 2,
+        heading: "Music & Production",
+        content: [
+          "After decades of touring under label support and tracking in major rooms, my focus is now entirely on my home studio. I spend my time outside of engineering producing remote drum sessions and creating content using a custom hybrid recording architecture."
+        ]
+      },
+      {
+        heading: "The Hybrid Rig",
+        headingLevel: 3,
+        content: [
+          "The reality of modern recording requires both the raw energy of a live room and the total post-performance control of digital production. I spent two years engineering a silent hybrid recording rig. By pairing acoustic Zildjian cymbals with nearly-silent mesh heads, each hit signals a trigger through the eDRUMin interface, which outputs highly precise MIDI note data. The result captures the exact feel of a performance with limitless tonal flexibility.",
+          "On the signal chain side, the live cymbals run through an analog API 3124V preamp to preserve the full overtone wash of the acoustic sound. The MIDI output feeds directly into my DAW for sample selection and mixing. This gives me a recording that sounds like a live room but behaves like a fully programmable instrument."
+        ]
+      },
+      {
+        heading: "Timeline",
         headingLevel: 2,
         content: []
       },
@@ -343,7 +432,9 @@ export default {
           {
             subheading: "Producer & Session Drummer · 2024 - Present",
             content: [
-              "Design and operate a custom hybrid recording architecture (eDRUMin, mesh heads, live cymbals) to produce drum covers and track remote sessions."
+              "Following a 2024 reunion show with Omnisoul at World Cafe Live, I designed and built a custom hybrid recording rig. Now actively tracking remote drum sessions from a purpose-built home studio in PA.",
+              "• Produces drum covers and remote session tracks using a hybrid eDRUMin/mesh head/live cymbal architecture.",
+              "• Delivers professional stems to clients within a week, with full post-production flexibility."
             ]
           }
         ]
@@ -385,70 +476,30 @@ export default {
         ]
       },
       {
-        heading: "Education",
-        headingLevel: 2,
-        content: [
-          "<strong>University of Delaware</strong><br>Bachelor of Science, Business Administration<br>Concentrations: Accounting and Finance<br><em>College of Business & Economics</em>"
-        ]
-      },
-      {
-        heading: "Technical Skills",
-        headingLevel: 2,
-        contentStyle: "inline",
-        content: [
-          "JavaScript",
-          "TypeScript",
-          "Angular",
-          "Vue.js",
-          "HTML5",
-          "CSS/SCSS",
-          "Web Components",
-          "Design Systems",
-          "Storybook",
-          "Jest",
-          "Cypress",
-          "Jasmine",
-          "Node.js",
-          "NestJS",
-          "Nginx",
-          "Docker",
-          "Git",
-          "GitHub Actions",
-          "CI/CD",
-          "Accessibility (WCAG)",
-          "A/B Testing",
-          "Observability",
-          "Sencha/Ext JS",
-          "jQuery",
-          "SharePoint",
-          "Adobe RoboHelp",
-          "Adobe FrameMaker"
-        ]
-      }
-    ],
-    music: [
-      {
-        headingLevel: 2,
-        heading: "Music & Production",
-        content: [
-          "After decades of touring under label support and tracking in major rooms, my focus is now entirely on my home studio. I spend my time outside of engineering producing remote drum sessions and creating content using a custom hybrid recording architecture."
-        ]
-      },
-      {
-        heading: "The Hybrid Rig",
+        heading: "The Healthy Doses",
         headingLevel: 3,
-        content: [
-          "The reality of modern recording requires both the raw energy of a live room and the total post-performance control of digital production. I spent two years engineering a silent hybrid recording rig. By pairing acoustic cymbals with mesh heads and an eDRUMin interface to trigger highly precise MIDI data, I can capture the exact feel of a performance with limitless tonal flexibility."
+        years: "1999 - 2000",
+        roles: [
+          {
+            subheading: "Drummer · 1999 - 2000",
+            content: [
+              "Toured the regional jam band circuit with this project, sharing festival bills with established national acts.",
+              "• Performed alongside acts like The Disco Biscuits and played Phish's Camp Oswego festival."
+            ]
+          }
         ]
       },
       {
-        heading: "Selected History",
+        heading: "Skitzo Calypso",
         headingLevel: 3,
-        content: [
-          "• Toured nationally with bands under label support, playing festival-sized crowds from the Mid-Atlantic to Key West.",
-          "• Tracked in legendary studios including Avatar Studios (NYC) and The Pass (LA).",
-          "• Secured high-profile sync placements in Super Bowl XLII, Madden NFL, and network television (CBS, NBC, ESPN).",
-          "• Co-founded and scaled a highly active event band, anchoring the regional corporate and club circuit."
+        years: "1996 - 1998",
+        roles: [
+          {
+            subheading: "Drummer & Bassist · 1996 - 1998",
+            content: [
+              "Began serious studio work with this alt-hard rock project, playing drums and bass and tracking multiple full-length independent records."
+            ]
+          }
         ]
       },
       {
@@ -488,7 +539,7 @@ export default {
         heading: "Remote Drum Tracks",
         headingLevel: 3,
         content: [
-          "Professional, room-tracked drums delivered from a purpose-built hybrid setup. You get the overtone wash of live Zildjian cymbals through an analog API 3124V preamp, paired with a clean MIDI performance for total sample control. Bass tracking is also available. Stems are delivered within a week."
+          "Professional drum tracks recorded on a purpose-built hybrid rig, delivering the feel of a live performance with full post-production flexibility. Bass tracking is also available. Stems delivered within a week."
         ],
         links: [
           { label: "Book a Session", url: "mailto:tyler@ingersoll.dev" },

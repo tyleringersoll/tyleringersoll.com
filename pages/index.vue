@@ -170,16 +170,31 @@
         <h2 class="hv2-section-header">{{ beyondSection.heading }}</h2>
         <div class="hv2-beyond__cards">
           <component
-            v-for="card in bey.cards"
+            v-for="(card, cIdx) in bey.cards"
             :is="linkTag(card)"
             :key="card.label"
             v-bind="linkAttrs(card)"
             class="hv2-beyond-card"
-            :class="{ 'hv2-beyond-card--linked': hasLink(card) }"
+            :class="{
+              'hv2-beyond-card--linked': hasLink(card),
+              'hv2-beyond-card--active': activeCard === cIdx
+            }"
+            @mouseenter="activeCard = cIdx"
+            @mouseleave="activeCard = null"
+            @focus="activeCard = cIdx"
+            @blur="activeCard = null"
+            :tabindex="hasLink(card) ? undefined : 0"
+            :role="hasLink(card) ? undefined : 'button'"
+            :aria-expanded="activeCard === cIdx"
           >
-            <div class="hv2-beyond-card__icon" v-html="icons[card.icon]" aria-hidden="true" />
-            <span class="hv2-beyond-card__label">{{ card.label }}</span>
-            <span class="hv2-beyond-card__sub">{{ card.sub }}</span>
+            <div class="hv2-beyond-card__front">
+              <div class="hv2-beyond-card__icon" v-html="icons[card.icon]" aria-hidden="true" />
+              <span class="hv2-beyond-card__label">{{ card.label }}</span>
+              <span class="hv2-beyond-card__sub">{{ card.sub }}</span>
+            </div>
+            <div class="hv2-beyond-card__detail" aria-hidden="activeCard !== cIdx">
+              <p>{{ card.detail }}</p>
+            </div>
           </component>
         </div>
       </div>
@@ -211,6 +226,8 @@ const mus  = computed(() => pg.value.music           || {});
 const bey  = computed(() => pg.value.beyond          || {});
 
 const showcase = computed(() => store.content?.siteShowcase || []);
+
+const activeCard = ref(null);
 
 const hasLink = (item) => !!item?.url;
 
@@ -763,6 +780,7 @@ const icons = {
 }
 
 .hv2-beyond-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -775,19 +793,71 @@ const icons = {
   text-decoration: none;
   color: inherit;
   cursor: default;
+  overflow: hidden;
   @include transition(all);
 
   &--linked {
     cursor: pointer;
+  }
 
-    &:hover {
-      border-color: var(--color-accent-line);
-      transform: translateY(-2px);
+  &:focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 3px;
+  }
+
+  &__front {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    @include transition(opacity);
+  }
+
+  &__detail {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem;
+    background-color: var(--color-bg-surface);
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    pointer-events: none;
+
+    p {
+      margin: 0;
+      font-size: 0.82rem;
+      line-height: 1.6;
+      color: var(--color-text-secondary);
+    }
+  }
+
+  &--active,
+  &:hover {
+    border-color: var(--color-accent-line);
+    transform: translateY(-2px);
+
+    .hv2-beyond-card__front {
+      opacity: 0;
     }
 
-    &:focus-visible {
-      outline: 2px solid var(--color-focus);
-      outline-offset: 3px;
+    .hv2-beyond-card__detail {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hv2-beyond-card__detail {
+      transition: none;
+      transform: none;
+    }
+
+    .hv2-beyond-card__front {
+      transition: none;
     }
   }
 
