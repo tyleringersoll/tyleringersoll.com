@@ -8,8 +8,7 @@ export default {
       { name: "Home", url: "/" },
       { name: "Resume", url: "/resume" },
       { name: "Music", url: "/music" },
-      { name: "Architecture", url: "/architecture" },
-      { name: "Contact", url: "/contact" }
+      { name: "Architecture", url: "/architecture" }
     ],
     home: [
       {
@@ -32,7 +31,7 @@ export default {
         heading: "Engineering",
         headingLevel: 4,
         content: [
-          "I build frontend applications using frameworks like Angular and Vue.js, and I guide the teams that ship them. My expertise spans from core identity and payment processing, to specialized third-party fintech integrations and real-time hardware control software. Over my career, I’ve worked across most of the frontend ecosystem—whether that means rolling out division-wide design systems or modernizing legacy architectures so they can scale securely.",
+          "I build frontend applications using frameworks like Angular and Vue.js, and I guide the team that ships them. My expertise spans from core identity and payment processing, to specialized third-party fintech integrations and real-time hardware control software. Over my career, I’ve worked across most of the frontend ecosystem—whether that means rolling out division-wide design systems or modernizing legacy architectures so they can scale securely.",
           "<a href='/resume'>View my full resume →</a>"
         ]
       },
@@ -79,7 +78,7 @@ export default {
       music: {
         studioLabel: "Hybrid Drum Tracking Setup",
         studio: {
-          text: "I spent two years engineering a silent hybrid recording rig. By pairing real cymbals with nearly-silent mesh heads, each hit signals a trigger through the eDRUMin interface to output precise MIDI data. The setup captures the energy of a live room while maintaining total post-performance control.",
+          text: "I spent two years engineering a custom hybrid drum kit to recording pro-level tracks. I pair real cymbals with nearly-silent mesh heads, each hit triggering through the eDRUMin interface to output precise MIDI data to a DAW. The setup captures the energy of a live room while maintaining total post-performance control.",
           url: "https://tyleringersolldrums.com",
           external: true,
           ctaText: "Explore My Drum Studio"
@@ -100,26 +99,6 @@ export default {
         cta: "Get in Touch"
       }
     },
-    siteShowcase: [
-      {
-        id: "about-site",
-        heading: "About This Site",
-        headingLevel: 2,
-        content: [
-          "Most of my daily production code is locked behind enterprise firewalls, so this site serves as my open-source sandbox. Built with Vue 3 and Nuxt 3, it balances developer ergonomics with production-grade SSR performance. Every page is pre-rendered to static HTML at build time, styled with a hand-rolled SCSS design system, and deployed to Netlify's edge CDN."
-        ],
-        scores: [
-          { label: "Performance", value: 100 },
-          { label: "Accessibility", value: 100 },
-          { label: "Best Practices", value: 100 },
-          { label: "SEO", value: 100 }
-        ],
-        cta: {
-          label: "View the Full Architecture Deep Dive",
-          url: "/architecture"
-        }
-      }
-    ],
     architecture: [
       {
         id: "intro",
@@ -214,13 +193,6 @@ export default {
         headingLevel: 2,
         content: [
           "Frontend architect and engineering leader guiding technical strategy and delivering scalable applications. My background spans fintech, scientific instrumentation, and enterprise software, where I modernize legacy architectures, build enterprise design systems, and manage critical third-party integrations."
-        ]
-      },
-      {
-        heading: "Frontend Philosophy",
-        headingLevel: 3,
-        content: [
-          "Great frontend architecture isn't just about writing clean code; it's about delivering measurable business value and an effortless user experience. I care deeply about building a strong, focused team, aligning our technical strategy with actual customer needs, and setting standards that make development smoother. Whether I'm modernizing a legacy architecture or building an enterprise design system, my goal is always to create interfaces that are fast, accessible, and built to scale."
         ]
       },
       {
@@ -404,8 +376,29 @@ export default {
         headingLevel: 2,
         heading: "Music & Production",
         content: [
-          "My approach to tracking is built on 30 years of live energy and major-label studio discipline. Today, I operate a custom hybrid drumset in my studio designed to deliver the feel of a live performance with the absolute precision of digital production."
+          "My approach to tracking is built on 30 years of live energy and major-label studio discipline. Today, I record using a custom hybrid drumset in my studio designed to deliver the energy and feel of a live performance with the absolute precision of digital production."
         ]
+      },
+      {
+        heading: "The Hybrid Rig",
+        headingLevel: 2,
+        content: [
+          "After taking a step back from professional drum work for nearly a decade, a 2024 reunion show with Omnisoul at World Cafe Live Philly brought everything I loved about drums back into focus. It led directly to building the recording rig I use today in my home studio: a custom hybrid setup engineered for professional remote tracking.",
+          "The kit uses nearly silent mesh drum heads. When a mesh head is struck, it fires a piezo trigger through the eDRUMin interface, which converts each hit into precise, low-latency MIDI note data. That MIDI feeds directly into my DAW for sample selection, mixing, and any post-performance editing the session requires. Nothing is approximated. Every dynamic nuance is captured.",
+          "The cymbals are acoustic Zildjians, live in my acoustically-treated dead room, running through an API 3124V preamp and Universal Audio x8 digital conversion. The API preamp preserves the full overtone wash of the acoustic source with legendary saturation and clarity. The result pairs the natural cymbal bloom of a live drum room with total digital control over every drum hit — the combination producers actually need."
+        ]
+      },
+      {
+        heading: "Explore the Studio",
+        headingLevel: 3,
+        content: [
+          "To see the hybrid rig in action, view my gear list, check out my latest covers, or review my full 30-year discography, visit my dedicated studio site."
+        ],
+        cta: {
+          label: "Visit tyleringersolldrums.com",
+          url: "https://tyleringersolldrums.com",
+          external: true
+        }
       },
       {
         heading: "Timeline",
@@ -420,24 +413,8 @@ export default {
           {
             subheading: "Producer & Session Drummer · 2024 - Present",
             content: [
-              "Following a 2024 reunion show with Omnisoul at World Cafe Live, I designed and built a custom hybrid recording rig. Now actively tracking remote drum sessions from a purpose-built home studio in PA.",
+              "After the 2024 Omnisoul reunion at World Cafe Live, I engineered a purpose-built hybrid recording rig and opened for remote drum sessions. Now actively tracking for other artists from my home studio in Kennett Square, PA.",
               "• Delivers professional stems to clients within a week, with full post-production flexibility."
-            ]
-          }
-        ]
-      },
-      {
-        heading: "SpeakerCity Band",
-        headingLevel: 3,
-        years: "2010 - 2016",
-        roles: [
-          {
-            subheading: "Drummer, DJ, & Co-Founder · 2010 - 2016",
-            content: [
-              "Co-founded and scaled a highly active event band, transitioning from the regional club circuit to high-end corporate events, large-scale universities, and week-long residencies in Key West.",
-              "• Performed as drummer and DJ at weddings, corporate events, and club venues throughout the Mid-Atlantic.",
-              "• Composed and produced musical sequences with click tracks, serving as the production backbone for live performances.",
-              "• Handled business tax filings as part of shared co-founder responsibilities."
             ]
           }
         ]
@@ -458,6 +435,22 @@ export default {
               "• Placed music in network television programming, including CBS's Joan of Arcadia, NBC's Friday Night Lights promos, and ESPN's NFL Live.",
               "• Licensed music for use in over 30 professional sports stadiums across the NFL, MLB, NCAA, and NHL.",
               "• Negotiated and managed business partnerships with label executives, booking agents, and licensing representatives."
+            ]
+          }
+        ]
+      },
+      {
+        heading: "SpeakerCity Band",
+        headingLevel: 3,
+        years: "2010 - 2016",
+        roles: [
+          {
+            subheading: "Drummer, DJ, & Co-Founder · 2010 - 2016",
+            content: [
+              "Co-founded and scaled a highly active event band, transitioning from the regional club circuit to high-end corporate events, large-scale universities, and week-long residencies in Key West.",
+              "• Performed as drummer and DJ at weddings, corporate events, and club venues throughout the Mid-Atlantic.",
+              "• Composed and produced musical sequences with click tracks, serving as the production backbone for live performances.",
+              "• Handled business tax filings as part of shared co-founder responsibilities."
             ]
           }
         ]
@@ -500,26 +493,6 @@ export default {
           { title: "Fantastic 4: The Album (Soundtrack)", detail: "Wind-up Records." },
           { title: "Sync Placements", detail: "Super Bowl XLII, Madden NFL 2007, ESPN NFL Live." }
         ]
-      },
-      {
-        heading: "The Hybrid Rig",
-        headingLevel: 2,
-        content: [
-          "The reality of modern recording requires both the raw energy of a live room and the total post-performance control of digital production. I spent two years engineering a silent hybrid recording rig. By pairing acoustic Zildjian cymbals with nearly-silent mesh heads, each hit signals a trigger through the eDRUMin interface, which outputs highly precise MIDI note data. The result captures the exact feel of a performance with limitless tonal flexibility.",
-          "On the signal chain side, the live cymbals run through an analog API 3124V preamp to preserve the full overtone wash of the acoustic sound. The MIDI output feeds directly into my DAW for sample selection and mixing. This gives me a recording that sounds like a live room but behaves like a fully programmable instrument."
-        ]
-      },
-      {
-        heading: "Explore the Studio",
-        headingLevel: 3,
-        content: [
-          "To see the hybrid rig in action, view my gear list, check out my latest covers, or review my full 30-year discography, visit my dedicated studio site."
-        ],
-        cta: {
-          label: "Visit tyleringersolldrums.com",
-          url: "https://tyleringersolldrums.com",
-          external: true
-        }
       }
     ],
     contact: [

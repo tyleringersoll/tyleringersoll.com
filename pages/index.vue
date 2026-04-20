@@ -164,9 +164,6 @@
       </div>
     </section>
 
-    <!-- ===================== ABOUT THIS SITE ===================== -->
-    <BentoShowcase :sections="showcase" />
-
     <!-- ===================== BEYOND WORK ===================== -->
     <section class="hv2-beyond">
       <div class="hv2-inner">
@@ -225,7 +222,6 @@ const eng  = computed(() => pg.value.engineering     || {});
 const mus  = computed(() => pg.value.music           || {});
 const bey  = computed(() => pg.value.beyond          || {});
 
-const showcase = computed(() => store.content?.siteShowcase || []);
 
 const activeCard = ref(null);
 

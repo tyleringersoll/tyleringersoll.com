@@ -2,10 +2,8 @@
   <footer v-if="content" class="footer">
     <section class="footer-connect">
       <div class="footer-inner">
-        <template v-if="!isContactPage">
-          <h2 class="footer-heading">{{ connect.heading }}</h2>
-          <p class="footer-sub">{{ connect.subtext }}</p>
-        </template>
+        <h2 class="footer-heading">{{ connect.heading }}</h2>
+        <p class="footer-sub">{{ connect.subtext }}</p>
 
         <div class="footer-social-circles">
           <a
@@ -22,7 +20,7 @@
           </a>
         </div>
 
-        <div v-if="!isContactPage" class="footer-cta-wrap">
+        <div class="footer-cta-wrap">
           <a href="mailto:tyler@ingersoll.dev" class="footer-btn">{{ connect.cta }}</a>
         </div>
       </div>
@@ -52,8 +50,6 @@ const props = defineProps({
 });
 
 const store = useContentStore();
-const route = useRoute();
-const isContactPage = computed(() => route.path === '/contact');
 
 const connect = computed(() => store.content?.homePage?.connect || {});
 
