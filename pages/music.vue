@@ -7,7 +7,7 @@
       class="music-section"
       :class="{ 'music-section--alt': gIdx % 2 !== 0 }"
     >
-      <div class="music-inner">
+      <div class="music-inner" :class="{ 'music-inner--two-col': isTwoColGroup(group) }">
         <template v-for="{ entry, idx } in group.entries" :key="idx">
           <!-- Section heading (h2 with no content, no roles) -->
           <h2
@@ -15,9 +15,28 @@
             class="section-heading"
             v-html="entry.heading"
           />
+          <!-- Credits list -->
+          <ul v-else-if="entry.credits" class="credits-list">
+            <li v-for="credit in entry.credits" :key="credit.title" class="credits-list__item">
+              <span class="credits-list__title">{{ credit.title }}</span>
+              <span class="credits-list__detail">{{ credit.detail }}</span>
+            </li>
+          </ul>
           <!-- Regular article (no roles) -->
           <template v-else-if="!entry.roles">
-            <template v-if="entry.cta">
+            <template v-if="entry.cta && isTwoColGroup(group)">
+              <a
+                :href="entry.cta.url"
+                :target="entry.cta.external ? '_blank' : null"
+                :rel="entry.cta.external ? 'noopener noreferrer' : null"
+                class="music-studio-callout"
+              >
+                <p class="music-studio-callout__label">{{ entry.heading }}</p>
+                <p v-for="(para, i) in entry.content" :key="i" v-html="para" />
+                <span class="music-studio-callout__cta">{{ entry.cta.label }} →</span>
+              </a>
+            </template>
+            <template v-else-if="entry.cta">
               <div class="music-cta-card">
                 <Article :article="entry" :index="idx" />
                 <div class="music-cta-wrap">
@@ -103,6 +122,11 @@ const sectionGroups = computed(() => {
 
   return groups;
 });
+
+const isTwoColGroup = (group) => {
+  const entries = group.entries.map(e => e.entry);
+  return entries.some(e => e.cta) && entries.some(e => !e.cta && !e.roles && e.content?.length);
+};
 
 const expandedRoles = ref(new Set());
 
@@ -203,6 +227,82 @@ watch(musicContent, () => handleHash(route.hash));
   }
 }
 
+// ─── Two-column layout ────────────────────────────────────────────────────────
+
+.music-inner--two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+
+  @include respond-below(md) {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+// ─── Studio sidebar callout ───────────────────────────────────────────────────
+
+.music-studio-callout {
+  display: block;
+  background-color: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-link);
+  border-radius: 8px;
+  padding: 1.25rem 1.25rem 1.25rem 1.1rem;
+  text-decoration: none;
+  color: inherit;
+  @include transition(all);
+
+  @include respond-to(md) {
+    margin-top: 4.1rem;
+  }
+
+  p {
+    margin: 0 0 0.4rem;
+    font-size: 0.88rem;
+    line-height: 1.65;
+    color: var(--color-text-secondary);
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  &__label {
+    margin-bottom: 0.6rem !important;
+    font-size: 0.7rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-accent-line) !important;
+  }
+
+  &__cta {
+    display: inline-block;
+    margin-top: 0.75rem;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--color-link);
+    @include transition(color);
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    border-color: var(--color-link-hover);
+    border-left-color: var(--color-link-hover);
+
+    .music-studio-callout__cta {
+      color: var(--color-link-hover);
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 3px;
+  }
+}
+
 // ─── Section headings ────────────────────────────────────────────────────────
 
 .section-heading {
@@ -261,6 +361,41 @@ watch(musicContent, () => handleHash(route.hash));
   &:focus-visible {
     outline: 2px solid var(--color-focus);
     outline-offset: 3px;
+  }
+}
+
+// ─── Selected Credits list ───────────────────────────────────────────────────
+
+.credits-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+
+  &__item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem;
+    padding: $spacing-sm 0;
+    border-bottom: 1px solid var(--color-border);
+
+    &:first-child {
+      border-top: 1px solid var(--color-border);
+    }
+  }
+
+  &__title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+
+  &__detail {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
   }
 }
 

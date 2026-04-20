@@ -160,7 +160,7 @@ const formatCategory = (key) => {
     languages: 'Languages',
     frameworks: 'Frameworks',
     infrastructure: 'Infrastructure & Tools',
-    concepts: 'Concepts',
+    concepts: 'Architecture & Methodologies',
   };
   return labels[key] ?? (key.charAt(0).toUpperCase() + key.slice(1));
 };

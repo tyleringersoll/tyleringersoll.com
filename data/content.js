@@ -133,7 +133,6 @@ export default {
           "• <strong>SCSS & CSS Custom Properties:</strong> A hand-rolled design system using scoped SCSS modules and CSS custom properties powers the dual-theme color system and responsive layout.",
           "• <strong>SCSS Auto-injection via Vite:</strong> Variables and mixins are injected into every component's style block automatically via Vite's <code>preprocessorOptions.additionalData</code> config. No <code>@import</code> needed in any <code>.vue</code> file. It is a developer ergonomics decision that eliminates boilerplate without changing the output.",
           "• <strong>Page Transitions:</strong> A global fade transition is configured via <code>pageTransition</code> in <code>nuxt.config.ts</code>, with a dedicated <code>_fade.scss</code> partial handling the enter/leave animation classes Nuxt applies during route changes.",
-          "• <strong>Netlify Deployment:</strong> Commits trigger automated builds and deploy pre-rendered output to Netlify's edge CDN."
         ]
       },
       {
@@ -182,6 +181,14 @@ export default {
         content: [
           "The resume timeline supports URL hash navigation. Visiting /resume#best-egg automatically expands all of that employer's roles and scrolls to the section. The homepage links to specific employers this way, so the experience feels like navigating directly into a document rather than landing on a page and hunting for content.",
           "The implementation watches <code>route.hash</code>, matches it against a slugified employer heading, and adds the matching entries to an <code>expandedRoles</code> Set. It then calls a custom <code>useScrollToHash</code> composable that uses <code>nextTick</code> plus <code>requestAnimationFrame</code> to wait for the DOM before computing scroll position. The offset calculation accounts for the sticky header height so the section heading is never obscured on arrival."
+        ]
+      },
+      {
+        id: "cicd-delivery",
+        heading: "CI/CD & Edge Delivery",
+        headingLevel: 2,
+        content: [
+          "I treat deployment and infrastructure as core components of the frontend architecture. This repository is connected to an automated CI/CD pipeline. Every push triggers a strict build process that generates immutable, pre-rendered static assets, which are then distributed globally via Netlify's edge CDN. This guarantees instant cache invalidation on deployments and maximum availability for end users."
         ]
       },
       {
@@ -397,7 +404,7 @@ export default {
         headingLevel: 2,
         heading: "Music & Production",
         content: [
-          "After decades of touring under label support and tracking in major rooms, my focus is now entirely on my home studio. I spend my time outside of engineering producing remote drum sessions and creating content using a custom hybrid recording architecture."
+          "My approach to tracking is built on 30 years of live energy and major-label studio discipline. Today, I operate a custom hybrid drumset in my studio designed to deliver the feel of a live performance with the absolute precision of digital production."
         ]
       },
       {
@@ -480,6 +487,18 @@ export default {
               "Began serious studio work with this alt-hard rock project, playing drums and bass and tracking multiple full-length independent records."
             ]
           }
+        ]
+      },
+      {
+        heading: "Selected Credits",
+        headingLevel: 2,
+        content: []
+      },
+      {
+        credits: [
+          { title: "The Crash Motive – Consequence (LP)", detail: "Tracked at Avatar Studios (NYC) & The Pass (LA)." },
+          { title: "Fantastic 4: The Album (Soundtrack)", detail: "Wind-up Records." },
+          { title: "Sync Placements", detail: "Super Bowl XLII, Madden NFL 2007, ESPN NFL Live." }
         ]
       },
       {
