@@ -12,7 +12,7 @@
             <p
               v-for="(para, i) in heroSection.content"
               :key="i"
-              class="hv2-hero__body"
+              :class="['hv2-hero__body', { 'hv2-hero__bridge': i === heroSection.content.length - 1 }]"
               v-html="para"
             />
             <div class="hv2-hero__actions">
@@ -448,6 +448,16 @@ const icons = {
     &:last-of-type {
       margin-bottom: 0;
     }
+  }
+
+  &__bridge {
+    margin-top: 1.5rem;
+    padding: 0.9rem 1rem 0.9rem 1.1rem;
+    border-left: 3px solid var(--color-accent-line);
+    font-size: 0.95rem;
+    font-style: italic;
+    color: var(--color-text-secondary);
+    line-height: 1.65;
   }
 
   &__actions {

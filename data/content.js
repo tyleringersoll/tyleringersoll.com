@@ -17,7 +17,8 @@ export default {
         headingLevel: 2,
         content: [
           "Currently, I lead a team at Best Egg focused on building reliable, customer-facing applications that help millions of people. Over the years, I’ve built enterprise frontend solutions for Fortune 500 brands like Vanguard, Bank of America, and DuPont.",
-          "When I’m not working my day job, I’m likely found behind a drum kit in my studio. I’ve spent the last three decades touring with label-supported bands, recording, and producing music. Today, I track remote drum sessions for other artists from my home studio in Pennsylvania. <a href=’https://tyleringersolldrums.com’ target=’_blank’ rel=’noopener noreferrer’>Explore My Drum Studio</a>."
+          "When I’m not working my day job, I’m likely found behind a drum kit in my studio. I’ve spent the last three decades touring with label-supported bands, recording, and producing music. Today, I track remote drum sessions for other artists from my home studio in Pennsylvania. <a href=’https://tyleringersolldrums.com’ target=’_blank’ rel=’noopener noreferrer’>Explore My Drum Studio</a>.",
+          "Whether I am architecting a scalable frontend payment platform or tracking drums for a remote session, the discipline is exactly the same: build a solid foundation, serve the needs of the project, and leave no room for sloppy execution."
         ]
       },
       {
@@ -376,8 +377,14 @@ export default {
         headingLevel: 2,
         heading: "Music & Production",
         content: [
-          "My approach to tracking is built on 30 years of live performance and major-label studio discipline. Today, I record using a custom hybrid drumset in my studio designed to deliver the energy and feel of a live performance with the absolute precision of digital production."
+          "My approach to tracking is built on 30 years of live performance and major-label studio discipline. Today, I record using a custom hybrid drumset in my studio designed to deliver the exact stage performance with the absolute precision of digital production."
         ]
+      },
+      {
+        headingLevel: 2,
+        type: "hero-image",
+        src: "/images/studio_kit.jpeg",
+        alt: "Hybrid drum kit in Tyler's home studio"
       },
       {
         heading: "The Hybrid Rig",
@@ -399,6 +406,26 @@ export default {
           url: "https://tyleringersolldrums.com",
           external: true
         }
+      },
+      {
+        headingLevel: 2,
+        heading: "Discography & Recognition",
+        albums: [
+          { title: "The Crash Motive — Consequence", year: "2007", label: "Wind-up Records", image: "/images/thecrashmotive_consequence.webp", alt: "The Crash Motive – Consequence", url: "https://youtube.com/playlist?list=OLAK5uy_lOh9gG0GIkTXg2aFo5j4g97_C2AysYEpE&si=rPypzHo8Ptd-fLdb" },
+          { title: "Fantastic Four: The Album", year: "2005", label: "Wind-up Records", image: "/images/fantastic4_thealbum.webp", alt: "Fantastic Four: The Album", url: "https://youtu.be/WvEj9uWOo04?si=7XOafsoygKkG2uF6" },
+          { title: "Omnisoul — Happy Outside", year: "2004", label: "Independent", image: "/images/omnisoul_happyoutside.webp", alt: "Omnisoul – Happy Outside", url: "https://youtube.com/playlist?list=OLAK5uy_kyIVrwfzRWBveu2Tq6yNvsb8rYzj5fqVE&si=yAKZ_yXK7p4jgEj6" },
+          { title: "Omnisoul — Climbing Ladders", year: "2002", label: "Independent", image: "/images/omnisoul_climbingladders.jpg", alt: "Omnisoul — Climbing Ladders", url: null }
+        ],
+        placements: [
+          "Super Bowl XLII",
+          "Madden NFL 2007",
+          "Fantastic Four (2005 Film)",
+          "CBS — Joan of Arcadia",
+          "NBC — Friday Night Lights",
+          "ESPN NFL Live",
+          "30+ NFL / MLB / NCAA / NHL stadiums"
+        ],
+        recording: "<em>Consequence</em> (LP, 2007). Produced by Don Gilmore and Gregg Wattenberg. Tracked at Avatar Studios, New York City and The Pass Recording Studio, Los Angeles. Mixed by Bob Clearmountain and Mark Endert. Mastered by Ted Jensen at Sterling Sound. Wind-up Records. Drum! magazine: &ldquo;demonstrates the sort of pop-with-power sensibility that career dreams are made of.&rdquo;<br><br><em>Fantastic Four: The Album</em> (Soundtrack, 2005). Omnisoul&rsquo;s &ldquo;Waiting (Save Your Life)&rdquo; appeared on this Wind-up Records release alongside a full major-label roster. Drums tracked at Avatar Studios, New York City.<br><br><em>Happy Outside</em> (LP, 2004). Self-produced and recorded between touring stints in 2003 and 2004. Mixed by Grammy-winning engineer Phil Nicolo at Studio 4, Conshohocken, PA. Nicolo also stepped in to track the standout single, &ldquo;Waiting (Save Your Life).&rdquo;<br><br><em>Climbing Ladders</em> (LP, 2002). Independently released and recorded."
       },
       {
         heading: "Timeline",
@@ -485,18 +512,6 @@ export default {
           }
         ]
       },
-      {
-        heading: "Selected Credits",
-        headingLevel: 2,
-        content: []
-      },
-      {
-        credits: [
-          { title: "The Crash Motive – Consequence (LP)", detail: "Tracked at Avatar Studios (NYC) & The Pass (LA)." },
-          { title: "Fantastic 4: The Album (Soundtrack)", detail: "Wind-up Records." },
-          { title: "Sync Placements", detail: "Super Bowl XLII, Madden NFL 2007, ESPN NFL Live." }
-        ]
-      }
     ],
     contact: [
       {

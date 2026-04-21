@@ -1,17 +1,20 @@
 <template>
   <div v-if="musicContent" class="music-page">
-    <!-- Article sections (intro, hybrid rig, explore) -->
     <section
       v-for="(group, gIdx) in sectionGroups"
       :key="gIdx"
       class="music-section"
-      :class="{ 'music-section--alt': gIdx % 2 !== 0 }"
+      :class="{
+        'music-section--alt': isAltSection(gIdx),
+        'music-section--hero': isHeroGroup(group)
+      }"
+      :style="heroStyle(group)"
     >
-      <div class="music-inner" :class="{ 'music-inner--two-col': isTwoColGroup(group) }">
+      <div v-if="!isHeroGroup(group)" class="music-inner" :class="{ 'music-inner--two-col': isTwoColGroup(group) }">
         <template v-for="{ entry, idx } in group.entries" :key="idx">
           <!-- Section heading (h2 with no content, no roles) -->
           <h2
-            v-if="entry.headingLevel === 2 && (!entry.content || entry.content.length === 0) && !entry.roles"
+            v-if="entry.headingLevel === 2 && (!entry.content || entry.content.length === 0) && !entry.roles && !entry.albums"
             class="section-heading"
             v-html="entry.heading"
           />
@@ -22,6 +25,35 @@
               <span class="credits-list__detail">{{ credit.detail }}</span>
             </li>
           </ul>
+          <!-- Discography & Recognition -->
+          <template v-else-if="entry.albums">
+            <h2 class="section-heading" v-html="entry.heading" />
+            <div class="music-discography-grid">
+              <figure v-for="album in entry.albums" :key="album.title" class="music-discography-item">
+                <a v-if="album.url" :href="album.url" target="_blank" rel="noopener noreferrer" class="music-discography-link">
+                  <img :src="album.image" :alt="album.alt" />
+                  <span class="music-discography-overlay">Listen on YouTube</span>
+                </a>
+                <img v-else :src="album.image" :alt="album.alt" class="music-discography-img" />
+                <figcaption>
+                  <span class="music-discography-title">{{ album.title }}</span>
+                  <span v-if="album.year" class="music-discography-meta">{{ album.year }}<template v-if="album.label"> · {{ album.label }}</template></span>
+                </figcaption>
+              </figure>
+            </div>
+            <div class="music-recognition">
+              <div class="music-recognition__col">
+                <p class="music-recognition__label">Sync Placements & Media</p>
+                <ul class="music-placement-tags">
+                  <li v-for="placement in entry.placements" :key="placement">{{ placement }}</li>
+                </ul>
+              </div>
+              <div class="music-recognition__col">
+                <p class="music-recognition__label">Recording</p>
+                <p class="music-recognition__detail" v-html="entry.recording" />
+              </div>
+            </div>
+          </template>
           <!-- Regular article (no roles) -->
           <template v-else-if="!entry.roles">
             <template v-if="entry.cta && isTwoColGroup(group)">
@@ -122,6 +154,17 @@ const sectionGroups = computed(() => {
 
   return groups;
 });
+
+const isAltSection = (gIdx) => gIdx >= 2 && gIdx % 2 === 0;
+
+const isHeroGroup = (group) =>
+  group.entries.some(e => e.entry.type === 'hero-image');
+
+const heroStyle = (group) => {
+  const hero = group.entries.find(e => e.entry.type === 'hero-image');
+  if (!hero) return {};
+  return { backgroundImage: `url(${hero.entry.src})` };
+};
 
 const isTwoColGroup = (group) => {
   const entries = group.entries.map(e => e.entry);
@@ -300,6 +343,163 @@ watch(musicContent, () => handleHash(route.hash));
   &:focus-visible {
     outline: 2px solid var(--color-focus);
     outline-offset: 3px;
+  }
+}
+
+// ─── Studio hero image (full-bleed background) ───────────────────────────────
+
+.music-section--hero {
+  padding: 0;
+  height: clamp(260px, 38vw, 460px);
+  background-size: cover;
+  background-position: center top;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+// ─── Discography & Recognition ───────────────────────────────────────────────
+
+.music-credits-section {
+  background-color: var(--color-bg-primary);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.music-discography-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  margin-top: $spacing-md;
+
+  @include respond-below(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.music-discography-item {
+  margin: 0;
+  background-color: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  overflow: hidden;
+
+  figcaption {
+    padding: 0.45rem 0.75rem 0.55rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .music-discography-title {
+    font-size: 0.76rem;
+    line-height: 1.3;
+    color: var(--color-text-secondary);
+  }
+
+  .music-discography-meta {
+    font-size: 0.68rem;
+    color: var(--color-text-muted);
+    letter-spacing: 0.04em;
+  }
+}
+
+.music-discography-link {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    @include transition(transform);
+  }
+
+  &:hover img {
+    transform: scale(1.04);
+  }
+
+  &:hover .music-discography-overlay {
+    opacity: 1;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: -2px;
+  }
+}
+
+.music-discography-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0;
+  pointer-events: none;
+  @include transition(opacity);
+}
+
+.music-discography-img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.music-recognition {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  margin-top: $spacing-lg;
+  padding-top: $spacing-lg;
+  border-top: 1px solid var(--color-border);
+
+  @include respond-below(md) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  &__label {
+    margin: 0 0 0.75rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-accent-line);
+  }
+
+  &__detail {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.65;
+    color: var(--color-text-secondary);
+  }
+}
+
+.music-placement-tags {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+
+  li {
+    display: inline-flex;
+    padding: 0.3rem 0.7rem;
+    background-color: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 9999px;
+    font-size: 0.78rem;
+    color: var(--color-text-secondary);
   }
 }
 
