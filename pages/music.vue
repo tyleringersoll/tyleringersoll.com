@@ -352,7 +352,7 @@ watch(musicContent, () => handleHash(route.hash));
   padding: 0;
   height: clamp(260px, 38vw, 460px);
   background-size: cover;
-  background-position: center top;
+  background-position: center 35%;
   border-top: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
 }
