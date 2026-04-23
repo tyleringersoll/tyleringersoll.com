@@ -44,9 +44,9 @@
             <div class="skills-grid">
               <div v-for="(items, category) in entry.skills" :key="category" class="skills-bucket">
                 <h3 class="skills-bucket__heading">{{ formatCategory(category) }}</h3>
-                <ul class="skills-bucket__list">
-                  <li v-for="skill in items" :key="skill">{{ skill }}</li>
-                </ul>
+                <div class="skills-bucket__badges">
+                  <span v-for="skill in items" :key="skill" class="skill-badge">{{ skill }}</span>
+                </div>
               </div>
             </div>
           </article>
@@ -375,22 +375,32 @@ watch(resumeContent, () => handleHash(route.hash));
     text-transform: uppercase;
     color: var(--color-accent-line);
     margin: 0 0 $spacing-sm;
-    padding-bottom: $spacing-xs;
-    border-bottom: 1px solid var(--color-border);
   }
 
-  &__list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  &__badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+}
 
-    li {
-      font-size: 0.88rem;
-      line-height: 1.8;
-      color: var(--color-text-secondary);
-      padding: 0;
-      margin: 0;
-    }
+.skill-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.85rem;
+  font-weight: 500;
+  line-height: 1;
+  padding: 0.4rem 0.85rem;
+  border-radius: 50px;
+  background-color: color-mix(in srgb, var(--color-bg-surface) 60%, transparent);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+  white-space: nowrap;
+  @include transition(all);
+
+  &:hover {
+    background-color: var(--color-bg-surface);
+    transform: translateY(-2px);
   }
 }
 

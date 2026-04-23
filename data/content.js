@@ -362,10 +362,10 @@ export default {
         heading: "Technical Skills",
         headingLevel: 2,
         skills: {
-          languages: ["JavaScript", "TypeScript", "HTML5", "CSS/SCSS", "Python"],
-          frameworks: ["Angular", "Vue.js", "Nuxt 3", "NestJS", "Django"],
-          infrastructure: ["Node.js", "Nginx", "Docker", "AWS", "GitHub Actions", "Netlify"],
-          concepts: ["Web Components", "Design Systems", "SSR", "Accessibility (WCAG 2.2 AA)", "CI/CD"]
+          languages: ["JavaScript", "TypeScript", "HTML5", "CSS/SCSS", "Python", "SQL"],
+          frameworks: ["Angular", "Vue.js", "Nuxt 3", "NestJS", "Django", "Tailwind CSS", "Angular Material"],
+          infrastructure: ["Node.js", "Nginx", "Docker", "AWS", "GitHub Actions", "Netlify", "DataDog", "Figma", "Cursor AI", "GitHub Copilot"],
+          concepts: ["Web Components", "Design Systems", "SSR", "Accessibility (WCAG)", "CI/CD", "State Management", "Content Security Policy"]
         }
       }
     ],
