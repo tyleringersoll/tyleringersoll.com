@@ -17,7 +17,7 @@ export default {
         headingLevel: 2,
         content: [
           "I lead an engineering team focused on building reliable, customer-facing applications that help millions of people. Over the years, I’ve built enterprise frontend solutions for brands like Vanguard, Bank of America, and DuPont.",
-          "Outside of work, I’m likely found behind a drumset in my studio. I’ve spent the last three decades touring, recording with a label-supported band, and producing music. Today, I track drums from my home studio in Pennsylvania.",
+          "Outside of work, I’m a professional drummer. I’ve spent the last three decades touring and recording, and today I run a custom hybrid drum studio right here in Pennsylvania.",
         ]
       },
       {
@@ -31,7 +31,7 @@ export default {
         heading: "Engineering",
         headingLevel: 4,
         content: [
-         "I build frontend applications using frameworks like Vue and Angular, or lighter, native web technologies when the project calls for it. My work spans everything from high-volume landing pages and payment flows to specialized fintech integrations and real-time hardware control software. Over the years, I’ve touched almost every corner of the frontend ecosystem—whether that means rolling out division-wide design systems or modernizing legacy architectures so they can scale securely.",
+          "I build frontend applications using frameworks like Vue and Angular, or lighter, native web technologies when the project calls for it. My work spans everything from high-volume landing pages and payment flows to specialized fintech integrations and real-time hardware control software. Over the years, I’ve touched almost every corner of the frontend ecosystem—whether that means rolling out division-wide design systems or modernizing legacy architectures so they can scale securely.",
           "<a href='/resume'>View my full resume →</a>"
         ]
       },
@@ -40,7 +40,7 @@ export default {
         heading: "Music",
         headingLevel: 4,
         content: [
-          "I've played drums professionally for over three decades, spending my time touring and recording under label support, and then anchoring large-scale events from the Mid-Atlantic down to Key West."
+          "I've played drums professionally for over three decades, touring and recording under label support before anchoring large-scale events from the Mid-Atlantic down to Key West. After years on the road, I'm now spending less time playing live and more time in my home studio, focusing on the recording process."
         ]
       },
       {
@@ -76,10 +76,10 @@ export default {
       music: {
         studioLabel: "Hybrid Drum Tracking Setup",
         studio: {
-          text: "Now, I track remote sessions and shoot video content using a hybrid drum setup that pairs live cymbals with nearly-silent mesh drum heads. By using triggers to capture the exact performance as clean MIDI data, this setup delivers the best of both worlds: the human energy of a live performance, the punch and saturation of real cymbals through API preamps, and total digital control to swap drum sounds using any library you choose.",
+          text: "Today, I track remote sessions and shoot video content using a hybrid rig that pairs live cymbals with silent mesh heads. By capturing the exact performance as clean MIDI data alongside analog audio through API preamps, it delivers the human energy of a live performance with total digital control.",
           url: "https://tyleringersolldrums.com",
           external: true,
-          ctaText: "Explore my drum studio"
+          ctaText: "Explore my session work, gear, and videos at tyleringersolldrums.com"
         },
         cta: "Learn more about my music"
       },
@@ -374,7 +374,7 @@ export default {
         headingLevel: 2,
         heading: "Music & Production",
         content: [
-          "My approach to tracking is built on 30 years of live performance and major-label studio discipline. Today, I record using a custom hybrid drumset in my studio designed to deliver the exact stage performance with the absolute precision of digital production."
+          "My approach to playing is built on 30 years of live performance, national touring, and major-label studio discipline. Today, my focus is entirely on tracking remote sessions from my custom home studio. Below is a look back at my discography and touring history—but if you're looking for my current session work, you'll want to head over to my dedicated studio site."
         ]
       },
       {
@@ -387,9 +387,11 @@ export default {
         heading: "The Hybrid Rig",
         headingLevel: 2,
         content: [
-          "After taking a step back from professional drum work for nearly a decade, a 2024 reunion show with Omnisoul at World Cafe Live Philly brought everything I loved about drums back into focus. It led directly to building the recording rig I use today in my home studio: a custom hybrid setup engineered for professional remote tracking.",
-          "The kit uses nearly silent mesh drum heads. When a mesh head is struck, it fires a piezo trigger through the eDRUMin interface, which converts each hit into precise, low-latency MIDI note data. That MIDI feeds directly into my DAW for sample selection, mixing, and any post-performance editing the session requires. Nothing is approximated. Every dynamic nuance is captured.",
-          "The cymbals are acoustic Zildjians, live in my acoustically-treated dead room, running through an API 3124V preamp and Universal Audio x8 digital conversion. The API preamp preserves the full overtone wash of the acoustic source with legendary saturation and clarity. The result pairs the natural cymbal bloom of a live drum room with total digital control over every drum hit — the combination producers actually need."
+          "After stepping back from professional drum work for nearly a decade, a 2024 reunion show with Omnisoul at World Cafe Live Philly brought everything I loved about the kit back into focus. It also sparked an obsession with building the ultimate hybrid recording rig.",
+
+          "Today, I track from my home studio using a custom hybrid drumset designed to capture the exact nuance of a stage performance with the flexibility of digital production. The kit utilizes nearly-silent mesh heads fitted with piezo triggers, running through an eDRUMin interface to capture flawless, low-latency MIDI data. Every dynamic nuance is translated directly to the DAW, allowing for complete control of the drum sound.",
+
+          "To preserve the natural bloom and wash of the room, the acoustic Zildjian cymbals are mic'd live and run through an API 3124V analog preamp into a Universal Audio x8. The result pairs the human energy and analog saturation of a live performance with total digital control over the drum mix, giving you exactly what the track needs."
         ]
       },
       {
@@ -425,25 +427,9 @@ export default {
         recording: "<em>Consequence</em> (LP, 2007). Produced by Don Gilmore and Gregg Wattenberg. Tracked at Avatar Studios, New York City and The Pass Recording Studio, Los Angeles. Mixed by Bob Clearmountain and Mark Endert. Mastered by Ted Jensen at Sterling Sound. Wind-up Records. Drum! magazine: &ldquo;demonstrates the sort of pop-with-power sensibility that career dreams are made of.&rdquo;<br><br><em>Fantastic Four: The Album</em> (Soundtrack, 2005). Omnisoul&rsquo;s &ldquo;Waiting (Save Your Life)&rdquo; appeared on this Wind-up Records release alongside a full major-label roster. Drums tracked at Avatar Studios, New York City.<br><br><em>Happy Outside</em> (LP, 2004). Self-produced and recorded between touring stints in 2003 and 2004. Mixed by Grammy-winning engineer Phil Nicolo at Studio 4, Conshohocken, PA. Nicolo also stepped in to track the standout single, &ldquo;Waiting (Save Your Life).&rdquo;<br><br><em>Climbing Ladders</em> (LP, 2002). Independently released and recorded."
       },
       {
-        heading: "Timeline",
+        heading: "Past Projects",
         headingLevel: 2,
         content: []
-      },
-      {
-        heading: "Remote/Hybrid Studio",
-        headingLevel: 3,
-        years: "2024 - Present",
-        roles: [
-          {
-            subheading: "Producer & Session Drummer · 2024 - Present",
-            content: [
-              "• Launched a professional remote tracking studio following two years of intensive research and iterative engineering to perfect a custom hybrid recording rig.",
-              "• Bridge the gap between acoustic character and digital control by tracking live Zildjian cymbals through a dedicated API 3124 analog chain, paired with a flawless MIDI translation triggered by physical hits on mesh heads via an eDRUMin 8 interface.",
-              "• Provide real-time remote co-production, streaming high-quality studio audio and video directly to client monitors to dial in arrangements on the fly.",
-              "• Deliver mix-ready 24-bit / 96kHz WAV files and raw MIDI data within a one-week turnaround, offering clients live cymbal audio, full post-production flexibility, and optional direct bass tracking."
-            ]
-          }
-        ]
       },
       {
         heading: "SpeakerCity Band",
