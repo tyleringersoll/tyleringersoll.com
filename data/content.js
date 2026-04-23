@@ -54,9 +54,7 @@ export default {
     ],
     homePage: {
       hero: {
-        eyebrow: "Frontend Architect & Engineering Leader",
-        primaryCta: "View My Work",
-        secondaryCta: "Learn More About Me"
+        eyebrow: "Frontend Architect & Engineering Leader"
       },
       engineering: {
         competenciesLabel: "Competencies",

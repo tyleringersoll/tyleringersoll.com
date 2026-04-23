@@ -18,10 +18,7 @@
               class="hv2-hero__body"
               v-html="para"
             />
-            <div class="hv2-hero__actions">
-              <a href="#engineering" class="hv2-btn hv2-btn--primary">{{ hero.primaryCta }}</a>
-              <a href="#music" class="hv2-btn hv2-btn--ghost">{{ hero.secondaryCta }}</a>
-            </div>
+
           </div>
 
           <!-- Profile portrait -->
@@ -429,20 +426,7 @@ const icons = {
 
 
 
-  &__actions {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    margin-top: 2rem;
 
-    @include respond-below(sm) {
-      flex-direction: column;
-
-      .hv2-btn {
-        width: 100%;
-      }
-    }
-  }
 
   &__visual {
     grid-column: 7 / -1;
