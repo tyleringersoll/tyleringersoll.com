@@ -229,7 +229,7 @@ watch(resumeContent, () => handleHash(route.hash));
 }
 
 .resume-inner {
-  max-width: 900px;
+  max-width: 1200px;
   width: 100%;
   margin: 0 auto;
   padding: 0 $container-padding-x;

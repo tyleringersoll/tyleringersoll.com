@@ -122,7 +122,7 @@ const circ = 2 * Math.PI * 34;
 }
 
 .arch-inner {
-  max-width: 900px;
+  max-width: 1200px;
   width: 100%;
   margin: 0 auto;
   padding: 0 $container-padding-x;
