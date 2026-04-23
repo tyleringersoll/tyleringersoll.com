@@ -16,8 +16,8 @@ export default {
         heading: "Hi, I’m Tyler",
         headingLevel: 2,
         content: [
-          "Currently, I lead an engineering team focused on building reliable, customer-facing applications that help millions of people. Over the years, I’ve built enterprise frontend solutions for Fortune 500 brands like Vanguard, Bank of America, and DuPont.",
-          "When I’m not working my day job, I’m likely found behind my drumset in my studio. I’ve spent the last three decades touring with label-supported bands, recording, and producing music. Today, I track remote drum sessions from my home studio in Pennsylvania. <a href='https://tyleringersolldrums.com' target='_blank' rel='noopener noreferrer'>Explore My Drum Studio&nbsp;→</a>.",
+          "I lead an engineering team focused on building reliable, customer-facing applications that help millions of people. Over the years, I’ve built enterprise frontend solutions for brands like Vanguard, Bank of America, and DuPont.",
+          "Outside of work, I’m likely found behind a drumset in my studio. I’ve spent the last three decades touring, recording with a label-supported band, and producing music. Today, I track drums from my home studio in Pennsylvania.",
         ]
       },
       {
@@ -31,7 +31,7 @@ export default {
         heading: "Engineering",
         headingLevel: 4,
         content: [
-          "I build frontend applications using frameworks like Angular and Vue.js, and I guide the teams that ship them. My expertise spans from core identity and payment processing, to specialized third-party fintech integrations and real-time hardware control software. Over my career, I’ve worked across most of the frontend ecosystem—whether that means rolling out division-wide design systems or modernizing legacy architectures so they can scale securely.",
+         "I build frontend applications using frameworks like Vue and Angular, or lighter, native web technologies when the project calls for it. My work spans everything from high-volume landing pages and payment flows to specialized fintech integrations and real-time hardware control software. Over the years, I’ve touched almost every corner of the frontend ecosystem—whether that means rolling out division-wide design systems or modernizing legacy architectures so they can scale securely.",
           "<a href='/resume'>View my full resume →</a>"
         ]
       },
@@ -40,7 +40,7 @@ export default {
         heading: "Music",
         headingLevel: 4,
         content: [
-          "With over three decades behind the kit, I've moved my playing out of the venues and into the studio. After years of touring nationally under label support, and later anchoring massive university events and sports complexes from the Mid-Atlantic to Key West, my focus is now entirely on production. Today, I track remote sessions and shoot drum videos using a hybrid setup that pairs the energy of live cymbals with total digital control."
+          "I've played drums professionally for over three decades, spending my time touring and recording under label support, and then anchoring large-scale events from the Mid-Atlantic down to Key West."
         ]
       },
       {
@@ -48,7 +48,7 @@ export default {
         heading: "Beyond work",
         headingLevel: 3,
         content: [
-          "When I’m not writing code or tracking drums, you can usually find me riding one of my bikes, or trying to keep up with my two kids. I’m a craft beer and bourbon fan, enjoy firing up the grill, and am based in Kennett Square, Pennsylvania."
+          "When I’m not writing code or tracking drums, you can usually find me riding one of my bikes, or trying to keep up with my two kids. I’m a craft beer and bourbon fan, enjoy firing up the grill, and am based in southeastern Pennsylvania."
         ]
       }
     ],
@@ -71,17 +71,17 @@ export default {
           { name: "Vanguard", description: "FAS Design System & SPA Framework", url: "/resume#vanguard" },
           { name: "Agilent Technologies", description: "Instrument Control UI & Data Visualization", url: "/resume#technical-writers-inc" }
         ],
-        cta: "View Full Resume"
+        cta: "View my full resume"
       },
       music: {
         studioLabel: "Hybrid Drum Tracking Setup",
         studio: {
-          text: "I spent two years engineering a custom hybrid drum kit to record pro-level tracks. I pair live cymbals with nearly-silent mesh heads. When struck, the heads fire a piezo trigger through the eDRUMin interface to output precise MIDI data to my DAW. The setup captures the energy of a live room while maintaining total post-performance control.",
+          text: "Now, I track remote sessions and shoot video content using a hybrid drum setup that pairs live cymbals with nearly-silent mesh drum heads. By using triggers to capture the exact performance as clean MIDI data, this setup delivers the best of both worlds: the human energy of a live performance, the punch and saturation of real cymbals through API preamps, and total digital control to swap drum sounds using any library you choose.",
           url: "https://tyleringersolldrums.com",
           external: true,
-          ctaText: "Explore My Drum Studio"
+          ctaText: "Explore my drum studio"
         },
-        cta: "More About My Music"
+        cta: "Learn more about my music"
       },
       beyond: {
         cards: [

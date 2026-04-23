@@ -1,11 +1,9 @@
 <template>
   <div class="hv2">
-
     <!-- ===================== HERO ===================== -->
     <section class="hv2-hero">
       <div class="hv2-inner">
         <div class="hv2-hero__grid">
-
           <div class="hv2-hero__kicker">
             <p class="hv2-eyebrow">{{ hero.eyebrow }}</p>
             <h1 class="hv2-hero__heading">{{ heroSection.heading }}</h1>
@@ -18,7 +16,6 @@
               class="hv2-hero__body"
               v-html="para"
             />
-
           </div>
 
           <!-- Profile portrait -->
@@ -30,7 +27,6 @@
               draggable="false"
             />
           </div>
-
         </div>
       </div>
     </section>
@@ -40,11 +36,12 @@
       <div class="hv2-inner">
         <h2>{{ engineeringSection.heading }}</h2>
         <div class="hv2-two-col">
-
           <div class="hv2-engineering__left">
             <p v-html="engineeringSection.content[0]" />
             <div class="hv2-btn-wrap">
-              <NuxtLink to="/resume" class="hv2-btn hv2-btn--primary">{{ eng.cta }}</NuxtLink>
+              <NuxtLink to="/resume" class="hv2-btn hv2-btn--primary">{{
+                eng.cta
+              }}</NuxtLink>
             </div>
           </div>
 
@@ -59,12 +56,15 @@
                 class="hv2-comp-item"
                 :class="{ 'hv2-comp-item--linked': hasLink(item) }"
               >
-                <span class="hv2-comp-icon" v-html="icons[item.icon]" aria-hidden="true" />
+                <span
+                  class="hv2-comp-icon"
+                  v-html="icons[item.icon]"
+                  aria-hidden="true"
+                />
                 <span>{{ item.label }}</span>
               </component>
             </div>
           </div>
-
         </div>
       </div>
     </section>
@@ -73,7 +73,6 @@
     <section class="hv2-music" id="music">
       <div class="hv2-inner">
         <div class="hv2-music__layout">
-
           <div class="hv2-music__visual-column">
             <img
               class="hv2-music__cover-img"
@@ -81,11 +80,20 @@
               alt="Tyler Ingersoll's hybrid drum studio"
               draggable="false"
             />
-            <!-- Desktop: card sits inside visual-column for overlap -->
+          </div>
+
+          <div class="hv2-music__text-column">
+            <h2 class="hv2-music__heading">{{ musicSection.heading }}</h2>
+            <p v-html="musicSection.content[0]" />
+            <div class="hv2-btn-wrap">
+              <NuxtLink to="/music" class="hv2-btn hv2-btn--primary">{{
+                mus.cta
+              }}</NuxtLink>
+            </div>
             <component
               :is="linkTag(mus.studio)"
               v-bind="linkAttrs(mus.studio)"
-              class="hv2-studio-callout hv2-studio-callout--desktop"
+              class="hv2-studio-callout"
               :class="{ 'hv2-studio-callout--linked': hasLink(mus.studio) }"
             >
               <p class="hv2-label">{{ mus.studioLabel }}</p>
@@ -95,29 +103,6 @@
               </span>
             </component>
           </div>
-
-          <!-- Mobile: card is a separate grid item for stacking order -->
-          <component
-            :is="linkTag(mus.studio)"
-            v-bind="linkAttrs(mus.studio)"
-            class="hv2-studio-callout hv2-studio-callout--mobile"
-            :class="{ 'hv2-studio-callout--linked': hasLink(mus.studio) }"
-          >
-            <p class="hv2-label">{{ mus.studioLabel }}</p>
-            <p>{{ mus.studio?.text }}</p>
-            <span v-if="mus.studio?.ctaText" class="hv2-studio-callout__cta">
-              {{ mus.studio.ctaText }} →
-            </span>
-          </component>
-
-          <div class="hv2-music__text-column">
-            <h2 class="hv2-music__heading">{{ musicSection.heading }}</h2>
-            <p v-html="musicSection.content[0]" />
-            <div class="hv2-btn-wrap">
-              <NuxtLink to="/music" class="hv2-btn hv2-btn--primary">{{ mus.cta }}</NuxtLink>
-            </div>
-          </div>
-
         </div>
       </div>
     </section>
@@ -135,7 +120,7 @@
             class="hv2-beyond-card"
             :class="{
               'hv2-beyond-card--linked': hasLink(card),
-              'hv2-beyond-card--active': activeCard === cIdx
+              'hv2-beyond-card--active': activeCard === cIdx,
             }"
             @mouseenter="activeCard = cIdx"
             @mouseleave="activeCard = null"
@@ -146,7 +131,11 @@
             :aria-expanded="activeCard === cIdx"
           >
             <div class="hv2-beyond-card__front">
-              <div class="hv2-beyond-card__icon" v-html="icons[card.icon]" aria-hidden="true" />
+              <div
+                class="hv2-beyond-card__icon"
+                v-html="icons[card.icon]"
+                aria-hidden="true"
+              />
               <span class="hv2-beyond-card__label">{{ card.label }}</span>
               <span class="hv2-beyond-card__sub">{{ card.sub }}</span>
             </div>
@@ -157,7 +146,6 @@
         </div>
       </div>
     </section>
-
   </div>
 </template>
 
@@ -169,17 +157,18 @@ const route = useRoute();
 const { scrollToHash } = useScrollToHash();
 
 const homeArr = computed(() => store.content?.home || []);
-const heroSection       = computed(() => homeArr.value.find(s => s.id === "hero")        || {});
-const engineeringSection = computed(() => homeArr.value.find(s => s.id === "engineering") || {});
-const musicSection      = computed(() => homeArr.value.find(s => s.id === "music")       || {});
-const beyondSection     = computed(() => homeArr.value.find(s => s.id === "beyond")      || {});
+const heroSection = computed(() => homeArr.value.find((s) => s.id === "hero") || {});
+const engineeringSection = computed(
+  () => homeArr.value.find((s) => s.id === "engineering") || {}
+);
+const musicSection = computed(() => homeArr.value.find((s) => s.id === "music") || {});
+const beyondSection = computed(() => homeArr.value.find((s) => s.id === "beyond") || {});
 
-const pg  = computed(() => store.content?.homePage   || {});
-const hero = computed(() => pg.value.hero            || {});
-const eng  = computed(() => pg.value.engineering     || {});
-const mus  = computed(() => pg.value.music           || {});
-const bey  = computed(() => pg.value.beyond          || {});
-
+const pg = computed(() => store.content?.homePage || {});
+const hero = computed(() => pg.value.hero || {});
+const eng = computed(() => pg.value.engineering || {});
+const mus = computed(() => pg.value.music || {});
+const bey = computed(() => pg.value.beyond || {});
 
 const activeCard = ref(null);
 
@@ -262,10 +251,18 @@ const icons = {
   background-color: var(--color-bg-secondary);
 }
 
-.hv2-hero        { padding: 6.5rem 0; }
-.hv2-engineering { padding: 5rem 0; }
-.hv2-music       { padding: 5rem 0; }
-.hv2-beyond      { padding: 5rem 0; }
+.hv2-hero {
+  padding: 6.5rem 0;
+}
+.hv2-engineering {
+  padding: 5rem 0;
+}
+.hv2-music {
+  padding: 5rem 0;
+}
+.hv2-beyond {
+  padding: 5rem 0;
+}
 
 @include respond-below(md) {
   .hv2-hero,
@@ -324,7 +321,6 @@ const icons = {
       outline-offset: 3px;
     }
   }
-
 }
 
 .hv2-btn-wrap {
@@ -444,10 +440,6 @@ const icons = {
     }
   }
 
-
-
-
-
   &__visual {
     grid-column: 7 / -1;
     grid-row: 1 / -1;
@@ -460,7 +452,7 @@ const icons = {
     animation: hv2-float 6s ease-in-out infinite;
 
     &::before {
-      content: '';
+      content: "";
       position: absolute;
       top: 50%;
       left: 50%;
@@ -519,8 +511,13 @@ const icons = {
 }
 
 @keyframes hv2-float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
 }
 
 // ─── Engineering section ───────────────────────────────────────────────────────
@@ -662,7 +659,7 @@ const icons = {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
-    align-items: start;
+    align-items: stretch;
 
     @include respond-below(md) {
       grid-template-columns: 1fr;
@@ -705,7 +702,7 @@ const icons = {
   &__text-column {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
 
     p {
       margin-top: 0;
@@ -734,11 +731,14 @@ const icons = {
     --glass-border: rgba(192, 197, 203, 0.5);
   }
 
-  position: relative;
-  z-index: 1;
   display: block;
-  max-width: 380px;
+  width: 100%;
+  margin-top: auto;
   padding: 1.25rem 1.25rem 1.25rem 1.1rem;
+
+  @include respond-below(md) {
+    margin-top: 3.75rem;
+  }
   background: var(--glass-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -748,33 +748,7 @@ const icons = {
   text-decoration: none;
   color: inherit;
   cursor: default;
-  transform: translate(2rem, 2rem) translateY(-2px);
   @include transition(all);
-
-  // Desktop: inside visual-column, mobile copy hidden
-  &--desktop {
-    @include respond-below(md) {
-      display: none;
-    }
-  }
-
-  // Mobile: separate grid item, desktop copy hidden
-  &--mobile {
-    display: none;
-
-    @include respond-below(md) {
-      display: block;
-      order: 3;
-      width: 100%;
-      max-width: none;
-      margin-left: auto;
-      margin-right: auto;
-      margin-top: -8rem;
-      transform: translate(0, 0);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-    }
-  }
 
   p {
     margin: 0 0 0.4rem;
@@ -802,7 +776,6 @@ const icons = {
     cursor: pointer;
 
     &:hover {
-      transform: translate(2rem, 2rem) translateY(-2px);
       border-color: var(--color-link-hover);
       border-left-color: var(--color-link-hover);
 
@@ -814,12 +787,6 @@ const icons = {
     &:focus-visible {
       outline: 2px solid var(--color-focus);
       outline-offset: 3px;
-    }
-  }
-
-  &--linked#{&}--mobile:hover {
-    @include respond-below(md) {
-      transform: translateY(-2px);
     }
   }
 }
@@ -888,7 +855,6 @@ const icons = {
     height: 16px;
   }
 }
-
 
 // ─── Beyond Work section ───────────────────────────────────────────────────────
 
@@ -1015,6 +981,4 @@ const icons = {
     line-height: 1.4;
   }
 }
-
-
 </style>
