@@ -326,6 +326,7 @@ watch(musicContent, () => handleHash(route.hash));
     margin-top: 0.75rem;
     font-size: 0.82rem;
     font-weight: 700;
+    white-space: nowrap;
     color: var(--color-link);
     @include transition(color);
   }

@@ -6,13 +6,16 @@
       <div class="hv2-inner">
         <div class="hv2-hero__grid">
 
-          <div class="hv2-hero__text">
+          <div class="hv2-hero__kicker">
             <p class="hv2-eyebrow">{{ hero.eyebrow }}</p>
             <h1 class="hv2-hero__heading">{{ heroSection.heading }}</h1>
+          </div>
+
+          <div class="hv2-hero__text">
             <p
               v-for="(para, i) in heroSection.content"
               :key="i"
-              :class="['hv2-hero__body', { 'hv2-hero__bridge': i === heroSection.content.length - 1 }]"
+              class="hv2-hero__body"
               v-html="para"
             />
             <div class="hv2-hero__actions">
@@ -21,75 +24,14 @@
             </div>
           </div>
 
-          <!-- SVG: drums + code illustration -->
-          <div class="hv2-hero__visual" aria-hidden="true">
-            <svg class="hv2-hero__svg" viewBox="0 0 440 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <pattern id="hv2-grid" width="22" height="22" patternUnits="userSpaceOnUse">
-                  <path d="M 22 0 L 0 0 0 22" fill="none" stroke="#00B7FF" stroke-width="0.4" opacity="0.12"/>
-                </pattern>
-                <radialGradient id="hv2-glow" cx="50%" cy="55%" r="50%">
-                  <stop offset="0%" stop-color="#00B7FF" stop-opacity="0.12"/>
-                  <stop offset="100%" stop-color="#00B7FF" stop-opacity="0"/>
-                </radialGradient>
-                <radialGradient id="hv2-center" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" stop-color="#00B7FF" stop-opacity="0.18"/>
-                  <stop offset="100%" stop-color="#00B7FF" stop-opacity="0"/>
-                </radialGradient>
-              </defs>
-              <rect width="440" height="400" fill="url(#hv2-grid)"/>
-              <ellipse cx="220" cy="228" rx="155" ry="140" fill="url(#hv2-glow)"/>
-              <circle cx="220" cy="228" r="132" stroke="#00B7FF" stroke-width="2" opacity="0.18"/>
-              <circle cx="220" cy="228" r="108" stroke="#00B7FF" stroke-width="1.5" opacity="0.3"/>
-              <circle cx="220" cy="228" r="80" stroke="#00B7FF" stroke-width="2" opacity="0.5"/>
-              <circle cx="220" cy="228" r="48" stroke="#00B7FF" stroke-width="2.5" opacity="0.85"/>
-              <circle cx="220" cy="228" r="48" fill="url(#hv2-center)"/>
-              <line x1="220" y1="96" x2="220" y2="148" stroke="#00B7FF" stroke-width="0.8" opacity="0.22"/>
-              <line x1="313" y1="135" x2="276" y2="161" stroke="#00B7FF" stroke-width="0.8" opacity="0.22"/>
-              <line x1="352" y1="228" x2="300" y2="228" stroke="#00B7FF" stroke-width="0.8" opacity="0.22"/>
-              <line x1="313" y1="321" x2="276" y2="295" stroke="#00B7FF" stroke-width="0.8" opacity="0.22"/>
-              <line x1="220" y1="360" x2="220" y2="308" stroke="#00B7FF" stroke-width="0.8" opacity="0.22"/>
-              <line x1="127" y1="321" x2="164" y2="295" stroke="#00B7FF" stroke-width="0.8" opacity="0.22"/>
-              <line x1="88" y1="228" x2="140" y2="228" stroke="#00B7FF" stroke-width="0.8" opacity="0.22"/>
-              <line x1="127" y1="135" x2="164" y2="161" stroke="#00B7FF" stroke-width="0.8" opacity="0.22"/>
-              <line x1="172" y1="18" x2="207" y2="228" stroke="#ff6f69" stroke-width="8" stroke-linecap="round" opacity="0.92"/>
-              <circle cx="172" cy="18" r="9" fill="#ff6f69" opacity="0.92"/>
-              <line x1="268" y1="18" x2="233" y2="228" stroke="#ff6f69" stroke-width="8" stroke-linecap="round" opacity="0.92"/>
-              <circle cx="268" cy="18" r="9" fill="#ff6f69" opacity="0.92"/>
-              <ellipse cx="106" cy="72" rx="40" ry="11" style="stroke: var(--color-svg-accent)" stroke-width="1.5" opacity="0.55" fill="none"/>
-              <ellipse cx="106" cy="78" rx="40" ry="11" style="stroke: var(--color-svg-accent)" stroke-width="1" opacity="0.3" fill="none"/>
-              <line x1="106" y1="89" x2="106" y2="140" stroke="#a7adba" stroke-width="2" opacity="0.35"/>
-              <ellipse cx="334" cy="72" rx="40" ry="11" style="stroke: var(--color-svg-accent)" stroke-width="1.5" opacity="0.55" fill="none"/>
-              <line x1="334" y1="83" x2="334" y2="140" stroke="#a7adba" stroke-width="2" opacity="0.35"/>
-              <text x="4" y="176" font-size="15" fill="#00B7FF" opacity="0.65" font-family="monospace">{</text>
-              <rect x="14" y="185" width="58" height="2.5" rx="1.2" fill="#a7adba" opacity="0.45"/>
-              <rect x="18" y="195" width="42" height="2.5" rx="1.2" fill="#00B7FF" opacity="0.6"/>
-              <rect x="18" y="205" width="52" height="2.5" rx="1.2" fill="#a7adba" opacity="0.38"/>
-              <rect x="18" y="215" width="34" height="2.5" rx="1.2" style="fill: var(--color-svg-accent)" opacity="0.5"/>
-              <rect x="18" y="225" width="48" height="2.5" rx="1.2" fill="#a7adba" opacity="0.35"/>
-              <rect x="18" y="235" width="30" height="2.5" rx="1.2" fill="#00B7FF" opacity="0.5"/>
-              <rect x="18" y="245" width="44" height="2.5" rx="1.2" fill="#a7adba" opacity="0.38"/>
-              <rect x="18" y="255" width="38" height="2.5" rx="1.2" style="fill: var(--color-svg-accent)" opacity="0.45"/>
-              <rect x="18" y="265" width="50" height="2.5" rx="1.2" fill="#a7adba" opacity="0.3"/>
-              <rect x="18" y="275" width="40" height="2.5" rx="1.2" fill="#00B7FF" opacity="0.4"/>
-              <text x="4" y="290" font-size="15" fill="#00B7FF" opacity="0.65" font-family="monospace">}</text>
-              <line x1="72" y1="228" x2="88" y2="228" stroke="#00B7FF" stroke-width="1" stroke-dasharray="3 2" opacity="0.5"/>
-              <circle cx="72" cy="228" r="3" fill="#00B7FF" opacity="0.7"/>
-              <text x="418" y="176" font-size="15" fill="#00B7FF" opacity="0.65" font-family="monospace" text-anchor="end">}</text>
-              <rect x="368" y="185" width="58" height="2.5" rx="1.2" fill="#a7adba" opacity="0.45"/>
-              <rect x="368" y="195" width="44" height="2.5" rx="1.2" fill="#00B7FF" opacity="0.6"/>
-              <rect x="368" y="205" width="50" height="2.5" rx="1.2" fill="#a7adba" opacity="0.38"/>
-              <rect x="368" y="215" width="38" height="2.5" rx="1.2" style="fill: var(--color-svg-accent)" opacity="0.5"/>
-              <rect x="368" y="225" width="56" height="2.5" rx="1.2" fill="#a7adba" opacity="0.35"/>
-              <rect x="368" y="235" width="32" height="2.5" rx="1.2" fill="#00B7FF" opacity="0.5"/>
-              <rect x="368" y="245" width="48" height="2.5" rx="1.2" fill="#a7adba" opacity="0.38"/>
-              <rect x="368" y="255" width="40" height="2.5" rx="1.2" style="fill: var(--color-svg-accent)" opacity="0.4"/>
-              <rect x="368" y="265" width="52" height="2.5" rx="1.2" fill="#a7adba" opacity="0.3"/>
-              <rect x="368" y="275" width="36" height="2.5" rx="1.2" fill="#00B7FF" opacity="0.4"/>
-              <text x="422" y="290" font-size="15" fill="#00B7FF" opacity="0.65" font-family="monospace" text-anchor="end">{</text>
-              <line x1="368" y1="228" x2="352" y2="228" stroke="#00B7FF" stroke-width="1" stroke-dasharray="3 2" opacity="0.5"/>
-              <circle cx="368" cy="228" r="3" fill="#00B7FF" opacity="0.7"/>
-            </svg>
+          <!-- Profile portrait -->
+          <div class="hv2-hero__visual">
+            <img
+              class="hv2-hero__portrait"
+              src="/profile_glitch_subtle.gif"
+              alt="Tyler Ingersoll"
+              draggable="false"
+            />
           </div>
 
         </div>
@@ -133,18 +75,11 @@
     <!-- ===================== MUSIC ===================== -->
     <section class="hv2-music" id="music">
       <div class="hv2-inner">
-        <div class="hv2-two-col">
+        <div class="hv2-music__layout">
 
-          <div class="hv2-music__left">
-            <h2>{{ musicSection.heading }}</h2>
-            <p v-html="musicSection.content[0]" />
-            <div class="hv2-btn-wrap">
-              <NuxtLink to="/music" class="hv2-btn hv2-btn--primary">{{ mus.cta }}</NuxtLink>
-            </div>
-          </div>
+          <h2 class="hv2-music__heading">{{ musicSection.heading }}</h2>
 
-          <div class="hv2-music__right">
-
+          <div class="hv2-music__studio">
             <component
               :is="linkTag(mus.studio)"
               v-bind="linkAttrs(mus.studio)"
@@ -157,7 +92,13 @@
                 {{ mus.studio.ctaText }} →
               </span>
             </component>
+          </div>
 
+          <div class="hv2-music__content">
+            <p v-html="musicSection.content[0]" />
+            <div class="hv2-btn-wrap">
+              <NuxtLink to="/music" class="hv2-btn hv2-btn--primary">{{ mus.cta }}</NuxtLink>
+            </div>
           </div>
 
         </div>
@@ -272,7 +213,7 @@ const icons = {
 }
 
 .hv2-inner {
-  max-width: 1160px;
+  max-width: 1200px;
   width: 100%;
   margin: 0 auto;
   padding: 0 $container-padding-x;
@@ -295,16 +236,16 @@ const icons = {
 // ─── Section backgrounds ──────────────────────────────────────────────────────
 
 .hv2-hero,
-.hv2-music,
-.hv2-beyond {
+.hv2-music {
   background-color: var(--color-bg-primary);
 }
 
-.hv2-engineering {
+.hv2-engineering,
+.hv2-beyond {
   background-color: var(--color-bg-secondary);
 }
 
-.hv2-hero        { padding: 6.5rem 0 5.5rem; }
+.hv2-hero        { padding: 6.5rem 0; }
 .hv2-engineering { padding: 5rem 0; }
 .hv2-music       { padding: 5rem 0; }
 .hv2-beyond      { padding: 5rem 0; }
@@ -394,7 +335,7 @@ const icons = {
   margin: 0 0 0.5rem;
   font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-accent-line);
 }
@@ -416,49 +357,77 @@ const icons = {
 // ─── Hero section ─────────────────────────────────────────────────────────────
 
 .hv2-hero {
+  --hero-glass-bg: rgba(31, 39, 45, 0.5);
+  --hero-glow-color: rgba(0, 183, 255, 0.2);
+  --hero-glow-secondary: rgba(0, 183, 255, 0.08);
+
   border-bottom: 1px solid var(--color-border);
+
+  html.light-mode & {
+    --hero-glass-bg: rgba(232, 232, 226, 0.6);
+    --hero-glow-color: rgba(0, 122, 181, 0.1);
+    --hero-glow-secondary: rgba(100, 180, 220, 0.06);
+  }
 
   &__grid {
     display: grid;
-    grid-template-columns: 55% 45%;
-    gap: 3rem;
-    align-items: center;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: auto 1fr;
+    align-items: start;
 
     @include respond-below(md) {
       grid-template-columns: 1fr;
-      gap: 2.5rem;
+      grid-template-rows: none;
+    }
+  }
+
+  &__kicker {
+    grid-column: 1 / 8;
+    grid-row: 1;
+    position: relative;
+    z-index: 2;
+
+    @include respond-below(md) {
+      grid-column: 1 / -1;
+      grid-row: auto;
+    }
+  }
+
+  &__text {
+    grid-column: 1 / 8;
+    grid-row: 2;
+    position: relative;
+    z-index: 2;
+
+    @include respond-below(md) {
+      grid-column: 1 / -1;
+      grid-row: auto;
+      order: 2;
     }
   }
 
   &__heading {
     margin: 0.25rem 0 1.25rem;
-    font-size: clamp(2.4rem, 5vw, 3.5rem);
+    font-size: clamp(4rem, 8vw, 6rem);
     font-weight: 700;
-    line-height: 1.1;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
     color: var(--color-text-primary);
   }
 
   &__body {
     margin: 0 0 1rem;
     font-size: 1.05rem;
-    line-height: 1.65;
+    line-height: 1.7;
     color: var(--color-text-secondary);
-    max-width: 52ch;
+    max-width: 60ch;
 
     &:last-of-type {
       margin-bottom: 0;
     }
   }
 
-  &__bridge {
-    margin-top: 1.5rem;
-    padding: 0.9rem 1rem 0.9rem 1.1rem;
-    border-left: 3px solid var(--color-accent-line);
-    font-size: 0.95rem;
-    font-style: italic;
-    color: var(--color-text-secondary);
-    line-height: 1.65;
-  }
+
 
   &__actions {
     display: flex;
@@ -476,21 +445,78 @@ const icons = {
   }
 
   &__visual {
+    grid-column: 7 / -1;
+    grid-row: 1 / -1;
+    align-self: center;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 1;
+    animation: hv2-float 6s ease-in-out infinite;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 130%;
+      height: 130%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: radial-gradient(
+        circle at 50% 45%,
+        rgba($color-highlight-3, 0.16) 0%,
+        rgba($color-highlight-3, 0.07) 38%,
+        transparent 68%
+      );
+      filter: blur(64px);
+      z-index: -1;
+      pointer-events: none;
+
+      html.light-mode & {
+        background: radial-gradient(
+          circle at 50% 45%,
+          rgba(0, 122, 181, 0.09) 0%,
+          rgba(0, 122, 181, 0.03) 40%,
+          transparent 68%
+        );
+        filter: blur(48px);
+      }
+    }
 
     @include respond-below(md) {
-      order: -1;
+      grid-column: 1 / -1;
+      grid-row: auto;
+      order: 1;
+      max-width: 100%;
+      margin: 1.5rem 0;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
     }
   }
 
-  &__svg {
-    width: 100%;
-    max-width: 440px;
-    height: auto;
-    color: var(--color-text-muted);
+  &__portrait {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 75%;
+    max-width: 400px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 50%;
+
+    html.light-mode & {
+      filter: drop-shadow(0 16px 40px rgba(0, 0, 0, 0.12));
+    }
   }
+}
+
+@keyframes hv2-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
 }
 
 // ─── Engineering section ───────────────────────────────────────────────────────
@@ -628,25 +654,116 @@ const icons = {
 .hv2-music {
   border-bottom: 1px solid var(--color-border);
 
-  &__left {
-    h2 {
-      margin-bottom: 1.25rem;
+  &__layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr;
+    column-gap: 4rem;
+    row-gap: 1.5rem;
+    align-items: start;
+
+    @include respond-below(md) {
+      grid-template-columns: 1fr;
+      grid-template-rows: none;
+      gap: 2rem;
     }
+  }
+
+  &__heading {
+    grid-column: 2;
+    grid-row: 1;
+    margin: 0;
+
+    @include respond-below(md) {
+      order: 1;
+      grid-column: auto;
+      grid-row: auto;
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  &__studio {
+    grid-column: 1;
+    grid-row: 2;
+    align-self: start;
+
+    @include respond-below(md) {
+      order: 3;
+      grid-column: auto;
+      grid-row: auto;
+    }
+  }
+
+  &__content {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: start;
 
     p {
+      margin-top: 0;
       font-size: 1rem;
       line-height: 1.7;
       color: var(--color-text-secondary);
     }
+
+    @include respond-below(md) {
+      order: 2;
+      grid-column: auto;
+      grid-row: auto;
+    }
+  }
+}
+
+.hv2-studio-callout {
+  display: block;
+  background-color: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-link);
+  border-radius: 8px;
+  padding: 1.25rem 1.25rem 1.25rem 1.1rem;
+  text-decoration: none;
+  color: inherit;
+  cursor: default;
+  @include transition(all);
+
+  p {
+    margin: 0 0 0.4rem;
+    font-size: 0.88rem;
+    line-height: 1.65;
+    color: var(--color-text-secondary);
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
   }
 
-  &__right {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+  &__cta {
+    display: inline-block;
+    margin-top: 0.6rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    color: var(--color-link);
+    @include transition(color);
+  }
 
-    @include respond-to(md) {
-      padding-top: 4rem;
+  &--linked {
+    cursor: pointer;
+
+    &:hover {
+      transform: translateY(-2px);
+      border-color: var(--color-link-hover);
+      border-left-color: var(--color-link-hover);
+
+      .hv2-studio-callout__cta {
+        color: var(--color-link-hover);
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-focus);
+      outline-offset: 3px;
     }
   }
 }
@@ -716,58 +833,6 @@ const icons = {
   }
 }
 
-.hv2-studio-callout {
-  display: block;
-  background-color: var(--color-bg-secondary);
-  border: 1px solid var(--color-border);
-  border-left: 3px solid var(--color-link);
-  border-radius: 8px;
-  padding: 1.25rem 1.25rem 1.25rem 1.1rem;
-  text-decoration: none;
-  color: inherit;
-  cursor: default;
-  @include transition(all);
-
-  p {
-    margin: 0 0 0.4rem;
-    font-size: 0.88rem;
-    line-height: 1.65;
-    color: var(--color-text-secondary);
-
-    &:last-of-type {
-      margin-bottom: 0;
-    }
-  }
-
-  &__cta {
-    display: inline-block;
-    margin-top: 0.6rem;
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    color: var(--color-link);
-    @include transition(color);
-  }
-
-  &--linked {
-    cursor: pointer;
-
-    &:hover {
-      transform: translateY(-2px);
-      border-color: var(--color-link-hover);
-      border-left-color: var(--color-link-hover);
-
-      .hv2-studio-callout__cta {
-        color: var(--color-link-hover);
-      }
-    }
-
-    &:focus-visible {
-      outline: 2px solid var(--color-focus);
-      outline-offset: 3px;
-    }
-  }
-}
 
 // ─── Beyond Work section ───────────────────────────────────────────────────────
 

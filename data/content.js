@@ -16,9 +16,8 @@ export default {
         heading: "Hi, I’m Tyler",
         headingLevel: 2,
         content: [
-          "Currently, I lead a team at Best Egg focused on building reliable, customer-facing applications that help millions of people. Over the years, I’ve built enterprise frontend solutions for Fortune 500 brands like Vanguard, Bank of America, and DuPont.",
-          "When I’m not working my day job, I’m likely found behind a drum kit in my studio. I’ve spent the last three decades touring with label-supported bands, recording, and producing music. Today, I track remote drum sessions for other artists from my home studio in Pennsylvania. <a href=’https://tyleringersolldrums.com’ target=’_blank’ rel=’noopener noreferrer’>Explore My Drum Studio</a>.",
-          "Whether I am architecting a scalable frontend payment platform or tracking drums for a remote session, the discipline is exactly the same: build a solid foundation, serve the needs of the project, and leave no room for sloppy execution."
+          "Currently, I lead an engineering team focused on building reliable, customer-facing applications that help millions of people. Over the years, I’ve built enterprise frontend solutions for Fortune 500 brands like Vanguard, Bank of America, and DuPont.",
+          "When I’m not working my day job, I’m likely found behind my drumset in my studio. I’ve spent the last three decades touring with label-supported bands, recording, and producing music. Today, I track remote drum sessions from my home studio in Pennsylvania. <a href='https://tyleringersolldrums.com' target='_blank' rel='noopener noreferrer'>Explore My Drum Studio&nbsp;→</a>.",
         ]
       },
       {
@@ -32,7 +31,7 @@ export default {
         heading: "Engineering",
         headingLevel: 4,
         content: [
-          "I build frontend applications using frameworks like Angular and Vue.js, and I guide the teams that ship them. My expertise spans from core identity and payment processing, to specialized third-party fintech integrations and real-time hardware control software. Over my career, I’ve worked across most of the frontend ecosystem—whether that means rolling out division-wide design systems or modernizing legacy architectures so they can scale securely.",
+          "I build frontend applications using frameworks like Angular and Vue.js, and I guide the team that ships them. My expertise spans from core identity and payment processing, to specialized third-party fintech integrations and real-time hardware control software. Over my career, I’ve worked across most of the frontend ecosystem—whether that means rolling out division-wide design systems or modernizing legacy architectures so they can scale securely.",
           "<a href='/resume'>View my full resume →</a>"
         ]
       },
@@ -210,10 +209,10 @@ export default {
           {
             subheading: "Director II, Software Engineering · 2026 - Present",
             content: [
-              "Promoted to Director II across verification, servicing, and authentication  platforms, with scope spanning organizational leadership and active engineering. I drive team strategy and hiring decisions while contributing directly to high-visibility technical work.",
-              "• Guide technical direction and delivery for core customer platforms, focusing on stability and performance at scale.",
-              "• Manage an engineering team and establish technical priorities, collaborating cross-functionally with other pods to align delivery with broader business goals.",
-              "• Drive team growth and scale engineering capacity to meet expanding technical demands, leading candidate evaluations and key hiring decisions.",
+              "Hands-on engineering leader for a customer-facing cross-functional team. I balance active frontend development (~50% IC) with team management, architectural strategy, and cross-functional alignment.",
+              "• Partner directly with product managers and stakeholders to define technical priorities, establish delivery timelines, and distribute resources across backend and frontend initiatives.",
+              "• Manage the engineering lifecycle and professional development for a single, dedicated team, scaling capacity to meet the demands of our customer-facing verification, servicing, and authentication platforms.",
+              "• Guide technical direction and delivery for core customer platforms, contributing directly to high-visibility frontend feature work.",
               "• Contributed to the adoption of Cursor AI and GitHub Copilot across the engineering organization, establishing standards that accelerated feature delivery and standardized code quality.",
               "<strong>Tech:</strong> Angular, TypeScript, DataDog, Figma, Miro, Jira, Confluence, FullStory"
             ]
@@ -221,7 +220,7 @@ export default {
           {
             subheading: "Senior Lead Software Engineer II · 2024 - 2026",
             content: [
-              "Promoted to Senior Lead II to take ownership of frontend architecture and roadmap planning, partnering directly with product and UX while mentoring engineers across the company.",
+              "Took ownership of frontend architecture and roadmap planning, partnering directly with product and UX while mentoring engineers across the company.",
               "• Managed the technical lifecycle for critical third-party fintech integrations like MX and Method Financial, driving the process from frontend architectural design through production rollout.",
               "• Strengthened frontend security by implementing a Level 3 Content Security Policy (CSP) utilizing dynamic nonces, and operationalized the deployment by integrating violation reporting and alerting through DataDog.",
               "<strong>Tech:</strong> Angular, TypeScript, Node.js, Python, Django, Cursor AI, GitHub Copilot"
@@ -230,7 +229,7 @@ export default {
           {
             subheading: "Senior Lead Software Engineer I · 2022 - 2024",
             content: [
-              "Joined Best Egg to modernize legacy Angular codebases and build the foundation our teams use today. Updated the architecture and libraries and established lasting development patterns.",
+              "Modernized legacy Angular codebases and built the foundation our teams use today. Updated the architecture and libraries and established lasting development patterns.",
               "• Drove an architectural update that implemented lazy-loaded modules, reduced main bundle sizes, and migrated the platform from Bootstrap to Angular Material.",
               "• Collaborated to architect and launch No-Auth Quick Pay and automated payment scheduling, simplifying the payment experience for customers.",
               "• Golden Egg Award for \"BE a Builder of Great Teams\" (Q3 2023).",
@@ -512,38 +511,6 @@ export default {
           }
         ]
       },
-    ],
-    contact: [
-      {
-        heading: "Let's build something",
-        headingLevel: 2,
-        content: [
-          "Whether you are scaling an engineering organization or producing a record, I am always open to talking shop. Choose your path below and get in touch."
-        ]
-      },
-      {
-        heading: "Engineering & Leadership",
-        headingLevel: 3,
-        content: [
-          "If you want to discuss frontend architecture, team growth, or how to tackle complex scaling challenges at the enterprise level, my inbox is open."
-        ],
-        links: [
-          { label: "Email Tyler", url: "mailto:tyler@ingersoll.dev" },
-          { label: "LinkedIn", url: "https://www.linkedin.com/in/tyleringersoll", external: true },
-          { label: "GitHub", url: "https://github.com/tyleringersoll", external: true }
-        ]
-      },
-      {
-        heading: "Remote Drum Tracks",
-        headingLevel: 3,
-        content: [
-          "Professional drum tracks recorded on a purpose-built hybrid rig, delivering the feel of a live performance with full post-production flexibility. Bass tracking is also available. Stems delivered within a week."
-        ],
-        links: [
-          { label: "Book a Session", url: "mailto:tyler@ingersoll.dev" },
-          { label: "Studio Website", url: "https://tyleringersolldrums.com", external: true }
-        ]
-      }
     ],
     icons: {
       close: "<svg xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"xmlns=\"http://www.w3.org/2000/svg\"xmlns:cc=\"http://creativecommons.org/ns#\"xmlns:dc=\"http://purl.org/dc/elements/1.1/\"xmlns:svg=\"http://www.w3.org/2000/svg\"xmlns:inkscape=\"http://www.inkscape.org/namespaces/inkscape\"xmlns:sodipodi=\"http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd\"xmlns:ns1=\"http://sozi.baierouge.fr\"xmlns:xlink=\"http://www.w3.org/1999/xlink\"id=\"svg2\"viewBox=\"0 0 744.09 1052.4\"version=\"1.1\"><g id=\"layer1\"><path id=\"svg-bg\" class=\"svg-bg\" d=\"m814.29 606.65a314.29 314.29 0 1 1 -628.57 0 314.29 314.29 0 1 1 628.57 0z\" stroke=\"#000\" stroke-width=\"5\" transform=\"matrix(1.1048 0 0 1.1048 -179.21 -162.53)\"/><g id=\"g3763\" transform=\"matrix(.91837 0 0 .91837 47.587 10.944)\" stroke=\"#fff\" stroke-linecap=\"round\" stroke-width=\"133.87\" fill=\"none\" > <path id=\"path2991\" class=\"svg-x\" d=\"m176.51 362.87 356.13 356.13\" /> <path id=\"path2993\" class=\"svg-x\" d=\"m532.64 362.87-356.13 356.13\" /></g></g></svg>"

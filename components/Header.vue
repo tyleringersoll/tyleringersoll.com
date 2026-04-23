@@ -62,13 +62,9 @@ defineProps({
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 1280px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: $spacing-xs $spacing-sm;
-
-    @include respond-to(sm) {
-      padding: $spacing-xs $spacing-lg;
-    }
+    padding: $spacing-xs $container-padding-x;
   }
 
   &__brand {
