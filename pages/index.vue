@@ -748,6 +748,7 @@ const icons = {
   text-decoration: none;
   color: inherit;
   cursor: default;
+  transform: translate(2rem, 2rem) translateY(-2px);
   @include transition(all);
 
   // Desktop: inside visual-column, mobile copy hidden
@@ -769,6 +770,7 @@ const icons = {
       margin-left: auto;
       margin-right: auto;
       margin-top: -8rem;
+      transform: translate(0, 0);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
     }
