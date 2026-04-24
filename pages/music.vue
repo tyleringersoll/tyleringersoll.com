@@ -1,16 +1,41 @@
 <template>
   <div v-if="musicContent" class="music-page">
+    <!-- Hero -->
     <section
-      v-for="(group, gIdx) in sectionGroups"
+      v-if="heroEntry"
+      class="music-hero"
+      :style="{ backgroundImage: `url(${heroEntry.src})` }"
+    >
+      <div class="music-hero__overlay">
+        <div class="music-hero__inner">
+          <h2 class="music-hero__heading" v-html="heroEntry.heading" />
+          <p
+            v-for="(para, i) in heroEntry.content"
+            :key="i"
+            class="music-hero__text"
+            v-html="para"
+          />
+          <a
+            v-if="heroEntry.cta"
+            :href="heroEntry.cta.url"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="music-hero__btn"
+          >
+            {{ heroEntry.cta.label }} →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content sections -->
+    <section
+      v-for="(group, gIdx) in contentGroups"
       :key="gIdx"
       class="music-section"
-      :class="{
-        'music-section--alt': isAltSection(gIdx),
-        'music-section--hero': isHeroGroup(group)
-      }"
-      :style="heroStyle(group)"
+      :class="{ 'music-section--alt': gIdx % 2 === 0 }"
     >
-      <div v-if="!isHeroGroup(group)" class="music-inner" :class="{ 'music-inner--two-col': isTwoColGroup(group) }">
+      <div class="music-inner">
         <template v-for="{ entry, idx } in group.entries" :key="idx">
           <!-- Section heading (h2 with no content, no roles) -->
           <h2
@@ -25,67 +50,29 @@
               <span class="credits-list__detail">{{ credit.detail }}</span>
             </li>
           </ul>
-          <!-- Discography & Recognition -->
+          <!-- Selected Discography (media-object list) -->
           <template v-else-if="entry.albums">
-            <h2 class="section-heading" v-html="entry.heading" />
-            <div class="music-discography-grid">
-              <figure v-for="album in entry.albums" :key="album.title" class="music-discography-item">
-                <a v-if="album.url" :href="album.url" target="_blank" rel="noopener noreferrer" class="music-discography-link">
-                  <img :src="album.image" :alt="album.alt" />
-                  <span class="music-discography-overlay">Listen on YouTube</span>
-                </a>
-                <img v-else :src="album.image" :alt="album.alt" class="music-discography-img" />
-                <figcaption>
-                  <span class="music-discography-title">{{ album.title }}</span>
-                  <span v-if="album.year" class="music-discography-meta">{{ album.year }}<template v-if="album.label"> · {{ album.label }}</template></span>
-                </figcaption>
-              </figure>
-            </div>
-            <div class="music-recognition">
-              <div class="music-recognition__col">
-                <p class="music-recognition__label">Sync Placements & Media</p>
-                <ul class="music-placement-tags">
-                  <li v-for="placement in entry.placements" :key="placement">{{ placement }}</li>
-                </ul>
-              </div>
-              <div class="music-recognition__col">
-                <p class="music-recognition__label">Recording</p>
-                <p class="music-recognition__detail" v-html="entry.recording" />
-              </div>
+            <component :is="`h${entry.headingLevel || 3}`" class="archive-heading" v-html="entry.heading" />
+            <div class="music-discography-list">
+              <article v-for="album in entry.albums" :key="album.title" class="music-album">
+                <div class="music-album__cover">
+                  <a v-if="album.url" :href="album.url" target="_blank" rel="noopener noreferrer" class="music-album__cover-link">
+                    <img :src="album.image" :alt="album.alt" />
+                  </a>
+                  <img v-else :src="album.image" :alt="album.alt" />
+                </div>
+                <div class="music-album__info">
+                  <h4 class="music-album__title">{{ album.title }}</h4>
+                  <p class="music-album__meta">{{ album.format }}, {{ album.year }} · {{ album.label }}</p>
+                  <p v-if="album.description" class="music-album__desc">{{ album.description }}</p>
+                  <a v-if="album.url" :href="album.url" target="_blank" rel="noopener noreferrer" class="music-album__link">Listen →</a>
+                </div>
+              </article>
             </div>
           </template>
           <!-- Regular article (no roles) -->
           <template v-else-if="!entry.roles">
-            <template v-if="entry.cta && isTwoColGroup(group)">
-              <a
-                :href="entry.cta.url"
-                :target="entry.cta.external ? '_blank' : null"
-                :rel="entry.cta.external ? 'noopener noreferrer' : null"
-                class="music-studio-callout"
-              >
-                <p class="music-studio-callout__label">{{ entry.heading }}</p>
-                <p v-for="(para, i) in entry.content" :key="i" v-html="para" />
-                <span class="music-studio-callout__cta">{{ entry.cta.label }} →</span>
-              </a>
-            </template>
-            <template v-else-if="entry.cta">
-              <div class="music-cta-card">
-                <Article :article="entry" :index="idx" />
-                <div class="music-cta-wrap">
-                  <a
-                    :href="entry.cta.url"
-                    :target="entry.cta.external ? '_blank' : null"
-                    :rel="entry.cta.external ? 'noopener noreferrer' : null"
-                    class="music-cta-btn"
-                  >
-                    {{ entry.cta.label }} →
-                  </a>
-                </div>
-              </div>
-            </template>
-            <template v-else>
-              <Article :article="entry" :index="idx" />
-            </template>
+            <Article :article="entry" :index="idx" />
           </template>
           <!-- Timeline entry with roles -->
           <article v-else class="article employer">
@@ -137,12 +124,18 @@ const musicContent = computed(() => {
   return content.value.music ?? null;
 });
 
-const sectionGroups = computed(() => {
+const heroEntry = computed(() => {
+  const entries = musicContent.value || [];
+  return entries.find(e => e.type === 'hero') ?? null;
+});
+
+const contentGroups = computed(() => {
   const entries = musicContent.value || [];
   const groups = [];
   let current = null;
 
   entries.forEach((entry, idx) => {
+    if (entry.type === 'hero') return;
     if (entry.headingLevel === 2) {
       current = { entries: [] };
       groups.push(current);
@@ -154,22 +147,6 @@ const sectionGroups = computed(() => {
 
   return groups;
 });
-
-const isAltSection = (gIdx) => gIdx >= 2 && gIdx % 2 === 0;
-
-const isHeroGroup = (group) =>
-  group.entries.some(e => e.entry.type === 'hero-image');
-
-const heroStyle = (group) => {
-  const hero = group.entries.find(e => e.entry.type === 'hero-image');
-  if (!hero) return {};
-  return { backgroundImage: `url(${hero.entry.src})` };
-};
-
-const isTwoColGroup = (group) => {
-  const entries = group.entries.map(e => e.entry);
-  return entries.some(e => e.cta) && entries.some(e => !e.cta && !e.roles && e.content?.length);
-};
 
 const expandedRoles = ref(new Set());
 
@@ -232,10 +209,73 @@ watch(musicContent, () => handleHash(route.hash));
   width: 100%;
 }
 
+// ─── Hero section ───────────────────────────────────────────────────────────
+
+.music-hero {
+  background-size: cover;
+  background-position: center 35%;
+  border-bottom: 1px solid var(--color-border);
+
+  &__overlay {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: clamp(3rem, 8vw, 6rem) 0;
+  }
+
+  &__inner {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 $container-padding-x;
+  }
+
+  &__heading {
+    margin: 0 0 1rem;
+    color: #fff;
+  }
+
+  &__text {
+    margin: 0 0 1.5rem;
+    max-width: 640px;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  &__btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.75rem 2rem;
+    border-radius: 9999px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    background-color: var(--color-link);
+    color: #fff;
+    border: 2px solid var(--color-link);
+    @include transition(all);
+
+    @include respond-below(sm) {
+      width: 100%;
+      justify-content: center;
+    }
+
+    &:hover {
+      background-color: var(--color-link-hover);
+      border-color: var(--color-link-hover);
+      color: #1a1a1a;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-focus);
+      outline-offset: 3px;
+    }
+  }
+}
+
 // ─── Section wrappers ────────────────────────────────────────────────────────
 
 .music-section {
-  --section-bg: var(--color-bg-primary);
   padding: 2.5rem 0;
   border-bottom: 1px solid var(--color-border);
 
@@ -248,7 +288,6 @@ watch(musicContent, () => handleHash(route.hash));
   }
 
   &--alt {
-    --section-bg: var(--color-bg-secondary);
     background-color: var(--color-bg-secondary);
   }
 }
@@ -270,237 +309,110 @@ watch(musicContent, () => handleHash(route.hash));
   }
 }
 
-// ─── Two-column layout ────────────────────────────────────────────────────────
+// ─── Archive section headings ───────────────────────────────────────────────
 
-.music-inner--two-col {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: start;
-
-  @include respond-below(md) {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-  }
-}
-
-// ─── Studio sidebar callout ───────────────────────────────────────────────────
-
-.music-studio-callout {
-  display: block;
-  background-color: var(--color-bg-secondary);
-  border: 1px solid var(--color-border);
-  border-left: 3px solid var(--color-link);
-  border-radius: 8px;
-  padding: 1.25rem 1.25rem 1.25rem 1.1rem;
-  text-decoration: none;
-  color: inherit;
-  @include transition(all);
-
-  @include respond-to(md) {
-    margin-top: 4.1rem;
-  }
-
-  p {
-    margin: 0 0 0.4rem;
-    font-size: 0.88rem;
-    line-height: 1.65;
-    color: var(--color-text-secondary);
-
-    &:last-of-type {
-      margin-bottom: 0;
-    }
-  }
-
-  &__label {
-    margin-bottom: 0.6rem !important;
-    font-size: 0.7rem !important;
-    font-weight: 700 !important;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--color-accent-line) !important;
-  }
-
-  &__cta {
-    display: inline-block;
-    margin-top: 0.75rem;
-    font-size: 0.82rem;
-    font-weight: 700;
-    white-space: nowrap;
-    color: var(--color-link);
-    @include transition(color);
-  }
-
-  &:hover {
-    transform: translateY(-2px);
-    border-color: var(--color-link-hover);
-    border-left-color: var(--color-link-hover);
-
-    .music-studio-callout__cta {
-      color: var(--color-link-hover);
-    }
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--color-focus);
-    outline-offset: 3px;
-  }
-}
-
-// ─── Studio hero image (full-bleed background) ───────────────────────────────
-
-.music-section--hero {
-  padding: 0;
-  height: clamp(260px, 38vw, 460px);
-  background-size: cover;
-  background-position: center 35%;
-  border-top: 1px solid var(--color-border);
-  border-bottom: 1px solid var(--color-border);
-}
-
-// ─── Discography & Recognition ───────────────────────────────────────────────
-
-.music-credits-section {
-  background-color: var(--color-bg-primary);
-  border-bottom: 1px solid var(--color-border);
-}
-
-.music-discography-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.25rem;
-  margin-top: $spacing-md;
-
-  @include respond-below(md) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-.music-discography-item {
-  margin: 0;
-  background-color: var(--color-bg-surface);
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
-  overflow: hidden;
-
-  figcaption {
-    padding: 0.45rem 0.75rem 0.55rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
-  }
-
-  .music-discography-title {
-    font-size: 0.76rem;
-    line-height: 1.3;
-    color: var(--color-text-secondary);
-  }
-
-  .music-discography-meta {
-    font-size: 0.68rem;
-    color: var(--color-text-muted);
-    letter-spacing: 0.04em;
-  }
-}
-
-.music-discography-link {
-  display: block;
-  position: relative;
-  overflow: hidden;
-  aspect-ratio: 1 / 1;
-
-  img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    @include transition(transform);
-  }
-
-  &:hover img {
-    transform: scale(1.04);
-  }
-
-  &:hover .music-discography-overlay {
-    opacity: 1;
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--color-focus);
-    outline-offset: -2px;
-  }
-}
-
-.music-discography-overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(0, 0, 0, 0.55);
-  color: #fff;
-  font-size: 0.76rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  opacity: 0;
-  pointer-events: none;
-  @include transition(opacity);
-}
-
-.music-discography-img {
-  display: block;
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-}
-
-.music-recognition {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2.5rem;
+.archive-heading {
   margin-top: $spacing-lg;
-  padding-top: $spacing-lg;
-  border-top: 1px solid var(--color-border);
+  margin-bottom: $spacing-md;
+  color: var(--color-accent-line);
+}
 
-  @include respond-below(md) {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+// ─── Discography (media-object list) ────────────────────────────────────────
+
+.music-discography-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.music-album {
+  display: flex;
+  gap: 1.5rem;
+  padding: $spacing-lg 0;
+  border-bottom: 1px solid var(--color-border);
+
+  &:first-child {
+    border-top: 1px solid var(--color-border);
   }
 
-  &__label {
-    margin: 0 0 0.75rem;
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--color-accent-line);
+  &:last-child {
+    border-bottom: none;
   }
 
-  &__detail {
-    margin: 0;
+  @include respond-below(sm) {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  &__cover {
+    flex-shrink: 0;
+    width: 160px;
+
+    @include respond-below(sm) {
+      width: 120px;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 6px;
+      border: 1px solid var(--color-border);
+    }
+  }
+
+  &__cover-link {
+    display: block;
+
+    &:focus-visible {
+      outline: 2px solid var(--color-focus);
+      outline-offset: 2px;
+      border-radius: 6px;
+    }
+  }
+
+  &__info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__title {
+    margin: 0 0 0.25rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+
+  &__meta {
+    margin: 0 0 0.6rem;
+    font-size: 0.82rem;
+    color: var(--color-text-muted);
+    letter-spacing: 0.02em;
+  }
+
+  &__desc {
+    margin: 0 0 0.6rem;
     font-size: 0.9rem;
     line-height: 1.65;
     color: var(--color-text-secondary);
   }
-}
 
-.music-placement-tags {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+  &__link {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-link);
+    text-decoration: none;
+    @include transition(color);
 
-  li {
-    display: inline-flex;
-    padding: 0.3rem 0.7rem;
-    background-color: var(--color-bg-surface);
-    border: 1px solid var(--color-border);
-    border-radius: 9999px;
-    font-size: 0.78rem;
-    color: var(--color-text-secondary);
+    &:hover {
+      color: var(--color-link-hover);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-focus);
+      outline-offset: 2px;
+    }
   }
 }
 
@@ -508,96 +420,6 @@ watch(musicContent, () => handleHash(route.hash));
 
 .section-heading {
   margin-bottom: $spacing-md;
-}
-
-// ─── CTA section ─────────────────────────────────────────────────────────────
-
-.music-cta-card {
-  background-color: var(--color-bg-surface);
-  border: 1px solid var(--color-border);
-  border-left: 3px solid var(--color-link);
-  border-radius: 12px;
-  padding: $spacing-lg;
-  margin-top: $spacing-md;
-
-  :deep(h3) {
-    margin-top: 0;
-    margin-bottom: $spacing-sm;
-  }
-}
-
-// ─── CTA button ──────────────────────────────────────────────────────────────
-
-.music-cta-wrap {
-  margin-top: $spacing-md;
-  margin-bottom: 0;
-}
-
-.music-cta-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.75rem 2rem;
-
-  @include respond-below(sm) {
-    width: 100%;
-    justify-content: center;
-  }
-  border-radius: 9999px;
-  font-size: 1rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-decoration: none;
-  background-color: var(--color-link);
-  color: #fff;
-  border: 2px solid var(--color-link);
-  @include transition(all);
-
-  &:hover {
-    background-color: var(--color-link-hover);
-    border-color: var(--color-link-hover);
-    color: #1a1a1a;
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--color-focus);
-    outline-offset: 3px;
-  }
-}
-
-// ─── Selected Credits list ───────────────────────────────────────────────────
-
-.credits-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-
-  &__item {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    gap: 0.5rem;
-    padding: $spacing-sm 0;
-    border-bottom: 1px solid var(--color-border);
-
-    &:first-child {
-      border-top: 1px solid var(--color-border);
-    }
-  }
-
-  &__title {
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: var(--color-text-primary);
-  }
-
-  &__detail {
-    font-size: 0.9rem;
-    color: var(--color-text-secondary);
-  }
 }
 
 // ─── Employer (timeline entries) ─────────────────────────────────────────────

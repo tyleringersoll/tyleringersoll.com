@@ -767,7 +767,6 @@ const icons = {
     font-size: 0.78rem;
     font-weight: 700;
     letter-spacing: 0.04em;
-    white-space: nowrap;
     color: var(--color-link);
     @include transition(color);
   }

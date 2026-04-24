@@ -372,67 +372,35 @@ export default {
     music: [
       {
         headingLevel: 2,
+        type: "hero",
         heading: "Music & Production",
         content: [
-          "My approach to playing is built on 30 years of live performance, national touring, and major-label studio discipline. Today, my focus is entirely on tracking remote sessions from my custom home studio. Below is a look back at my discography and touring history—but if you're looking for my current session work, you'll want to head over to my dedicated studio site."
-        ]
-      },
-      {
-        headingLevel: 2,
-        type: "hero-image",
-        src: "/images/studio_kit.jpeg",
-        alt: "Hybrid drum kit in Tyler's home studio"
-      },
-      {
-        heading: "The Hybrid Rig",
-        headingLevel: 2,
-        content: [
-          "After stepping back from professional drum work for nearly a decade, a 2024 reunion show with Omnisoul at World Cafe Live Philly brought everything I loved about the kit back into focus. It also sparked an obsession with building the ultimate hybrid recording rig.",
-
-          "Today, I track from my home studio using a custom hybrid drumset designed to capture the exact nuance of a stage performance with the flexibility of digital production. The kit utilizes nearly-silent mesh heads fitted with piezo triggers, running through an eDRUMin interface to capture flawless, low-latency MIDI data. Every dynamic nuance is translated directly to the DAW, allowing for complete control of the drum sound.",
-
-          "To preserve the natural bloom and wash of the room, the acoustic Zildjian cymbals are mic'd live and run through an API 3124V analog preamp into a Universal Audio x8. The result pairs the human energy and analog saturation of a live performance with total digital control over the drum mix, giving you exactly what the track needs."
-        ]
-      },
-      {
-        heading: "Explore the Studio",
-        headingLevel: 3,
-        content: [
-          "To see the hybrid rig in action, view my gear list, check out my latest covers, or review my full 30-year discography, visit my dedicated studio site."
+          "My approach to playing is built on three decades of live performance, national touring, and major-label studio discipline. Today, my focus is entirely on tracking remote sessions from my custom home studio."
         ],
+        src: "/images/studio_kit.jpeg",
         cta: {
-          label: "Visit tyleringersolldrums.com",
+          label: "Explore my studio & session work",
           url: "https://tyleringersolldrums.com",
           external: true
         }
       },
-     {
+      {
         headingLevel: 2,
-        heading: "Discography",
+        heading: "Selected Discography",
         albums: [
-          { title: "Veteran Avenue — Nothing Left to Burn", year: "2020", label: "Independent", image: "/images/veteranavenue_nothinglefttoburn.webp", alt: "Veteran Avenue – Nothing Left to Burn", url: "https://youtu.be/BG3R93Kc3H4?si=IflAQRZR3b14lO6e" },
-          { title: "Skitzo Calypso — Ghosts", year: "2013", label: "Independent", image: "/images/skitzocalypso_ghosts.webp", alt: "Skitzo Calypso – Ghosts", url: "https://music.youtube.com/watch?v=WB3pswtUK1g&si=8fKmI7BTeQIMzdQt" },
-          { title: "Ian Walsh — Please Remember", year: "2008", label: "Independent", image: "/images/ianwalsh_pleaseremember.png", alt: "Ian Walsh – Please Remember", url: "https://youtu.be/orm9pNytYxo?si=DRjpFhRNhJQjZI88&t=1297" },
-          { title: "The Crash Motive — Consequence", year: "2007", label: "Wind-up Records", image: "/images/thecrashmotive_consequence.webp", alt: "The Crash Motive – Consequence", url: "https://youtube.com/playlist?list=OLAK5uy_lOh9gG0GIkTXg2aFo5j4g97_C2AysYEpE&si=rPypzHo8Ptd-fLdb" },
-          { title: "Fantastic Four: The Album", year: "2005", label: "Wind-up Records", image: "/images/fantastic4_thealbum.webp", alt: "Fantastic Four: The Album", url: "https://youtu.be/WvEj9uWOo04?si=7XOafsoygKkG2uF6" },
-          { title: "Omnisoul — Happy Outside", year: "2004", label: "Independent", image: "/images/omnisoul_happyoutside.webp", alt: "Omnisoul – Happy Outside", url: "https://youtube.com/playlist?list=OLAK5uy_kyIVrwfzRWBveu2Tq6yNvsb8rYzj5fqVE&si=yAKZ_yXK7p4jgEj6" },
-          { title: "Omnisoul — Climbing Ladders", year: "2002", label: "Independent", image: "/images/omnisoul_climbingladders.jpg", alt: "Omnisoul — Climbing Ladders", url: null },
-          { title: "Skitzo Calypso — Premeditated Acts of Stupidity", year: "1999", label: "Independent", image: "/images/skitzocalypso_premeditatedactsofstupidity.webp", alt: "Skitzo Calypso – Premeditated Acts of Stupidity", url: "https://www.youtube.com/watch?v=GZsOHYEbTpE&list=OLAK5uy_kZNhPkIdxFo0RGqphf9FZvgNeFFlagjiQ" },
-          { title: "Skitzo Calypso — Join the Cult", year: "1998", label: "Independent", image: "/images/skitzocalypso_jointhecult.webp", alt: "Skitzo Calypso – Join the Cult", url: "https://youtu.be/3ocX1WZt5e4?si=K_xKrm4bXLO26KZo" }
-        ],
-        placements: [
-          "Super Bowl XLII",
-          "Madden NFL 2007",
-          "Fantastic Four (2005 Film)",
-          "CBS — Joan of Arcadia",
-          "NBC — Friday Night Lights",
-          "ESPN NFL Live",
-          "30+ NFL / MLB / NCAA / NHL stadiums"
-        ],
-        recording: "<em>Nothing Left to Burn</em> (Single, 2020). Live drums recorded at The Deep End Studio in Baltimore for Brad Cox's Veteran Avenue project. Produced and engineered by Grammy-nominated engineer Tony Correlli.<br><br><em>Ghosts</em> (LP, 2013). Stepped off the drum kit and jumped on bass for the track \"A Night in Hell & A Sunday Morning\". Produced and engineered by Tony Correlli at The Deep End Studio.<br><br><em>Please Remember</em> (LP, 2008). Cut live drums for two tracks on this record. The sessions were engineered by legendary producer Nick DiDia, known for his work with Pearl Jam, Rage Against the Machine, and Bruce Springsteen.<br><br><em>Consequence</em> (LP, 2007). Produced by Don Gilmore and Gregg Wattenberg. Tracked at Avatar Studios, New York City and The Pass Recording Studio, Los Angeles. Mixed by Bob Clearmountain and Mark Endert. Mastered by Ted Jensen at Sterling Sound. Wind-up Records. Drum! magazine: &ldquo;demonstrates the sort of pop-with-power sensibility that career dreams are made of.&rdquo;<br><br><em>Fantastic Four: The Album</em> (Soundtrack, 2005). Omnisoul&rsquo;s &ldquo;Waiting (Save Your Life)&rdquo; appeared on this Wind-up Records release alongside a full major-label roster. Drums tracked at Avatar Studios, New York City.<br><br><em>Happy Outside</em> (LP, 2004). Self-produced and recorded between touring stints in 2003 and 2004. Mixed by Grammy-winning engineer Phil Nicolo at Studio 4, Conshohocken, PA. Nicolo also stepped in to track the standout single, &ldquo;Waiting (Save Your Life).&rdquo;<br><br><em>Climbing Ladders</em> (LP, 2002). Independently released and recorded.<br><br><em>Premeditated Acts of Stupidity</em> (LP, 1999). Handled both drum and bass duties throughout this entire record. Engineered by Dave Pace at 12th Planet Recording Studio during the early days of the local scene.<br><br><em>Join the Cult</em> (LP, 1998). One of my earliest full-length studio projects. Tracked drums with engineer Dave Pace at Time Machine Starship and 12th Planet Recording Studio."
+          { title: "Veteran Avenue — Nothing Left to Burn", format: "Single", year: "2020", label: "Independent", image: "/images/veteranavenue_nothinglefttoburn.webp", alt: "Veteran Avenue – Nothing Left to Burn", url: "https://youtu.be/BG3R93Kc3H4?si=IflAQRZR3b14lO6e", description: "Live drums recorded at The Deep End Studio in Baltimore for Brad Cox's Veteran Avenue project. Produced and engineered by Grammy-nominated engineer Tony Correlli." },
+          { title: "Skitzo Calypso — Ghosts", format: "LP", year: "2013", label: "Independent", image: "/images/skitzocalypso_ghosts.webp", alt: "Skitzo Calypso – Ghosts", url: "https://music.youtube.com/watch?v=WB3pswtUK1g&si=8fKmI7BTeQIMzdQt", description: "Stepped off the drum kit and jumped on bass for the track \"A Night in Hell & A Sunday Morning\". Produced and engineered by Tony Correlli at The Deep End Studio." },
+          { title: "Ian Walsh — Please Remember", format: "LP", year: "2008", label: "Independent", image: "/images/ianwalsh_pleaseremember.png", alt: "Ian Walsh – Please Remember", url: "https://youtu.be/orm9pNytYxo?si=DRjpFhRNhJQjZI88&t=1297", description: "Cut live drums for two tracks on this record. The sessions were engineered by legendary producer Nick DiDia, known for his work with Pearl Jam, Rage Against the Machine, and Bruce Springsteen." },
+          { title: "The Crash Motive — Consequence", format: "LP", year: "2007", label: "Wind-up Records", image: "/images/thecrashmotive_consequence.webp", alt: "The Crash Motive – Consequence", url: "https://youtube.com/playlist?list=OLAK5uy_lOh9gG0GIkTXg2aFo5j4g97_C2AysYEpE&si=rPypzHo8Ptd-fLdb", description: "Produced by Don Gilmore and Gregg Wattenberg. Tracked at Avatar Studios, New York City and The Pass Recording Studio, Los Angeles. Mixed by Bob Clearmountain and Mark Endert. Mastered by Ted Jensen at Sterling Sound. Drum! magazine: \"demonstrates the sort of pop-with-power sensibility that career dreams are made of.\"" },
+          { title: "Fantastic Four: The Album", format: "Soundtrack", year: "2005", label: "Wind-up Records", image: "/images/fantastic4_thealbum.webp", alt: "Fantastic Four: The Album", url: "https://youtu.be/WvEj9uWOo04?si=7XOafsoygKkG2uF6", description: "Omnisoul's \"Waiting (Save Your Life)\" appeared on this Wind-up Records release alongside a full major-label roster. Drums tracked at Avatar Studios, New York City." },
+          { title: "Omnisoul — Happy Outside", format: "LP", year: "2004", label: "Independent", image: "/images/omnisoul_happyoutside.webp", alt: "Omnisoul – Happy Outside", url: "https://youtube.com/playlist?list=OLAK5uy_kyIVrwfzRWBveu2Tq6yNvsb8rYzj5fqVE&si=yAKZ_yXK7p4jgEj6", description: "Self-produced and recorded between touring stints in 2003 and 2004. Mixed by Grammy-winning engineer Phil Nicolo at Studio 4, Conshohocken, PA. Nicolo also stepped in to track the standout single, \"Waiting (Save Your Life).\"" },
+          { title: "Omnisoul — Climbing Ladders", format: "LP", year: "2002", label: "Independent", image: "/images/omnisoul_climbingladders.jpg", alt: "Omnisoul — Climbing Ladders", url: null, description: "Independently released and recorded." },
+          { title: "Skitzo Calypso — Premeditated Acts of Stupidity", format: "LP", year: "1999", label: "Independent", image: "/images/skitzocalypso_premeditatedactsofstupidity.webp", alt: "Skitzo Calypso – Premeditated Acts of Stupidity", url: "https://www.youtube.com/watch?v=GZsOHYEbTpE&list=OLAK5uy_kZNhPkIdxFo0RGqphf9FZvgNeFFlagjiQ", description: "Handled both drum and bass duties throughout this entire record. Engineered by Dave Pace at 12th Planet Recording Studio during the early days of the local scene." },
+          { title: "Skitzo Calypso — Join the Cult", format: "LP", year: "1998", label: "Independent", image: "/images/skitzocalypso_jointhecult.webp", alt: "Skitzo Calypso – Join the Cult", url: "https://youtu.be/3ocX1WZt5e4?si=K_xKrm4bXLO26KZo", description: "One of my earliest full-length studio projects. Tracked drums with engineer Dave Pace at Time Machine Starship and 12th Planet Recording Studio." }
+        ]
       },
       {
-        heading: "Past Band Projects",
+        heading: "Touring & Industry Experience",
         headingLevel: 2,
         content: []
       },
