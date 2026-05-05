@@ -16,8 +16,8 @@ export default {
         heading: "Hi, I’m Tyler",
         headingLevel: 2,
         content: [
-          "I lead an engineering team focused on building reliable, customer-facing applications that help millions of people. Over the years, I’ve built enterprise frontend solutions for brands like Vanguard, Bank of America, and DuPont.",
-          "Outside of work, I’m a professional drummer. I’ve spent the last three decades touring and recording, and today I run a custom hybrid drum studio right here in Pennsylvania.",
+          "I lead an engineering team building customer-facing applications.",
+          "Outside of work, I’m a professional drummer. I’ve spent the last three decades touring, recording, and playing live, and today I run a custom hybrid drum studio in Pennsylvania."
         ]
       },
       {
@@ -31,7 +31,7 @@ export default {
         heading: "Engineering",
         headingLevel: 4,
         content: [
-          "I build frontend applications using frameworks like Vue and Angular, or lighter, native web technologies when the project calls for it. My work spans everything from high-volume landing pages and payment flows to specialized fintech integrations and real-time hardware control software. Over the years, I’ve touched almost every corner of the frontend ecosystem—whether that means rolling out division-wide design systems or modernizing legacy architectures so they can scale securely.",
+          "I build frontend applications using frameworks like Vue and Angular, and I still like working close to the browser when a lighter solution makes more sense. My work has ranged from high-traffic marketing experiences and payment flows to fintech integrations, design systems, and specialized interfaces for scientific hardware. A lot of that work has involved modernizing legacy frontend architecture so teams can build and ship without creating problems elsewhere.",
           "<a href='/resume'>View my full resume →</a>"
         ]
       },
@@ -40,7 +40,7 @@ export default {
         heading: "Music",
         headingLevel: 4,
         content: [
-          "I've played drums professionally for over three decades, touring and recording under label support before anchoring large-scale events from the Mid-Atlantic down to Key West. After years on the road, I'm now spending less time playing live and more time in my home studio, focusing on the recording process."
+          "I’ve played drums professionally for over three decades, with a background in touring, studio recording, and live event work. These days I spend less time on the road and more time recording in my home studio, where I’ve built a hybrid setup around real cymbals and shell sounds that can be shaped to the track."
         ]
       },
       {
@@ -48,13 +48,13 @@ export default {
         heading: "Beyond work",
         headingLevel: 3,
         content: [
-          "When I’m not writing code or tracking drums, you can usually find me riding one of my bikes, or trying to keep up with my two kids. I’m a craft beer and bourbon fan, enjoy firing up the grill, and am based in southeastern Pennsylvania."
+          "When I’m not writing code or tracking drums, I’m usually riding one of my bikes, doing something with my kids, or working on something around the house. I’m based in southeastern Pennsylvania and spend a lot of time outdoors when I can."
         ]
       }
     ],
     homePage: {
       hero: {
-        eyebrow: "Frontend Architect & Engineering Leader"
+        eyebrow: "Engineering Leader"
       },
       engineering: {
         competenciesLabel: "Competencies",
@@ -67,33 +67,33 @@ export default {
         ],
         clientsLabel: "Featured Work",
         clients: [
-          { name: "Best Egg", description: "Identity & Payment Platforms at Scale", url: "/resume#best-egg" },
+          { name: "Best Egg", description: "Identity and payment platform work", url: "/resume#best-egg" },
           { name: "Vanguard", description: "FAS Design System & SPA Framework", url: "/resume#vanguard" },
-          { name: "Agilent Technologies", description: "Instrument Control UI & Data Visualization", url: "/resume#technical-writers-inc" }
+          { name: "Agilent Technologies", description: "Instrument control UI and data visualization", url: "/resume#technical-writers-inc" }
         ],
         cta: "View my full resume"
       },
       music: {
         studioLabel: "Hybrid Drum Tracking Setup",
         studio: {
-          text: "The reality of modern recording requires both the raw energy of a live room and the total post-performance control of digital production. To bridge that gap, I engineered a custom hybrid tracking setup. By pairing live, acoustically treated cymbals with a flawless MIDI translation of the drum performance, I deliver phase-perfect stems that drop right into any mix. For a full breakdown of the signal chain, the API preamps, and the conversion methodology, visit my dedicated studio site.",
+          text: "I built a hybrid drum tracking setup to solve a practical problem: I wanted the sound and feel of real cymbals without the bleed, volume, and phase problems that come with recording a full acoustic kit in a home studio. The cymbals are recorded live through a dedicated analog chain, while the shells are captured as performance data that can drive whatever drum sound the track needs. It gives me a natural performance with a lot more control after the take. If you want the full signal chain and studio breakdown, that lives on my drum site.",
           url: "https://tyleringersolldrums.com",
           external: true,
-          ctaText: "Explore the Interactive Sound Lab, full gear specs, and my remote session workflow at tyleringersolldrums.com →"
+          ctaText: "See the full studio setup, gear list, and remote session workflow at tyleringersolldrums.com →"
         },
         cta: "Learn more about my music"
       },
       beyond: {
         cards: [
-          { icon: "bicycle", label: "Cyclist", sub: "Road, Gravel, MTB", detail: "I ride year-round on a mix of road, gravel, and mountain bikes across Chester County and beyond.", url: "https://www.strava.com/athletes/3303002", external: true },
-          { icon: "users", label: "Family", sub: "Parent of Two", detail: "Most weekends revolve around my two kids, whether that means soccer games, bike rides, or building something in the yard.", url: null },
-          { icon: "beer", label: "Enthusiast", sub: "Craft Beer & Bourbon", detail: "I keep a running list of favorite local breweries and always have a solid bourbon on the shelf.", url: null },
-          { icon: "map-pin", label: "Local", sub: "Kennett Square, PA", detail: "We live in the Mushroom Capital of the World, surrounded by Brandywine Valley farmland and great trails.", url: null }
+          { icon: "bicycle", label: "Cycling", sub: "Road, Gravel, MTB", detail: "I ride year-round on road, gravel, and mountain bikes around Chester County and beyond.", url: "https://www.strava.com/athletes/3303002", external: true },
+          { icon: "users", label: "Family", sub: "Dad of Two", detail: "Most weekends revolve around my two kids, whether that means sports, bike rides, or building something in the yard.", url: null },
+          { icon: "beer", label: "Outside Work", sub: "Family, Riding, Cooking", detail: "Outside work I spend a lot of time with my kids, on a bike, or making something around the house.", url: null },
+          { icon: "map-pin", label: "Home Base", sub: "Kennett Square, PA", detail: "I’m based in southeastern Pennsylvania, close to good trails, open space, and a lot of family life.", url: null }
         ]
       },
       connect: {
-        heading: "Let’s Collaborate",
-        subtext: "Engineering, drumming, or just to say hello.",
+        heading: "Get in Touch",
+        subtext: "Engineering, music, or anything in between.",
         cta: "Get in Touch"
       }
     },
@@ -103,13 +103,13 @@ export default {
         heading: "Architecture",
         headingLevel: 2,
         content: [
-          "Think of this site as a living component library and open-source sandbox. Because most of my daily production code is locked behind enterprise firewalls, I designed this layout to balance my engineering background with my session drum work. Built with Vue 3 and Nuxt, it hits the sweet spot between developer ergonomics and production-grade SSR performance.",
-          "• <strong>Nuxt 3 & Static Pre-rendering:</strong> Every page is pre-rendered to static HTML at build time, delivering instant first paints and full SEO without a running Node.js server.",
-          "• <strong>Vue 3 Composition API:</strong> Component logic is organized with the Composition API and script setup, keeping state management and reactivity clean and composable.",
-          "• <strong>Pinia State Management:</strong> A Pinia store wraps the static content file and a separate store manages theme state, keeping both reactive and accessible anywhere in the component tree without prop drilling.",
-          "• <strong>SCSS & CSS Custom Properties:</strong> A hand-rolled design system using scoped SCSS modules and CSS custom properties powers the dual-theme color system and responsive layout.",
-          "• <strong>SCSS Auto-injection via Vite:</strong> Variables and mixins are injected into every component's style block automatically via Vite's <code>preprocessorOptions.additionalData</code> config. No <code>@import</code> needed in any <code>.vue</code> file. It is a developer ergonomics decision that eliminates boilerplate without changing the output.",
-          "• <strong>Page Transitions:</strong> A global fade transition is configured via <code>pageTransition</code> in <code>nuxt.config.ts</code>, with a dedicated <code>_fade.scss</code> partial handling the enter/leave animation classes Nuxt applies during route changes.",
+          "This site is both a personal website and a working frontend project. Since most of my professional code lives inside private enterprise systems, I use this as a public place to show how I structure a Vue and Nuxt application, manage content, and think about performance and accessibility.",
+          "• <strong>Nuxt 3 & Static Pre-rendering:</strong> Every page is pre-rendered to static HTML at build time, which keeps the site fast, simple to host, and easy for search engines to crawl.",
+          "• <strong>Vue 3 Composition API:</strong> I use the Composition API and script setup to keep component logic easier to follow.",
+          "• <strong>Pinia State Management:</strong> A Pinia store wraps the static content file, and a separate store manages theme state, so components can access both without prop drilling.",
+          "• <strong>SCSS & CSS Custom Properties:</strong> The design system uses scoped SCSS modules and CSS custom properties to support theming and responsive layout.",
+          "• <strong>SCSS Auto-injection via Vite:</strong> Variables and mixins are injected into each component’s style block through Vite config, which keeps shared styling tools available without repetitive imports.",
+          "• <strong>Page Transitions:</strong> A simple global fade transition is configured in <code>nuxt.config.ts</code>, with a dedicated partial handling the route transition classes."
         ]
       },
       {
@@ -117,7 +117,7 @@ export default {
         heading: "Performance & Lighthouse",
         headingLevel: 2,
         content: [
-          "Leading an engineering team means treating performance as a fundamental requirement, not an afterthought. I brought that same standard to this site. Pre-rendering every route at build time and keeping the JavaScript payload minimal means consistently strong metrics on live audits."
+          "Performance matters to me because it affects the actual experience of using a site. I approached this one the same way I approach production frontend work: keep the output lean, render as much as possible ahead of time, and avoid adding JavaScript unless it is doing something useful."
         ],
         scores: [
           { label: "Performance", value: 100 },
@@ -136,9 +136,9 @@ export default {
         heading: "Content-Driven Architecture",
         headingLevel: 2,
         content: [
-          "All page content lives in a single <code>data/content.js</code> file as a plain JavaScript export. A Pinia store wraps it to make it reactive and globally accessible. Every page uses <code>storeToRefs</code> and <code>computed</code> to derive the exact content slice it needs, with no prop drilling and no repeated data fetching.",
-          "This is a deliberate CMS-without-a-CMS pattern. The separation of concerns mirrors what a headless CMS provides: content is authored in one place, the store is the delivery layer, and components are pure renderers. Swapping in a real API or a CMS integration would only require updating the store, leaving every component untouched.",
-          "The pre-render config in <code>nuxt.config.ts</code> lists only the routes that exist in the data layer, keeping the build output predictable and the deployment surface minimal."
+          "All page content lives in a single <code>data/content.js</code> file as a plain JavaScript export. A Pinia store wraps it so components can access the content they need without passing data through multiple layers.",
+          "It is a simple content-driven setup that keeps structure and presentation separate. If I ever wanted to swap this for a CMS or an external API, that change would mostly happen in the store layer rather than across the component tree.",
+          "The pre-render config in <code>nuxt.config.ts</code> only includes routes that exist in the data layer, which keeps the build output predictable."
         ]
       },
       {
@@ -146,8 +146,8 @@ export default {
         heading: "Anti-FOUC Theme Initialization",
         headingLevel: 2,
         content: [
-          "Theme persistence is handled by a Pinia store that reads <code>localStorage</code> and applies a <code>.light-mode</code> class to the html element. But Pinia initializes after the page paints, which means returning users with light mode saved would see a flash of the dark theme on every load.",
-          "The fix is a blocking inline script injected into the head via the <code>app.head.script</code> array in <code>nuxt.config.ts</code>. It runs synchronously before any HTML renders, reads <code>localStorage</code>, and applies <code>.light-mode</code> immediately if needed. The script executes in under a millisecond and prevents any visible flash. Without it, the Pinia-driven approach would be correct but visually broken on every page load for light-mode users."
+          "Theme persistence is handled by a Pinia store that reads <code>localStorage</code> and applies a <code>.light-mode</code> class to the root element. The issue is that Pinia initializes after first paint, so returning users could briefly see the wrong theme on load.",
+          "To avoid that flash, I inject a small inline script into the document head through <code>app.head.script</code> in <code>nuxt.config.ts</code>. It runs before the page renders, checks <code>localStorage</code>, and applies the saved theme immediately."
         ]
       },
 
@@ -156,8 +156,8 @@ export default {
         heading: "Hash-Based Deep Linking",
         headingLevel: 2,
         content: [
-          "The resume timeline supports URL hash navigation. Visiting /resume#best-egg automatically expands all of that employer's roles and scrolls to the section. The homepage links to specific employers this way, so the experience feels like navigating directly into a document rather than landing on a page and hunting for content.",
-          "The implementation watches <code>route.hash</code>, matches it against a slugified employer heading, and adds the matching entries to an <code>expandedRoles</code> Set. It then calls a custom <code>useScrollToHash</code> composable that uses <code>nextTick</code> plus <code>requestAnimationFrame</code> to wait for the DOM before computing scroll position. The offset calculation accounts for the sticky header height so the section heading is never obscured on arrival."
+          "The resume timeline supports URL hash navigation, so a link like <code>/resume#best-egg</code> opens the relevant employer section and scrolls directly to it.",
+          "The implementation watches <code>route.hash</code>, matches it against a slugified employer heading, and adds the relevant entries to an <code>expandedRoles</code> Set. A custom <code>useScrollToHash</code> composable waits for the DOM to finish updating before calculating scroll position, and it accounts for the sticky header so section headings are not hidden."
         ]
       },
       {
@@ -165,7 +165,7 @@ export default {
         heading: "CI/CD & Edge Delivery",
         headingLevel: 2,
         content: [
-          "I treat deployment and infrastructure as core components of the frontend architecture. This repository is connected to an automated CI/CD pipeline. Every push triggers a strict build process that generates immutable, pre-rendered static assets, which are then distributed globally via Netlify's edge CDN. This guarantees instant cache invalidation on deployments and maximum availability for end users."
+          "Deployment is part of the frontend architecture, not something separate from it. This repository is connected to an automated CI/CD pipeline, so every push triggers a build that generates pre-rendered static assets and deploys them through Netlify’s CDN."
         ]
       },
       {
@@ -173,11 +173,11 @@ export default {
         heading: "Accessibility (A11Y)",
         headingLevel: 2,
         content: [
-          "Building for massive user bases at work taught me that digital quality means building for everyone. I built this site with accessibility as a baseline, not an afterthought.",
+          "Building for large user bases at work reinforced something simple: digital quality includes accessibility. I built this site with that in mind from the start.",
           "• <strong>Skip Navigation:</strong> A skip-to-content link lets keyboard and screen reader users bypass the header and jump straight to the page content.",
           "• <strong>Semantic HTML:</strong> Proper heading hierarchy, landmark elements, and native interactive controls throughout.",
           "• <strong>Keyboard Navigation:</strong> Every interactive element, including the expanding resume timeline and mobile navigation, is fully operable via keyboard with visible focus indicators. The mobile menu traps focus while open and closes on Escape.",
-          "• <strong>Inert on Collapsed Panels:</strong> The timeline uses the <code>inert</code> attribute on collapsed content panels, not just <code>aria-hidden</code>. <code>aria-hidden</code> removes content from the accessibility tree. <code>inert</code> goes further, removing keyboard focus, pointer events, and accessibility tree presence in a single attribute. It is the correct modern primitive for this pattern.",
+          "• <strong>Inert on Collapsed Panels:</strong> The timeline uses the <code>inert</code> attribute on collapsed content panels rather than just <code>aria-hidden</code>. <code>inert</code> removes keyboard focus, pointer events, and accessibility tree presence in one attribute, which is what this pattern actually needs.",
           "• <strong>Reduced Motion:</strong> A global <code>prefers-reduced-motion</code> media query disables animations and transitions for users who request it.",
           "• <strong>ARIA Where It Counts:</strong> Custom components like the timeline toggle, theme switch, and mobile menu use appropriate roles, labels, and state attributes for assistive technologies.",
           "• <strong>Dual-Theme Contrast:</strong> Both the dark and light themes use color pairings chosen to maintain readable contrast ratios."
@@ -190,7 +190,7 @@ export default {
         heading: "Resume",
         headingLevel: 2,
         content: [
-          "Frontend architect and engineering leader guiding technical strategy and delivering scalable applications. My background spans fintech, scientific instrumentation, and enterprise software, where I modernize legacy architectures, build enterprise design systems, and manage critical third-party integrations."
+          "I lead frontend engineering work across customer-facing platforms. My background includes fintech, scientific instrumentation, and enterprise software, and a lot of my work has involved modernizing legacy systems and helping teams build frontend applications in a more maintainable way."
         ]
       },
       {
@@ -202,33 +202,33 @@ export default {
         heading: "Best Egg",
         headingLevel: 3,
         years: "2022 - Present",
-        lead: "Leading engineering across core customer platforms, including identity verification, payment processing, and authentication.",
+        lead: "Leading engineering for customer-facing identity, payment, and authentication platforms.",
         roles: [
           {
             subheading: "Director II, Software Engineering · 2026 - Present",
             content: [
-              "Hands-on engineering leader for a customer-facing cross-functional team. I balance active frontend development with team management, architectural strategy, and cross-functional alignment.",
-              "• Partner directly with product managers and stakeholders to define technical priorities, establish delivery timelines, and distribute resources across backend and frontend initiatives.",
-              "• Manage the engineering lifecycle and professional development for a single, dedicated team, scaling capacity to meet the demands of our customer-facing verification, servicing, and authentication platforms.",
-              "• Guide technical direction and delivery for core customer platforms, contributing directly to high-visibility frontend feature work.",
+              "Hands-on engineering leader for a customer-facing cross-functional team. I split my time between active frontend development, team leadership, architectural decision-making, and cross-functional planning.",
+              "• Partner with product managers and stakeholders to define priorities, shape delivery plans, and allocate work across frontend and backend efforts.",
+              "• Manage the engineering lifecycle and growth of a dedicated team supporting customer-facing verification, servicing, and authentication platforms.",
+              "• Guide technical direction for core customer platforms while continuing to contribute directly to frontend implementation work.",
               "<strong>Tech:</strong> Angular, TypeScript, DataDog, Figma, Miro, Jira, Confluence, FullStory, Cursor AI, GitHub Copilot, Claude Code"
             ]
           },
           {
             subheading: "Senior Lead Software Engineer II · 2024 - 2026",
             content: [
-              "Took ownership of frontend architecture and roadmap planning, partnering directly with product and UX while mentoring engineers across the company.",
-              "• Managed the technical lifecycle for critical third-party fintech integrations like MX and Method Financial, driving the process from frontend architectural design through production rollout.",
-              "• Strengthened frontend security by implementing a Level 3 Content Security Policy (CSP) utilizing dynamic nonces, and operationalized the deployment by integrating violation reporting and alerting through DataDog.",
+              "Owned frontend architecture and roadmap planning while partnering closely with product and UX and mentoring engineers across the organization.",
+              "• Led the frontend side of third-party fintech integrations including MX and Method Financial, from architecture through implementation and rollout.",
+              "• Implemented a Level 3 Content Security Policy using dynamic nonces and set up DataDog reporting and alerting so CSP violations were visible in production.",
               "<strong>Tech:</strong> Angular, TypeScript, Node.js, Python, Django, Cursor AI, GitHub Copilot"
             ]
           },
           {
             subheading: "Senior Lead Software Engineer I · 2022 - 2024",
             content: [
-              "Modernized legacy Angular codebases and built the foundation our teams use today. Updated the architecture and libraries and established lasting development patterns.",
-              "• Drove an architectural update that implemented lazy-loaded modules, reduced main bundle sizes, and migrated the platform from Bootstrap to Angular Material.",
-              "• Collaborated to architect and launch No-Auth Quick Pay and automated payment scheduling, simplifying the payment experience for customers.",
+              "Modernized legacy Angular codebases and helped establish the frontend patterns our teams still build on.",
+              "• Led an architectural update that introduced lazy-loaded modules, reduced main bundle size, and moved the platform from Bootstrap to Angular Material.",
+              "• Helped architect and launch No-Auth Quick Pay and automated payment scheduling to simplify the payment experience for customers.",
               "• Golden Egg Award for \"BE a Builder of Great Teams\" (Q3 2023).",
               "<strong>Tech:</strong> Angular, TypeScript, Tailwind CSS, Angular Material, Docker, Nginx, Jasmine"
             ]
@@ -243,11 +243,11 @@ export default {
           {
             subheading: "Senior Frontend Developer · 2019 - 2022",
             content: [
-              "As a senior frontend developer for Vanguard's Financial Advisor Services marketing department, I led the engineering of a comprehensive design system within a four-person team, building the core component library to support thousands of advisors across applications serving millions of daily users.",
-              "• Built a web component library with custom element wrappers to allow seamless integration across Vue, Angular, and Adobe Experience Manager. This eliminated the need for framework-specific design system support teams.",
-              "• Partnered with management to secure leadership buy-in for the design system during a division-wide rebrand, presenting the architecture to the organization and embedding directly with multiple independent development teams to drive hands-on adoption and UI consistency.",
-              "• Designed and built a Vue.js/NestJS application prototype that was adopted as the standard foundation for all FAS single-page applications.",
-              "• Set up AWS-based CI/CD pipelines to automate internal Storybook-based documentation deployments, establishing transparency and guidelines across FAS development teams.",
+              "As a senior frontend developer for Vanguard’s Financial Advisor Services marketing group, I worked on a four-person team building a design system and shared frontend foundation used across applications serving advisors and large user bases.",
+              "• Built a web component library with custom element wrappers so the system could be used across Vue, Angular, and Adobe Experience Manager without separate framework-specific implementations.",
+              "• Partnered with leadership and development teams during a division-wide rebrand to drive adoption of the design system and improve UI consistency across products.",
+              "• Designed and built a Vue.js/NestJS exemplar application with CI, content structure, environment setup, and third-party integrations already in place, giving teams a clean starting point for FAS single-page applications.",
+              "• Set up AWS-based CI/CD pipelines for Storybook documentation deployments so teams had a shared place to reference components and usage patterns.",
               "<strong>Tech:</strong> Vue.js, NestJS, Web Components, Storybook, Angular, Custom Elements, AWS, CI/CD"
             ]
           }
@@ -261,10 +261,10 @@ export default {
           {
             subheading: "Web Application Developer · 2017 - 2019",
             content: [
-              "Embedded with Agilent Technologies's R&D software engineering team as the sole frontend specialist, building web-based instrument control interfaces shipped globally with Agilent's flagship hardware product lines.",
-              "• Drove the frontend development for Agilent's Gas Chromatography web UI, partnering with a large engineering team to implement real-time WebSocket monitoring and two-way control using Sencha/Ext JS.",
-              "• Designed custom SVG icons and CSS styling aligned with Agilent's product design standards.",
-              "• Designed an automated build system for Adobe RoboHelp documentation across multiple product lines. This supported over eight languages with dynamic template generation and command-line automation.",
+              "Embedded with Agilent Technologies’ R&D software engineering team as the primary frontend developer, building web-based instrument control interfaces shipped with Agilent hardware products.",
+              "• Led frontend development for Agilent’s Gas Chromatography web UI, including real-time WebSocket monitoring and two-way control using Sencha/Ext JS.",
+              "• Designed custom SVG icons and CSS styling aligned with Agilent’s product standards.",
+              "• Built an automated Adobe RoboHelp output system across multiple product lines, supporting more than eight languages through template generation and command-line automation.",
               "<strong>Tech:</strong> JavaScript, Sencha/Ext JS, HTML5, CSS/SCSS, SVG, WebSockets, Adobe RoboHelp, Command-line scripting"
             ]
           }
@@ -278,12 +278,12 @@ export default {
           {
             subheading: "Digital Development Services · 2014 - 2017",
             content: [
-              "Delivered web, email, and enterprise solutions across multiple agency projects for Fortune 500 brands including Bank of America, David's Bridal, Chemours, Blue Cross Blue Shield Global, and DuPont, ultimately reaching tens of millions of users.",
-              "• Built responsive websites and landing pages for enterprise clients like Bank of America, David's Bridal, NASA Federal Credit Union, and Chemours.",
-              "• Developed adaptive HTML email campaigns for Bank of America's rewards and retention programs, optimizing for deliverability and cross-client compatibility.",
-              "• Acted as Systems Owner for DuPont's SharePoint security auditing system, managing weekly reports and a server migrations alongside IBM consultants.",
+              "Worked across agency projects spanning web, email, SharePoint, and internal enterprise systems for brands including Bank of America, David’s Bridal, Chemours, Blue Cross Blue Shield Global, and DuPont.",
+              "• Built responsive websites and landing pages for enterprise clients including Bank of America, David’s Bridal, NASA Federal Credit Union, and Chemours.",
+              "• Developed HTML email campaigns for Bank of America rewards and retention programs, with a focus on deliverability and cross-client consistency.",
+              "• Served as Systems Owner for DuPont’s SharePoint security auditing system, including weekly reporting and a server migration alongside IBM consultants.",
               "• Developed SharePoint intranet solutions for Chemours and Everything But Water.",
-              "• Managed off-hours, time-sensitive deployments for highly sensitive internal communications with Chemours leadership.",
+              "• Managed off-hours deployments for sensitive internal communications tied to Chemours leadership.",
               "<strong>Tech:</strong> HTML5, CSS/SCSS, JavaScript, jQuery, SharePoint, Responsive Design, Email Development"
             ]
           }
@@ -297,20 +297,20 @@ export default {
           {
             subheading: "Frontend Developer / Senior Technical Writer · 2007 - 2014",
             content: [
-              "As a long-term embedded consultant with Agilent Technologies's R&D software engineering team, I delivered frontend applications and technical documentation for global scientific instrument product lines.",
-              "• Designed standalone web-based document delivery applications distributed via USB, DVD, or installed via InstallShield for global product lines.",
-              "• Architected custom HTML templates and automated build systems, streamlining multi-product documentation delivery across Gas Chromatography, Mass Spectrometry, and Sampler product lines.",
-              "• Authored technical documentation using Adobe FrameMaker and converted it to web-ready HTML.",
-              "• Created software UI icons, technical diagrams, and visual assets for R&D teams.",
+              "As a long-term embedded consultant with Agilent Technologies’ R&D software engineering team, I worked across both frontend applications and technical documentation for global scientific instrument product lines.",
+              "• Designed standalone web-based document delivery applications distributed by USB, DVD, and InstallShield-based installers.",
+              "• Built custom HTML templates and automated build systems across multiple documentation sets for Gas Chromatography, Mass Spectrometry, and Sampler product lines.",
+              "• Authored technical documentation in Adobe FrameMaker and converted it to web-ready HTML outputs.",
+              "• Created UI icons, diagrams, and other visual assets for R&D teams.",
               "<strong>Tech:</strong> HTML, CSS, JavaScript, Adobe RoboHelp, Adobe FrameMaker, Adobe Illustrator, Adobe Photoshop"
             ]
           },
           {
             subheading: "Technical Writer / Web Developer · 2003 - 2005",
             content: [
-              "Embedded on-site at AstraZeneca; supported the global pharmaceutical regulatory submission team by packaging official FDA submissions and contributing to their global regulatory intranet site.",
-              "• Designed and built the global regulatory intranet site to centralize team content and establish an internal digital presence.",
-              "• Packaged complex regulatory and compliance documentation for official FDA submissions.",
+              "Embedded on-site at AstraZeneca, supporting the global pharmaceutical regulatory submission team through documentation packaging and internal web development.",
+              "• Designed and built the global regulatory intranet site to centralize team content.",
+              "• Packaged regulatory and compliance documentation for official FDA submissions.",
               "• Managed project timelines and documentation workflows across the team.",
               "<strong>Tech:</strong> HTML, CSS, JavaScript, Adobe FrameMaker, Adobe Photoshop, Adobe Illustrator, Microsoft Project"
             ]
@@ -346,7 +346,7 @@ export default {
         heading: "Additional Experience",
         headingLevel: 2,
         content: [
-          "Prior to engineering, built a 30-year career as a professional touring and session drummer. Scaled an independent act to national syndication with major label support (Wind-up Records), secured sync placements in network television, and managed regional business operations for a highly active event band. See full discography and timeline at <a href='/music'>/music</a>."
+          "Before moving fully into engineering, I built a long career as a professional touring and session drummer. That included national touring, major label support, sync placements in television and sports, and years of live event work. See the full discography and music timeline at <a href='/music'>/music</a>."
         ]
       },
       {
@@ -373,7 +373,7 @@ export default {
         type: "hero",
         heading: "Music & Production",
         content: [
-          "My approach to playing is built on three decades of live performance, national touring, and major-label studio discipline. Today, my focus is entirely on tracking remote sessions from my custom home studio."
+          "My playing comes out of decades of live shows, touring, and studio work. These days I’m focused on recording remote sessions from my home studio."
         ],
         src: "/images/studio_kit.jpeg",
         cta: {
@@ -413,9 +413,9 @@ export default {
           {
             subheading: "Custom Hybrid Drum Studio · 2025 - Present",
             content: [
-              "Launched a professional remote tracking studio, engineering a custom hybrid recording rig to bridge the gap between acoustic cymbal character and complete digital control.",
-              "• Track live Zildjian cymbals through a dedicated analog chain paired with a high-resolution MIDI translation of the drum performance.",
-              "• Deliver mix-ready, phase-perfect audio stems and MIDI data to artists and producers globally."
+              "Built a remote tracking studio around a hybrid workflow that combines live cymbal recordings with flexible shell sounds.",
+              "• Record real Zildjian cymbals through a dedicated analog chain while capturing the shell performance as detailed MIDI.",
+              "• Deliver organized cymbal audio, shell tracks, and MIDI that can be mixed, swapped, or layered as needed."
             ]
           }
         ]
@@ -428,10 +428,10 @@ export default {
           {
             subheading: "Drummer, DJ, & Co-Founder · 2010 - 2016",
             content: [
-              "Co-founded and scaled a highly active event band, transitioning from the regional club circuit to high-end corporate events, large-scale universities, and week-long residencies in Key West.",
-              "• Performed as drummer and DJ at weddings, corporate events, and club venues throughout the Mid-Atlantic.",
-              "• Composed and produced musical sequences with click tracks, serving as the production backbone for live performances.",
-              "• Handled business tax filings as part of shared co-founder responsibilities."
+              "Co-founded and built a high-volume event band that moved from the regional club circuit into corporate events, universities, weddings, and long residencies in Key West.",
+              "• Performed as drummer and DJ at weddings, corporate events, private events, and club venues throughout the Mid-Atlantic.",
+              "• Built and ran musical sequences and click-driven arrangements that became a core part of the live show.",
+              "• Shared responsibility for business operations, including tax filings."
             ]
           }
         ]
@@ -444,14 +444,12 @@ export default {
           {
             subheading: "Drummer, Studio Musician & Founding Member · 2002 - 2008",
             content: [
-              "Scaled an independent college act into a national touring rock band with label support, securing a comprehensive deal with Wind-up Records in 2005 and rebranding as The Crash Motive.",
-              "• Built a strong regional following early on, winning the University of Delaware's Battle of the Bands and holding a 31-day #1 requested song run on WSTW 93.7.",
-              "• Performed drum parts on studio recordings and arranged drum compositions for albums and singles.",
-              "• Toured nationally and performed extensively at major venues, opening for recognized acts like Sugar Ray, The All-American Rejects, Collective Soul, and Lifehouse.",
-              "• Secured high-profile sync placements, including Super Bowl XLII, Madden NFL 2007, and The Fantastic Four soundtrack.",
-              "• Placed music in network television programming, including CBS's Joan of Arcadia, NBC's Friday Night Lights promos, and ESPN's NFL Live.",
-              "• Licensed music for use in over 30 professional sports stadiums across the NFL, MLB, NCAA, and NHL.",
-              "• Negotiated and managed business partnerships with label executives, booking agents, and licensing representatives."
+              "Helped take an independent college band into national touring, label support, and larger studio opportunities after signing with Wind-up Records in 2005 and rebranding as The Crash Motive.",
+              "• Built a strong regional following early on, including a 31-day #1 requested song run on WSTW 93.7 and a University of Delaware Battle of the Bands win.",
+              "• Played drums on studio recordings and helped shape drum arrangements for albums and singles.",
+              "• Toured nationally and opened for acts including Sugar Ray, The All-American Rejects, Collective Soul, and Lifehouse.",
+              "• Contributed to placements tied to Super Bowl XLII, Madden NFL 2007, The Fantastic Four soundtrack, network television, and stadium playback.",
+              "• Worked directly with label, booking, and licensing partners as the band grew."
             ]
           }
         ]
@@ -464,9 +462,10 @@ export default {
           {
             subheading: "Drummer · 1999 - 2000",
             content: [
-              "• Anchored a pioneering experimental jam band, building a massive local following at staple University of Delaware venues including Deer Park Tavern and The East End Cafe.",
-              "• Scaled from the college circuit to outdoor stages, sharing festival bills with national acts like The Disco Biscuits and Lake Trout, and performing at Phish's 65,000-capacity Camp Oswego festival.",
-              "• Treated the relentless touring schedule as a masterclass in live performance, honing skills in listening, improvising, and mastering dynamic control to live in the moment rather than just keeping time.",
+              "Played drums in an experimental jam band that built a strong local following around the University of Delaware and later moved onto larger outdoor stages and festival bills.",
+              "• Played regularly at venues including Deer Park Tavern and The East End Cafe.",
+              "• Shared festival bills with acts like The Disco Biscuits and Lake Trout, and performed at Phish’s Camp Oswego festival.",
+              "• The pace of that band taught me a lot about listening, improvising, and shaping dynamics in real time."
             ]
           }
         ]
