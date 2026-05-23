@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -c \"import docx; print\\(docx.__version__\\)\")",
+      "Bash(pip3 install *)",
+      "Bash(python3)",
+      "Bash(python3 build_resume.py)",
+      "Bash(open \"/Users/tyleringersoll/GitHub/ingersoll.dev/dist/TylerIngersoll_Resume.docx\")"
+    ]
+  }
+}

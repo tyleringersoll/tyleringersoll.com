@@ -6,12 +6,12 @@
         <div class="hv2-hero__grid">
           <div class="hv2-hero__kicker">
             <p class="hv2-eyebrow">{{ hero.eyebrow }}</p>
-            <h1 class="hv2-hero__heading">{{ heroSection.heading }}</h1>
+            <h1 class="hv2-hero__heading">{{ hero.heading }}</h1>
           </div>
 
           <div class="hv2-hero__text">
             <p
-              v-for="(para, i) in heroSection.content"
+              v-for="(para, i) in hero.paragraphs"
               :key="i"
               class="hv2-hero__body"
               v-html="para"
@@ -34,12 +34,12 @@
     <!-- ===================== ENGINEERING ===================== -->
     <section class="hv2-engineering" id="engineering">
       <div class="hv2-inner">
-        <h2>{{ engineeringSection.heading }}</h2>
+        <h2>{{ eng.heading }}</h2>
         <div class="hv2-two-col">
           <div class="hv2-engineering__left">
-            <p v-html="engineeringSection.content[0]" />
+            <p v-html="eng.body" />
             <div class="hv2-btn-wrap">
-              <NuxtLink to="/resume" class="hv2-btn hv2-btn--primary">{{
+              <NuxtLink :to="eng.ctaUrl" class="hv2-btn hv2-btn--primary">{{
                 eng.cta
               }}</NuxtLink>
             </div>
@@ -83,10 +83,10 @@
           </div>
 
           <div class="hv2-music__text-column">
-            <h2 class="hv2-music__heading">{{ musicSection.heading }}</h2>
-            <p v-html="musicSection.content[0]" />
+            <h2 class="hv2-music__heading">{{ mus.heading }}</h2>
+            <p v-html="mus.body" />
             <div class="hv2-btn-wrap">
-              <NuxtLink to="/music" class="hv2-btn hv2-btn--primary">{{
+              <NuxtLink :to="mus.ctaUrl" class="hv2-btn hv2-btn--primary">{{
                 mus.cta
               }}</NuxtLink>
             </div>
@@ -110,7 +110,7 @@
     <!-- ===================== BEYOND WORK ===================== -->
     <section class="hv2-beyond">
       <div class="hv2-inner">
-        <h2 class="hv2-section-header">{{ beyondSection.heading }}</h2>
+        <h2 class="hv2-section-header">{{ bey.heading }}</h2>
         <div class="hv2-beyond__cards">
           <component
             v-for="(card, cIdx) in bey.cards"
@@ -156,19 +156,11 @@ const store = useContentStore();
 const route = useRoute();
 const { scrollToHash } = useScrollToHash();
 
-const homeArr = computed(() => store.content?.home || []);
-const heroSection = computed(() => homeArr.value.find((s) => s.id === "hero") || {});
-const engineeringSection = computed(
-  () => homeArr.value.find((s) => s.id === "engineering") || {}
-);
-const musicSection = computed(() => homeArr.value.find((s) => s.id === "music") || {});
-const beyondSection = computed(() => homeArr.value.find((s) => s.id === "beyond") || {});
-
-const pg = computed(() => store.content?.homePage || {});
-const hero = computed(() => pg.value.hero || {});
-const eng = computed(() => pg.value.engineering || {});
-const mus = computed(() => pg.value.music || {});
-const bey = computed(() => pg.value.beyond || {});
+const home = computed(() => store.content?.home || {});
+const hero = computed(() => home.value.hero || {});
+const eng = computed(() => home.value.engineering || {});
+const mus = computed(() => home.value.music || {});
+const bey = computed(() => home.value.beyond || {});
 
 const activeCard = ref(null);
 
@@ -192,7 +184,7 @@ const linkAttrs = (item) => {
 
 onMounted(() => scrollToHash(route.hash));
 watch(() => route.hash, scrollToHash);
-watch(pg, () => scrollToHash(route.hash));
+watch(home, () => scrollToHash(route.hash));
 
 const icons = {
   layers: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>`,

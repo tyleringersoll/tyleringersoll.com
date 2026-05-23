@@ -51,7 +51,7 @@ const props = defineProps({
 
 const store = useContentStore();
 
-const connect = computed(() => store.content?.homePage?.connect || {});
+const connect = computed(() => store.content?.home?.connect || {});
 
 const currentYear = computed(() => new Date().getFullYear());
 

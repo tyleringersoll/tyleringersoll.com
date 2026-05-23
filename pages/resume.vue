@@ -12,6 +12,7 @@
           <article v-if="!entry.roles && !entry.skills && idx === 0" class="article resume-intro">
             <div class="resume-header">
               <h2 class="first-heading" v-html="entry.heading" />
+              <!--
               <a
                 href="/Tyler_Ingersoll_Resume.pdf"
                 target="_blank"
@@ -25,6 +26,7 @@
                 </svg>
                 Download PDF
               </a>
+              -->
             </div>
             <p
               v-for="(para, paraIdx) in entry.content"
