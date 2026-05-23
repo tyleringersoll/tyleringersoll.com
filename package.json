@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "nuxt dev",
+    "dev:fresh": "rm -rf .nuxt node_modules/.cache && nuxt dev",
     "build": "nuxt build",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
