@@ -56,6 +56,24 @@
       :class="{ 'article__bullet-item': para.trim().startsWith('•') }"
       v-html="para"
     />
+    <div v-if="props.article.cta" class="article__cta-wrap">
+      <a
+        v-if="isExternalCta"
+        :href="props.article.cta.url"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="article__cta"
+      >
+        {{ props.article.cta.label }} →
+      </a>
+      <NuxtLink
+        v-else
+        :to="props.article.cta.url"
+        class="article__cta"
+      >
+        {{ props.article.cta.label }} →
+      </NuxtLink>
+    </div>
     <slot />
   </article>
 </template>
@@ -86,6 +104,11 @@ const subheadingLevel = computed(() => {
 
 const inlineStyle = computed(() => {
   return props.article.contentStyle && props.article.contentStyle === "inline";
+});
+
+const isExternalCta = computed(() => {
+  const cta = props.article.cta;
+  return cta?.external === true || /^(https?:|mailto:|tel:)/i.test(cta?.url || "");
 });
 </script>
 
@@ -127,6 +150,35 @@ const inlineStyle = computed(() => {
 
   &__bullet {
     margin: 0 0.4rem;
+  }
+
+  &__cta-wrap {
+    margin-top: $spacing-md;
+  }
+
+  &__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.65rem 1.25rem;
+    border: 1px solid var(--color-link);
+    border-radius: 9999px;
+    color: var(--color-link);
+    font-size: 0.9rem;
+    font-weight: 700;
+    line-height: 1.2;
+    text-decoration: none;
+    @include transition(all);
+
+    &:hover {
+      border-color: var(--color-link-hover);
+      color: var(--color-link-hover);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-focus);
+      outline-offset: 3px;
+    }
   }
 
   :deep(ul),

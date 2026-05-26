@@ -85,7 +85,7 @@
               <TimelineItem
                 v-for="(role, roleIdx) in entry.roles"
                 :key="roleIdx"
-                :dates="roleDates(role.subheading)"
+                :dates="roleDates(role.subheading, entry.years)"
                 :title="roleTitle(role.subheading)"
                 :title-tag="`h${(entry.headingLevel || 3) + 1}`"
                 :expandable="true"
@@ -150,8 +150,24 @@ const contentGroups = computed(() => {
 
 const expandedRoles = ref(new Set());
 
-const roleTitle = (subheading) => subheading.split(' · ')[0];
-const roleDates = (subheading) => subheading.split(' · ')[1] ?? '';
+const splitRoleSubheading = (subheading) => String(subheading ?? '').split(' · ');
+const isDateSegment = (value) =>
+  /^(?:\d{4}|Present)(?:\s*-\s*(?:\d{4}|Present))?(?:,\s*\d{4})*$/i.test(String(value ?? '').trim());
+
+const roleTitle = (subheading) => {
+  const parts = splitRoleSubheading(subheading);
+  const trailingPart = parts[parts.length - 1];
+  return parts.length > 1 && isDateSegment(trailingPart)
+    ? parts.slice(0, -1).join(' · ')
+    : subheading;
+};
+
+const roleDates = (subheading, fallbackYears = '') => {
+  if (fallbackYears) return fallbackYears;
+  const parts = splitRoleSubheading(subheading);
+  const trailingPart = parts[parts.length - 1];
+  return parts.length > 1 && isDateSegment(trailingPart) ? trailingPart : '';
+};
 
 const slugify = (str) =>
   String(str ?? '')
@@ -159,12 +175,15 @@ const slugify = (str) =>
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '');
 
+const formatInlineMarkup = (text) =>
+  text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+
 const formatPara = (para) => {
   const trimmed = para.trim();
   if (trimmed.startsWith('•')) {
-    return trimmed.replace(/^•\s*/, '');
+    return formatInlineMarkup(trimmed.replace(/^•\s*/, ''));
   }
-  return para;
+  return formatInlineMarkup(para);
 };
 
 const isExpanded = (entryIdx, roleIdx) =>

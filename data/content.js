@@ -7,21 +7,21 @@ export default {
     navigation: [
       { name: "Home", url: "/" },
       { name: "Resume", url: "/resume" },
-      { name: "Drums", url: "/music" }
+      { name: "Drums", url: "/drums" }
     ],
     home: {
       hero: {
         heading: "Hi, I’m Tyler",
         eyebrow: "Frontend Engineering",
         paragraphs: [
-          "I architect modern frontend systems and lead engineering teams to deliver high-impact digital products.",
-          "Outside of engineering, I’ve spent more than three decades playing drums in live, touring, and studio settings. Today I record drum tracks from my studio in Pennsylvania."
+          "I architect enterprise-scale frontend systems and lead high-performing engineering teams to deliver sustainable, impactful digital products.",
+          "Parallel to my engineering career, I have spent more than three decades as a session and touring drummer. Today, that same dedication to precision, collaboration, and studio discipline drives my technical leadership and my remote recording work from Pennsylvania."
         ]
       },
       engineering: {
         heading: "Engineering",
         headingLevel: 4,
-        body: "I build frontend applications with Vue, Angular, TypeScript, and modern browser APIs, choosing the right amount of framework and tooling for the project. My work has included public-facing marketing sites, payment flows, fintech integrations, design systems, and specialized interfaces for scientific hardware. Much of my career has focused on systematically mitigating technical debt. I specialize in transforming legacy frontend architectures into modern systems that improve developer velocity and long-term maintainability.",
+        body: "I build frontend applications with Vue, Angular, and TypeScript. My approach centers on architectural efficiency, using robust frameworks when the project calls for them and vanilla alternatives when appropriate. My work has included public-facing marketing sites, payment flows, fintech integrations, design systems, and specialized interfaces for scientific hardware. Much of my career has focused on systematically mitigating technical debt. I specialize in transforming legacy frontend architectures into modern systems that improve developer velocity and long-term maintainability.",
         cta: "View my full resume",
         ctaUrl: "/resume",
         competenciesLabel: "Competencies",
@@ -43,15 +43,15 @@ export default {
       music: {
         heading: "Drums",
         headingLevel: 4,
-        body: "I have played drums professionally for more than three decades, with a background in national touring, major label studio sessions, and commercial sync tracking. Over my career, I have collaborated with producers, engineers, and artists on major projects. Today, I continue to track records and collaborate with creators remotely.",
+        body: "I have played drums for more than three decades, including an earlier chapter of national touring, label-supported studio work, and commercial sync placements. Today, my current drum work is focused on recording, remote collaboration, and occasional live projects.",
         cta: "View my drumming history",
-        ctaUrl: "/music",
+        ctaUrl: "/drums",
         studioLabel: "Current Drum Projects",
         studio: {
           text: "My active session portfolio, live playing videos, and remote tracking capabilities are fully detailed on my dedicated drum site.",
           url: "https://tyleringersolldrums.com",
           external: true,
-          ctaText: "Explore videos and session booking at tyleringersolldrums.com →"
+          ctaText: "Explore videos and session booking at tyleringersolldrums.com"
         }
       },
       beyond: {
@@ -189,7 +189,7 @@ export default {
         heading: "Resume",
         headingLevel: 2,
         content: [
-          "I lead frontend engineering and technical strategy for customer-facing enterprise applications. My background spans fintech platforms, design systems, and instrumentation software, with a career focus on systematically mitigating technical debt. I specialize in transforming legacy frontend architectures into modern, scalable systems that improve developer velocity and long-term maintainability."
+          "I lead frontend engineering and technical strategy for customer-facing enterprise applications. My background spans fintech platforms, design systems, and instrumentation software with a career focus on systematically mitigating technical debt. I specialize in transforming legacy frontend architectures into modern, scalable systems that improve developer velocity and long-term maintainability."
         ]
       },
       {
@@ -340,14 +340,14 @@ export default {
         heading: "Additional Experience",
         headingLevel: 2,
         content: [
-          "Before moving fully into engineering, I spent many years working as a touring and session drummer. That included touring nationally with a label-supported band, sync placements, and live event work. A broader music timeline and selected recording credits are at <a href='/music'>/music</a>."
+          "Before moving fully into engineering, I spent many years working as a touring and session drummer. That included touring nationally with a label-supported band, sync placements, and live event work."
         ]
       },
       {
         heading: "Education",
         headingLevel: 2,
         content: [
-          "<strong>University of Delaware</strong><br>Bachelor of Science, Business Administration<br>Concentrations: Accounting and Finance<br><em>College of Business & Economics</em>"
+          "<strong>University of Delaware</strong><br>Bachelor of Science, Business Administration<br>Concentrations: Accounting and Finance<br><strong>College of Business & Economics</strong>"
         ]
       },
       {
@@ -365,12 +365,10 @@ export default {
       {
         headingLevel: 2,
         type: "hero",
-        heading: "Drumming Profile",
+        heading: "Drumming Background",
         content: [
-          "A multi-decade career highlighted by major label album tracking, national touring support, and extensive commercial synchronization placements.",
-          "• <strong>Label & Studio Pedigree:</strong> Signed with Wind-up Records, tracking major releases at iconic rooms like Avatar Studios (NYC) and The Pass (LA) under producers Don Gilmore and Gregg Wattenberg, with engineering by Nick DiDia and mixing by Bob Clearmountain.",
-          "• <strong>Touring & Live History:</strong> Built a regional college-circuit foundation into national touring infrastructure, sharing stages across the United States with acts including Lifehouse, Collective Soul, Sugar Ray, and The All-American Rejects.",
-          "• <strong>Sync & Commercial Broadcasts:</strong> Tracked studio performances featured across high-profile media pipelines, including EA Sports' NFL Madden 2007, Super Bowl XLII broadcasts, network television, and the Fantastic Four studio soundtrack."
+          "Drums have been a constant in my life for more than three decades. An earlier chapter centered on national touring, label-supported studio tracking, and commercial sync work. Today, that foundational experience shapes how I approach session work by bringing a deep understanding of preparation, collaboration, and studio discipline to every project.",
+          "My current work is focused on remote tracking and custom collaborations from my dedicated studio, as well as select live performance projects."
         ],
         src: "/images/studio_kit.jpeg",
         cta: {
@@ -380,22 +378,17 @@ export default {
         }
       },
       {
+        heading: "Selected Highlights",
         headingLevel: 2,
-        heading: "Selected Recording Credits",
-        albums: [
-          { title: "Veteran Avenue - Nothing Left to Burn", format: "Single", year: "2020", label: "Independent", image: "/images/veteranavenue_nothinglefttoburn.webp", alt: "Veteran Avenue - Nothing Left to Burn", url: "https://youtu.be/BG3R93Kc3H4?si=IflAQRZR3b14lO6e", description: "Live drums recorded at The Deep End Studio in Baltimore for Brad Cox's Veteran Avenue project. Produced and engineered by Tony Correlli." },
-          { title: "Skitzo Calypso - Ghosts", format: "LP", year: "2013", label: "Independent", image: "/images/skitzocalypso_ghosts.webp", alt: "Skitzo Calypso - Ghosts", url: "https://music.youtube.com/watch?v=WB3pswtUK1g&si=8fKmI7BTeQIMzdQt", description: "Played bass on \"A Night in Hell & A Sunday Morning.\" Produced and engineered by Tony Correlli at The Deep End Studio." },
-          // { title: "Ian Walsh - Please Remember", format: "LP", year: "2008", label: "Independent", image: "/images/ianwalsh_pleaseremember.png", alt: "Ian Walsh - Please Remember", url: "https://youtu.be/orm9pNytYxo?si=DRjpFhRNhJQjZI88&t=1297", description: "Cut live drums for two tracks on this record. Engineered by Nick DiDia." },
-          { title: "The Crash Motive - Consequence", format: "LP", year: "2007", label: "Wind-up Records", image: "/images/thecrashmotive_consequence.webp", alt: "The Crash Motive - Consequence", url: "https://youtube.com/playlist?list=OLAK5uy_lOh9gG0GIkTXg2aFo5j4g97_C2AysYEpE&si=rPypzHo8Ptd-fLdb", description: "Produced by Don Gilmore and Gregg Wattenberg. Tracked at Avatar Studios in New York and The Pass in Los Angeles. Mixed by Bob Clearmountain and Mark Endert. Mastered by Ted Jensen at Sterling Sound." },
-          { title: "Fantastic Four: The Album", format: "Soundtrack", year: "2005", label: "Wind-up Records", image: "/images/fantastic4_thealbum.webp", alt: "Fantastic Four: The Album", url: "https://youtu.be/WvEj9uWOo04?si=7XOafsoygKkG2uF6", description: "Omnisoul's \"Waiting (Save Your Life)\" appeared on this Wind-up Records soundtrack. Drums tracked at Avatar Studios in New York." },
-          { title: "Omnisoul - Happy Outside", format: "LP", year: "2004", label: "Independent", image: "/images/omnisoul_happyoutside.webp", alt: "Omnisoul - Happy Outside", url: "https://youtube.com/playlist?list=OLAK5uy_kyIVrwfzRWBveu2Tq6yNvsb8rYzj5fqVE&si=yAKZ_yXK7p4jgEj6", description: "Self-produced and recorded between touring stints in 2003 and 2004. Mixed by Grammy-winning engineer Phil Nicolo at Studio 4, Conshohocken, PA. Nicolo also stepped in to track the single, \"Waiting (Save Your Life).\"" },
-          { title: "Omnisoul - Climbing Ladders", format: "LP", year: "2002", label: "Independent", image: "/images/omnisoul_climbingladders.jpg", alt: "Omnisoul - Climbing Ladders", url: null, description: "Independently released and recorded." },
-          {
-            title: "The Healthy Doses - The Healthy Doses", format: "EP", year: "2000", label: "Independent", image: "/images/thehealthydoses_ep.jpg", alt: "The Healthy Doses - The Healthy Doses", url: "https://thehealthydoses.bandcamp.com/album/clay-creek-recording-ep", description: "Recorded live in Clay Creek Recording Studio, in Newark, DE."
-          },
-          { title: "Skitzo Calypso - Premeditated Acts of Stupidity", format: "LP", year: "1999", label: "Independent", image: "/images/skitzocalypso_premeditatedactsofstupidity.webp", alt: "Skitzo Calypso - Premeditated Acts of Stupidity", url: "https://www.youtube.com/watch?v=GZsOHYEbTpE&list=OLAK5uy_kZNhPkIdxFo0RGqphf9FZvgNeFFlagjiQ", description: "Handled both drum and bass duties throughout this entire record. Engineered by Dave Pace at 12th Planet Recording Studio during the early days of the local scene." },
-          { title: "Skitzo Calypso - Join the Cult", format: "LP", year: "1998", label: "Independent", image: "/images/skitzocalypso_jointhecult.webp", alt: "Skitzo Calypso - Join the Cult", url: "https://youtu.be/3ocX1WZt5e4?si=K_xKrm4bXLO26KZo", description: "One of my earliest full-length studio projects. Tracked drums with engineer Dave Pace at Time Machine Starship and 12th Planet Recording Studio." }
-        ]
+        content: [
+          "A few highlights from my past include signing with Wind-up Records, tracking in world-class studios from New York to Los Angeles, and working with producers and engineers like Don Gilmore, Gregg Wattenberg, Phil Nicolo, and Nick DiDia. That studio work led to commercial placements connected to the Fantastic Four soundtrack, Madden NFL 2007, and Super Bowl XLII broadcast usage, as well as network television and stadium playback.",
+          "Today, a fuller discography, current videos, and remote tracking details are maintained on my dedicated drum site."
+        ],
+        cta: {
+          label: "View current drum work and full credits",
+          url: "https://tyleringersolldrums.com",
+          external: true
+        }
       },
       {
         heading: "Touring & Industry Experience",
@@ -403,16 +396,18 @@ export default {
         content: []
       },
       {
-        heading: "Remote Drum Recording",
+        heading: "Omnisoul Reunion",
         headingLevel: 3,
-        years: "2025 - Present",
+        years: "2024",
         roles: [
           {
-            subheading: "Custom Hybrid Drum Studio · 2025 - Present",
+            subheading: "Drummer · World Cafe Live, Philadelphia (August 2024)",
             content: [
-              "Built a remote tracking studio around a hybrid workflow that records live cymbals and captures shell performance separately.",
-              "• Record real cymbals through a dedicated analog chain while capturing shell performance separately.",
-              "• Deliver cymbal audio, shell tracks, and MIDI for use in mixing, replacement, or layering."
+              "• Anchored a 20-year anniversary retrospective performance for the band's album <strong>Happy Outside</strong>.",
+              "• Performed a 1.5-hour charity set featuring the band’s catalog alongside global hit singles written by lead singer Derek Fuhrmann for artists like Phillip Phillips, the Goo Goo Dolls, Kygo, and O.A.R.",
+              "• Participated in the event organized and funded by Derek, with 100% of ticket and auction proceeds donated to charity.",
+              "• Supported the 20-year archival re-release of <strong>Happy Outside</strong>, which included remastered audio, bonus tracks, and updated CD artwork.",
+              "• Reunited with the band's original touring sound engineer and regional guest musicians for the performance."
             ]
           }
         ]
@@ -434,19 +429,33 @@ export default {
         ]
       },
       {
-        heading: "The Crash Motive (formerly Omnisoul)",
+        heading: "The Crash Motive",
         headingLevel: 3,
-        years: "2002 - 2008",
+        years: "2005 - 2008",
         roles: [
           {
-            subheading: "Drummer, Studio Musician & Founding Member · 2002 - 2008",
+            subheading: "Drummer, Studio Musician & Founding Member",
             content: [
-              "Was part of the band’s move from the regional college circuit to touring nationally under label support, and larger studio projects after signing with Wind-up Records in 2005.",
-              "• Built a regional following early on, including a 31-day #1 requested song run on WSTW 93.7 and a University of Delaware Battle of the Bands win.",
-              "• Played drums on studio recordings and helped shape drum arrangements for albums and singles.",
-              "• Toured nationally and opened for acts including Sugar Ray, The All-American Rejects, Collective Soul, and Lifehouse.",
-              "• Contributed to placements tied to Super Bowl XLII, Madden NFL 2007, The Fantastic Four soundtrack, network television, and stadium playback.",
-              "• Worked directly with label, booking, and licensing partners as the band grew."
+              "• Signed a multi-album contract with Wind-up Records following competitive interest from major industry labels.",
+              "• Tracked major-label releases at world-class studios from New York to Los Angeles, working under the direction of prominent producers Don Gilmore and Gregg Wattenberg.",
+              "• Delivered nationwide radio promotional tours, opened for major national touring acts, and filmed high-production music videos in Los Angeles.",
+              "• Contributed to extensive mainstream media licensing, including the <strong>Fantastic Four</strong> soundtrack, <strong>Madden NFL 07</strong>, <strong>Super Bowl XLII</strong> broadcast spots, network television, and stadium playback."
+            ]
+          }
+        ]
+      },
+      {
+        heading: "Omnisoul",
+        headingLevel: 3,
+        years: "2002 - 2005",
+        roles: [
+          {
+            subheading: "Drummer & Founding Member",
+            content: [
+              "• Built a grassroots regional following from the college circuit into an independent breakout act.",
+              "• Logged over a year of heavy radio rotation on WSTW 93.7 FM, breaking the station record for the most-requested song.",
+              "• Tracked foundational studio demos with Grammy-winning producer Phil Nicolo to generate competitive major label interest.",
+              "• Performed high-profile regional shows, including opening for Sugar Ray and playing multiple label showcases across New York City."
             ]
           }
         ]
@@ -461,7 +470,7 @@ export default {
             content: [
               "Played drums in an experimental jam band that built a local following around the University of Delaware and later moved onto larger outdoor stages and festival bills.",
               "• Played regularly at venues including Deer Park Tavern and The East End Cafe.",
-              "• Shared festival bills with acts like The Disco Biscuits and Lake Trout, and performed at Phish’s Camp Oswego festival.",
+              "• Shared festival bills with acts including The Disco Biscuits and Lake Trout, and performed at Phish’s Camp Oswego festival.",
               "• The pace of that band taught me a lot about listening, improvising, and shaping dynamics in real time."
             ]
           }
@@ -475,11 +484,24 @@ export default {
           {
             subheading: "Drummer & Bassist · 1996 - 1998",
             content: [
-              "Began studio work with this alt-hard rock project, playing drums and bass and tracking multiple full-length independent records."
+              "Began studio work with this alt-hard rock project, playing drums and bass and tracking multiple full-length independent records.",
+              "• Played drums and bass across early independent releases, including full-length studio projects recorded before my later touring and label-supported work."
             ]
           }
         ]
       },
+      {
+        heading: "Current Drum Work",
+        headingLevel: 2,
+        content: [
+          "For current videos, remote session details, studio setup, selected credits, and booking information, visit my dedicated drum site."
+        ],
+        cta: {
+          label: "Visit tyleringersolldrums.com",
+          url: "https://tyleringersolldrums.com",
+          external: true
+        }
+      }
     ],
     icons: {
       close: "<svg xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"xmlns=\"http://www.w3.org/2000/svg\"xmlns:cc=\"http://creativecommons.org/ns#\"xmlns:dc=\"http://purl.org/dc/elements/1.1/\"xmlns:svg=\"http://www.w3.org/2000/svg\"xmlns:inkscape=\"http://www.inkscape.org/namespaces/inkscape\"xmlns:sodipodi=\"http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd\"xmlns:ns1=\"http://sozi.baierouge.fr\"xmlns:xlink=\"http://www.w3.org/1999/xlink\"id=\"svg2\"viewBox=\"0 0 744.09 1052.4\"version=\"1.1\"><g id=\"layer1\"><path id=\"svg-bg\" class=\"svg-bg\" d=\"m814.29 606.65a314.29 314.29 0 1 1 -628.57 0 314.29 314.29 0 1 1 628.57 0z\" stroke=\"#000\" stroke-width=\"5\" transform=\"matrix(1.1048 0 0 1.1048 -179.21 -162.53)\"/><g id=\"g3763\" transform=\"matrix(.91837 0 0 .91837 47.587 10.944)\" stroke=\"#fff\" stroke-linecap=\"round\" stroke-width=\"133.87\" fill=\"none\" > <path id=\"path2991\" class=\"svg-x\" d=\"m176.51 362.87 356.13 356.13\" /> <path id=\"path2993\" class=\"svg-x\" d=\"m532.64 362.87-356.13 356.13\" /></g></g></svg>"
