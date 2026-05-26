@@ -15,13 +15,13 @@ export default {
         eyebrow: "Frontend Engineering",
         paragraphs: [
           "I architect enterprise-scale frontend systems and lead high-performing engineering teams to deliver sustainable, impactful digital products.",
-          "Parallel to my engineering career, I have spent more than three decades as a session and touring drummer. Today, that same dedication to precision, collaboration, and studio discipline drives my technical leadership and my remote recording work from Pennsylvania."
+          "Parallel to my engineering work, I have spent more than three decades as a session and touring drummer, split between major-label studio tracking, touring, and modern remote recording from my studio in Pennsylvania."
         ]
       },
       engineering: {
         heading: "Engineering",
         headingLevel: 4,
-        body: "I build frontend applications with Vue, Angular, and TypeScript. My approach centers on architectural efficiency, using robust frameworks when the project calls for them and vanilla alternatives when appropriate. My work has included public-facing marketing sites, payment flows, fintech integrations, design systems, and specialized interfaces for scientific hardware. Much of my career has focused on systematically mitigating technical debt. I specialize in transforming legacy frontend architectures into modern systems that improve developer velocity and long-term maintainability.",
+        body: "I build frontend applications with Vue, Angular, and TypeScript. My approach centers on architectural efficiency, using robust frameworks when the project calls for them and vanilla alternatives when appropriate. My work has included public-facing marketing sites, payment flows, fintech integrations, design systems, and specialized interfaces for scientific hardware. Much of my career has focused on systematically mitigating technical debt and transforming legacy frontend architectures into modern systems that improve developer velocity and long-term maintainability.",
         cta: "View my full resume",
         ctaUrl: "/resume",
         competenciesLabel: "Competencies",
@@ -43,7 +43,7 @@ export default {
       music: {
         heading: "Drums",
         headingLevel: 4,
-        body: "I have played drums for more than three decades, including an earlier chapter of national touring, label-supported studio work, and commercial sync placements. Today, my current drum work is focused on recording, remote collaboration, and occasional live projects.",
+        body: "I have played drums for more than three decades, spanning independent regional acts, national touring, and label-supported studio tracking. Today, my musical footprint is anchored by a custom hybrid drum room built for remote session tracking and collaborative recording.",
         cta: "View my drumming history",
         ctaUrl: "/drums",
         studioLabel: "Current Drum Projects",
@@ -340,7 +340,7 @@ export default {
         heading: "Additional Experience",
         headingLevel: 2,
         content: [
-          "Before moving fully into engineering, I spent many years working as a touring and session drummer. That included touring nationally with a label-supported band, sync placements, and live event work."
+          "In addition to my engineering career, I spent many years operating as a professional touring and session drummer. That chapter included signing with a major label, national tours, commercial sync placements, and extensive studio tracking. A comprehensive musical timeline and selected discography are hosted at <a href='/drums'>/drums</a>."
         ]
       },
       {
@@ -394,6 +394,22 @@ export default {
         heading: "Touring & Industry Experience",
         headingLevel: 2,
         content: []
+      },
+      {
+        heading: "Custom Hybrid Drum Studio",
+        headingLevel: 3,
+        years: "2025 - Present",
+        roles: [
+          {
+            subheading: "Designer & Recording Engineer · Kennett Square, PA",
+            content: [
+              "• Designed and built a townhome-compatible remote tracking studio utilizing a phase-aligned, low-latency hybrid acoustic-electronic drum architecture.",
+              "• Engineered a multi-channel signal path that isolates live Zildjian cymbals through an analog front end—including Warm Audio small-diaphragm condensers and an API 3124V discrete preamp—while simultaneously capturing shell dynamics as high-resolution MIDI.",
+              "• Optimized hardware-to-digital integration using specialized triggers, mesh drumheads, and calibrated interface conversion to achieve a fully human, zero-latency performance capture.",
+              "• Delivered consolidated, mix-ready tracking files—comprising raw analog cymbal audio, isolated ambient room mic stems, and performance MIDI data—for independent artists and remote collaborations in 2026."
+            ]
+          }
+        ]
       },
       {
         heading: "Omnisoul Reunion",
