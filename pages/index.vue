@@ -41,7 +41,7 @@
             <div class="hv2-btn-wrap">
               <NuxtLink :to="eng.ctaUrl" class="hv2-btn hv2-btn--primary">{{
                 eng.cta
-              }}</NuxtLink>
+              }} <span class="hv2-btn__icon" aria-hidden="true">→</span></NuxtLink>
             </div>
           </div>
 
@@ -88,7 +88,7 @@
             <div class="hv2-btn-wrap">
               <NuxtLink :to="mus.ctaUrl" class="hv2-btn hv2-btn--primary">{{
                 mus.cta
-              }}</NuxtLink>
+              }} <span class="hv2-btn__icon" aria-hidden="true">→</span></NuxtLink>
             </div>
             <component
               :is="linkTag(mus.studio)"
@@ -99,7 +99,8 @@
               <p class="hv2-label">{{ mus.studioLabel }}</p>
               <p>{{ mus.studio?.text }}</p>
               <span v-if="mus.studio?.ctaText" class="hv2-studio-callout__cta">
-                {{ mus.studio.ctaText }} →
+                {{ mus.studio.ctaText }}
+                <span class="hv2-studio-callout__cta-icon" aria-hidden="true">{{ linkIcon(mus.studio) }}</span>
               </span>
             </component>
           </div>
@@ -159,7 +160,7 @@ const { scrollToHash } = useScrollToHash();
 const home = computed(() => store.content?.home || {});
 const hero = computed(() => home.value.hero || {});
 const eng = computed(() => home.value.engineering || {});
-const mus = computed(() => home.value.music || {});
+const mus = computed(() => home.value.drums || {});
 const bey = computed(() => home.value.beyond || {});
 
 const activeCard = ref(null);
@@ -181,6 +182,8 @@ const linkAttrs = (item) => {
   }
   return { to: item.url };
 };
+
+const linkIcon = (item) => isExternalUrl(item) ? "↗" : "→";
 
 onMounted(() => scrollToHash(route.hash));
 watch(() => route.hash, scrollToHash);
@@ -318,6 +321,11 @@ const icons = {
       outline: 2px solid var(--color-focus);
       outline-offset: 3px;
     }
+  }
+
+  &__icon {
+    margin-left: 0.35rem;
+    line-height: 1;
   }
 }
 
@@ -767,6 +775,11 @@ const icons = {
     letter-spacing: 0.04em;
     color: var(--color-link);
     @include transition(color);
+  }
+
+  &__cta-icon {
+    margin-left: 0.2rem;
+    line-height: 1;
   }
 
   &--linked {

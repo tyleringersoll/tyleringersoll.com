@@ -33,6 +33,16 @@
               :key="paraIdx"
               v-html="para"
             />
+            <div v-if="entry.cta" class="resume-intro__cta-wrap">
+              <component
+                :is="ctaTag(entry.cta)"
+                v-bind="ctaAttrs(entry.cta)"
+                class="resume-intro__cta"
+              >
+                {{ entry.cta.label }}
+                <span class="resume-intro__cta-icon" aria-hidden="true">{{ ctaIcon(entry.cta) }}</span>
+              </component>
+            </div>
           </article>
           <!-- Section heading (h2 with no content) -->
           <h2
@@ -166,6 +176,20 @@ const formatCategory = (key) => {
   };
   return labels[key] ?? (key.charAt(0).toUpperCase() + key.slice(1));
 };
+
+const isExternalCta = (cta) =>
+  cta?.external === true || /^(https?:|mailto:|tel:)/i.test(cta?.url || '');
+
+const ctaTag = (cta) => isExternalCta(cta) ? 'a' : resolveComponent('NuxtLink');
+
+const ctaAttrs = (cta) => {
+  if (isExternalCta(cta)) {
+    return { href: cta.url, target: '_blank', rel: 'noopener noreferrer' };
+  }
+  return { to: cta.url };
+};
+
+const ctaIcon = (cta) => isExternalCta(cta) ? '↗' : '→';
 
 const isExpanded = (entryIdx, roleIdx) =>
   expandedRoles.value.has(`${entryIdx}-${roleIdx}`);
@@ -310,6 +334,47 @@ watch(resumeContent, () => handleHash(route.hash));
   color: var(--color-text-secondary);
 }
 
+.resume-intro {
+  &__cta-wrap {
+    margin-top: $spacing-md;
+  }
+
+  &__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.65rem 1.25rem;
+    border: 1px solid var(--color-link);
+    border-radius: 9999px;
+    color: var(--color-link);
+    font-size: 0.9rem;
+    font-weight: 700;
+    line-height: 1.2;
+    text-decoration: none;
+    @include transition(all);
+
+    @include respond-below(sm) {
+      width: 100%;
+      text-align: center;
+    }
+
+    &:hover {
+      border-color: var(--color-link-hover);
+      color: var(--color-link-hover);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-focus);
+      outline-offset: 3px;
+    }
+  }
+
+  &__cta-icon {
+    margin-left: 0.35rem;
+    line-height: 1;
+  }
+}
+
 // ─── Employer ────────────────────────────────────────────────────────────────
 
 .employer {
@@ -353,6 +418,14 @@ watch(resumeContent, () => handleHash(route.hash));
   .section-heading {
     margin-bottom: $spacing-lg;
   }
+
+  @include respond-below(xs) {
+    padding-bottom: $spacing-sm;
+
+    .section-heading {
+      margin-bottom: $spacing-md;
+    }
+  }
 }
 
 .skills-grid {
@@ -362,10 +435,12 @@ watch(resumeContent, () => handleHash(route.hash));
 
   @include respond-below(md) {
     grid-template-columns: repeat(2, 1fr);
+    gap: $spacing-md;
   }
 
   @include respond-below(xs) {
     grid-template-columns: 1fr;
+    gap: 1.1rem;
   }
 }
 
@@ -377,12 +452,20 @@ watch(resumeContent, () => handleHash(route.hash));
     text-transform: uppercase;
     color: var(--color-accent-line);
     margin: 0 0 $spacing-sm;
+
+    @include respond-below(xs) {
+      margin-bottom: $spacing-xs;
+    }
   }
 
   &__badges {
     display: flex;
     flex-wrap: wrap;
     gap: 0.75rem;
+
+    @include respond-below(xs) {
+      gap: 0.5rem;
+    }
   }
 }
 
@@ -399,6 +482,10 @@ watch(resumeContent, () => handleHash(route.hash));
   border: 1px solid var(--color-border);
   white-space: nowrap;
   @include transition(all);
+
+  @include respond-below(xs) {
+    padding: 0.35rem 0.7rem;
+  }
 
   &:hover {
     background-color: var(--color-bg-surface);

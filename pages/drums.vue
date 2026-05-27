@@ -22,7 +22,7 @@
             rel="noopener noreferrer"
             class="music-hero__btn"
           >
-            {{ heroEntry.cta.label }} →
+            {{ heroEntry.cta.label }} ↗
           </a>
         </div>
       </div>
@@ -65,7 +65,7 @@
                   <h4 class="music-album__title">{{ album.title }}</h4>
                   <p class="music-album__meta">{{ album.format }}, {{ album.year }} · {{ album.label }}</p>
                   <p v-if="album.description" class="music-album__desc">{{ album.description }}</p>
-                  <a v-if="album.url" :href="album.url" target="_blank" rel="noopener noreferrer" class="music-album__link">Listen →</a>
+                  <a v-if="album.url" :href="album.url" target="_blank" rel="noopener noreferrer" class="music-album__link">Listen</a>
                 </div>
               </article>
             </div>
@@ -121,7 +121,7 @@ const route = useRoute();
 
 const musicContent = computed(() => {
   if (!content.value) return null;
-  return content.value.music ?? null;
+  return content.value.drums ?? null;
 });
 
 const heroEntry = computed(() => {

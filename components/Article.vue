@@ -64,14 +64,16 @@
         rel="noopener noreferrer"
         class="article__cta"
       >
-        {{ props.article.cta.label }} →
+        {{ props.article.cta.label }}
+        <span class="article__cta-icon" aria-hidden="true">{{ ctaIcon }}</span>
       </a>
       <NuxtLink
         v-else
         :to="props.article.cta.url"
         class="article__cta"
       >
-        {{ props.article.cta.label }} →
+        {{ props.article.cta.label }}
+        <span class="article__cta-icon" aria-hidden="true">{{ ctaIcon }}</span>
       </NuxtLink>
     </div>
     <slot />
@@ -110,6 +112,8 @@ const isExternalCta = computed(() => {
   const cta = props.article.cta;
   return cta?.external === true || /^(https?:|mailto:|tel:)/i.test(cta?.url || "");
 });
+
+const ctaIcon = computed(() => isExternalCta.value ? "↗" : "→");
 </script>
 
 <style lang="scss" scoped>
@@ -170,6 +174,11 @@ const isExternalCta = computed(() => {
     text-decoration: none;
     @include transition(all);
 
+    @include respond-below(sm) {
+      width: 100%;
+      text-align: center;
+    }
+
     &:hover {
       border-color: var(--color-link-hover);
       color: var(--color-link-hover);
@@ -179,6 +188,11 @@ const isExternalCta = computed(() => {
       outline: 2px solid var(--color-focus);
       outline-offset: 3px;
     }
+  }
+
+  &__cta-icon {
+    margin-left: 0.35rem;
+    line-height: 1;
   }
 
   :deep(ul),
