@@ -9,11 +9,11 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ingersoll.dev/drums</loc>
+    <loc>https://ingersoll.dev/music</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ingersoll.dev/contact</loc>
-    <priority>0.7</priority>
+    <loc>https://ingersoll.dev/architecture</loc>
+    <priority>0.6</priority>
   </url>
 </urlset>

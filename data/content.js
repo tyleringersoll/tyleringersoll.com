@@ -7,14 +7,14 @@ export default {
     navigation: [
       { name: "Home", url: "/" },
       { name: "Resume", url: "/resume" },
-      { name: "Drums", url: "/drums" }
+      { name: "Music", url: "/music" }
     ],
     home: {
       hero: {
         heading: "Hi, I’m Tyler",
         eyebrow: "Frontend Engineering",
         paragraphs: [
-          "I architect enterprise-scale frontend systems and lead engineering efforts to deliver sustainable, impactful digital products.",
+          "I architect enterprise-scale frontend systems and lead an engineering team delivering sustainable, customer-facing applications.",
           "Alongside my engineering work, I have spent more than three decades as a drummer, with experience across national touring, label-supported studio tracking, sync placements, event work, and modern remote recording."
         ]
       },
@@ -33,22 +33,16 @@ export default {
           { icon: "plug", label: "Fintech Integration", url: "/resume#best-egg" },
           { icon: "refresh", label: "Frontend Modernization", url: "/resume#best-egg" }
         ],
-        clientsLabel: "Featured Work",
-        clients: [
-          { name: "Best Egg", description: "Identity and payment platform work", url: "/resume#best-egg" },
-          { name: "Vanguard", description: "FAS Design System & SPA Framework", url: "/resume#vanguard" },
-          { name: "Agilent Technologies", description: "Instrument control UI and data visualization", url: "/resume#technical-writers-inc" }
-        ]
       },
       drums: {
-        heading: "Drums",
+        heading: "Music",
         headingLevel: 4,
         body: "I have played drums for more than three decades, from regional independent bands to national touring, label-supported studio work, sync placements, event work, and remote session recording. My current drum work, videos, studio setup, and selected credits live on my dedicated drum site.",
-        cta: "View my drumming history",
-        ctaUrl: "/drums",
-        studioLabel: "Current Drum Projects",
+        cta: "View my musical history",
+        ctaUrl: "/music",
+        studioLabel: "Current Projects",
         studio: {
-          text: "For current playing videos, remote session details, studio setup, selected credits, and booking information, visit my dedicated drum site.",
+          text: "For drum videos, remote session details, setup specs, and selected credits, visit my dedicated drum tracking site.",
           url: "https://tyleringersolldrums.com",
           external: true,
           ctaText: "Visit tyleringersolldrums.com"
@@ -91,9 +85,9 @@ export default {
         ]
       },
       connect: {
-        heading: "Get in Touch",
-        subtext: "Engineering, music, or anything in between.",
-        cta: "Get in Touch"
+        heading: "Get in touch",
+        subtext: "For engineering work, music projects, or anything in between.",
+        cta: "Get in touch"
       }
     },
     architecture: [
@@ -126,7 +120,7 @@ export default {
         ],
         optimizations: [
           "• <strong>Pre-rendered HTML:</strong> Nuxt generates fully-formed HTML at build time, so browsers render content immediately without waiting for client-side JavaScript.",
-          "• <strong>Inline SVG Icons, No Icon Library:</strong> Every icon on the site (competencies, social links, resume download, theme toggle, and navigation) is a hand-authored SVG inlined directly into the component. The page ships zero icon-font or icon-library requests.",
+          "• <strong>Inline SVG Icons, No Icon Library:</strong> Every icon on the site (competencies, social links, resume download, theme toggle, and navigation) is inlined directly into the component. The page ships zero icon-font or icon-library requests.",
           "• <strong>Minimal JavaScript:</strong> No heavy UI libraries or animation frameworks. The bundle stays light by leaning on native browser APIs and Vite's default tree-shaking."
         ]
       },
@@ -189,7 +183,7 @@ export default {
         heading: "Resume",
         headingLevel: 2,
         content: [
-          "I lead frontend engineering and technical strategy for customer-facing enterprise applications. My background spans fintech platforms, design systems, and instrumentation software. The work I enjoy most is taking complicated legacy frontends and turning them into systems that are easier to understand, maintain, and extend."
+          "I lead frontend engineering and architecture for customer-facing enterprise applications. My background spans fintech platforms, design systems, and instrumentation software. The work I enjoy most is taking complicated legacy frontends and turning them into systems that are easier to understand, maintain, and extend."
         ],
         cta: {
           label: "View how this site was built",
@@ -369,10 +363,10 @@ export default {
       {
         headingLevel: 2,
         type: "hero",
-        heading: "Drumming Background",
+        heading: "Musical Background",
         content: [
-          "My background includes more than three decades of professional performance, spanning independent regional acts, national touring, and label-supported studio tracking.",
-          "This page gives the short version of that history. My active tracking portfolio, current videos, and home studio details are on my drum site."
+          "My background includes more than three decades of professional performance, primarily as a session and touring drummer, alongside tracking bass for independent studio releases.",
+          "This page provides a timeline of that work. My active tracking portfolio, video clips, and full home studio production layout live on my drum site."
         ],
         src: "/images/studio_kit.jpeg",
         cta: {
@@ -385,7 +379,7 @@ export default {
         heading: "Selected Highlights",
         headingLevel: 2,
         content: [
-          "Earlier in my career, I signed with Wind-up Records, toured nationally, and tracked in studios in New York, Philadelphia, and Los Angeles with producers and engineers including Don Gilmore, Gregg Wattenberg, Phil Nicolo, and Nick DiDia. That work included placements connected to the Fantastic Four soundtrack, Madden NFL 07, Super Bowl XLII broadcast usage, network television, radio airplay, and stadium playback.",
+          "Earlier in my career, I signed with Wind-up Records, toured nationally, and tracked drums in studios in New York, Philadelphia, and Los Angeles with producers and engineers including Don Gilmore, Gregg Wattenberg, Phil Nicolo, and Nick DiDia. That work included placements connected to the Fantastic Four soundtrack, Madden NFL 07, Super Bowl XLII broadcast usage, network television, radio airplay, and stadium playback.",
           "Today, my active drum work is focused on tracking, collaborations, and select live performance projects."
         ],
         cta: {
@@ -433,6 +427,32 @@ export default {
         ]
       },
       {
+        heading: "The Trellist Agency Band",
+        headingLevel: 3,
+        years: "2015 - 2017",
+        roles: [
+          {
+            subheading: "Bassist",
+            content: [
+              "Played bass in the in-house band at Trellist, a marketing agency in Wilmington, DE. The band played shows at multiple tech industry events in Wilmington and Philadelphia."
+            ]
+          }
+        ]
+      },
+      {
+        heading: "Skitzo Calypso (Ghosts)",
+        headingLevel: 3,
+        years: "2013",
+        roles: [
+          {
+            subheading: "Bassist · Studio session",
+            content: [
+              "Tracked bass on \"A Night in Hell & A Sunday Morning\" for Skitzo Calypso's LP Ghosts. Produced and engineered by Tony Correlli at The Deep End Studio. I had previously played bass and drums on the band's late-90s releases."
+            ]
+          }
+        ]
+      },
+      {
         heading: "SpeakerCity Band",
         headingLevel: 3,
         years: "2010 - 2016",
@@ -448,6 +468,21 @@ export default {
         ]
       },
       {
+        heading: "Curtiss Helldiver",
+        headingLevel: 3,
+        years: "2006",
+        roles: [
+          {
+            subheading: "Drummer · Philadelphia",
+            content: [
+              "Played drums in a Philadelphia punk-rock band that ran alongside The Crash Motive, leaning into heavy live improvisation.",
+              "• Won a battle of the bands at North Star Bar in Philadelphia.",
+              "• Opened for Taylor Hawkins and the Coattail Riders."
+            ]
+          }
+        ]
+      },
+      {
         heading: "The Crash Motive",
         headingLevel: 3,
         years: "2005 - 2008",
@@ -458,7 +493,7 @@ export default {
               "Signed with Wind-up Records, toured nationally, and recorded major-label releases after years of regional development and label showcases.",
               "• Signed a multi-album contract with Wind-up Records following competitive interest from major industry labels.",
               "• Tracked major-label releases at studios in New York, Philadelphia, and Los Angeles, working under the direction of producers and engineers including Don Gilmore and Gregg Wattenberg.",
-              "• Executed targeted social media campaigns, opened for national touring acts, and filmed a music video in Los Angeles.",
+              "• Opened for national touring acts and filmed a music video in Los Angeles.",
               "• Contributed to media licensing and broadcast placements, including the Fantastic Four soundtrack, Madden NFL 07, Super Bowl XLII broadcast usage, network television, national radio airplay, and stadium playback."
             ]
           }
@@ -473,7 +508,6 @@ export default {
             subheading: "Drummer & Founding Member",
             content: [
               "Helped build a regional independent band from the college circuit into label showcases, radio momentum, and studio work.",
-              "• Built a grassroots regional following from the college circuit into an independent breakout act.",
               "• Logged over a year of heavy radio rotation on WSTW 93.7 FM, including a station record for the most-requested song.",
               "• Tracked foundational studio demos with producer Phil Nicolo to generate competitive major-label interest.",
               "• Performed regional shows, college dates, and label showcases, including opening for Sugar Ray and playing multiple showcases across New York City."
@@ -503,11 +537,10 @@ export default {
         years: "1996 - 1998",
         roles: [
           {
-            subheading: "Drummer, bassist, and early recording collaborator",
+            subheading: "Drummer, Bassist, and Early Recording Collaborator",
             content: [
-              "Began studio work with independent alt-rock projects before later touring and label-supported work.",
-              "• Played drums and bass across early independent releases, including full-length studio projects.",
-              "• Developed early recording experience through repeated studio projects, local shows, and regional bills."
+              "Started tracking drums and bass for independent regional alt-rock projects while playing live club dates.",
+              "• Tracked both drum and bass parts across early independent EPs and full-length releases."
             ]
           }
         ]

@@ -72,10 +72,6 @@ export default defineNuxtConfig({
     pageTransition: { name: "fade", mode: "out-in" },
   },
 
-  routeRules: {
-    "/music": { redirect: "/drums" },
-  },
-
   runtimeConfig: {
     public: {
       untappdClientId: "",
@@ -85,7 +81,7 @@ export default defineNuxtConfig({
 
   nitro: {
     prerender: {
-      routes: ["/", "/resume", "/drums", "/architecture"],
+      routes: ["/", "/resume", "/music", "/architecture"],
     },
   },
 });
