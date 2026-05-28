@@ -14,14 +14,14 @@ export default {
         heading: "Hi, I’m Tyler",
         eyebrow: "Frontend Engineering",
         paragraphs: [
-          "I architect enterprise-scale frontend systems and lead high-performing engineering teams to deliver sustainable, impactful digital products.",
+          "I architect enterprise-scale frontend systems and lead engineering efforts to deliver sustainable, impactful digital products.",
           "Alongside my engineering work, I have spent more than three decades as a drummer, with experience across national touring, label-supported studio tracking, sync placements, event work, and modern remote recording."
         ]
       },
       engineering: {
         heading: "Engineering",
         headingLevel: 4,
-        body: "I build frontend applications with Vue, Angular, and TypeScript. My approach is to adopt frameworks when they provide a clear architectural advantage, and lean on platform-native browser capabilities when a lighter solution is better. My work has included public-facing marketing sites, payment flows, fintech integrations, design systems, and specialized interfaces for scientific hardware. Much of my career has focused on reducing technical debt and moving legacy frontend systems toward maintainable, modern architectures.",
+        body: "I build frontend applications with Vue, Angular, and TypeScript. My approach is to adopt frameworks when they provide a clear architectural advantage, and lean on platform-native browser capabilities when a lighter solution is better. My work has included public-facing marketing sites, payment flows, fintech integrations, design systems, and specialized interfaces for scientific hardware. One of my favorite parts of the job is reducing technical debt and moving legacy frontend systems toward maintainable, modern architectures.",
         cta: "View my full resume",
         ctaUrl: "/resume",
         competenciesLabel: "Competencies",
@@ -57,13 +57,12 @@ export default {
       beyond: {
         heading: "Beyond work",
         headingLevel: 3,
-        body: "When I’m not writing code or tracking drums, I’m usually on a bike, hanging out with my kids, listening to records, or cooking outside. Most of life outside work revolves around family, music, and finding time to be outdoors.",
         cards: [
           {
             icon: "bicycle",
             label: "Cycling",
             sub: "Road, Gravel, MTB",
-            detail: "Cycling is my main sport. I ride road, gravel, and mountain bikes outdoors during the season, and move to indoor training setups during the winter months. I also follow pro racing and enjoy the community and culture around the sport.",
+            detail: "Cycling is my favorite sport now. I ride mountain, road, and gravel bikes or jump on the trainer as much as possible.",
             url: "https://www.strava.com/athletes/3303002",
             external: true
           },
@@ -79,7 +78,8 @@ export default {
             label: "Hi-Fi",
             sub: "Vinyl & Audio",
             detail: "I’m an audiophile and record collector, always tweaking my gear setup, hunting for vinyl pressings, and making time to really listen to music.",
-            url: null
+            url: 'https://www.discogs.com/user/TylerIngersoll/collection',
+            external: true
           },
           {
             icon: "grill",
@@ -189,7 +189,7 @@ export default {
         heading: "Resume",
         headingLevel: 2,
         content: [
-          "I lead frontend engineering and technical strategy for customer-facing enterprise applications. My background spans fintech platforms, design systems, and instrumentation software. Much of my work has focused on taking complicated legacy frontends and turning them into systems that are easier to understand, maintain, and extend."
+          "I lead frontend engineering and technical strategy for customer-facing enterprise applications. My background spans fintech platforms, design systems, and instrumentation software. The work I enjoy most is taking complicated legacy frontends and turning them into systems that are easier to understand, maintain, and extend."
         ],
         cta: {
           label: "View how this site was built",
@@ -200,14 +200,13 @@ export default {
         heading: "Best Egg",
         headingLevel: 3,
         years: "2022 - Present",
-        lead: "Leading engineering for customer-facing identity, payment, and authentication applications.",
         roles: [
           {
             subheading: "Director II, Software Engineering · 2026 - Present",
             content: [
-              "Hands-on engineering leader for a customer-facing team. My work spans frontend implementation, technical direction, team management, and delivery planning.",
+              "Engineering leader for a customer-facing team, balancing technical direction, frontend execution, team management, and delivery planning.",
               "• Partner with product and business teams to define priorities, shape delivery plans, and split work across frontend and backend implementation.",
-              "• Manage a team supporting customer verification, servicing, and authentication work, including delivery planning, staffing, and engineer development.",
+              "• Manage a team supporting customer verification, servicing, and authentication work, including delivery planning, cross-functional interview panels, and engineer development.",
               "• Set technical direction for core customer-facing applications while continuing to contribute directly to frontend implementation.",
               "<strong>Tech:</strong> Angular, TypeScript, DataDog, Figma, Miro, Jira, Confluence, FullStory, GitHub, AI Development Tools (Claude/Cursor)"
             ]
@@ -215,8 +214,9 @@ export default {
           {
             subheading: "Senior Lead Software Engineer II · 2024 - 2025",
             content: [
-              "Led frontend architecture for the team and partnered with product and UX on roadmap decisions.",
+              "Focused on frontend execution and technical alignment while collaborating with product and UX on roadmap decisions.",
               "• Led the frontend side of third-party fintech integrations including MX and Method Financial, from architecture through implementation and rollout.",
+              "• Integrated multiple A/B test UIs via feature flags to support product experimentation and release management.",
               "• Mentored engineers beyond the immediate team and helped guide frontend direction across adjacent work.",
               "<strong>Tech:</strong> Angular, TypeScript, Node.js, Python, Django, Cursor AI, GitHub Copilot"
             ]
@@ -224,10 +224,10 @@ export default {
           {
             subheading: "Senior Lead Software Engineer I · 2022 - 2024",
             content: [
-              "Modernized legacy Angular codebases and helped establish the frontend patterns our teams still build on.",
-              "• Led an architectural update that introduced lazy-loaded modules, reduced main bundle size, and moved the platform from Bootstrap to Angular Material.",
-              "• Helped architect and launch No-Auth Quick Pay and automated payment scheduling to simplify the payment experience for customers.",
-              "• Golden Egg Award for \"BE a Builder of Great Teams\" (Q3 2023).",
+              "Focused on updating Angular codebases and establishing consistent frontend patterns.",
+              "• Led architectural updates to introduce lazy-loaded modules, optimize main bundle sizes, and transition UI components from Bootstrap to Angular Material.",
+              "• Helped architect and launch a no-auth quick pay feature and auto pay scheduling to simplify the payment experience for customers.",
+              "• Golden Egg Award winner for \"BE a Builder of Great Teams\" (Q3 2023).",
               "<strong>Tech:</strong> Angular, TypeScript, Tailwind CSS, Angular Material, Docker, Nginx, Jasmine"
             ]
           }
