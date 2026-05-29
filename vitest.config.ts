@@ -6,7 +6,7 @@ export default defineVitestConfig({
     globals: true,
     coverage: {
       provider: "v8",
-      reporter: ["text", "html"],
+      reporter: ["text", "html", "lcov"],
       include: [
         "components/**",
         "composables/**",

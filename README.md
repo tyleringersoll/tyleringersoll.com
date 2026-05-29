@@ -1,6 +1,23 @@
 # ingersoll.dev
 
-Personal portfolio website built with Vue.js 3, hosted on Netlify.
+<!-- Deploy + CI -->
+[![Netlify Status](https://api.netlify.com/api/v1/badges/REPLACE-WITH-NETLIFY-SITE-ID/deploy-status)](https://app.netlify.com/sites/REPLACE-WITH-NETLIFY-SITE-NAME/deploys)
+[![Tests](https://github.com/tyleringersoll/ingersoll.dev/actions/workflows/test.yml/badge.svg)](https://github.com/tyleringersoll/ingersoll.dev/actions/workflows/test.yml)
+[![Lighthouse](https://github.com/tyleringersoll/ingersoll.dev/actions/workflows/lighthouse.yml/badge.svg)](https://github.com/tyleringersoll/ingersoll.dev/actions/workflows/lighthouse.yml)
+[![codecov](https://codecov.io/gh/tyleringersoll/ingersoll.dev/branch/main/graph/badge.svg)](https://codecov.io/gh/tyleringersoll/ingersoll.dev)
+
+<!-- Meta -->
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Node](https://img.shields.io/badge/node-24-339933?logo=node.js&logoColor=white)](.nvmrc)
+
+<!-- Stack -->
+![Nuxt 3](https://img.shields.io/badge/Nuxt-3-00DC82?logo=nuxt.js&logoColor=white)
+![Vue 3](https://img.shields.io/badge/Vue-3-4FC08D?logo=vue.js&logoColor=white)
+![Pinia](https://img.shields.io/badge/Pinia-state-FFD859?logo=pinia&logoColor=black)
+![Sass](https://img.shields.io/badge/Sass-styling-CC6699?logo=sass&logoColor=white)
+![Vitest](https://img.shields.io/badge/Vitest-tested-6E9F18?logo=vitest&logoColor=white)
+
+Personal portfolio website built with Nuxt 3, hosted on Netlify.
 
 ## Tech Stack
 
