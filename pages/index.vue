@@ -512,6 +512,7 @@ const icons = {
     z-index: 1;
     display: block;
     width: 75%;
+    height: auto;
     max-width: 400px;
     aspect-ratio: 1 / 1;
     object-fit: cover;
