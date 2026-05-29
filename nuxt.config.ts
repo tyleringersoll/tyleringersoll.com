@@ -72,13 +72,6 @@ export default defineNuxtConfig({
     pageTransition: { name: "fade", mode: "out-in" },
   },
 
-  runtimeConfig: {
-    public: {
-      untappdClientId: "",
-      untappdClientSecret: "",
-    },
-  },
-
   nitro: {
     prerender: {
       routes: ["/", "/resume", "/music", "/architecture"],
