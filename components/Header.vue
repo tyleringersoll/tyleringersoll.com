@@ -4,7 +4,7 @@
       <NuxtLink to="/" class="header__brand">
         <img
           class="header__avatar"
-          src="/profile_glitch_subtle.webp"
+          src="/profile_avatar.webp"
           :alt="`Profile image of ${content.name}`"
           width="44"
           height="44"

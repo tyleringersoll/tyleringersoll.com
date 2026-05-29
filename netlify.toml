@@ -1,6 +1,24 @@
 [build]
   command = "npm run generate"
-  publish = "dist"
+  publish = ".output/public"
 
 [build.environment]
-  NODE_VERSION = "22"
+  NODE_VERSION = "24"
+
+# Serve sub-pages without redirecting to the trailing-slash form.
+# Netlify's default would 301 /music → /music/, which trips Lighthouse and
+# costs a network round-trip on every external link to the site.
+[[redirects]]
+  from = "/resume"
+  to = "/resume/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/music"
+  to = "/music/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/architecture"
+  to = "/architecture/index.html"
+  status = 200
