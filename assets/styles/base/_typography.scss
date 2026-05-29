@@ -1,0 +1,132 @@
+@import "../abstracts/variables";
+@import "../abstracts/mixins";
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap');
+
+* {
+  font-family: $font-family-base;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+
+  &.menu-open {
+    overflow-y: hidden;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+  @include transition(all);
+  @include focus-visible(0.2rem);
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: var(--color-text-primary);
+}
+
+h2 {
+  margin-bottom: $spacing-lg;
+  font-size: 1.75rem;
+  color: var(--color-accent-line);
+
+}
+
+h3 {
+  margin-bottom: $spacing-xl;
+  font-size: 1.25rem;
+  color: var(--color-accent-line);
+}
+
+h4 {
+  margin-bottom: $spacing-sm;
+  font-size: 1.125rem;
+  color: var(--color-accent-line);
+}
+
+h5 {
+  font-size: 1rem;
+}
+
+p {
+  line-height: $line-height-body;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding-left: 1.5rem;
+  line-height: $line-height-body;
+}
+
+li {
+  margin-bottom: 0.5rem;
+  padding-left: 0.5rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+ul {
+  list-style-type: disc;
+
+  ul {
+    list-style-type: circle;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+ol {
+  list-style-type: decimal;
+}
+
+a {
+  @include text-link;
+}
+
+a:is([target="_blank"], [href^="http://"], [href^="https://"]):not(:where(.article__cta, .footer-btn, .footer-social-circle, .hv2-beyond-card, .hv2-btn, .hv2-studio-callout, .music-album__cover-link, .music-hero__btn, .resume-intro__cta, .showcase-btn))::after {
+  content: "\00a0\2197";
+  display: inline-block;
+  font-size: 0.8em;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+  transform: translateY(-0.08em);
+}
+
+.social-icon a:is([target="_blank"], [href^="http://"], [href^="https://"])::after {
+  content: none;
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.85em;
+  background-color: var(--color-bg-surface);
+  color: var(--color-accent-line);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  border: 1px solid var(--color-border);
+  word-break: break-word;
+}
+
+article {
+  margin-top: $spacing-xl;
+  margin-bottom: $spacing-xl;
+}
+
+:focus-visible {
+  outline: $color-highlight-5 solid 2px;
+  border-radius: 2px;
+}
