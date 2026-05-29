@@ -66,18 +66,12 @@ export default defineNuxtConfig({
           href: "/favicon-16x16.png",
         },
         { rel: "manifest", href: "/site.webmanifest" },
+        { rel: "preconnect", href: "https://fonts.googleapis.com" },
+        { rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: "" },
       ],
       script: [
         {
           innerHTML: `(function(){try{var t=localStorage.getItem('theme');if(t==='light'||(t===null&&window.matchMedia('(prefers-color-scheme: light)').matches)){document.documentElement.classList.add('light-mode')}}catch(e){}})()`,
-          type: "text/javascript",
-        },
-        {
-          src: "https://www.googletagmanager.com/gtag/js?id=G-562BHJD00Q",
-          async: true,
-        },
-        {
-          innerHTML: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-562BHJD00Q');`,
           type: "text/javascript",
         },
       ],

@@ -380,7 +380,7 @@ export default {
           "My background includes more than three decades of professional performance, primarily as a session and touring drummer, alongside tracking bass for independent studio releases.",
           "This page provides a timeline of that work. My active tracking portfolio, video clips, and full home studio production layout live on my drum site."
         ],
-        src: "/images/studio_kit.jpeg",
+        src: "/images/studio_kit.webp",
         cta: {
           label: "Visit my dedicated drum site",
           url: "https://tyleringersolldrums.com",

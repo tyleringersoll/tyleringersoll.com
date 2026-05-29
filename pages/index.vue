@@ -79,7 +79,7 @@
           <div class="hv2-music__visual-column">
             <NuxtImg
               class="hv2-music__cover-img"
-              src="/images/studio_kit.jpeg"
+              src="/images/studio_kit.webp"
               alt="Tyler Ingersoll's hybrid drum studio"
               width="800"
               height="600"
@@ -147,7 +147,7 @@
               <span class="hv2-beyond-card__label">{{ card.label }}</span>
               <span class="hv2-beyond-card__sub">{{ card.sub }}</span>
             </div>
-            <div class="hv2-beyond-card__detail" aria-hidden="activeCard !== cIdx">
+            <div class="hv2-beyond-card__detail" :aria-hidden="activeCard !== cIdx">
               <p>{{ card.detail }}</p>
             </div>
           </component>

@@ -4,7 +4,7 @@
     <section
       v-if="heroEntry"
       class="music-hero"
-      :style="{ backgroundImage: `url(${heroEntry.src})` }"
+      :style="{ backgroundImage: `url(${heroBackgroundUrl})` }"
     >
       <div class="music-hero__overlay">
         <div class="music-hero__inner">
@@ -128,6 +128,13 @@ const heroEntry = computed(() => {
   const entries = musicContent.value || [];
   return entries.find(e => e.type === 'hero') ?? null;
 });
+
+const img = useImage();
+const heroBackgroundUrl = computed(() =>
+  heroEntry.value?.src
+    ? img(heroEntry.value.src, { width: 1600, quality: 75, format: 'webp' })
+    : ''
+);
 
 const contentGroups = computed(() => {
   const entries = musicContent.value || [];
