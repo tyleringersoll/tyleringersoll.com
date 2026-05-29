@@ -362,3 +362,6 @@ dist/
 
 # Claude Code
 .claude/
+
+# Test coverage
+coverage/

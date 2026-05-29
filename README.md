@@ -4,49 +4,38 @@ Personal portfolio website built with Vue.js 3, hosted on Netlify.
 
 ## Tech Stack
 
-- **Vue.js 3** - Composition API with `<script setup>`
-- **Vue Router** - Client-side routing
+- **Nuxt 3** - SSR/SSG framework with Vue 3 + `<script setup>`
 - **Pinia** - State management
 - **Sass** - Styling
-- **Jest** - Unit testing
+- **Vitest + @nuxt/test-utils** - Unit testing
 - **Netlify** - Static hosting
 
-## Project Setup
+## Setup
 
 ```bash
 npm install
 ```
 
-## Development
+## Develop
 
 ```bash
-npm run serve
+npm run dev
 ```
 
-## Production Build
+## Build
 
 ```bash
 npm run build
 ```
 
-## Testing
+## Test
 
 ```bash
-npm run test:unit
+npm run test           # one-shot
+npm run test:watch     # watch mode
+npm run test:coverage  # with coverage report
 ```
 
-## Linting
+## Content
 
-```bash
-npm run lint
-```
-
-## Content Management
-
-Content is managed as static JSON files in `src/data/content.json`.
-
-See [Content Management Documentation](./src/data/README.md) for details on content structure and editing.
-
-## Customize Configuration
-
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Static site content lives in [data/content.js](data/content.js).
