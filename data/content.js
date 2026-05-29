@@ -15,7 +15,7 @@ export default {
         eyebrow: "Frontend Engineering",
         paragraphs: [
           "I architect enterprise-scale frontend systems and lead an engineering team delivering sustainable, customer-facing applications.",
-          "Alongside my engineering work, I have spent more than three decades as a drummer, with experience across national touring, label-supported studio tracking, sync placements, event work, and modern remote recording."
+          "Alongside my engineering work, I have spent more than three decades as a drummer, with experience across national touring, label-supported studio tracking, sync placements, event work, and modern session work."
         ]
       },
       engineering: {
@@ -199,7 +199,7 @@ export default {
             subheading: "Director II, Software Engineering · 2026 - Present",
             content: [
               "Engineering leader for a customer-facing team, balancing technical direction, frontend execution, team management, and delivery planning.",
-              "• Partner with product and business teams to define priorities, shape delivery plans, and split work across frontend and backend implementation.",
+              "• Partner with product, design, and operations teams to define priorities, shape delivery plans, and split work across frontend and backend implementation.",
               "• Manage a team supporting customer verification, servicing, and authentication work, including delivery planning, cross-functional interview panels, and engineer development.",
               "• Set technical direction for core customer-facing applications while continuing to contribute directly to frontend implementation.",
               "<strong>Tech:</strong> Angular, TypeScript, DataDog, Figma, Miro, Jira, Confluence, FullStory, GitHub, AI Development Tools (Claude/Cursor)"
@@ -239,7 +239,7 @@ export default {
               "• Built a web component library with custom element wrappers so the system could be used across Vue, Angular, and Adobe Experience Manager without separate framework-specific implementations.",
               "• Partnered with leadership and development teams during a division-wide rebrand to drive adoption of the design system and improve UI consistency across products.",
               "• Designed and built a Vue/NestJS reference application with CI, content structure, environment setup, and third-party integrations already in place, so teams could start from a working application instead of assembling the stack from scratch.",
-              "• Set up AWS-based CI/CD pipelines for Storybook documentation deployments so teams had a shared place to reference components and usage patterns.",
+              "• Set up AWS-based CI/CD pipelines for automated Storybook documentation deployments so teams had a shared place to reference the latest components and usage patterns.",
               "<strong>Tech:</strong> Vue.js, NestJS, Web Components, Storybook, Angular, Custom Elements, AWS, CI/CD"
             ]
           }
@@ -272,7 +272,7 @@ export default {
             content: [
               "Worked across agency projects spanning web, email, SharePoint, and internal enterprise systems for brands including Bank of America, David’s Bridal, Chemours, Blue Cross Blue Shield Global, and DuPont.",
               "• Built responsive websites and landing pages for enterprise clients including Bank of America, David’s Bridal, NASA Federal Credit Union, and Chemours.",
-              "• Developed HTML email campaigns for Bank of America rewards and retention programs, with a focus on deliverability and cross-client consistency.",
+              "• Developed adaptive HTML email campaigns for Bank of America rewards and retention programs, with a focus on deliverability and cross-client consistency.",
               "• Served as Systems Owner for DuPont’s SharePoint security auditing system, including weekly reporting and a server migration alongside IBM consultants.",
               "• Developed SharePoint intranet solutions for Chemours and Everything But Water.",
               "• Managed off-hours deployments for sensitive internal communications tied to Chemours leadership.",
@@ -292,7 +292,7 @@ export default {
               "As a long-term embedded consultant with Agilent Technologies’ R&D software engineering team, I worked across both frontend applications and technical documentation for global scientific instrument product lines.",
               "• Designed standalone web-based document delivery applications distributed by USB, DVD, and InstallShield-based installers.",
               "• Built custom HTML templates and automated build systems across multiple documentation sets for Gas Chromatography, Mass Spectrometry, and Sampler product lines.",
-              "• Authored technical documentation in Adobe FrameMaker and converted it to web-ready HTML outputs.",
+              "• Authored technical documentation in Adobe FrameMaker for print media and then converted it to web-ready HTML outputs.",
               "• Created UI icons, diagrams, and other visual assets for R&D teams.",
               "<strong>Tech:</strong> HTML, CSS, JavaScript, Adobe RoboHelp, Adobe FrameMaker, Adobe Illustrator, Adobe Photoshop"
             ]
@@ -315,9 +315,9 @@ export default {
         years: "2000 - 2003",
         roles: [
           {
-            subheading: "IT Division Intranet Webmaster · 2001 - 2003",
+            subheading: "Tech Support, Level 1 · 2001 - 2003",
             content: [
-              "Started as an intern and earned the full-time IT Division Intranet Webmaster role, designing and building internal web applications used in production across the division.",
+              "Transitioned from an internship into a full-time support role, balancing first-level help desk responsibilities with serving as the primary developer for the division's intranet applications.",
               "• Redesigned and developed the IT Service & Support Division intranet website.",
               "• Designed and developed the Online Portfolio Trust Management Group intranet site.",
               "• Designed and developed a custom call logging front-end application with Microsoft Access, Visual Basic, and SQL Server, used in production across multiple service and support departments.",
@@ -394,18 +394,18 @@ export default {
         content: []
       },
       {
-        heading: "Remote Drum Recording",
+        heading: "Sessions and Remote Drum Work",
         headingLevel: 3,
         years: "2025 - Present",
         roles: [
           {
-            subheading: "Remote Drummer · Kennett Square, PA",
+            subheading: "Session Drummer · Kennett Square, PA",
             content: [
-              "Built a hybrid drum recording setup for remote sessions that uses real cymbals, microphones, preamps, mesh-head drums, triggers, and drum software to capture a single performance both acoustically and digitally.",
-              "• Record cymbals as real audio with overhead, hi-hat, ride, and room microphones, so the track maintains the feel and movement of an acoustic drum performance.",
-              "• Capture kick, snare, and tom parts as MIDI from the same take, which gives the production flexibility to choose or adjust those sounds later.",
-              "• Use acoustic treatment, careful mic placement, and a simple file-delivery workflow so collaborators receive organized tracks that are ready to import into their session.",
-              "Visit <a href='https://tyleringersolldrums.com' target='_blank' rel='noopener noreferrer'>tyleringersolldrums.com</a> for current videos, studio details, remote session information, and examples of the setup in use."
+              "Focusing on session tracking and engineering hybrid acoustic-digital drum recordings from my home studio.",
+              "• Engineered a hybrid tracking system combining multi-microphone acoustic capture for cymbals with synchronized MIDI triggers for drum shells.",
+              "• Managed full signal paths, acoustic treatment, and hardware preamp configurations to deliver clean, mix-ready tracking assets.",
+              "• Optimized digital delivery workflows to provide collaborators with organized, phase-aligned audio stems and MIDI data.",
+              "Visit <a href='https://tyleringersolldrums.com' target='_blank' rel='noopener noreferrer'>tyleringersolldrums.com</a> for current videos, session credits, and studio specifications."
             ]
           }
         ]
@@ -420,8 +420,21 @@ export default {
             content: [
               "Rejoined Omnisoul for a 20-year anniversary performance built around the band's album Happy Outside, with proceeds from the event donated to charity.",
               "• Performed a full retrospective set with the original band and guest musicians.",
-              "• Played the band’s catalog alongside songs that singer Derek Fuhrmann wrote for other artists, including Phillip Phillips, the Goo Goo Dolls, Kygo, and O.A.R.",
+              "• Played a separate set of songs that singer Derek Fuhrmann wrote for other artists, including Phillip Phillips, the Goo Goo Dolls, Kygo, and O.A.R.",
               "• Supported the archival re-release of Happy Outside, including remastered audio, bonus tracks, and updated artwork."
+            ]
+          }
+        ]
+      },
+      {
+        heading: "Veteran Avenue (Nothing Left to Burn)",
+        headingLevel: 3,
+        years: "2020",
+        roles: [
+          {
+            subheading: "Drummer · Studio session",
+            content: [
+              "Tracked live drums at The Deep End Studio in Baltimore for Brad Cox's Veteran Avenue project on the single \"Nothing Left to Burn.\" Produced and engineered by Tony Correlli."
             ]
           }
         ]
