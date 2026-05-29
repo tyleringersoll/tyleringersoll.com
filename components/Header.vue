@@ -4,8 +4,10 @@
       <NuxtLink to="/" class="header__brand">
         <img
           class="header__avatar"
-          src="/profile_glitch_subtle.gif"
+          src="/profile_glitch_subtle.webp"
           :alt="`Profile image of ${content.name}`"
+          width="44"
+          height="44"
         />
         <span class="header__name" v-html="content.name" />
       </NuxtLink>
