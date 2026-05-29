@@ -7,13 +7,9 @@
 <script setup>
 const SITE_URL = "https://www.tyleringersoll.com";
 const route = useRoute();
-
-const canonicalPath = computed(() => {
-  const stripped = route.path.replace(/\/+$/, "");
-  return stripped || "/";
-});
+const canonicalPath = route.path.replace(/\/+$/, "") || "/";
 
 useHead({
-  link: [{ rel: "canonical", href: () => `${SITE_URL}${canonicalPath.value}` }],
+  link: [{ rel: "canonical", href: `${SITE_URL}${canonicalPath}` }],
 });
 </script>
