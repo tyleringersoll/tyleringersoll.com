@@ -9,11 +9,20 @@
     "build": "nuxt build",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage"
   },
   "devDependencies": {
+    "@nuxt/image": "^2.0.0",
+    "@nuxt/test-utils": "^4.0.3",
     "@pinia/nuxt": "^0.9.0",
+    "@vitest/coverage-v8": "^4.1.7",
+    "@vue/test-utils": "^2.4.10",
+    "happy-dom": "^20.9.0",
     "nuxt": "^3.17.2",
-    "sass": "^1.95.1"
+    "sass": "^1.95.1",
+    "vitest": "^4.1.7"
   }
 }

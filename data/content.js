@@ -162,6 +162,18 @@ export default {
         ]
       },
       {
+        id: "testing",
+        heading: "Testing & Coverage",
+        headingLevel: 2,
+        content: [
+          "The site is covered by a Vitest unit suite running in the Nuxt test environment with happy-dom. Components, pages, stores, the layout, the router scroll behavior, the theme plugin, and the scroll-to-hash composable all have their own specs.",
+          "• <strong>Vitest + @nuxt/test-utils:</strong> Tests boot a real Nuxt context via <code>mountSuspended</code>, so auto-imports, composables, and Pinia all resolve the same way they do at runtime.",
+          "• <strong>Coverage Targets:</strong> The v8 coverage reporter tracks every source file under <code>components/</code>, <code>pages/</code>, <code>stores/</code>, <code>composables/</code>, <code>plugins/</code>, <code>layouts/</code>, and <code>app/</code>. The suite hits 99% lines, 99% statements, 99% functions, and 91% branches. Remaining gaps are defensive optional chains and the SSR guard.",
+          "• <strong>Focus on Behavior:</strong> Tests assert rendered output, route-driven state (hash-based timeline expansion), and user interactions (theme toggle, mobile menu open/close, focus trap) rather than implementation details.",
+          "• <strong>Fast Local Loop:</strong> The full suite runs in about a second and a half via <code>npm run test</code>, with <code>npm run test:watch</code> for iteration and <code>npm run test:coverage</code> to refresh the report."
+        ]
+      },
+      {
         id: "accessibility",
         heading: "Accessibility (A11Y)",
         headingLevel: 2,
@@ -368,7 +380,7 @@ export default {
           "My background includes more than three decades of professional performance, primarily as a session and touring drummer, alongside tracking bass for independent studio releases.",
           "This page provides a timeline of that work. My active tracking portfolio, video clips, and full home studio production layout live on my drum site."
         ],
-        src: "/images/studio_kit.jpeg",
+        src: "/images/studio_kit.webp",
         cta: {
           label: "Visit my dedicated drum site",
           url: "https://tyleringersolldrums.com",
