@@ -15,7 +15,22 @@
       "Bash(sed -n '75,100p' pages/architecture.vue)",
       "Bash(sed -n '140,210p' pages/music.vue)",
       "Bash(sed -n '185,195p' pages/resume.vue)",
-      "Bash(sed -n '160,200p' pages/index.vue)"
+      "Bash(sed -n '160,200p' pages/index.vue)",
+      "Bash(identify -version)",
+      "Bash(brew list *)",
+      "Bash(brew install *)",
+      "Bash(command -v cwebp)",
+      "Bash(cwebp -version)",
+      "Bash(gif2webp -version)",
+      "Bash(sips -Z 1920 studio_kit.jpeg --setProperty formatOptions 85 -o studio_kit_optimized.jpeg)",
+      "Bash(sips -Z 1600 studio_kit.jpeg --setProperty formatOptions 75 -o studio_kit_v2.jpeg)",
+      "Bash(cwebp -q 80 -resize 1600 0 studio_kit.jpeg -o studio_kit.webp)",
+      "Bash(sips -Z 1600 public/images/studio_kit.jpeg --setProperty formatOptions 75 -o public/images/studio_kit_v2.jpeg)",
+      "Bash(cwebp -q 80 -resize 1600 0 public/images/studio_kit.jpeg -o public/images/studio_kit.webp)",
+      "Bash(gif2webp -q 75 -m 6 public/profile_glitch_subtle.gif -o public/profile_glitch_subtle.webp)",
+      "Bash(gif2webp -lossy -q 60 -m 6 public/profile_glitch_subtle.gif -o public/profile_glitch_subtle.webp)",
+      "Bash(gif2webp -lossy -q 40 -m 6 public/profile_glitch_subtle.gif -o /tmp/test_low.webp)",
+      "Bash(xargs ls -lh)"
     ]
   }
 }

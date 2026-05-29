@@ -17,7 +17,7 @@ describe("Header", () => {
   it("renders avatar with alt referencing the name", async () => {
     const wrapper = await mountSuspended(Header, { props: { content: meta, navigation: nav } });
     const img = wrapper.find("img.header__avatar");
-    expect(img.attributes("src")).toBe("/profile_glitch_subtle.gif");
+    expect(img.attributes("src")).toBe("/profile_glitch_subtle.webp");
     expect(img.attributes("alt")).toBe("Profile image of Tyler <em>Ingersoll</em>");
   });
 

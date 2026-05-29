@@ -22,8 +22,11 @@
           <div class="hv2-hero__visual">
             <img
               class="hv2-hero__portrait"
-              src="/profile_glitch_subtle.gif"
+              src="/profile_glitch_subtle.webp"
               alt="Tyler Ingersoll"
+              width="400"
+              height="400"
+              fetchpriority="high"
               draggable="false"
             />
           </div>
@@ -74,10 +77,14 @@
       <div class="hv2-inner">
         <div class="hv2-music__layout">
           <div class="hv2-music__visual-column">
-            <img
+            <NuxtImg
               class="hv2-music__cover-img"
               src="/images/studio_kit.jpeg"
               alt="Tyler Ingersoll's hybrid drum studio"
+              width="800"
+              height="600"
+              sizes="100vw md:50vw lg:600px"
+              loading="lazy"
               draggable="false"
             />
           </div>
