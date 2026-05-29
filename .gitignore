@@ -365,3 +365,6 @@ dist/
 
 # Test coverage
 coverage/
+
+# Lighthouse CI run artifacts
+.lighthouseci/

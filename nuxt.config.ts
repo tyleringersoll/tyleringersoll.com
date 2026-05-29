@@ -18,7 +18,13 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ["@pinia/nuxt", "@nuxt/image"],
+  modules: ["@pinia/nuxt", "@nuxt/image", "@nuxt/fonts"],
+
+  fonts: {
+    families: [
+      { name: "Roboto Condensed", provider: "google", weights: [300, 400, 700] },
+    ],
+  },
 
   image: {
     format: ["webp", "jpeg"],
@@ -66,8 +72,6 @@ export default defineNuxtConfig({
           href: "/favicon-16x16.png",
         },
         { rel: "manifest", href: "/site.webmanifest" },
-        { rel: "preconnect", href: "https://fonts.googleapis.com" },
-        { rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: "" },
       ],
       script: [
         {

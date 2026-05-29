@@ -41,7 +41,13 @@
       "Bash(npx @lhci/cli@latest assert --config=.lighthouserc.json)",
       "Bash(awk '{print $5, $9}')",
       "Bash(xargs rm)",
-      "Bash(cwebp -q 85 public/images/studio_kit.jpeg -o public/images/studio_kit.webp)"
+      "Bash(cwebp -q 85 public/images/studio_kit.jpeg -o public/images/studio_kit.webp)",
+      "Bash(webpmux)",
+      "Bash(webpmux -info public/profile_glitch_subtle.webp)",
+      "Bash(webpmux -get frame 1 public/profile_glitch_subtle.webp -o /tmp/frame1.webp)",
+      "Bash(cwebp -q 85 -resize 96 96 /tmp/frame1.webp -o public/profile_avatar.webp)",
+      "Bash(git check-ignore *)",
+      "Bash(git rm *)"
     ]
   }
 }

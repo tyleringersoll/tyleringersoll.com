@@ -14,7 +14,7 @@ export default {
         heading: "Hi, I’m Tyler",
         eyebrow: "Frontend Engineering",
         paragraphs: [
-          "I build enterprise-scale frontend systems and lead an engineering team delivering sustainable, customer-facing applications.",
+          "I design and build large-scale frontend systems while leading an engineering team delivering sustainable, customer-facing applications.",
           "Alongside my engineering work, I have spent more than three decades as a drummer, with experience across national touring, label-supported studio tracking, sync placements, event work, and modern session work."
         ]
       },
