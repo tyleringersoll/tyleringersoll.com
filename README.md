@@ -1,7 +1,7 @@
 # ingersoll.dev
 
 <!-- Deploy + CI -->
-[![Netlify Status](https://api.netlify.com/api/v1/badges/REPLACE-WITH-NETLIFY-SITE-ID/deploy-status)](https://app.netlify.com/sites/REPLACE-WITH-NETLIFY-SITE-NAME/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/cb5e5fbb-8b81-48e7-8f60-d49785a701a4/deploy-status)](https://app.netlify.com/sites/tyleringersoll/deploys)
 [![Tests](https://github.com/tyleringersoll/ingersoll.dev/actions/workflows/test.yml/badge.svg)](https://github.com/tyleringersoll/ingersoll.dev/actions/workflows/test.yml)
 [![Lighthouse](https://github.com/tyleringersoll/ingersoll.dev/actions/workflows/lighthouse.yml/badge.svg)](https://github.com/tyleringersoll/ingersoll.dev/actions/workflows/lighthouse.yml)
 [![codecov](https://codecov.io/gh/tyleringersoll/ingersoll.dev/branch/main/graph/badge.svg)](https://codecov.io/gh/tyleringersoll/ingersoll.dev)
