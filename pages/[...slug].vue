@@ -6,14 +6,7 @@
       v-for="(article, index) in pageContent"
       :key="index"
     >
-      <Article :article="article" :index="index">
-        <UntappdBeers
-          v-if="article.component === 'UntappdBeers'"
-          sort="highest_rated_you"
-          limit="10"
-          :icons="true"
-        />
-      </Article>
+      <Article :article="article" :index="index" />
     </transition>
   </section>
   <section v-else class="container">
