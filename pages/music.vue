@@ -277,7 +277,7 @@ watch(musicContent, () => handleHash(route.hash));
     letter-spacing: 0.02em;
     text-decoration: none;
     background-color: var(--color-link);
-    color: #fff;
+    color: var(--color-btn-primary-text);
     border: 2px solid var(--color-link);
     @include transition(all);
 
