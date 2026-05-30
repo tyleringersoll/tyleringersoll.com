@@ -23,6 +23,7 @@ export default defineNuxtPlugin(() => {
   const forceConsentBanner = window.VISITOR_FORCE_CONSENT_BANNER === true;
   const saved = getCookie(COOKIE);
   const hasAnalyticsConsent = !needsConsent || (!forceConsentBanner && saved === 'granted');
+  const bannerWillShow = needsConsent && (!saved || forceConsentBanner);
 
   const grantedConsent = {
     analytics_storage: 'granted',
@@ -37,10 +38,9 @@ export default defineNuxtPlugin(() => {
     ad_personalization: 'denied',
   };
 
-  gtag('consent', 'default', hasAnalyticsConsent ? grantedConsent : {
-    ...deniedConsent,
-    wait_for_update: 500,
-  });
+  gtag('consent', 'default', hasAnalyticsConsent
+    ? grantedConsent
+    : (bannerWillShow ? { ...deniedConsent, wait_for_update: 500 } : deniedConsent));
 
   const load = () => {
     if (window.__gtagLoaded) return;
@@ -64,9 +64,8 @@ export default defineNuxtPlugin(() => {
     }
   };
 
-  if (hasAnalyticsConsent) {
-    startAnalytics();
-  }
+  // Always start — consent state controls what GA sends (G111 vs G100), not whether it runs
+  startAnalytics();
 
   if (needsConsent && (!saved || forceConsentBanner)) {
     const showBanner = () => {
@@ -100,7 +99,6 @@ export default defineNuxtPlugin(() => {
       document.getElementById('ga-accept').onclick = () => {
         setCookie(COOKIE, 'granted', 365);
         window.gtag('consent', 'update', grantedConsent);
-        startAnalytics();
         el.remove();
       };
       document.getElementById('ga-decline').onclick = () => {
