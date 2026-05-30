@@ -68,6 +68,7 @@
               </component>
             </div>
             <component
+              v-if="hasCalloutContent(eng.projects)"
               :is="linkTag(eng.projects)"
               v-bind="linkAttrs(eng.projects)"
               class="hv2-studio-callout"
@@ -111,6 +112,7 @@
               }} <span class="hv2-btn__icon" aria-hidden="true">→</span></NuxtLink>
             </div>
             <component
+              v-if="hasCalloutContent(mus.studio)"
               :is="linkTag(mus.studio)"
               v-bind="linkAttrs(mus.studio)"
               class="hv2-studio-callout"
@@ -186,6 +188,8 @@ const bey = computed(() => home.value.beyond || {});
 const activeCard = ref(null);
 
 const hasLink = (item) => !!item?.url;
+
+const hasCalloutContent = (item) => !!(item?.text || item?.ctaText || item?.url);
 
 const isExternalUrl = (item) =>
   item?.external === true || /^(https?:|mailto:|tel:)/i.test(item?.url || "");
