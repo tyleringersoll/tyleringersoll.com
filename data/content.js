@@ -33,6 +33,13 @@ export default {
           { icon: "plug", label: "Fintech Integration", url: "/resume#best-egg" },
           { icon: "refresh", label: "Frontend Modernization", url: "/resume#best-egg" }
         ],
+        projectsLabel: "Current Projects",
+        projects: {
+          text: "For performance-focused personal builds, browser-native experiments, and live project demos, visit my projects site.",
+          url: "https://ingersoll.dev",
+          external: true,
+          ctaText: "Visit ingersoll.dev"
+        }
       },
       drums: {
         heading: "Music",
