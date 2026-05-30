@@ -22,3 +22,7 @@
   from = "/architecture"
   to = "/architecture/index.html"
   status = 200
+
+[[edge_functions]]
+  path = "/*"
+  function = "inject-geo"
