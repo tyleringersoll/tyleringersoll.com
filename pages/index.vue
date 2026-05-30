@@ -67,6 +67,19 @@
                 <span>{{ item.label }}</span>
               </component>
             </div>
+            <component
+              :is="linkTag(eng.projects)"
+              v-bind="linkAttrs(eng.projects)"
+              class="hv2-studio-callout"
+              :class="{ 'hv2-studio-callout--linked': hasLink(eng.projects) }"
+            >
+              <p class="hv2-label">{{ eng.projectsLabel }}</p>
+              <p>{{ eng.projects?.text }}</p>
+              <span v-if="eng.projects?.ctaText" class="hv2-studio-callout__cta">
+                {{ eng.projects.ctaText }}
+                <span class="hv2-studio-callout__cta-icon" aria-hidden="true">{{ linkIcon(eng.projects) }}</span>
+              </span>
+            </component>
           </div>
         </div>
       </div>
