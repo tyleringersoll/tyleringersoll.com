@@ -22,23 +22,25 @@ export default defineNuxtPlugin(() => {
   const needsConsent = window.VISITOR_REQUIRES_CONSENT === true;
   const forceConsentBanner = window.VISITOR_FORCE_CONSENT_BANNER === true;
   const saved = getCookie(COOKIE);
-  const grant = !needsConsent || saved === 'granted';
+  const hasAnalyticsConsent = !needsConsent || (!forceConsentBanner && saved === 'granted');
 
-  gtag('consent', 'default', grant ? {
+  const grantedConsent = {
     analytics_storage: 'granted',
     ad_storage: 'granted',
     ad_user_data: 'granted',
     ad_personalization: 'granted',
-  } : {
+  };
+  const deniedConsent = {
     analytics_storage: 'denied',
     ad_storage: 'denied',
     ad_user_data: 'denied',
     ad_personalization: 'denied',
+  };
+
+  gtag('consent', 'default', hasAnalyticsConsent ? grantedConsent : {
+    ...deniedConsent,
     wait_for_update: 500,
   });
-
-  gtag('js', new Date());
-  gtag('config', GA_ID);
 
   const load = () => {
     if (window.__gtagLoaded) return;
@@ -49,10 +51,21 @@ export default defineNuxtPlugin(() => {
     document.head.appendChild(s);
   };
 
-  if ('requestIdleCallback' in window) {
-    window.requestIdleCallback(load, { timeout: 4000 });
-  } else {
-    setTimeout(load, 2000);
+  const startAnalytics = () => {
+    if (window.__analyticsStarted) return;
+    window.__analyticsStarted = true;
+    gtag('js', new Date());
+    gtag('config', GA_ID);
+
+    if ('requestIdleCallback' in window) {
+      window.requestIdleCallback(load, { timeout: 4000 });
+    } else {
+      setTimeout(load, 2000);
+    }
+  };
+
+  if (hasAnalyticsConsent) {
+    startAnalytics();
   }
 
   if (needsConsent && (!saved || forceConsentBanner)) {
@@ -86,22 +99,13 @@ export default defineNuxtPlugin(() => {
 
       document.getElementById('ga-accept').onclick = () => {
         setCookie(COOKIE, 'granted', 365);
-        window.gtag('consent', 'update', {
-          analytics_storage: 'granted',
-          ad_storage: 'granted',
-          ad_user_data: 'granted',
-          ad_personalization: 'granted',
-        });
+        window.gtag('consent', 'update', grantedConsent);
+        startAnalytics();
         el.remove();
       };
       document.getElementById('ga-decline').onclick = () => {
         setCookie(COOKIE, 'denied', 365);
-        window.gtag('consent', 'update', {
-          analytics_storage: 'denied',
-          ad_storage: 'denied',
-          ad_user_data: 'denied',
-          ad_personalization: 'denied',
-        });
+        window.gtag('consent', 'update', deniedConsent);
         el.remove();
       };
     };
