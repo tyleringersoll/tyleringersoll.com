@@ -110,7 +110,7 @@ export default {
         heading: "Performance & Lighthouse",
         headingLevel: 2,
         content: [
-          "This site is pre-rendered, keeps JavaScript light, and avoids extra dependencies where native browser behavior is sufficient. Recent Lighthouse checks have scored the site highly across performance, accessibility, best practices, and SEO."
+          "This site is pre-rendered, keeps JavaScript light, and avoids extra dependencies where native browser behavior is sufficient. Lighthouse CI runs against every push and pull request, gating deploys behind 100 Performance, 95+ Accessibility, 90+ Best Practices, and 95+ SEO across every prerendered route."
         ],
         scores: [
           { label: "Performance", value: 100 },
@@ -120,7 +120,10 @@ export default {
         ],
         optimizations: [
           "• <strong>Pre-rendered HTML:</strong> Nuxt generates fully-formed HTML at build time, so browsers render content immediately without waiting for client-side JavaScript.",
-          "• <strong>Inline SVG Icons, No Icon Library:</strong> Every icon on the site (competencies, social links, resume download, theme toggle, and navigation) is inlined directly into the component. The page ships zero icon-font or icon-library requests.",
+          "• <strong>Optimized Image Pipeline:</strong> <code>@nuxt/image</code> generates responsive WebP variants at build time. Each <code>NuxtImg</code> ships a <code>srcset</code> so the browser pulls the smallest variant for the actual display size, and the hero image uses <code>fetchpriority=\"high\"</code> to win the LCP race.",
+          "• <strong>Self-Hosted Fonts:</strong> <code>@nuxt/fonts</code> downloads Roboto Condensed at build time, inlines the <code>@font-face</code> declarations into the HTML, and generates size-adjusted fallback fonts so any pre-swap render does not shift the layout. No render-blocking request to Google Fonts.",
+          "• <strong>Deferred Analytics:</strong> Google Analytics loads through a client plugin scheduled via <code>requestIdleCallback</code>, so the gtag script never blocks the initial paint.",
+          "• <strong>Inline SVG Icons:</strong> Every icon on the site (engineering competencies, beyond-work cards, social links, theme toggle, and architecture gauges) is inlined directly into the component. Zero icon-font or icon-library requests.",
           "• <strong>Minimal JavaScript:</strong> No heavy UI libraries or animation frameworks. The bundle stays light by leaning on native browser APIs and Vite's default tree-shaking."
         ]
       },
@@ -158,7 +161,20 @@ export default {
         heading: "CI/CD & Edge Delivery",
         headingLevel: 2,
         content: [
-          "This repository is connected to an automated CI/CD pipeline, so every push triggers a build that generates pre-rendered static assets and deploys them through Netlify’s CDN."
+          "Every push and pull request runs through GitHub Actions before anything reaches production. Two workflows guard the main branch:",
+          "• <strong>Unit Tests:</strong> Vitest runs the full suite on every commit, then uploads coverage to Codecov so the README badge reflects current state.",
+          "• <strong>Lighthouse CI:</strong> The workflow builds the site, serves it on the runner, and audits each route. A build fails if any page drops below 100 Performance, 95 Accessibility, 90 Best Practices, or 95 SEO. Regressions never reach <code>main</code>.",
+          "Production deploys are handled by Netlify. A push to <code>main</code> triggers a fresh static generate that gets served from Netlify’s global CDN."
+        ]
+      },
+      {
+        id: "url-handling",
+        heading: "URL Handling & SEO",
+        headingLevel: 2,
+        content: [
+          "URLs that lead to the same page should resolve in one hop, not two. Two pieces work together to make that true.",
+          "• <strong>Trailing-Slash Rewrites:</strong> Netlify’s default behavior 301-redirects <code>/music</code> to <code>/music/</code> when it finds a subdirectory. The <code>netlify.toml</code> rewrites use status 200 instead, so the no-trailing-slash form serves the file directly. A direct hit or a Lighthouse audit gets the content immediately, with no redirect round-trip.",
+          "• <strong>Canonical Tags:</strong> A small <code>useHead</code> setup in <code>app.vue</code> injects a <code>rel=\"canonical\"</code> link on every prerendered route, computed from the current path. Search engines that follow either URL form consolidate ranking signals onto the canonical version."
         ]
       },
       {

@@ -35,7 +35,7 @@
 
           <div v-if="section.scores" class="gauges">
             <div v-for="score in section.scores" :key="score.label" class="gauges__item">
-              <div class="gauge">
+              <div class="gauge" :class="`gauge--${scoreBand(score.value)}`">
                 <svg viewBox="0 0 80 80" aria-hidden="true">
                   <circle class="gauge__track" cx="40" cy="40" r="34" />
                   <circle
@@ -93,6 +93,12 @@ const contentSections = computed(() => {
 const strip = (s) => s.trim().replace(/^•\s*/, '');
 const prose = (section) => (section?.content || []).filter(p => !p.trim().startsWith('•'));
 const bullets = (section) => (section?.content || []).filter(p => p.trim().startsWith('•')).map(strip);
+
+const scoreBand = (value) => {
+  if (value >= 90) return 'pass';
+  if (value >= 50) return 'average';
+  return 'fail';
+};
 
 const circ = 2 * Math.PI * 34;
 </script>
@@ -247,15 +253,21 @@ const circ = 2 * Math.PI * 34;
 }
 
 .gauge {
+  --gauge-color: var(--color-accent-line);
   position: relative;
   width: 68px;
   height: 68px;
   @include flex-center;
 
+  // Lighthouse score bands: pass 90-100, average 50-89, fail 0-49.
+  &--pass    { --gauge-color: #0cce6b; }
+  &--average { --gauge-color: #ffa400; }
+  &--fail    { --gauge-color: #ff4e42; }
+
   svg {
     width: 100%;
     height: 100%;
-    filter: drop-shadow(0 0 6px color-mix(in srgb, var(--color-accent-line) 30%, transparent));
+    filter: drop-shadow(0 0 6px color-mix(in srgb, var(--gauge-color) 30%, transparent));
   }
 
   &__track {
@@ -267,17 +279,17 @@ const circ = 2 * Math.PI * 34;
 
   &__fill {
     fill: none;
-    stroke: var(--color-accent-line);
+    stroke: var(--gauge-color);
     stroke-width: 4;
     stroke-linecap: round;
-    transition: stroke-dashoffset 0.8s ease;
+    transition: stroke-dashoffset 0.8s ease, stroke 0.3s ease;
   }
 
   &__value {
     position: absolute;
     font-size: 1.1rem;
     font-weight: 700;
-    color: var(--color-text-primary);
+    color: var(--gauge-color);
     line-height: 1;
   }
 }
