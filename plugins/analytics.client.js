@@ -1,4 +1,4 @@
-const GA_MEASUREMENT_ID = "G-562BHJD00Q";
+const GA_MEASUREMENT_ID = "G-XCJR22YSCZ";
 
 export default defineNuxtPlugin(() => {
   const load = () => {
