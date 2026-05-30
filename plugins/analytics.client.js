@@ -20,6 +20,7 @@ export default defineNuxtPlugin(() => {
   window.gtag = gtag;
 
   const needsConsent = window.VISITOR_REQUIRES_CONSENT === true;
+  const forceConsentBanner = window.VISITOR_FORCE_CONSENT_BANNER === true;
   const saved = getCookie(COOKIE);
   const grant = !needsConsent || saved === 'granted';
 
@@ -54,7 +55,7 @@ export default defineNuxtPlugin(() => {
     setTimeout(load, 2000);
   }
 
-  if (needsConsent && !saved) {
+  if (needsConsent && (!saved || forceConsentBanner)) {
     const showBanner = () => {
       const el = document.createElement('div');
       el.setAttribute('role', 'dialog');
@@ -95,6 +96,12 @@ export default defineNuxtPlugin(() => {
       };
       document.getElementById('ga-decline').onclick = () => {
         setCookie(COOKIE, 'denied', 365);
+        window.gtag('consent', 'update', {
+          analytics_storage: 'denied',
+          ad_storage: 'denied',
+          ad_user_data: 'denied',
+          ad_personalization: 'denied',
+        });
         el.remove();
       };
     };

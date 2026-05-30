@@ -11,8 +11,11 @@ export default async function handler(request: Request, context: Context) {
   const contentType = response.headers.get("content-type") ?? "";
   if (!contentType.includes("text/html")) return response;
 
+  const url = new URL(request.url);
+  const forceConsentBanner = url.searchParams.get("test_eu") === "true";
   const code = context.geo?.country?.code?.toUpperCase() ?? "";
-  const script = `<script>window.VISITOR_REQUIRES_CONSENT=${EU_UK.has(code)};</script>`;
+  const requiresConsent = forceConsentBanner || EU_UK.has(code);
+  const script = `<script>window.VISITOR_REQUIRES_CONSENT=${requiresConsent};window.VISITOR_FORCE_CONSENT_BANNER=${forceConsentBanner};</script>`;
 
   const html = await response.text();
   const patched = html.replace(/(<head[^>]*>)/i, `$1${script}`);
