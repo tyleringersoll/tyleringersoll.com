@@ -7,22 +7,39 @@ describe("plugins/theme.client", () => {
   beforeEach(() => {
     setActivePinia(createPinia());
     localStorage.clear();
-    document.documentElement.className = "";
-    document.documentElement.removeAttribute("data-theme");
-    document.documentElement.removeAttribute("data-mode");
+    // Run the rAF callback synchronously for the test.
+    vi.stubGlobal("requestAnimationFrame", (cb) => {
+      cb();
+      return 0;
+    });
   });
 
-  it("calls store.init() on plugin invocation", () => {
-    const initSpy = vi.spyOn(useThemeStore(), "init");
-    themePlugin();
-    expect(initSpy).toHaveBeenCalledOnce();
-  });
-
-  it("syncs the mode attribute from a saved 'light' preference", () => {
-    localStorage.setItem("theme-mode", "light");
-    themePlugin();
+  it("applies the saved theme on app:suspense:resolve (after hydration), not before", () => {
+    localStorage.setItem("theme-id", "editorial");
     const store = useThemeStore();
-    expect(store.isDark).toBe(false);
-    expect(document.documentElement.getAttribute("data-mode")).toBe("light");
+    const applySpy = vi.spyOn(store, "applyStored");
+
+    // Capture the app:suspense:resolve callback the plugin registers.
+    let resolveCb;
+    const nuxtApp = {
+      hook: (name, cb) => {
+        if (name === "app:suspense:resolve") resolveCb = cb;
+      },
+    };
+
+    themePlugin(nuxtApp);
+
+    // Not applied yet — store stays on default through hydration.
+    expect(applySpy).not.toHaveBeenCalled();
+    expect(store.activeThemeId).toBe("default");
+
+    // After the initial suspense resolves, the saved theme is applied.
+    resolveCb();
+    expect(applySpy).toHaveBeenCalledOnce();
+    expect(store.activeThemeId).toBe("editorial");
+
+    // Subsequent resolves (route changes) don't re-apply.
+    resolveCb();
+    expect(applySpy).toHaveBeenCalledOnce();
   });
 });
