@@ -1,0 +1,86 @@
+// Shared real content pulled from Tyler's data/content.js — used by all four directions.
+window.TYLER = {
+  name: "Tyler Ingersoll",
+  roles: ["Frontend Engineer", "Drummer"],
+  nav: [
+    { name: "Home", url: "#" },
+    { name: "Resume", url: "#" },
+    { name: "Music", url: "#" },
+  ],
+  hero: {
+    eyebrow: "Frontend Engineering",
+    heading: "Hi, I\u2019m Tyler",
+    paragraphs: [
+      "I design and build enterprise-scale frontend applications with a focus on web performance, clean architecture, and maintainability.",
+      "Alongside my engineering work, I have spent more than three decades as a drummer \u2014 national touring, label-supported studio tracking, sync placements, event work, and modern session work.",
+    ],
+  },
+  engineering: {
+    index: "01",
+    heading: "Engineering",
+    body: "I build frontend applications with Vue, Angular, and TypeScript. My approach is to adopt frameworks when they provide a clear architectural advantage, and lean on platform-native browser capabilities when a lighter solution is better. My work has included public-facing marketing sites, payment flows, fintech integrations, design systems, and specialized interfaces for scientific hardware. One of my favorite parts of the job is reducing technical debt and moving legacy frontend systems toward maintainable, modern architectures.",
+    cta: "View my full resume",
+    competenciesLabel: "Competencies",
+    competencies: [
+      { icon: "layers", label: "Frontend Architecture" },
+      { icon: "users", label: "Engineering Leadership" },
+      { icon: "grid", label: "Design Systems" },
+      { icon: "zap", label: "Performance Optimization" },
+      { icon: "plug", label: "Fintech Integration" },
+      { icon: "refresh", label: "Frontend Modernization" },
+    ],
+    projectsLabel: "Current Projects",
+    projects: {
+      text: "For performance-focused personal builds, browser-native experiments, and live project demos, visit my projects site.",
+      ctaText: "ingersoll.dev",
+    },
+  },
+  music: {
+    index: "02",
+    heading: "Music",
+    body: "I have played drums for more than three decades, from regional independent bands to national touring, label-supported studio work, sync placements, event work, and remote session recording. My current drum work, videos, studio setup, and selected credits live on my dedicated drum site.",
+    cta: "View my musical history",
+    studioLabel: "Current Projects",
+    studio: {
+      text: "For drum videos, remote session details, setup specs, and selected credits, visit my dedicated drum tracking site.",
+      ctaText: "tyleringersolldrums.com",
+    },
+    stats: [
+      { v: "30+", l: "Years playing" },
+      { v: "NYC \u00b7 PHL \u00b7 LA", l: "Tracked in" },
+      { v: "Wind-up", l: "Label" },
+    ],
+  },
+  beyond: {
+    index: "03",
+    heading: "Beyond work",
+    cards: [
+      { icon: "bicycle", label: "Cycling", sub: "Road, Gravel, MTB", detail: "Cycling is my favorite sport now. I ride mountain, road, and gravel bikes or jump on the trainer as much as possible." },
+      { icon: "family-play", label: "Family", sub: "Family", detail: "Most of my free time is spent with my family, balancing youth sports, outdoor bike rides, and gaming together." },
+      { icon: "vinyl", label: "Hi-Fi", sub: "Vinyl & Audio", detail: "I\u2019m an audiophile and record collector, always tweaking my gear setup, hunting for vinyl pressings, and making time to really listen to music." },
+      { icon: "grill", label: "Cooking", sub: "Griddle & Smoker", detail: "I love cooking, especially outside on the griddle and smoker. That usually means a big meal, music on, and time with family and friends." },
+    ],
+  },
+  connect: {
+    heading: "Get in touch",
+    subtext: "For engineering work, music projects, or anything in between.",
+    cta: "Get in touch",
+  },
+  icons: {
+    layers: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>',
+    users: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="3"/><path d="M3.5 21v-1a5.5 5.5 0 0 1 11 0v1"/><path d="M16 4.5a3 3 0 0 1 0 5"/><path d="M18 14a4.5 4.5 0 0 1 3 4.25V21"/></svg>',
+    grid: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>',
+    zap: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a8 8 0 1 1 16 0"/><path d="M12 14l4-5"/><path d="M8 18h8"/><path d="M7 14h.01"/><path d="M17 14h.01"/></svg>',
+    plug: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 7V3"/><path d="M15 7V3"/><path d="M7 7h10v4a5 5 0 0 1-10 0V7Z"/><path d="M12 16v5"/><path d="M8 21h8"/></svg>',
+    refresh: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6v5h-5"/><path d="M4 18v-5h5"/><path d="M18.5 10A7 7 0 0 0 6.8 6.6L4 9.2"/><path d="M5.5 14a7 7 0 0 0 11.7 3.4L20 14.8"/></svg>',
+    bicycle: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6a1 1 0 0 0-1 1l-3.5 9.5"/><path d="M5.5 17.5l5-9.5 2 2.5 3.5-3"/><path d="M11 6h4"/></svg>',
+    "family-play": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="6" r="3"/><path d="M3 21v-1a5 5 0 0 1 10 0v1"/><circle cx="17" cy="9" r="2"/><path d="M13 21v-1a4 4 0 0 1 8 0v1"/></svg>',
+    grill: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a8 8 0 0 1 16 0"/><line x1="12" y1="3" x2="12" y2="5"/><line x1="3" y1="11" x2="21" y2="11"/><path d="M5 11a7 5 0 0 0 14 0"/><line x1="8" y1="16" x2="6" y2="21"/><line x1="16" y1="16" x2="18" y2="21"/></svg>',
+    vinyl: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg>',
+    arrow: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>',
+    github: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.37.5 0 5.78 0 12.29c0 5.21 3.44 9.63 8.21 11.19.6.11.82-.25.82-.56v-2c-3.34.71-4.04-1.59-4.04-1.59-.55-1.37-1.34-1.74-1.34-1.74-1.09-.74.08-.72.08-.72 1.2.08 1.84 1.22 1.84 1.22 1.07 1.8 2.81 1.28 3.5.98.11-.76.42-1.28.76-1.57-2.67-.3-5.47-1.31-5.47-5.84 0-1.29.47-2.34 1.24-3.17-.13-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.21a11.6 11.6 0 0 1 6 0c2.29-1.53 3.3-1.21 3.3-1.21.66 1.65.25 2.87.12 3.17.77.83 1.23 1.88 1.23 3.17 0 4.54-2.81 5.53-5.49 5.83.43.37.81 1.1.81 2.22v3.29c0 .32.22.69.83.57C20.57 21.9 24 17.5 24 12.29 24 5.78 18.63.5 12 .5z"/></svg>',
+    linkedin: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.44-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>',
+    email: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>',
+    strava: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.39 17.94 13.3 13.8h-3.07L15.39 24l5.15-10.2h-3.07M11.46 8.23l2.84 5.57h4.17L11.46 0 4.46 13.8h4.17"/></svg>',
+  },
+};

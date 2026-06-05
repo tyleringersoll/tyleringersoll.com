@@ -506,6 +506,7 @@ $menu-active-hover-filter: $menu-hover-filter;
     &--toggle {
       display: flex;
       align-items: center;
+      gap: $spacing-sm;
       padding: $spacing-md 0 0;
       margin-top: $spacing-md;
       border-bottom: 0;

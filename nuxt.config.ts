@@ -23,6 +23,9 @@ export default defineNuxtConfig({
   fonts: {
     families: [
       { name: "Roboto Condensed", provider: "google", weights: [300, 400, 700] },
+      // Editorial Grid theme
+      { name: "Archivo", provider: "google", weights: [400, 500, 600, 700, 800, 900] },
+      { name: "Spline Sans Mono", provider: "google", weights: [400, 500, 600, 700] },
     ],
   },
 
@@ -87,8 +90,10 @@ export default defineNuxtConfig({
       ],
       script: [
         {
-          // Set theme + mode attributes before paint to avoid a flash of the
-          // wrong colors. Mirrors the logic in stores/theme.js init().
+          // Set theme + mode attributes before paint to avoid a flash of the wrong
+          // palette. Reads the same localStorage keys the store persists to. The
+          // themed component tree still swaps after hydration (plugins/theme.client.js);
+          // this only fixes the colors up front.
           innerHTML: `(function(){try{var d=document.documentElement;var id=localStorage.getItem('theme-id')||'default';var m=localStorage.getItem('theme-mode')||localStorage.getItem('theme');if(m!=='light'&&m!=='dark'){m=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}d.setAttribute('data-theme',id);d.setAttribute('data-mode',m)}catch(e){}})()`,
           type: "text/javascript",
         },

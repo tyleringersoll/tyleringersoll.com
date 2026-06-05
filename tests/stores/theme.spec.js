@@ -26,68 +26,61 @@ describe("stores/theme", () => {
     expect(store.mode).toBe("dark");
   });
 
-  describe("init", () => {
-    it("respects a saved 'dark' preference (new theme-mode key)", () => {
-      localStorage.setItem("theme-mode", "dark");
-      const store = useThemeStore();
-      store.isDark = false;
-      store.init();
-      expect(store.isDark).toBe(true);
-      expect(dataMode()).toBe("dark");
-    });
-
-    it("respects a saved 'light' preference (new theme-mode key)", () => {
+  describe("applyStored", () => {
+    it("applies a saved theme id + mode and reflects them on <html>", () => {
+      localStorage.setItem("theme-id", "default");
       localStorage.setItem("theme-mode", "light");
       const store = useThemeStore();
-      store.init();
+      store.applyStored();
+      expect(store.activeThemeId).toBe("default");
       expect(store.isDark).toBe(false);
+      expect(dataTheme()).toBe("default");
       expect(dataMode()).toBe("light");
     });
 
     it("falls back to the legacy 'theme' key for mode", () => {
       localStorage.setItem("theme", "light");
       const store = useThemeStore();
-      store.init();
+      store.applyStored();
       expect(store.isDark).toBe(false);
-      expect(dataMode()).toBe("light");
-    });
-
-    it("restores a saved theme id and reflects it on <html>", () => {
-      localStorage.setItem("theme-id", "default");
-      const store = useThemeStore();
-      store.init();
-      expect(store.activeThemeId).toBe("default");
-      expect(dataTheme()).toBe("default");
     });
 
     it("falls back to the default theme for an unknown saved id", () => {
       localStorage.setItem("theme-id", "does-not-exist");
       const store = useThemeStore();
-      store.init();
+      store.applyStored();
       expect(store.activeThemeId).toBe("default");
     });
 
-    it("falls back to prefers-color-scheme: dark when no saved value (dark match)", () => {
+    it("forces a non-mode theme onto its default mode", () => {
+      localStorage.setItem("theme-id", "editorial");
+      localStorage.setItem("theme-mode", "light");
+      const store = useThemeStore();
+      store.applyStored();
+      expect(store.activeThemeId).toBe("editorial");
+      expect(store.supportsModes).toBe(false);
+      expect(store.isDark).toBe(true); // editorial defaultMode is dark
+    });
+
+    it("falls back to prefers-color-scheme when no saved mode (dark match)", () => {
       vi.spyOn(window, "matchMedia").mockReturnValue({ matches: true });
       const store = useThemeStore();
-      store.init();
+      store.applyStored();
       expect(store.isDark).toBe(true);
     });
 
     it("falls back to light when prefers-color-scheme: dark does not match", () => {
       vi.spyOn(window, "matchMedia").mockReturnValue({ matches: false });
       const store = useThemeStore();
-      store.init();
+      store.applyStored();
       expect(store.isDark).toBe(false);
       expect(dataMode()).toBe("light");
     });
   });
 
   describe("toggleMode / toggle", () => {
-    it("flips isDark, persists theme-mode, applies attributes, and transitions", () => {
+    it("flips isDark, persists, applies attributes, and starts the transition", () => {
       const store = useThemeStore();
-      expect(store.isDark).toBe(true);
-
       store.toggle();
       expect(store.isDark).toBe(false);
       expect(localStorage.getItem("theme-mode")).toBe("light");
@@ -98,8 +91,16 @@ describe("stores/theme", () => {
 
       store.toggleMode();
       expect(store.isDark).toBe(true);
-      expect(localStorage.getItem("theme-mode")).toBe("dark");
       expect(dataMode()).toBe("dark");
+    });
+
+    it("is a no-op when the active theme doesn't support modes", () => {
+      const store = useThemeStore();
+      store.setTheme("editorial");
+      vi.advanceTimersByTime(300); // theme swap is fade-deferred
+      const before = store.isDark;
+      store.toggleMode();
+      expect(store.isDark).toBe(before);
     });
 
     it("removes the theme-transitioning class after 2s", () => {
@@ -116,23 +117,41 @@ describe("stores/theme", () => {
   });
 
   describe("theme switching", () => {
-    it("setTheme persists theme-id and reflects it on <html>", () => {
+    it("setTheme updates + persists the active theme and reflects it on <html>", () => {
       const store = useThemeStore();
-      store.setTheme("default");
-      expect(store.activeThemeId).toBe("default");
-      expect(localStorage.getItem("theme-id")).toBe("default");
-      expect(dataTheme()).toBe("default");
+      store.setTheme("editorial");
+      vi.advanceTimersByTime(300); // theme swap is fade-deferred
+      expect(store.activeThemeId).toBe("editorial");
+      expect(localStorage.getItem("theme-id")).toBe("editorial");
+      expect(dataTheme()).toBe("editorial");
     });
 
-    it("cycleTheme wraps back to the same theme when only one is registered", () => {
+    it("cycleTheme advances to the next registered theme and wraps around", () => {
       const store = useThemeStore();
       store.cycleTheme();
+      vi.advanceTimersByTime(300);
+      expect(store.activeThemeId).toBe("editorial");
+      expect(store.isDark).toBe(true); // editorial is dark-only
+      store.cycleTheme();
+      vi.advanceTimersByTime(300);
       expect(store.activeThemeId).toBe("default");
     });
 
-    it("exposes supportsModes from the active theme manifest", () => {
+    it("fades the app out before swapping, then swaps while invisible", () => {
+      const store = useThemeStore();
+      store.setTheme("editorial");
+      // Fade-out class is applied immediately; the swap hasn't happened yet.
+      expect(document.documentElement.classList.contains("theme-fading")).toBe(true);
+      expect(store.activeThemeId).toBe("default");
+      // After the fade-out window, the swap runs.
+      vi.advanceTimersByTime(300);
+      expect(store.activeThemeId).toBe("editorial");
+    });
+
+    it("exposes supportsModes + hasMultipleThemes from the registry", () => {
       const store = useThemeStore();
       expect(store.supportsModes).toBe(true);
+      expect(store.hasMultipleThemes).toBe(true);
     });
   });
 });

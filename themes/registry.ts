@@ -1,6 +1,6 @@
-import { defineAsyncComponent } from "vue";
-import type { AsyncComponentLoader, Component } from "vue";
+import type { Component } from "vue";
 import defaultTheme from "./default/manifest";
+import editorialTheme from "./editorial/manifest";
 
 /**
  * A theme bundles a set of design tokens (see each theme's `tokens.scss`) with a
@@ -8,6 +8,11 @@ import defaultTheme from "./default/manifest";
  * tokens (via the `data-theme` / `data-mode` attributes on <html>) and the
  * rendered component for each name. Any component a theme does not provide falls
  * back to the default theme, so a new theme only needs to ship what differs.
+ *
+ * Components are imported eagerly (not lazily). The site swaps entire component
+ * trees at runtime; resolving synchronously means a theme change is an instant,
+ * reliable component swap with no async loading gap that would otherwise flash the
+ * view blank. With only a couple of small themes the bundle cost is negligible.
  */
 export interface ThemeManifest {
   /** Stable id used in the `data-theme` attribute and persisted to localStorage. */
@@ -18,13 +23,13 @@ export interface ThemeManifest {
   supportsModes: boolean;
   /** Mode applied when this theme does not support toggling. */
   defaultMode: "light" | "dark";
-  /** Name → lazy component loader. Names are referenced by <Themed name="…" />. */
-  components: Record<string, AsyncComponentLoader>;
+  /** Name → component. Names are referenced by <Themed name="…" />. */
+  components: Record<string, Component>;
 }
 
 // Register themes here. Order defines the cycle order of the theme switcher.
 // To add a theme: create themes/<id>/, import its manifest, and add it below.
-export const themes: ThemeManifest[] = [defaultTheme];
+export const themes: ThemeManifest[] = [defaultTheme, editorialTheme];
 
 export const DEFAULT_THEME_ID = "default";
 
@@ -46,21 +51,14 @@ export function nextThemeId(id: string): string {
   return ids[(i + 1) % ids.length];
 }
 
-// Async components are cached per theme+name so repeated resolves return a stable
-// reference (avoids re-loading / losing state when the active theme is unchanged).
-const componentCache = new Map<string, Component | null>();
-
 /**
  * Resolves the component registered under `name` for the active theme, falling
  * back to the default theme. Returns null when neither provides it.
  */
 export function resolveThemedComponent(themeId: string, name: string): Component | null {
-  const key = `${themeId}:${name}`;
-  const cached = componentCache.get(key);
-  if (cached !== undefined) return cached;
-
-  const loader = getTheme(themeId).components[name] || getTheme(DEFAULT_THEME_ID).components[name];
-  const resolved = loader ? defineAsyncComponent(loader) : null;
-  componentCache.set(key, resolved);
-  return resolved;
+  return (
+    getTheme(themeId).components[name] ||
+    getTheme(DEFAULT_THEME_ID).components[name] ||
+    null
+  );
 }
