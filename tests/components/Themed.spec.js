@@ -27,7 +27,7 @@ describe("Themed resolver", () => {
     const store = useThemeStore();
 
     // The swap is fade-deferred (~300ms), so wait it out.
-    store.setTheme("editorial");
+    store.setTheme("reel-to-reel");
     await new Promise((r) => setTimeout(r, 350));
     await nextTick();
 
@@ -37,7 +37,7 @@ describe("Themed resolver", () => {
     expect(wrapper.find(".hv2").exists()).toBe(false);
 
     // ...and back again.
-    store.setTheme("default");
+    store.setTheme("signal-flow");
     await new Promise((r) => setTimeout(r, 350));
     await nextTick();
     expect(wrapper.find(".hv2").exists()).toBe(true);

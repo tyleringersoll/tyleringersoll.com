@@ -15,6 +15,10 @@ const STORAGE_THEME = "theme-id";
 const STORAGE_MODE = "theme-mode";
 const LEGACY_MODE = "theme"; // pre-multi-theme key, kept for back-compat
 
+// Themes were renamed to their UI names; map any value saved under the old ids so
+// returning visitors keep their preference.
+const LEGACY_THEME_IDS = { default: "signal-flow", editorial: "reel-to-reel" };
+
 export const useThemeStore = defineStore("theme", {
   state: () => ({
     activeThemeId: DEFAULT_THEME_ID,
@@ -37,7 +41,8 @@ export const useThemeStore = defineStore("theme", {
     applyStored() {
       if (import.meta.server) return;
 
-      this.activeThemeId = getTheme(localStorage.getItem(STORAGE_THEME)).id;
+      const savedId = localStorage.getItem(STORAGE_THEME);
+      this.activeThemeId = getTheme(LEGACY_THEME_IDS[savedId] || savedId).id;
 
       const savedMode =
         localStorage.getItem(STORAGE_MODE) || localStorage.getItem(LEGACY_MODE);

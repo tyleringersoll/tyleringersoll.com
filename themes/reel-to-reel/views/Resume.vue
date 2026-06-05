@@ -82,7 +82,7 @@
 
 <script setup>
 import { useContentStore } from "~/stores/content";
-import { edIcons } from "~/themes/editorial/icons.js";
+import { edIcons } from "~/themes/reel-to-reel/icons.js";
 
 const store = useContentStore();
 const route = useRoute();

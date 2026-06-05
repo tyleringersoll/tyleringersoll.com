@@ -92,7 +92,7 @@
           <NuxtLink class="link" :to="mus.ctaUrl || '/music'">
             {{ mus.cta }} <span class="ed-ico" v-html="icons.arrow" />
           </NuxtLink>
-          <div class="statrow">
+          <div class="statrow statrow--two">
             <div v-for="s in musicStats" :key="s.l" class="st">
               <div class="v">{{ s.v }}</div>
               <div class="l">{{ s.l }}</div>
@@ -131,7 +131,7 @@
 
 <script setup>
 import { useContentStore } from "~/stores/content";
-import { edIcons } from "~/themes/editorial/icons.js";
+import { edIcons } from "~/themes/reel-to-reel/icons.js";
 
 const store = useContentStore();
 const icons = edIcons;
@@ -155,12 +155,11 @@ const pad = (n) => String(n).padStart(2, "0");
 // ── Editorial-only chrome (not in the shared content store) ──
 const metaRow = [
   { l: "Discipline", v: "Frontend Engineering" },
-  { l: "Also", v: "Drummer / Session" },
+  { l: "Also", v: "Session / Touring Drummer" },
   { l: "Based", v: "Kennett Square, PA" },
 ];
 const musicStats = [
   { v: "30+", l: "Years playing" },
-  { v: "NYC · PHL · LA", l: "Tracked in" },
-  { v: "Wind-up", l: "Label" },
+  { v: "NYC · BAL · PHL · LA", l: "Tracked in" }
 ];
 </script>

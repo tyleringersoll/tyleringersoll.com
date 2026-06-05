@@ -21,21 +21,28 @@ describe("stores/theme", () => {
 
   it("defaults to the default theme in dark mode", () => {
     const store = useThemeStore();
-    expect(store.activeThemeId).toBe("default");
+    expect(store.activeThemeId).toBe("signal-flow");
     expect(store.isDark).toBe(true);
     expect(store.mode).toBe("dark");
   });
 
   describe("applyStored", () => {
     it("applies a saved theme id + mode and reflects them on <html>", () => {
-      localStorage.setItem("theme-id", "default");
+      localStorage.setItem("theme-id", "signal-flow");
       localStorage.setItem("theme-mode", "light");
       const store = useThemeStore();
       store.applyStored();
-      expect(store.activeThemeId).toBe("default");
+      expect(store.activeThemeId).toBe("signal-flow");
       expect(store.isDark).toBe(false);
-      expect(dataTheme()).toBe("default");
+      expect(dataTheme()).toBe("signal-flow");
       expect(dataMode()).toBe("light");
+    });
+
+    it("migrates a legacy saved theme id to its renamed equivalent", () => {
+      localStorage.setItem("theme-id", "editorial");
+      const store = useThemeStore();
+      store.applyStored();
+      expect(store.activeThemeId).toBe("reel-to-reel");
     });
 
     it("falls back to the legacy 'theme' key for mode", () => {
@@ -49,15 +56,15 @@ describe("stores/theme", () => {
       localStorage.setItem("theme-id", "does-not-exist");
       const store = useThemeStore();
       store.applyStored();
-      expect(store.activeThemeId).toBe("default");
+      expect(store.activeThemeId).toBe("signal-flow");
     });
 
     it("forces a non-mode theme onto its default mode", () => {
-      localStorage.setItem("theme-id", "editorial");
+      localStorage.setItem("theme-id", "reel-to-reel");
       localStorage.setItem("theme-mode", "light");
       const store = useThemeStore();
       store.applyStored();
-      expect(store.activeThemeId).toBe("editorial");
+      expect(store.activeThemeId).toBe("reel-to-reel");
       expect(store.supportsModes).toBe(false);
       expect(store.isDark).toBe(true); // editorial defaultMode is dark
     });
@@ -96,7 +103,7 @@ describe("stores/theme", () => {
 
     it("is a no-op when the active theme doesn't support modes", () => {
       const store = useThemeStore();
-      store.setTheme("editorial");
+      store.setTheme("reel-to-reel");
       vi.advanceTimersByTime(300); // theme swap is fade-deferred
       const before = store.isDark;
       store.toggleMode();
@@ -119,33 +126,33 @@ describe("stores/theme", () => {
   describe("theme switching", () => {
     it("setTheme updates + persists the active theme and reflects it on <html>", () => {
       const store = useThemeStore();
-      store.setTheme("editorial");
+      store.setTheme("reel-to-reel");
       vi.advanceTimersByTime(300); // theme swap is fade-deferred
-      expect(store.activeThemeId).toBe("editorial");
-      expect(localStorage.getItem("theme-id")).toBe("editorial");
-      expect(dataTheme()).toBe("editorial");
+      expect(store.activeThemeId).toBe("reel-to-reel");
+      expect(localStorage.getItem("theme-id")).toBe("reel-to-reel");
+      expect(dataTheme()).toBe("reel-to-reel");
     });
 
     it("cycleTheme advances to the next registered theme and wraps around", () => {
       const store = useThemeStore();
       store.cycleTheme();
       vi.advanceTimersByTime(300);
-      expect(store.activeThemeId).toBe("editorial");
+      expect(store.activeThemeId).toBe("reel-to-reel");
       expect(store.isDark).toBe(true); // editorial is dark-only
       store.cycleTheme();
       vi.advanceTimersByTime(300);
-      expect(store.activeThemeId).toBe("default");
+      expect(store.activeThemeId).toBe("signal-flow");
     });
 
     it("fades the app out before swapping, then swaps while invisible", () => {
       const store = useThemeStore();
-      store.setTheme("editorial");
+      store.setTheme("reel-to-reel");
       // Fade-out class is applied immediately; the swap hasn't happened yet.
       expect(document.documentElement.classList.contains("theme-fading")).toBe(true);
-      expect(store.activeThemeId).toBe("default");
+      expect(store.activeThemeId).toBe("signal-flow");
       // After the fade-out window, the swap runs.
       vi.advanceTimersByTime(300);
-      expect(store.activeThemeId).toBe("editorial");
+      expect(store.activeThemeId).toBe("reel-to-reel");
     });
 
     it("exposes supportsModes + hasMultipleThemes from the registry", () => {

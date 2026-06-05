@@ -22,7 +22,6 @@
             <NuxtLink :to="item.url">{{ item.name }}</NuxtLink>
           </li>
         </ul>
-        <ThemeCycle v-if="store.hasMultipleThemes" />
         <ThemeToggle v-if="store.supportsModes" />
       </nav>
 

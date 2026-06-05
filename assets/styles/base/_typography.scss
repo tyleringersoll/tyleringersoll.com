@@ -13,7 +13,8 @@ body {
   font-size: $font-size-base;
   line-height: $line-height-base;
 
-  &.menu-open {
+  &.menu-open,
+  &.overlay-open {
     overflow-y: hidden;
   }
 }

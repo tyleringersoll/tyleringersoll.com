@@ -1,6 +1,6 @@
 import type { Component } from "vue";
-import defaultTheme from "./default/manifest";
-import editorialTheme from "./editorial/manifest";
+import signalFlowTheme from "./signal-flow/manifest";
+import reelToReelTheme from "./reel-to-reel/manifest";
 
 /**
  * A theme bundles a set of design tokens (see each theme's `tokens.scss`) with a
@@ -14,11 +14,22 @@ import editorialTheme from "./editorial/manifest";
  * reliable component swap with no async loading gap that would otherwise flash the
  * view blank. With only a couple of small themes the bundle cost is negligible.
  */
+/** Three representative colors (raw hex) for a theme's mini swatch in the UI. */
+export interface ThemeSwatch {
+  primary: string;
+  secondary: string;
+  background: string;
+}
+
 export interface ThemeManifest {
   /** Stable id used in the `data-theme` attribute and persisted to localStorage. */
   id: string;
-  /** Human-readable name shown in the theme switcher. */
+  /** Human-readable name shown in the theme switcher / drawer / palette. */
   label: string;
+  /** One-line descriptor shown under the label in the customize drawer. */
+  tagline: string;
+  /** Representative colors for the drawer/palette swatch preview. */
+  swatch: ThemeSwatch;
   /** Whether this theme offers a light/dark toggle. */
   supportsModes: boolean;
   /** Mode applied when this theme does not support toggling. */
@@ -29,9 +40,9 @@ export interface ThemeManifest {
 
 // Register themes here. Order defines the cycle order of the theme switcher.
 // To add a theme: create themes/<id>/, import its manifest, and add it below.
-export const themes: ThemeManifest[] = [defaultTheme, editorialTheme];
+export const themes: ThemeManifest[] = [signalFlowTheme, reelToReelTheme];
 
-export const DEFAULT_THEME_ID = "default";
+export const DEFAULT_THEME_ID = "signal-flow";
 
 const byId = new Map(themes.map((t) => [t.id, t]));
 
