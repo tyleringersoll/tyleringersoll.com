@@ -19,8 +19,10 @@
 #__nuxt {
   transition: opacity 300ms ease;
 }
-html.theme-fading #__nuxt {
+html.theme-fading #__nuxt,
+html.theme-boot-cloaked #__nuxt {
   opacity: 0;
+  pointer-events: none;
 }
 @media (prefers-reduced-motion: reduce) {
   #__nuxt {
@@ -28,5 +30,6 @@ html.theme-fading #__nuxt {
   }
   html.theme-fading #__nuxt {
     opacity: 1;
+    pointer-events: auto;
   }
 }

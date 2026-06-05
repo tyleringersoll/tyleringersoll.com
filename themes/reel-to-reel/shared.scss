@@ -397,20 +397,20 @@
       object-fit: cover;
       filter: grayscale(1) contrast(1.06);
     }
-    .cap {
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      background: var(--paper);
-      border-top: 1px solid var(--rule);
-      border-right: 1px solid var(--rule);
-      padding: 8px 14px;
-      font-family: var(--font-family-mono);
-      font-size: 10px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--color-text-muted);
-    }
+  }
+  .cap {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: var(--paper);
+    border-top: 1px solid var(--rule);
+    border-right: 1px solid var(--rule);
+    padding: 8px 14px;
+    font-family: var(--font-family-mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
   }
   .introbox {
     margin-top: 38px;

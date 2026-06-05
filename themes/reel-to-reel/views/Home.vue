@@ -86,6 +86,7 @@
             loading="lazy"
             draggable="false"
           />
+          <div class="cap">Fig. 02 — Hybrid studio</div>
         </div>
         <div class="txt">
           <p>{{ mus.body }}</p>
