@@ -22,7 +22,7 @@
         >
           {{ heroItem.cta.label }} <span class="ed-ico" v-html="icons.arrow" />
         </a>
-        <div class="statrow statrow--two">
+        <div class="statrow statrow--two statrow--wrap">
           <div v-for="f in heroFacts" :key="f.l" class="st">
             <div class="v">{{ f.v }}</div>
             <div class="l">{{ f.l }}</div>
@@ -103,7 +103,7 @@
 
 <script setup>
 import { useContentStore } from "~/stores/content";
-import { edIcons } from "~/themes/editorial/icons.js";
+import { edIcons } from "~/themes/reel-to-reel/icons.js";
 
 const store = useContentStore();
 const route = useRoute();
@@ -157,7 +157,7 @@ const metaRow = [
   { l: "Studio", v: "Kennett Square, PA" },
 ];
 const heroFacts = [
-  { v: "NYC · PHL · LA", l: "Tracked in" },
-  { v: "Wind-up", l: "Label-signed" },
+  { v: "DW · Roland · Zildjian · Evans · ProMark", l: "Brands used" },
+  { v: "NYC · BAL · PHL · LA", l: "Tracked in" },
 ];
 </script>

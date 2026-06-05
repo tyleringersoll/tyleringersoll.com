@@ -48,9 +48,8 @@
           <li v-for="(item, index) in content" class="mobile-nav__item" :key="index">
             <NuxtLink :to="item.url" @click="closeFromLink">{{ item.name }}</NuxtLink>
           </li>
-          <li class="mobile-nav__item mobile-nav__item--toggle">
-            <ThemeCycle v-if="store.hasMultipleThemes" />
-            <ThemeToggle v-if="store.supportsModes" />
+          <li v-if="store.supportsModes" class="mobile-nav__item mobile-nav__item--toggle">
+            <ThemeToggle />
           </li>
         </ul>
       </div>

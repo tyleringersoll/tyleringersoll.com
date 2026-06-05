@@ -4,7 +4,7 @@
 // shared component contracts keep working, plus a few editorial-only tokens.
 // Source of truth: design_handoff_editorial/editorial.css
 
-[data-theme="editorial"] {
+[data-theme="reel-to-reel"] {
   --font-family-base: "Archivo", sans-serif;
   --font-family-mono: "Spline Sans Mono", monospace;
 
@@ -43,7 +43,7 @@
 // borders line up into one continuous column. Scoped to the editorial theme so the
 // default layout is untouched. (Note: do NOT make .app-upper a flex column here —
 // auto horizontal margins on a flex child shrink-wrap it and collapse the masthead.)
-[data-theme="editorial"] {
+[data-theme="reel-to-reel"] {
   .ed-frame {
     width: 100%;
     max-width: 1320px;

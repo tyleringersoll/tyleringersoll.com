@@ -1,8 +1,8 @@
 // Aggregates every registered theme's design tokens.
 // To add a theme: drop its tokens into themes/<id>/tokens.scss and @import it here.
-@import "default/tokens";
-@import "editorial/tokens";
-@import "editorial/shared";
+@import "signal-flow/tokens";
+@import "reel-to-reel/tokens";
+@import "reel-to-reel/shared";
 
 // Light/dark mode toggle: cross-fade the colors in place (no component remount).
 .theme-transitioning,

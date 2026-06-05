@@ -17,6 +17,10 @@
     class="app-sticky-bottom"
     :content="content.footer"
   />
+
+  <!-- Global theming UI: Customize drawer (FAB) + ⌘K command palette -->
+  <ThemeDrawer />
+  <CommandPalette />
 </template>
 
 <script setup>

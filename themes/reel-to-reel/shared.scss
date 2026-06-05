@@ -1,12 +1,12 @@
 // ============================================================================
 // EDITORIAL GRID — visual system, ported from design_handoff_editorial/editorial.css
-// Every `.ed .x` rule becomes `[data-theme="editorial"] .x` (nested below), so the
+// Every `.ed .x` rule becomes `[data-theme="reel-to-reel"] .x` (nested below), so the
 // entire system is scoped to the theme and cannot affect the default theme.
-// The page views (themes/editorial/views/*) are pure markup that consume these.
+// The page views (themes/reel-to-reel/views/*) are pure markup that consume these.
 // Masthead + footer chrome live in their own components.
 // ============================================================================
 
-[data-theme="editorial"] {
+[data-theme="reel-to-reel"] {
   // ── Neutralize the site's global element defaults (assets/styles/base/_typography.scss)
   //    that would otherwise fight the editorial system within this theme. ──────────
   h1, h2, h3, h4, h5 {
@@ -23,13 +23,6 @@
   :focus-visible {
     outline: 2px solid var(--amber);
     outline-offset: 2px;
-  }
-
-  // ── theme switcher buttons (global components placed in the masthead) ─────────
-  // Square the default circular buttons to match the brutalist, zero-radius system.
-  .theme-cycle,
-  .theme-toggle {
-    border-radius: 0;
   }
 
   // ── mobile nav (reused default MobileNav component) recolored for editorial ────
@@ -551,7 +544,9 @@
       padding: 16px 0;
       border-right: 1px solid var(--rule);
 
-      .v { font-weight: 800; font-size: 22px; letter-spacing: -0.01em; }
+      // Stat values can hold longer text (e.g. tracking locations), so the value
+      // type is sized to fit on a single line rather than as a big number.
+      .v { font-weight: 800; font-size: 15px; letter-spacing: -0.01em; white-space: nowrap; }
       .l {
         font-family: var(--font-family-mono);
         font-size: 10px;
@@ -562,6 +557,20 @@
       }
     }
     .st:last-child { border-right: 0; }
+
+    // Keep each cell after the first off its dividing rule (desktop only; reset
+    // when the row stacks to a single column on phones).
+    .st + .st { padding-left: 24px; }
+
+    // For rows whose values can run long (the Music hero facts), keep the two
+    // columns evenly balanced by letting the value wrap instead of forcing its
+    // column wider, and pad the left cell so its content clears the dividing rule.
+    &.statrow--wrap {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+
+      .v { white-space: normal; }
+      .st:not(:last-child) { padding-right: 24px; }
+    }
   }
 
   .beyond {
@@ -978,6 +987,10 @@
       border-right: 0;
       border-bottom: 1px solid var(--rule);
     }
+    // Stacked to one column, so drop the desktop indents and re-balance.
+    .statrow .st + .st { padding-left: 0; }
+    .statrow.statrow--wrap { grid-template-columns: 1fr; }
+    .statrow.statrow--wrap .st:not(:last-child) { padding-right: 0; }
     .meta > div:last-child,
     .statrow .st:last-child,
     .beyond .bcol:last-child,

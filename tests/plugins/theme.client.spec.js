@@ -15,7 +15,7 @@ describe("plugins/theme.client", () => {
   });
 
   it("applies the saved theme on app:suspense:resolve (after hydration), not before", () => {
-    localStorage.setItem("theme-id", "editorial");
+    localStorage.setItem("theme-id", "reel-to-reel");
     const store = useThemeStore();
     const applySpy = vi.spyOn(store, "applyStored");
 
@@ -31,12 +31,12 @@ describe("plugins/theme.client", () => {
 
     // Not applied yet — store stays on default through hydration.
     expect(applySpy).not.toHaveBeenCalled();
-    expect(store.activeThemeId).toBe("default");
+    expect(store.activeThemeId).toBe("signal-flow");
 
     // After the initial suspense resolves, the saved theme is applied.
     resolveCb();
     expect(applySpy).toHaveBeenCalledOnce();
-    expect(store.activeThemeId).toBe("editorial");
+    expect(store.activeThemeId).toBe("reel-to-reel");
 
     // Subsequent resolves (route changes) don't re-apply.
     resolveCb();

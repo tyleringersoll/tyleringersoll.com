@@ -3,7 +3,7 @@
 // the pre-paint script sets data-theme). Light values override under data-mode.
 
 :root,
-[data-theme="default"] {
+[data-theme="signal-flow"] {
   --font-family-base: #{$font-family-base};
 
   --color-bg-deepest: #0d1014;
@@ -26,7 +26,7 @@
   --color-svg-accent: #ffcc5c;
 }
 
-[data-theme="default"][data-mode="light"] {
+[data-theme="signal-flow"][data-mode="light"] {
   --color-bg-deepest: #c8cdd3;
   --color-bg-header: rgba(245, 245, 240, 0.88);
   --color-bg-primary: #f5f5f0;

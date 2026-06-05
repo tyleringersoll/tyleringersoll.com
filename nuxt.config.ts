@@ -94,7 +94,7 @@ export default defineNuxtConfig({
           // palette. Reads the same localStorage keys the store persists to. The
           // themed component tree still swaps after hydration (plugins/theme.client.js);
           // this only fixes the colors up front.
-          innerHTML: `(function(){try{var d=document.documentElement;var id=localStorage.getItem('theme-id')||'default';var m=localStorage.getItem('theme-mode')||localStorage.getItem('theme');if(m!=='light'&&m!=='dark'){m=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}d.setAttribute('data-theme',id);d.setAttribute('data-mode',m)}catch(e){}})()`,
+          innerHTML: `(function(){try{var d=document.documentElement;var legacy={default:'signal-flow',editorial:'reel-to-reel'};var id=localStorage.getItem('theme-id');id=(id&&legacy[id])||id||'signal-flow';var m=localStorage.getItem('theme-mode')||localStorage.getItem('theme');if(m!=='light'&&m!=='dark'){m=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}d.setAttribute('data-theme',id);d.setAttribute('data-mode',m)}catch(e){}})()`,
           type: "text/javascript",
         },
       ],

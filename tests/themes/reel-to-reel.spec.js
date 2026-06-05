@@ -2,13 +2,13 @@ import { beforeEach, describe, expect, it } from "vitest";
 import { setActivePinia, createPinia } from "pinia";
 import { mountSuspended } from "@nuxt/test-utils/runtime";
 
-import EditorialHeader from "~/themes/editorial/components/Header.vue";
-import EditorialFooter from "~/themes/editorial/components/Footer.vue";
-import HomeView from "~/themes/editorial/views/Home.vue";
-import ResumeView from "~/themes/editorial/views/Resume.vue";
-import MusicView from "~/themes/editorial/views/Music.vue";
-import ArchitectureView from "~/themes/editorial/views/Architecture.vue";
-import editorialTheme from "~/themes/editorial/manifest";
+import EditorialHeader from "~/themes/reel-to-reel/components/Header.vue";
+import EditorialFooter from "~/themes/reel-to-reel/components/Footer.vue";
+import HomeView from "~/themes/reel-to-reel/views/Home.vue";
+import ResumeView from "~/themes/reel-to-reel/views/Resume.vue";
+import MusicView from "~/themes/reel-to-reel/views/Music.vue";
+import ArchitectureView from "~/themes/reel-to-reel/views/Architecture.vue";
+import reelToReelTheme from "~/themes/reel-to-reel/manifest";
 
 // The views read the real content store (auto-loaded from data/content.js), so a
 // fresh Pinia is enough — no content mock needed.
@@ -16,14 +16,14 @@ describe("editorial theme", () => {
   beforeEach(() => setActivePinia(createPinia()));
 
   it("manifest is dark-only and overrides the expected component names", () => {
-    expect(editorialTheme.id).toBe("editorial");
-    expect(editorialTheme.supportsModes).toBe(false);
-    expect(Object.keys(editorialTheme.components).sort()).toEqual(
+    expect(reelToReelTheme.id).toBe("reel-to-reel");
+    expect(reelToReelTheme.supportsModes).toBe(false);
+    expect(Object.keys(reelToReelTheme.components).sort()).toEqual(
       ["ArchitectureView", "Footer", "Header", "HomeView", "MusicView", "ResumeView"].sort()
     );
   });
 
-  it("Header renders the masthead with brand, nav, and a theme switcher", async () => {
+  it("Header renders the masthead with brand and nav", async () => {
     const wrapper = await mountSuspended(EditorialHeader, {
       props: {
         content: { name: "Tyler Ingersoll" },
@@ -37,8 +37,9 @@ describe("editorial theme", () => {
     // Brand name renders (v-html lives on a span inside the link, not the NuxtLink).
     expect(wrapper.find(".name").text()).toContain("Tyler Ingersoll");
     expect(wrapper.findAll(".masthead__link")).toHaveLength(2);
-    // A theme cycle button is present so the user is never stuck in a theme.
-    expect(wrapper.find(".masthead .theme-cycle").exists()).toBe(true);
+    // Theme switching now lives in the global Customize drawer / ⌘K palette,
+    // so the masthead no longer carries an in-nav theme switcher.
+    expect(wrapper.find(".masthead .theme-cycle").exists()).toBe(false);
   });
 
   it("Footer renders mono legal lines (with {YEAR}) + amber social icons", async () => {
