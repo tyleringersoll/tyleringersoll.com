@@ -1,3 +1,7 @@
+const themeBootStyle = "html.theme-boot-cloaked #__nuxt{opacity:0;pointer-events:none}";
+
+const themePrePaintScript = `(function(){try{var st=document.createElement('style');st.appendChild(document.createTextNode(${JSON.stringify(themeBootStyle)}));document.head.appendChild(st);var d=document.documentElement;var legacy={default:'signal-flow',editorial:'reel-to-reel'};var valid={'signal-flow':1,'reel-to-reel':1};function ls(k){try{return localStorage.getItem(k)}catch(e){return null}}function cookie(k){var p=k+'=';var parts=document.cookie?document.cookie.split('; '):[];for(var i=0;i<parts.length;i++){if(parts[i].indexOf(p)===0)return decodeURIComponent(parts[i].slice(p.length))}return null}var id=ls('theme-id')||cookie('theme-id');id=(id&&legacy[id])||id||'signal-flow';if(!valid[id])id='signal-flow';var rendered=d.getAttribute('data-theme')||'signal-flow';var m=ls('theme-mode')||cookie('theme-mode')||ls('theme')||cookie('theme');if(m!=='light'&&m!=='dark'){m=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}if(id==='reel-to-reel')m='dark';if(id!==rendered)d.classList.add('theme-boot-cloaked');d.setAttribute('data-theme',id);d.setAttribute('data-mode',m)}catch(e){}})()`;
+
 export default defineNuxtConfig({
   compatibilityDate: "2024-11-01",
   ssr: true,
@@ -90,11 +94,10 @@ export default defineNuxtConfig({
       ],
       script: [
         {
-          // Set theme + mode attributes before paint to avoid a flash of the wrong
-          // palette. Reads the same localStorage keys the store persists to. The
-          // themed component tree still swaps after hydration (plugins/theme.client.js);
-          // this only fixes the colors up front.
-          innerHTML: `(function(){try{var d=document.documentElement;var legacy={default:'signal-flow',editorial:'reel-to-reel'};var id=localStorage.getItem('theme-id');id=(id&&legacy[id])||id||'signal-flow';var m=localStorage.getItem('theme-mode')||localStorage.getItem('theme');if(m!=='light'&&m!=='dark'){m=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}d.setAttribute('data-theme',id);d.setAttribute('data-mode',m)}catch(e){}})()`,
+          // Set theme + mode attributes before paint. If static HTML rendered a
+          // different component tree, cloak it until plugins/theme.client.js swaps
+          // to the saved theme after hydration.
+          innerHTML: themePrePaintScript,
           type: "text/javascript",
         },
       ],

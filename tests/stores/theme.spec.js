@@ -4,11 +4,17 @@ import { useThemeStore } from "~/stores/theme";
 
 const dataTheme = () => document.documentElement.getAttribute("data-theme");
 const dataMode = () => document.documentElement.getAttribute("data-mode");
+const clearCookie = (name) => {
+  document.cookie = `${name}=; Max-Age=0; Path=/`;
+};
 
 describe("stores/theme", () => {
   beforeEach(() => {
     setActivePinia(createPinia());
     localStorage.clear();
+    clearCookie("theme-id");
+    clearCookie("theme-mode");
+    clearCookie("theme");
     document.documentElement.className = "";
     document.documentElement.removeAttribute("data-theme");
     document.documentElement.removeAttribute("data-mode");
@@ -50,6 +56,16 @@ describe("stores/theme", () => {
       const store = useThemeStore();
       store.applyStored();
       expect(store.isDark).toBe(false);
+    });
+
+    it("falls back to theme cookies when localStorage is empty", () => {
+      document.cookie = "theme-id=reel-to-reel; Path=/";
+      document.cookie = "theme-mode=light; Path=/";
+      const store = useThemeStore();
+      store.applyStored();
+      expect(store.activeThemeId).toBe("reel-to-reel");
+      expect(store.isDark).toBe(true); // reel-to-reel is dark-only
+      expect(dataTheme()).toBe("reel-to-reel");
     });
 
     it("falls back to the default theme for an unknown saved id", () => {
@@ -130,6 +146,7 @@ describe("stores/theme", () => {
       vi.advanceTimersByTime(300); // theme swap is fade-deferred
       expect(store.activeThemeId).toBe("reel-to-reel");
       expect(localStorage.getItem("theme-id")).toBe("reel-to-reel");
+      expect(document.cookie).toContain("theme-id=reel-to-reel");
       expect(dataTheme()).toBe("reel-to-reel");
     });
 

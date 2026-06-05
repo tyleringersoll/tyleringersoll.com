@@ -2,22 +2,56 @@ import { defineStore } from "pinia";
 import { themes, DEFAULT_THEME_ID, getTheme, nextThemeId } from "~/themes/registry";
 
 // Two orthogonal axes drive the look of the site, both reflected as attributes on
-// <html> so CSS tokens (and the pre-paint script in nuxt.config) can read them:
+// <html> so CSS tokens (and the pre-paint script in nuxt.config.ts) can read them:
 //   data-theme="<id>"     → which theme (skin) is active
 //   data-mode="light|dark" → only meaningful when the active theme supportsModes
 //
-// The site is statically prerendered with the DEFAULT theme, so the store must
-// stay on the default theme through hydration (to match the static HTML) and only
-// apply the saved theme afterwards — see plugins/theme.client.js, which calls
-// applyStored() on app:mounted. Themes can swap whole component trees, so applying
-// before hydration would mismatch and blank the page.
-const STORAGE_THEME = "theme-id";
-const STORAGE_MODE = "theme-mode";
-const LEGACY_MODE = "theme"; // pre-multi-theme key, kept for back-compat
+// Generated pages cannot know localStorage, so the client boot plugin keeps any
+// mismatched static HTML hidden until the saved theme's component tree is mounted.
+export const STORAGE_THEME = "theme-id";
+export const STORAGE_MODE = "theme-mode";
+export const LEGACY_MODE = "theme"; // pre-multi-theme key, kept for back-compat
+const COOKIE_MAX_AGE = 60 * 60 * 24 * 365;
 
 // Themes were renamed to their UI names; map any value saved under the old ids so
 // returning visitors keep their preference.
 const LEGACY_THEME_IDS = { default: "signal-flow", editorial: "reel-to-reel" };
+
+function normalizeThemeId(id) {
+  return getTheme(LEGACY_THEME_IDS[id] || id).id;
+}
+
+function readCookie(name) {
+  if (import.meta.server) return null;
+  const prefix = `${name}=`;
+  const row = document.cookie
+    .split("; ")
+    .find((part) => part.startsWith(prefix));
+  return row ? decodeURIComponent(row.slice(prefix.length)) : null;
+}
+
+function readStorage(name) {
+  if (import.meta.server) return null;
+  try {
+    return localStorage.getItem(name);
+  } catch {
+    return null;
+  }
+}
+
+function writeStorage(name, value) {
+  if (import.meta.server) return;
+  try {
+    localStorage.setItem(name, value);
+  } catch {
+    // Cookie persistence below still gives SSR-capable responses the preference.
+  }
+}
+
+function writeCookie(name, value) {
+  if (import.meta.server) return;
+  document.cookie = `${name}=${encodeURIComponent(value)}; Max-Age=${COOKIE_MAX_AGE}; Path=/; SameSite=Lax`;
+}
 
 export const useThemeStore = defineStore("theme", {
   state: () => ({
@@ -37,24 +71,40 @@ export const useThemeStore = defineStore("theme", {
   },
 
   actions: {
-    // Apply the persisted theme/mode. Client-only: called after hydration.
-    applyStored() {
-      if (import.meta.server) return;
+    applyInitialPreference(themeId, mode, fallbackMode = "dark") {
+      this.activeThemeId = normalizeThemeId(themeId);
 
-      const savedId = localStorage.getItem(STORAGE_THEME);
-      this.activeThemeId = getTheme(LEGACY_THEME_IDS[savedId] || savedId).id;
-
-      const savedMode =
-        localStorage.getItem(STORAGE_MODE) || localStorage.getItem(LEGACY_MODE);
-      if (savedMode === "dark" || savedMode === "light") {
-        this.isDark = savedMode === "dark";
+      if (mode === "dark" || mode === "light") {
+        this.isDark = mode === "dark";
       } else {
-        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-        this.isDark = prefersDark !== false;
+        this.isDark = fallbackMode !== "light";
       }
 
       if (!this.supportsModes) {
         this.isDark = (this.activeTheme.defaultMode || "dark") === "dark";
+      }
+    },
+
+    // Apply the persisted theme/mode. Client-only: called after hydration.
+    applyStored() {
+      if (import.meta.server) return;
+
+      const savedId = readStorage(STORAGE_THEME) || readCookie(STORAGE_THEME);
+      const savedMode =
+        readStorage(STORAGE_MODE) ||
+        readCookie(STORAGE_MODE) ||
+        readStorage(LEGACY_MODE) ||
+        readCookie(LEGACY_MODE);
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+      this.applyInitialPreference(
+        savedId,
+        savedMode,
+        prefersDark === false ? "light" : "dark"
+      );
+
+      if (savedId || savedMode) {
+        this._persist();
       }
 
       this._apply();
@@ -93,8 +143,10 @@ export const useThemeStore = defineStore("theme", {
 
     _persist() {
       if (import.meta.server) return;
-      localStorage.setItem(STORAGE_THEME, this.activeThemeId);
-      localStorage.setItem(STORAGE_MODE, this.isDark ? "dark" : "light");
+      writeStorage(STORAGE_THEME, this.activeThemeId);
+      writeStorage(STORAGE_MODE, this.isDark ? "dark" : "light");
+      writeCookie(STORAGE_THEME, this.activeThemeId);
+      writeCookie(STORAGE_MODE, this.isDark ? "dark" : "light");
     },
 
     _beginTransition() {
