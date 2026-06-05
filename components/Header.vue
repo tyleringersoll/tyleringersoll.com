@@ -22,7 +22,8 @@
             <NuxtLink :to="item.url">{{ item.name }}</NuxtLink>
           </li>
         </ul>
-        <ThemeToggle />
+        <ThemeCycle v-if="store.hasMultipleThemes" />
+        <ThemeToggle v-if="store.supportsModes" />
       </nav>
 
       <MobileNav class="header__mobile-nav" :content="navigation" />
@@ -31,6 +32,8 @@
 </template>
 
 <script setup>
+import { useThemeStore } from "~/stores/theme";
+
 defineProps({
   content: {
     type: Object,
@@ -41,6 +44,8 @@ defineProps({
     default: () => [],
   },
 });
+
+const store = useThemeStore();
 </script>
 
 <style lang="scss" scoped>

@@ -14,6 +14,7 @@ export default defineVitestConfig({
         "pages/**",
         "layouts/**",
         "plugins/**",
+        "themes/**",
         "app.vue",
         "app/**",
       ],

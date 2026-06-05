@@ -87,7 +87,9 @@ export default defineNuxtConfig({
       ],
       script: [
         {
-          innerHTML: `(function(){try{var t=localStorage.getItem('theme');if(t==='light'||(t===null&&window.matchMedia('(prefers-color-scheme: light)').matches)){document.documentElement.classList.add('light-mode')}}catch(e){}})()`,
+          // Set theme + mode attributes before paint to avoid a flash of the
+          // wrong colors. Mirrors the logic in stores/theme.js init().
+          innerHTML: `(function(){try{var d=document.documentElement;var id=localStorage.getItem('theme-id')||'default';var m=localStorage.getItem('theme-mode')||localStorage.getItem('theme');if(m!=='light'&&m!=='dark'){m=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}d.setAttribute('data-theme',id);d.setAttribute('data-mode',m)}catch(e){}})()`,
           type: "text/javascript",
         },
       ],

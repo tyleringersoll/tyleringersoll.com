@@ -8,6 +8,8 @@ describe("plugins/theme.client", () => {
     setActivePinia(createPinia());
     localStorage.clear();
     document.documentElement.className = "";
+    document.documentElement.removeAttribute("data-theme");
+    document.documentElement.removeAttribute("data-mode");
   });
 
   it("calls store.init() on plugin invocation", () => {
@@ -16,11 +18,11 @@ describe("plugins/theme.client", () => {
     expect(initSpy).toHaveBeenCalledOnce();
   });
 
-  it("syncs the theme class from a saved 'light' preference", () => {
-    localStorage.setItem("theme", "light");
+  it("syncs the mode attribute from a saved 'light' preference", () => {
+    localStorage.setItem("theme-mode", "light");
     themePlugin();
     const store = useThemeStore();
     expect(store.isDark).toBe(false);
-    expect(document.documentElement.classList.contains("light-mode")).toBe(true);
+    expect(document.documentElement.getAttribute("data-mode")).toBe("light");
   });
 });

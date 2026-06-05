@@ -2,7 +2,7 @@
 @import "../abstracts/mixins";
 
 * {
-  font-family: $font-family-base;
+  font-family: var(--font-family-base, #{$font-family-base});
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
