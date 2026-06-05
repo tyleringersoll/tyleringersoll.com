@@ -49,7 +49,8 @@
             <NuxtLink :to="item.url" @click="closeFromLink">{{ item.name }}</NuxtLink>
           </li>
           <li class="mobile-nav__item mobile-nav__item--toggle">
-            <ThemeToggle />
+            <ThemeCycle v-if="store.hasMultipleThemes" />
+            <ThemeToggle v-if="store.supportsModes" />
           </li>
         </ul>
       </div>
@@ -59,8 +60,10 @@
 
 <script setup>
 import { reactive, onMounted, onUnmounted, ref, watch, nextTick } from "vue";
+import { useThemeStore } from "~/stores/theme";
 
 const route = useRoute();
+const store = useThemeStore();
 
 defineProps({
   content: {

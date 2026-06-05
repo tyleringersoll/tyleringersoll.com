@@ -16,5 +16,5 @@
 // Transitions
 @import "partials/fade";
 
-// Themes
-@import "themes/theme-vars";
+// Themes (token sets for every registered theme)
+@import "~/themes/tokens";

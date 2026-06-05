@@ -1,0 +1,11 @@
+// Aggregates every registered theme's design tokens.
+// To add a theme: drop its tokens into themes/<id>/tokens.scss and @import it here.
+@import "default/tokens";
+
+// Smoothly cross-fade colors when switching theme or light/dark mode.
+.theme-transitioning,
+.theme-transitioning *,
+.theme-transitioning *::before,
+.theme-transitioning *::after {
+  transition: background-color 2s ease, color 2s ease, border-color 2s ease, fill 2s ease !important;
+}
