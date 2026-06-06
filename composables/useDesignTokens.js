@@ -1,4 +1,4 @@
-import { ref, watch, onMounted } from "vue";
+import { nextTick, onMounted, ref, watch } from "vue";
 import { useThemeStore } from "~/stores/theme";
 
 // A curated, presentable slice of the design system shown live in the customize

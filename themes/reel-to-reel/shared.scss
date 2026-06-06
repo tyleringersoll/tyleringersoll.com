@@ -1,5 +1,5 @@
 // ============================================================================
-// EDITORIAL GRID — visual system, ported from design_handoff_editorial/editorial.css
+// EDITORIAL GRID — visual system for the Reel-to-Reel theme.
 // Every `.ed .x` rule becomes `[data-theme="reel-to-reel"] .x` (nested below), so the
 // entire system is scoped to the theme and cannot affect the default theme.
 // The page views (themes/reel-to-reel/views/*) are pure markup that consume these.

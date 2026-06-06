@@ -1,6 +1,31 @@
-const themeBootStyle = "html.theme-boot-cloaked #__nuxt{opacity:0;pointer-events:none}";
+import {
+  DEFAULT_THEME_ID,
+  LEGACY_MODE,
+  LEGACY_THEME_IDS,
+  STORAGE_MODE,
+  STORAGE_THEME,
+  THEME_META,
+} from "./themes/meta";
 
-const themePrePaintScript = `(function(){try{var st=document.createElement('style');st.appendChild(document.createTextNode(${JSON.stringify(themeBootStyle)}));document.head.appendChild(st);var d=document.documentElement;var legacy={default:'signal-flow',editorial:'reel-to-reel'};var valid={'signal-flow':1,'reel-to-reel':1};function ls(k){try{return localStorage.getItem(k)}catch(e){return null}}function cookie(k){var p=k+'=';var parts=document.cookie?document.cookie.split('; '):[];for(var i=0;i<parts.length;i++){if(parts[i].indexOf(p)===0)return decodeURIComponent(parts[i].slice(p.length))}return null}var id=ls('theme-id')||cookie('theme-id');id=(id&&legacy[id])||id||'signal-flow';if(!valid[id])id='signal-flow';var rendered=d.getAttribute('data-theme')||'signal-flow';var m=ls('theme-mode')||cookie('theme-mode')||ls('theme')||cookie('theme');if(m!=='light'&&m!=='dark'){m=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}if(id==='reel-to-reel')m='dark';if(id!==rendered)d.classList.add('theme-boot-cloaked');d.setAttribute('data-theme',id);d.setAttribute('data-mode',m)}catch(e){}})()`;
+const themeBootStyle =
+  "html.theme-boot-cloaked #__nuxt{opacity:0;pointer-events:none}";
+
+const themeBootConfig = {
+  bootStyle: themeBootStyle,
+  defaultThemeId: DEFAULT_THEME_ID,
+  legacyMode: LEGACY_MODE,
+  legacyThemeIds: LEGACY_THEME_IDS,
+  storageMode: STORAGE_MODE,
+  storageTheme: STORAGE_THEME,
+  themes: Object.fromEntries(
+    THEME_META.map(({ id, supportsModes, defaultMode }) => [
+      id,
+      { defaultMode, supportsModes },
+    ])
+  ),
+};
+
+const themePrePaintScript = `(function(c){try{var d=document.documentElement;var st=document.createElement('style');st.appendChild(document.createTextNode(c.bootStyle));document.head.appendChild(st);function ls(k){try{return localStorage.getItem(k)}catch(e){return null}}function cookie(k){try{var p=k+'=';var parts=document.cookie?document.cookie.split(';'):[];for(var i=0;i<parts.length;i++){var part=parts[i].trim();if(part.indexOf(p)===0){try{return decodeURIComponent(part.slice(p.length))}catch(e){return part.slice(p.length)}}}}catch(e){}return null}function theme(id){id=id&&c.legacyThemeIds[id]||id;return c.themes[id]?id:c.defaultThemeId}function mode(id,m){var t=c.themes[id]||c.themes[c.defaultThemeId];if(t.supportsModes===false)return t.defaultMode||'dark';if(m==='light'||m==='dark')return m;return window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}var id=theme(ls(c.storageTheme)||cookie(c.storageTheme));var rendered=theme(d.getAttribute('data-theme'));var m=mode(id,ls(c.storageMode)||cookie(c.storageMode)||ls(c.legacyMode)||cookie(c.legacyMode));if(id!==rendered)d.classList.add('theme-boot-cloaked');d.setAttribute('data-theme',id);d.setAttribute('data-mode',m)}catch(e){}})(${JSON.stringify(themeBootConfig)})`;
 
 export default defineNuxtConfig({
   compatibilityDate: "2024-11-01",

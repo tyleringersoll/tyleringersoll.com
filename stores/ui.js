@@ -10,22 +10,32 @@ export const useUiStore = defineStore("ui", {
   }),
   actions: {
     openDrawer() {
+      this.paletteOpen = false;
       this.drawerOpen = true;
     },
     closeDrawer() {
       this.drawerOpen = false;
     },
     toggleDrawer() {
-      this.drawerOpen = !this.drawerOpen;
+      if (this.drawerOpen) {
+        this.closeDrawer();
+      } else {
+        this.openDrawer();
+      }
     },
     openPalette() {
+      this.drawerOpen = false;
       this.paletteOpen = true;
     },
     closePalette() {
       this.paletteOpen = false;
     },
     togglePalette() {
-      this.paletteOpen = !this.paletteOpen;
+      if (this.paletteOpen) {
+        this.closePalette();
+      } else {
+        this.openPalette();
+      }
     },
   },
 });

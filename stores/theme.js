@@ -1,5 +1,12 @@
 import { defineStore } from "pinia";
 import { themes, DEFAULT_THEME_ID, getTheme, nextThemeId } from "~/themes/registry";
+import {
+  LEGACY_MODE,
+  resolveThemePreference,
+  STORAGE_MODE,
+  STORAGE_THEME,
+  THEME_COOKIE_MAX_AGE,
+} from "~/themes/meta";
 
 // Two orthogonal axes drive the look of the site, both reflected as attributes on
 // <html> so CSS tokens (and the pre-paint script in nuxt.config.ts) can read them:
@@ -8,26 +15,20 @@ import { themes, DEFAULT_THEME_ID, getTheme, nextThemeId } from "~/themes/regist
 //
 // Generated pages cannot know localStorage, so the client boot plugin keeps any
 // mismatched static HTML hidden until the saved theme's component tree is mounted.
-export const STORAGE_THEME = "theme-id";
-export const STORAGE_MODE = "theme-mode";
-export const LEGACY_MODE = "theme"; // pre-multi-theme key, kept for back-compat
-const COOKIE_MAX_AGE = 60 * 60 * 24 * 365;
-
-// Themes were renamed to their UI names; map any value saved under the old ids so
-// returning visitors keep their preference.
-const LEGACY_THEME_IDS = { default: "signal-flow", editorial: "reel-to-reel" };
-
-function normalizeThemeId(id) {
-  return getTheme(LEGACY_THEME_IDS[id] || id).id;
-}
 
 function readCookie(name) {
   if (import.meta.server) return null;
   const prefix = `${name}=`;
-  const row = document.cookie
-    .split("; ")
-    .find((part) => part.startsWith(prefix));
-  return row ? decodeURIComponent(row.slice(prefix.length)) : null;
+  try {
+    const row = document.cookie
+      .split(";")
+      .map((part) => part.trim())
+      .find((part) => part.startsWith(prefix));
+    if (!row) return null;
+    return decodeURIComponent(row.slice(prefix.length));
+  } catch {
+    return null;
+  }
 }
 
 function readStorage(name) {
@@ -50,7 +51,18 @@ function writeStorage(name, value) {
 
 function writeCookie(name, value) {
   if (import.meta.server) return;
-  document.cookie = `${name}=${encodeURIComponent(value)}; Max-Age=${COOKIE_MAX_AGE}; Path=/; SameSite=Lax`;
+  try {
+    document.cookie = `${name}=${encodeURIComponent(value)}; Max-Age=${THEME_COOKIE_MAX_AGE}; Path=/; SameSite=Lax`;
+  } catch {
+    // Some privacy modes can reject cookie writes; localStorage may still succeed.
+  }
+}
+
+function preferredFallbackMode() {
+  if (import.meta.server || !window.matchMedia) return "dark";
+  return window.matchMedia("(prefers-color-scheme: dark)").matches === false
+    ? "light"
+    : "dark";
 }
 
 export const useThemeStore = defineStore("theme", {
@@ -72,17 +84,9 @@ export const useThemeStore = defineStore("theme", {
 
   actions: {
     applyInitialPreference(themeId, mode, fallbackMode = "dark") {
-      this.activeThemeId = normalizeThemeId(themeId);
-
-      if (mode === "dark" || mode === "light") {
-        this.isDark = mode === "dark";
-      } else {
-        this.isDark = fallbackMode !== "light";
-      }
-
-      if (!this.supportsModes) {
-        this.isDark = (this.activeTheme.defaultMode || "dark") === "dark";
-      }
+      const preference = resolveThemePreference(themeId, mode, fallbackMode);
+      this.activeThemeId = preference.themeId;
+      this.isDark = preference.mode === "dark";
     },
 
     // Apply the persisted theme/mode. Client-only: called after hydration.
@@ -95,13 +99,7 @@ export const useThemeStore = defineStore("theme", {
         readCookie(STORAGE_MODE) ||
         readStorage(LEGACY_MODE) ||
         readCookie(LEGACY_MODE);
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-      this.applyInitialPreference(
-        savedId,
-        savedMode,
-        prefersDark === false ? "light" : "dark"
-      );
+      this.applyInitialPreference(savedId, savedMode, preferredFallbackMode());
 
       if (savedId || savedMode) {
         this._persist();
@@ -112,13 +110,12 @@ export const useThemeStore = defineStore("theme", {
 
     setTheme(id) {
       const theme = getTheme(id);
+      if (theme.id === this.activeThemeId) return;
+
       // Fade the whole app out, swap the component tree while it's invisible, then
       // fade back in — the same opacity fade the page transitions use.
       this._fadeSwap(() => {
-        this.activeThemeId = theme.id;
-        if (!this.supportsModes) {
-          this.isDark = (theme.defaultMode || "dark") === "dark";
-        }
+        this.applyInitialPreference(theme.id, this.mode, this.mode);
         this._persist();
         this._apply();
       });

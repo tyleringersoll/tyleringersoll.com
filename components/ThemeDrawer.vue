@@ -33,6 +33,7 @@
         aria-modal="true"
         aria-label="Customize appearance"
         tabindex="-1"
+        @keydown.tab="trapFocus"
         @keydown.esc="ui.closeDrawer()"
       >
         <header class="theme-drawer__head">
@@ -57,11 +58,7 @@
                 :aria-pressed="t.id === store.activeThemeId"
                 @click="store.setTheme(t.id)"
               >
-                <span class="theme-card__swatch" aria-hidden="true">
-                  <span :style="{ background: t.swatch.background }" />
-                  <span :style="{ background: t.swatch.primary }" />
-                  <span :style="{ background: t.swatch.secondary }" />
-                </span>
+                <ThemeSwatch class="theme-card__swatch" :swatch="t.swatch" />
                 <span class="theme-card__meta">
                   <span class="theme-card__name">{{ t.label }}</span>
                   <span class="theme-card__tag">{{ t.tagline }}</span>
@@ -116,11 +113,13 @@ import { useThemeStore } from "~/stores/theme";
 import { useUiStore } from "~/stores/ui";
 import { themes } from "~/themes/registry";
 import { useDesignTokens } from "~/composables/useDesignTokens";
+import { useFocusTrap } from "~/composables/useFocusTrap";
 
 const store = useThemeStore();
 const ui = useUiStore();
 const { tokens } = useDesignTokens();
 const panel = ref(null);
+const { trapFocus } = useFocusTrap(panel, () => ui.drawerOpen);
 
 const isColor = (v) => /^(#|rgb|hsl)/i.test(v || "");
 
@@ -293,16 +292,8 @@ onUnmounted(() => {
   &.is-active { border-color: var(--color-accent-line); }
 
   &__swatch {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    width: 3rem;
-    height: 1.6rem;
-    border-radius: 4px;
-    overflow: hidden;
-    border: 1px solid var(--color-border);
-    flex-shrink: 0;
-
-    span { display: block; height: 100%; }
+    --theme-swatch-width: 3rem;
+    --theme-swatch-height: 1.6rem;
   }
   &__meta { display: flex; flex-direction: column; min-width: 0; flex: 1; }
   &__name { font-weight: 700; color: var(--color-text-primary); }

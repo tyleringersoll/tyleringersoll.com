@@ -150,6 +150,16 @@ describe("stores/theme", () => {
       expect(dataTheme()).toBe("reel-to-reel");
     });
 
+    it("setTheme is a no-op when the requested theme is already active", () => {
+      const store = useThemeStore();
+      store.setTheme("signal-flow");
+
+      expect(document.documentElement.classList.contains("theme-fading")).toBe(false);
+      expect(store.activeThemeId).toBe("signal-flow");
+      vi.advanceTimersByTime(300);
+      expect(store.activeThemeId).toBe("signal-flow");
+    });
+
     it("cycleTheme advances to the next registered theme and wraps around", () => {
       const store = useThemeStore();
       store.cycleTheme();

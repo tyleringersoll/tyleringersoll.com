@@ -162,8 +162,8 @@ export default {
         heading: "Anti-FOUC Theme Initialization",
         headingLevel: 2,
         content: [
-          "Theme persistence is handled by a Pinia store that reads <code>localStorage</code> and reflects the active theme as <code>data-theme</code> and <code>data-mode</code> attributes on the root element. The catch is that the store initializes after first paint, so a returning user could briefly see the wrong palette on load.",
-          "To avoid that flash, I inject a small inline script into the document head through <code>app.head.script</code> in <code>nuxt.config.ts</code>. It runs before the page renders, reads the saved theme and mode from <code>localStorage</code> (falling back to the system <code>prefers-color-scheme</code>), and sets those attributes immediately, so the very first paint already uses the correct colors."
+          "Theme persistence is mirrored to both <code>localStorage</code> and cookies. Dynamic SSR can read the cookie and render the selected theme immediately; static prerendered pages still have a deterministic default HTML payload.",
+          "For static pages, a tiny inline script in <code>nuxt.config.ts</code> runs before first paint, reads the saved preference, sets <code>data-theme</code> and <code>data-mode</code>, and only adds a short boot cloak when the saved theme's component tree differs from the prerendered tree. After hydration, the client plugin applies the saved theme and removes that cloak on the next Vue patch tick, so returning visitors never see a flash of the wrong layout."
         ]
       },
 

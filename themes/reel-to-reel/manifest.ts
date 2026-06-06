@@ -6,6 +6,7 @@ import HomeView from "~/themes/reel-to-reel/views/Home.vue";
 import ResumeView from "~/themes/reel-to-reel/views/Resume.vue";
 import MusicView from "~/themes/reel-to-reel/views/Music.vue";
 import ArchitectureView from "~/themes/reel-to-reel/views/Architecture.vue";
+import { getThemeMeta } from "../meta";
 
 /**
  * "Editorial Grid" — a print-inspired, amber-on-near-black grid system.
@@ -14,12 +15,7 @@ import ArchitectureView from "~/themes/reel-to-reel/views/Architecture.vue";
  * does not offer a light/dark toggle.
  */
 const reelToReelTheme: ThemeManifest = {
-  id: "reel-to-reel",
-  label: "Reel-to-Reel",
-  tagline: "Amber on near-black · Swiss grid",
-  swatch: { primary: "#ffc24b", secondary: "#eceae3", background: "#0c0d10" },
-  supportsModes: false,
-  defaultMode: "dark",
+  ...getThemeMeta("reel-to-reel"),
   components: {
     Header,
     Footer,
