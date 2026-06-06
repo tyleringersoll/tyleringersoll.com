@@ -1,6 +1,9 @@
 import type { Component } from "vue";
 import signalFlowTheme from "./signal-flow/manifest";
 import reelToReelTheme from "./reel-to-reel/manifest";
+import { DEFAULT_THEME_ID, THEME_IDS } from "./meta";
+
+export { DEFAULT_THEME_ID } from "./meta";
 
 /**
  * A theme bundles a set of design tokens (see each theme's `tokens.scss`) with a
@@ -42,8 +45,6 @@ export interface ThemeManifest {
 // To add a theme: create themes/<id>/, import its manifest, and add it below.
 export const themes: ThemeManifest[] = [signalFlowTheme, reelToReelTheme];
 
-export const DEFAULT_THEME_ID = "signal-flow";
-
 const byId = new Map(themes.map((t) => [t.id, t]));
 
 /** Returns the manifest for `id`, falling back to the default theme. */
@@ -52,7 +53,7 @@ export function getTheme(id?: string | null): ThemeManifest {
 }
 
 export function getThemeIds(): string[] {
-  return themes.map((t) => t.id);
+  return [...THEME_IDS];
 }
 
 /** The next theme id in cycle order, wrapping around to the first. */

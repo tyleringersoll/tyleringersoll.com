@@ -1,7 +1,6 @@
 // Inline SVG icons for the Editorial Grid theme (stroke-based, recolored to amber
-// via `currentColor` in component styles). Ported from the design handoff
-// (design_handoff_editorial/tyler-content.js). Keyed to match the icon names used
-// by the real content store's engineering competencies and beyond-work cards.
+// via `currentColor` in component styles). Keyed to match the icon names used by
+// the content store's engineering competencies and beyond-work cards.
 export const edIcons = {
   layers:
     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>',

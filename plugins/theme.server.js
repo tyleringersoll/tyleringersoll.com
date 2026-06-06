@@ -1,9 +1,5 @@
-import {
-  LEGACY_MODE,
-  STORAGE_MODE,
-  STORAGE_THEME,
-  useThemeStore,
-} from "~/stores/theme";
+import { useThemeStore } from "~/stores/theme";
+import { LEGACY_MODE, STORAGE_MODE, STORAGE_THEME } from "~/themes/meta";
 
 export default defineNuxtPlugin(() => {
   const store = useThemeStore();

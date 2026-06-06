@@ -29,7 +29,7 @@
         aria-modal="true"
         aria-label="Navigation menu"
         tabindex="-1"
-        @keydown.tab="handleTabKey"
+        @keydown.tab="trapFocus"
         @keydown.escape="closeNav"
       >
         <div class="mobile-nav__panel-header">
@@ -60,6 +60,7 @@
 <script setup>
 import { reactive, onMounted, onUnmounted, ref, watch, nextTick } from "vue";
 import { useThemeStore } from "~/stores/theme";
+import { useFocusTrap } from "~/composables/useFocusTrap";
 
 const route = useRoute();
 const store = useThemeStore();
@@ -77,6 +78,7 @@ const nav = reactive({ isOpen: false });
 const hamburgerBtn = ref(null);
 const panelEl = ref(null);
 const restoreFocusOnClose = ref(true);
+const { focusableControls, trapFocus } = useFocusTrap(panelEl, () => nav.isOpen);
 let desktopMediaQuery;
 
 const syncBodyMenuState = (isOpen) => {
@@ -98,7 +100,7 @@ const queueFocus = async (getElement) => {
 };
 
 const focusFirstMenuControl = () => {
-  queueFocus(() => getFocusableElements()[0] || panelEl.value);
+  queueFocus(() => focusableControls()[0] || panelEl.value);
 };
 
 const restoreToggleFocus = () => {
@@ -130,56 +132,6 @@ const closeNav = (options = {}) => {
 
 const closeFromLink = () => {
   closeNav();
-};
-
-const FOCUSABLE_SELECTORS =
-  'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
-
-const getFocusableElements = () => {
-  if (!panelEl.value) return [];
-
-  return Array.from(panelEl.value.querySelectorAll(FOCUSABLE_SELECTORS)).filter(
-    (element) => {
-      const style = window.getComputedStyle(element);
-      return (
-        style.display !== "none" &&
-        style.visibility !== "hidden" &&
-        element.getClientRects().length > 0
-      );
-    }
-  );
-};
-
-const handleTabKey = (event) => {
-  if (!nav.isOpen || !panelEl.value) return;
-
-  const focusable = getFocusableElements();
-  if (focusable.length === 0) {
-    event.preventDefault();
-    panelEl.value.focus({ preventScroll: true });
-    return;
-  }
-
-  const first = focusable[0];
-  const last = focusable[focusable.length - 1];
-
-  if (document.activeElement === panelEl.value) {
-    event.preventDefault();
-    (event.shiftKey ? last : first).focus();
-    return;
-  }
-
-  if (event.shiftKey) {
-    if (document.activeElement === first) {
-      event.preventDefault();
-      last.focus();
-    }
-  } else {
-    if (document.activeElement === last) {
-      event.preventDefault();
-      first.focus();
-    }
-  }
 };
 
 watch(

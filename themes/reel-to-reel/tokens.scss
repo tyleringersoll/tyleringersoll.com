@@ -2,7 +2,6 @@
 // Swiss/brutalist: amber-on-near-black, hairline rules, zero radius.
 // Maps the editorial palette onto the site's existing CSS custom properties so the
 // shared component contracts keep working, plus a few editorial-only tokens.
-// Source of truth: design_handoff_editorial/editorial.css
 
 [data-theme="reel-to-reel"] {
   --font-family-base: "Archivo", sans-serif;
@@ -53,4 +52,3 @@
     border-right: 1px solid var(--rule2);
   }
 }
-

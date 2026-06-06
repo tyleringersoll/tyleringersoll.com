@@ -7,18 +7,14 @@ import ResumeView from "~/themes/signal-flow/views/Resume.vue";
 import MusicView from "~/themes/signal-flow/views/Music.vue";
 import ArchitectureView from "~/themes/signal-flow/views/Architecture.vue";
 import SlugView from "~/themes/signal-flow/views/Slug.vue";
+import { getThemeMeta } from "../meta";
 
 /**
  * The original look & feel of the site. Other themes fall back to these
  * components for anything they do not override.
  */
 const signalFlowTheme: ThemeManifest = {
-  id: "signal-flow",
-  label: "Signal Flow",
-  tagline: "Electric cyan on slate · the signal chain",
-  swatch: { primary: "#00B7FF", secondary: "#ff6f69", background: "#151a1e" },
-  supportsModes: true,
-  defaultMode: "dark",
+  ...getThemeMeta("signal-flow"),
   components: {
     // Chrome (referenced by layouts/default.vue via <Themed>)
     Header,

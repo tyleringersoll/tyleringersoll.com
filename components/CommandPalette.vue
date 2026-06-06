@@ -9,6 +9,9 @@
       role="dialog"
       aria-modal="true"
       aria-label="Search themes"
+      ref="modal"
+      tabindex="-1"
+      @keydown.tab="trapFocus"
     >
       <div class="cmdk__field">
         <svg class="cmdk__icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
@@ -44,11 +47,7 @@
           @click="apply(t)"
           @mousemove="index = i"
         >
-          <span class="cmdk__swatch" aria-hidden="true">
-            <span :style="{ background: t.swatch.background }" />
-            <span :style="{ background: t.swatch.primary }" />
-            <span :style="{ background: t.swatch.secondary }" />
-          </span>
+          <ThemeSwatch class="cmdk__swatch" :swatch="t.swatch" />
           <span class="cmdk__opt-meta">
             <span class="cmdk__opt-name">{{ t.label }}</span>
             <span class="cmdk__opt-tag">{{ t.tagline }}</span>
@@ -66,12 +65,15 @@ import { ref, computed, watch, nextTick, onMounted, onUnmounted } from "vue";
 import { useThemeStore } from "~/stores/theme";
 import { useUiStore } from "~/stores/ui";
 import { themes } from "~/themes/registry";
+import { useFocusTrap } from "~/composables/useFocusTrap";
 
 const store = useThemeStore();
 const ui = useUiStore();
+const modal = ref(null);
 const input = ref(null);
 const query = ref("");
 const index = ref(0);
+const { trapFocus } = useFocusTrap(modal, () => ui.paletteOpen);
 
 const results = computed(() => {
   const q = query.value.trim().toLowerCase();
@@ -202,16 +204,8 @@ onUnmounted(() => {
   &.is-active { background: var(--color-bg-surface); }
 }
 .cmdk__swatch {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  width: 2.6rem;
-  height: 1.4rem;
-  border-radius: 4px;
-  overflow: hidden;
-  border: 1px solid var(--color-border);
-  flex-shrink: 0;
-
-  span { display: block; height: 100%; }
+  --theme-swatch-width: 2.6rem;
+  --theme-swatch-height: 1.4rem;
 }
 .cmdk__opt-meta { display: flex; flex-direction: column; min-width: 0; flex: 1; }
 .cmdk__opt-name { font-weight: 700; color: var(--color-text-primary); }
