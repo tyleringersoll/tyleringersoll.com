@@ -1,0 +1,541 @@
+<template>
+  <div v-if="resumeContent" class="resume-page">
+    <section
+      v-for="(section, sIdx) in sections"
+      :key="sIdx"
+      class="resume-section"
+      :class="{ 'resume-section--alt': sIdx % 2 !== 0 }"
+    >
+      <div class="resume-inner">
+        <template v-for="{ entry, idx } in section.entries" :key="idx">
+          <!-- First entry: flex header with download button + intro paragraph -->
+          <article v-if="!entry.roles && !entry.skills && idx === 0" class="article resume-intro">
+            <div class="resume-header">
+              <h2 class="first-heading" v-html="entry.heading" />
+              <!--
+              <a
+                href="/Tyler_Ingersoll_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="resume-download"
+              >
+                <svg class="resume-download__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <polyline points="7 10 12 15 17 10"/>
+                  <line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                Download PDF
+              </a>
+              -->
+            </div>
+            <p
+              v-for="(para, paraIdx) in entry.content"
+              :key="paraIdx"
+              v-html="para"
+            />
+            <div v-if="entry.cta" class="resume-intro__cta-wrap">
+              <component
+                :is="ctaTag(entry.cta)"
+                v-bind="ctaAttrs(entry.cta)"
+                class="resume-intro__cta"
+              >
+                {{ entry.cta.label }}
+                <span class="resume-intro__cta-icon" aria-hidden="true">{{ ctaIcon(entry.cta) }}</span>
+              </component>
+            </div>
+          </article>
+          <!-- Section heading (h2 with no content) -->
+          <h2
+            v-else-if="!entry.roles && !entry.skills && (!entry.content || entry.content.length === 0)"
+            class="section-heading"
+            v-html="entry.heading"
+          />
+          <!-- Structured skills grid -->
+          <article v-else-if="entry.skills" class="article skills-section">
+            <h2 class="section-heading" v-html="entry.heading" />
+            <div class="skills-grid">
+              <div v-for="(items, category) in entry.skills" :key="category" class="skills-bucket">
+                <h3 class="skills-bucket__heading">{{ formatCategory(category) }}</h3>
+                <div class="skills-bucket__badges">
+                  <span v-for="skill in items" :key="skill" class="skill-badge">{{ skill }}</span>
+                </div>
+              </div>
+            </div>
+          </article>
+          <!-- Regular article without roles (Education, Additional Experience) -->
+          <Article v-else-if="!entry.roles" :article="entry" :index="idx" />
+          <!-- Employer with roles -->
+          <article v-else class="article employer">
+            <h3
+              class="employer__name"
+              :id="slugify(entry.heading)"
+              v-html="entry.heading"
+            />
+            <p v-if="entry.lead" class="employer__lead" v-html="entry.lead" />
+            <Timeline>
+              <TimelineItem
+                v-for="(role, roleIdx) in entry.roles"
+                :key="roleIdx"
+                :dates="roleDates(role.subheading)"
+                :title="roleTitle(role.subheading)"
+                :title-tag="`h${(entry.headingLevel || 3) + 1}`"
+                :expandable="true"
+                :expanded="isExpanded(idx, roleIdx)"
+                @toggle="toggleRole(idx, roleIdx)"
+              >
+                <template v-for="(para, paraIdx) in role.content" :key="paraIdx">
+                  <template v-if="para.trim().startsWith('<strong>Tech:')">
+                    <hr class="tech-divider" />
+                    <p class="tech-stack-label">Core Tech Stack:</p>
+                    <div class="employer__tech-pills">
+                      <span
+                        v-for="(tech, tIdx) in parseTech(para)"
+                        :key="tIdx"
+                        class="tech-pill"
+                      >{{ tech }}</span>
+                    </div>
+                  </template>
+                  <p
+                    v-else
+                    :class="{ 'article__bullet-item': para.trim().startsWith('•') }"
+                    v-html="formatPara(para)"
+                  />
+                </template>
+              </TimelineItem>
+            </Timeline>
+          </article>
+        </template>
+      </div>
+    </section>
+  </div>
+  <section v-else class="container">
+    <h1>Page Not Found</h1>
+    <p>The requested page could not be found.</p>
+  </section>
+</template>
+
+<script setup>
+import { useContentStore } from "~/stores/content";
+
+const { scrollToHash } = useScrollToHash();
+const store = useContentStore();
+const { content } = storeToRefs(store);
+const route = useRoute();
+
+const resumeContent = computed(() => {
+  if (!content.value) return null;
+  return content.value.resume ?? null;
+});
+
+const sections = computed(() => {
+  const entries = resumeContent.value || [];
+  const groups = [];
+  let current = null;
+
+  entries.forEach((entry, idx) => {
+    if (entry.headingLevel === 2) {
+      current = { entries: [] };
+      groups.push(current);
+    }
+    if (current) {
+      current.entries.push({ entry, idx });
+    }
+  });
+
+  return groups;
+});
+
+const expandedRoles = ref(new Set());
+
+const roleTitle = (subheading) => subheading.split(' · ')[0];
+const roleDates = (subheading) => subheading.split(' · ')[1] ?? '';
+
+const slugify = (str) =>
+  String(str ?? '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+
+const formatPara = (para) => {
+  const trimmed = para.trim();
+  if (trimmed.startsWith('•')) {
+    return trimmed.replace(/^•\s*/, '');
+  }
+  return para;
+};
+
+const parseTech = (para) =>
+  para.replace(/<strong>Tech:<\/strong>\s*/i, '').split(',').map(t => t.trim()).filter(Boolean);
+
+const formatCategory = (key) => {
+  const labels = {
+    languages: 'Languages',
+    frameworks: 'Frameworks',
+    infrastructure: 'Infrastructure & Tools',
+    concepts: 'Architecture & Methodologies',
+  };
+  return labels[key] ?? (key.charAt(0).toUpperCase() + key.slice(1));
+};
+
+const isExternalCta = (cta) =>
+  cta?.external === true || /^(https?:|mailto:|tel:)/i.test(cta?.url || '');
+
+const ctaTag = (cta) => isExternalCta(cta) ? 'a' : resolveComponent('NuxtLink');
+
+const ctaAttrs = (cta) => {
+  if (isExternalCta(cta)) {
+    return { href: cta.url, target: '_blank', rel: 'noopener noreferrer' };
+  }
+  return { to: cta.url };
+};
+
+const ctaIcon = (cta) => isExternalCta(cta) ? '↗' : '→';
+
+const isExpanded = (entryIdx, roleIdx) =>
+  expandedRoles.value.has(`${entryIdx}-${roleIdx}`);
+
+const toggleRole = (entryIdx, roleIdx) => {
+  const key = `${entryIdx}-${roleIdx}`;
+  const set = new Set(expandedRoles.value);
+  if (set.has(key)) {
+    set.delete(key);
+  } else {
+    set.add(key);
+  }
+  expandedRoles.value = set;
+};
+
+const expandRolesForHash = (hash) => {
+  if (!hash) return;
+  const slug = hash.replace(/^#/, '');
+  const entries = resumeContent.value || [];
+  const set = new Set(expandedRoles.value);
+  entries.forEach((entry, entryIdx) => {
+    if (entry.roles && slugify(entry.heading) === slug) {
+      entry.roles.forEach((_, roleIdx) => set.add(`${entryIdx}-${roleIdx}`));
+    }
+  });
+  expandedRoles.value = set;
+};
+
+const handleHash = (hash) => {
+  expandRolesForHash(hash);
+  scrollToHash(hash);
+};
+
+onMounted(() => handleHash(route.hash));
+watch(() => route.hash, handleHash);
+watch(resumeContent, () => handleHash(route.hash));
+</script>
+
+<style lang="scss" scoped>
+.resume-page {
+  width: 100%;
+}
+
+// ─── Section wrappers ────────────────────────────────────────────────────────
+
+.resume-section {
+  --section-bg: var(--color-bg-primary);
+  padding: 2.5rem 0;
+  border-bottom: 1px solid var(--color-border);
+
+  @include respond-below(md) {
+    padding: 1.5rem 0;
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &--alt {
+    --section-bg: var(--color-bg-secondary);
+    background-color: var(--color-bg-secondary);
+  }
+}
+
+.resume-inner {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 $container-padding-x;
+
+  :deep(article) {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  :deep(h3) {
+    margin-top: $spacing-xl;
+    margin-bottom: $spacing-md;
+  }
+}
+
+// ─── Section headings ────────────────────────────────────────────────────────
+
+.section-heading {
+  margin-bottom: $spacing-md;
+}
+
+// ─── Header row with download button ──────────────────────────────────────────
+
+.resume-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $spacing-sm;
+  flex-wrap: wrap;
+
+  h2 {
+    margin-bottom: 0;
+  }
+}
+
+.resume-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1.25rem;
+
+  @include respond-below(sm) {
+    width: 100%;
+    justify-content: center;
+  }
+  border: 2px solid var(--color-accent-line);
+  border-radius: 9999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--color-accent-line);
+  text-decoration: none;
+  white-space: nowrap;
+  @include transition(all);
+
+  &:hover {
+    background-color: var(--color-accent-line);
+    color: #0d1014;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 3px;
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+}
+
+.resume-intro p,
+.resume-inner :deep(.article p) {
+  line-height: 1.75;
+  color: var(--color-text-secondary);
+}
+
+.resume-intro {
+  &__cta-wrap {
+    margin-top: $spacing-md;
+  }
+
+  &__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.65rem 1.25rem;
+    border: 1px solid var(--color-link);
+    border-radius: 9999px;
+    color: var(--color-link);
+    font-size: 0.9rem;
+    font-weight: 700;
+    line-height: 1.2;
+    text-decoration: none;
+    @include transition(all);
+
+    @include respond-below(sm) {
+      width: 100%;
+      text-align: center;
+    }
+
+    &:hover {
+      border-color: var(--color-link-hover);
+      color: var(--color-link-hover);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-focus);
+      outline-offset: 3px;
+    }
+  }
+
+  &__cta-icon {
+    margin-left: 0.35rem;
+    line-height: 1;
+  }
+}
+
+// ─── Employer ────────────────────────────────────────────────────────────────
+
+.employer {
+  & + .employer {
+    margin-top: $spacing-xl;
+  }
+
+  &__name {
+    margin-bottom: $spacing-md;
+    color: var(--color-text-secondary);
+  }
+}
+
+.tech-divider {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  opacity: 0.4;
+  margin: $spacing-md 0 $spacing-sm;
+}
+
+.article__bullet-item {
+  position: relative;
+  padding-left: 1.25rem;
+  text-indent: 0;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0.25rem;
+    top: 0.7em;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--color-accent-line);
+  }
+}
+
+// ─── Skills grid ──────────────────────────────────────────────────────────────
+
+.skills-section {
+  .section-heading {
+    margin-bottom: $spacing-lg;
+  }
+
+  @include respond-below(xs) {
+    padding-bottom: $spacing-sm;
+
+    .section-heading {
+      margin-bottom: $spacing-md;
+    }
+  }
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $spacing-lg;
+
+  @include respond-below(md) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: $spacing-md;
+  }
+
+  @include respond-below(xs) {
+    grid-template-columns: 1fr;
+    gap: 1.1rem;
+  }
+}
+
+.skills-bucket {
+  &__heading {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-accent-line);
+    margin: 0 0 $spacing-sm;
+
+    @include respond-below(xs) {
+      margin-bottom: $spacing-xs;
+    }
+  }
+
+  &__badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+
+    @include respond-below(xs) {
+      gap: 0.5rem;
+    }
+  }
+}
+
+.skill-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.85rem;
+  font-weight: 500;
+  line-height: 1;
+  padding: 0.4rem 0.85rem;
+  border-radius: 50px;
+  background-color: color-mix(in srgb, var(--color-bg-surface) 60%, transparent);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+  white-space: nowrap;
+  @include transition(all);
+
+  @include respond-below(xs) {
+    padding: 0.35rem 0.7rem;
+  }
+
+  &:hover {
+    background-color: var(--color-bg-surface);
+    transform: translateY(-2px);
+  }
+}
+
+// ─── Employer lead paragraph ──────────────────────────────────────────────────
+
+.employer__lead {
+  margin: 0 0 $spacing-lg;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--color-text-muted);
+}
+
+// ─── Tech stack ───────────────────────────────────────────────────────────────
+
+.tech-stack-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin: 0 0 $spacing-xs;
+}
+
+.employer__tech-footer {
+  margin-top: $spacing-md;
+  padding-top: $spacing-md;
+  border-top: 1px solid var(--color-border);
+}
+
+.employer__tech-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0;
+}
+
+.tech-pill {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  background-color: var(--color-bg-surface);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+  white-space: nowrap;
+}
+</style>

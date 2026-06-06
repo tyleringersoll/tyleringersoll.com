@@ -1,0 +1,54 @@
+// Design tokens for the "Editorial Grid" theme.
+// Swiss/brutalist: amber-on-near-black, hairline rules, zero radius.
+// Maps the editorial palette onto the site's existing CSS custom properties so the
+// shared component contracts keep working, plus a few editorial-only tokens.
+
+[data-theme="reel-to-reel"] {
+  --font-family-base: "Archivo", sans-serif;
+  --font-family-mono: "Spline Sans Mono", monospace;
+
+  // editorial-only structural tokens
+  --paper: #0c0d10;
+  --panel: #101115;
+  --rule: #2a2b30;
+  --rule2: #3a3b42;
+  --amber: #ffc24b;
+
+  // mapped onto existing tokens (one amber accent collapses the default's several)
+  --color-bg-deepest: #0c0d10;
+  --color-bg-header: rgba(12, 13, 16, 0.9);
+  --color-bg-primary: #0c0d10;
+  --color-bg-secondary: #101115;
+  --color-bg-nav: #101115;
+  --color-bg-surface: #101115;
+  --color-text-primary: #eceae3;
+  --color-text-secondary: #c7c6c1;
+  --color-text-muted: #8b8c90;
+  --color-border: #2a2b30;
+  --color-border-strong: #3a3b42;
+  --color-nav-link: #8b8c90;
+  --color-accent-line: #ffc24b;
+  --color-link: #ffc24b;
+  --color-link-hover: #ffd06a;
+  --color-active-nav: #eceae3;
+  --color-focus: #ffc24b;
+  --color-btn-primary-text: #1a1205;
+  --color-svg-accent: #ffc24b;
+}
+
+// The `.ed` frame: a hairline-bordered 1320px column on paper, applied to each of
+// the masthead, page view, and footer (three block siblings rendered by the shared
+// layout). Block-level `margin: 0 auto` centers them on identical widths so the side
+// borders line up into one continuous column. Scoped to the editorial theme so the
+// default layout is untouched. (Note: do NOT make .app-upper a flex column here —
+// auto horizontal margins on a flex child shrink-wrap it and collapse the masthead.)
+[data-theme="reel-to-reel"] {
+  .ed-frame {
+    width: 100%;
+    max-width: 1320px;
+    margin: 0 auto;
+    background: var(--paper);
+    border-left: 1px solid var(--rule2);
+    border-right: 1px solid var(--rule2);
+  }
+}

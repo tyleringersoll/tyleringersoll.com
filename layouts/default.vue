@@ -1,8 +1,9 @@
 <template>
   <div class="app-upper">
     <a href="#main-content" class="skip-nav">Skip to main content</a>
-    <Header
+    <Themed
       v-if="content.meta"
+      name="Header"
       :content="content.meta"
       :navigation="content.navigation || []"
     />
@@ -10,11 +11,16 @@
       <slot />
     </main>
   </div>
-  <Footer
+  <Themed
     v-if="content.footer && content.footer.socialHeading"
+    name="Footer"
     class="app-sticky-bottom"
     :content="content.footer"
   />
+
+  <!-- Global theming UI: Customize drawer (FAB) + ⌘K command palette -->
+  <ThemeDrawer />
+  <CommandPalette />
 </template>
 
 <script setup>

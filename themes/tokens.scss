@@ -1,0 +1,35 @@
+// Aggregates every registered theme's design tokens.
+// To add a theme: drop its tokens into themes/<id>/tokens.scss and @import it here.
+@import "signal-flow/tokens";
+@import "reel-to-reel/tokens";
+@import "reel-to-reel/shared";
+
+// Light/dark mode toggle: cross-fade the colors in place (no component remount).
+.theme-transitioning,
+.theme-transitioning *,
+.theme-transitioning *::before,
+.theme-transitioning *::after {
+  transition: background-color 2s ease, color 2s ease, border-color 2s ease, fill 2s ease !important;
+}
+
+// Switching theme (Classic ↔ Editorial) swaps whole component trees, so we fade the
+// entire app out, swap while it's invisible, then fade it back in — the same opacity
+// fade the page transitions use. Driven by stores/theme.js (_fadeSwap); the 300ms
+// here must match the timeout there.
+#__nuxt {
+  transition: opacity 300ms ease;
+}
+html.theme-fading #__nuxt,
+html.theme-boot-cloaked #__nuxt {
+  opacity: 0;
+  pointer-events: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  #__nuxt {
+    transition: none;
+  }
+  html.theme-fading #__nuxt {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
