@@ -145,12 +145,25 @@ export default {
         ]
       },
       {
+        id: "theming",
+        heading: "Multi-Theme Design System",
+        headingLevel: 2,
+        content: [
+          "Theming is treated as a first-class architecture concern rather than a single light/dark switch. The site ships multiple complete themes that swap live, changing colors, type, and in some cases entire layouts. The floating <strong>Customize</strong> panel and a command palette (<code>⌘K</code> on Mac, <code>Ctrl+K</code> elsewhere) both drive the same engine, and you are looking at it right now.",
+          "• <strong>Token-Driven by Default:</strong> No component hard-codes a color. Every surface reads CSS custom properties like <code>--color-bg-primary</code> and <code>--color-accent-line</code>. Switching a theme rewrites those token values on the root <code>&lt;html&gt;</code> element through a single <code>data-theme</code> attribute, so the whole site re-skins in one paint with zero per-component work.",
+          "• <strong>Two Orthogonal Axes:</strong> <code>data-theme</code> selects the skin and <code>data-mode</code> selects light or dark. Each theme declares whether light/dark is even meaningful for it, so the mode toggle only appears when a theme actually supports one.",
+          "• <strong>Themes Can Swap Components, Not Just Colors:</strong> A theme registry maps each theme to a set of Vue components, and a <code>&lt;Themed&gt;</code> resolver renders the active theme's version while falling back to the default for anything a theme leaves untouched. The “Reel-to-Reel” theme ships its own masthead, footer, and page layouts. That is a different information design, not a re-paint.",
+          "• <strong>Hydration-Safe Swapping:</strong> Because every page is prerendered with the default theme, applying a saved theme too early would mismatch the static HTML and blank the view. Instead the saved theme is applied once hydration settles, on Nuxt’s <code>app:suspense:resolve</code> hook, and the component tree swaps in a single reactive update behind a brief cross-fade, the same transition used between routes.",
+          "• <strong>The Engine on Display:</strong> The Customize drawer reads the live computed token values straight off the DOM and renders them as a read-only code block, so the design variables visibly change as you switch themes. That command palette makes the same switch keyboard-first, the way a real design tool would."
+        ]
+      },
+      {
         id: "anti-fouc",
         heading: "Anti-FOUC Theme Initialization",
         headingLevel: 2,
         content: [
-          "Theme persistence is handled by a Pinia store that reads <code>localStorage</code> and applies a <code>.light-mode</code> class to the root element. The issue is that Pinia initializes after first paint, so returning users could briefly see the wrong theme on load.",
-          "To avoid that flash, I inject a small inline script into the document head through <code>app.head.script</code> in <code>nuxt.config.ts</code>. It runs before the page renders, checks <code>localStorage</code>, and applies the saved theme immediately."
+          "Theme persistence is mirrored to both <code>localStorage</code> and cookies. Dynamic SSR can read the cookie and render the selected theme immediately; static prerendered pages still have a deterministic default HTML payload.",
+          "For static pages, a tiny inline script in <code>nuxt.config.ts</code> runs before first paint, reads the saved preference, sets <code>data-theme</code> and <code>data-mode</code>, and only adds a short boot cloak when the saved theme's component tree differs from the prerendered tree. After hydration, the client plugin applies the saved theme and removes that cloak on the next Vue patch tick, so returning visitors never see a flash of the wrong layout."
         ]
       },
 

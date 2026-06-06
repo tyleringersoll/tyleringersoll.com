@@ -2,7 +2,7 @@
 @import "../abstracts/mixins";
 
 * {
-  font-family: $font-family-base;
+  font-family: var(--font-family-base, #{$font-family-base});
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -13,7 +13,8 @@ body {
   font-size: $font-size-base;
   line-height: $line-height-base;
 
-  &.menu-open {
+  &.menu-open,
+  &.overlay-open {
     overflow-y: hidden;
   }
 }

@@ -1,5 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { setActivePinia, createPinia } from "pinia";
+import { nextTick } from "vue";
 import themePlugin from "~/plugins/theme.client";
 import { useThemeStore } from "~/stores/theme";
 
@@ -8,19 +9,43 @@ describe("plugins/theme.client", () => {
     setActivePinia(createPinia());
     localStorage.clear();
     document.documentElement.className = "";
+    // Run the rAF callback synchronously for the test.
+    vi.stubGlobal("requestAnimationFrame", (cb) => {
+      cb();
+      return 0;
+    });
   });
 
-  it("calls store.init() on plugin invocation", () => {
-    const initSpy = vi.spyOn(useThemeStore(), "init");
-    themePlugin();
-    expect(initSpy).toHaveBeenCalledOnce();
-  });
-
-  it("syncs the theme class from a saved 'light' preference", () => {
-    localStorage.setItem("theme", "light");
-    themePlugin();
+  it("applies the saved theme after hydration, then removes the boot cloak", async () => {
+    localStorage.setItem("theme-id", "reel-to-reel");
+    document.documentElement.classList.add("theme-boot-cloaked");
     const store = useThemeStore();
-    expect(store.isDark).toBe(false);
-    expect(document.documentElement.classList.contains("light-mode")).toBe(true);
+    const applySpy = vi.spyOn(store, "applyStored");
+
+    // Capture the app:suspense:resolve callback the plugin registers.
+    let resolveCb;
+    const nuxtApp = {
+      hook: (name, cb) => {
+        if (name === "app:suspense:resolve") resolveCb = cb;
+      },
+    };
+
+    themePlugin(nuxtApp);
+
+    // Not applied yet — store stays on default through hydration.
+    expect(applySpy).not.toHaveBeenCalled();
+    expect(store.activeThemeId).toBe("signal-flow");
+    expect(document.documentElement.classList.contains("theme-boot-cloaked")).toBe(true);
+
+    // After the initial suspense resolves, the saved theme is applied.
+    resolveCb();
+    expect(applySpy).toHaveBeenCalledOnce();
+    expect(store.activeThemeId).toBe("reel-to-reel");
+    await nextTick();
+    expect(document.documentElement.classList.contains("theme-boot-cloaked")).toBe(false);
+
+    // Subsequent resolves (route changes) don't re-apply.
+    resolveCb();
+    expect(applySpy).toHaveBeenCalledOnce();
   });
 });
