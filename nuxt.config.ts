@@ -7,6 +7,10 @@ import {
   THEME_META,
 } from "./themes/meta";
 
+const SITE_TITLE = "Tyler Ingersoll / Frontend Engineer / Drummer";
+const SITE_DESCRIPTION =
+  "The personal website of frontend engineer and professional drummer Tyler Ingersoll.";
+
 const themeBootStyle =
   "html.theme-boot-cloaked #__nuxt{opacity:0;pointer-events:none}";
 
@@ -76,25 +80,24 @@ export default defineNuxtConfig({
       htmlAttrs: { lang: "en" },
       charset: "utf-8",
       viewport: "width=device-width, initial-scale=1.0",
-      title: "Tyler Ingersoll | Frontend developer / Musician",
+      title: SITE_TITLE,
       meta: [
         { name: "format-detection", content: "address=no, telephone=no" },
         {
           name: "description",
-          content:
-            "The personal website of frontend developer and professional drummer Tyler Ingersoll.",
+          content: SITE_DESCRIPTION,
         },
         { property: "og:type", content: "website" },
         { property: "og:url", content: "https://tyleringersoll.com" },
-        { property: "og:title", content: "Tyler Ingersoll | Frontend developer / Musician" },
-        { property: "og:description", content: "The personal website of frontend developer and professional drummer Tyler Ingersoll." },
+        { property: "og:title", content: SITE_TITLE },
+        { property: "og:description", content: SITE_DESCRIPTION },
         { property: "og:image", content: "https://tyleringersoll.com/og-image.png" },
         { property: "og:image:width", content: "1200" },
         { property: "og:image:height", content: "630" },
         { property: "og:image:alt", content: "Tyler Ingersoll" },
         { name: "twitter:card", content: "summary_large_image" },
-        { name: "twitter:title", content: "Tyler Ingersoll | Frontend developer / Musician" },
-        { name: "twitter:description", content: "The personal website of frontend developer and professional drummer Tyler Ingersoll." },
+        { name: "twitter:title", content: SITE_TITLE },
+        { name: "twitter:description", content: SITE_DESCRIPTION },
         { name: "twitter:image", content: "https://tyleringersoll.com/og-image.png" },
       ],
       link: [

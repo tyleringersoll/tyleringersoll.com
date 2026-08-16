@@ -14,8 +14,8 @@ export default {
         heading: "Hi, I’m Tyler",
         eyebrow: "Frontend Engineering",
         paragraphs: [
-          "I design and build enterprise-scale frontend applications with a focus on web performance, clean architecture, and maintainability.",
-          "Alongside my engineering work, I have spent more than three decades as a drummer, with experience across national touring, label-supported studio tracking, sync placements, event work, and modern session work."
+          "I build frontend applications for large customer-facing systems, with an eye on speed, clean architecture, and code people can maintain.",
+          "I’m also a drummer with more than three decades behind the kit: national tours, label-backed studio work, sync placements, events, and remote sessions."
         ]
       },
       engineering: {
@@ -35,7 +35,7 @@ export default {
         ],
         projectsLabel: "Current Projects",
         projects: {
-          text: "For performance-focused personal builds, browser-native experiments, and live project demos, visit my projects site.",
+          text: "For browser-native experiments, performance notes, and live demos, head to my projects site.",
           url: "https://ingersoll.dev",
           external: true,
           ctaText: "Visit ingersoll.dev"
@@ -44,12 +44,12 @@ export default {
       drums: {
         heading: "Music",
         headingLevel: 4,
-        body: "I have played drums for more than three decades, from regional independent bands to national touring, label-supported studio work, sync placements, event work, and remote session recording. My current drum work, videos, studio setup, and selected credits live on my dedicated drum site.",
+        body: "I have played drums for more than 30 years, from regional indie bands to national tours, label-backed studio dates, sync placements, events, and remote sessions. My active drum work, videos, studio setup, and credits are on my drum site.",
         cta: "View my musical history",
         ctaUrl: "/music",
         studioLabel: "Current Projects",
         studio: {
-          text: "For drum videos, remote session details, setup specs, and selected credits, visit my dedicated drum tracking site.",
+          text: "For videos, remote drum tracks, setup specs, and selected credits, head to my drum site.",
           url: "https://tyleringersolldrums.com",
           external: true,
           ctaText: "Visit tyleringersolldrums.com"
@@ -63,7 +63,7 @@ export default {
             icon: "bicycle",
             label: "Cycling",
             sub: "Road, Gravel, MTB",
-            detail: "Cycling is my favorite sport now. I ride mountain, road, and gravel bikes or jump on the trainer as much as possible.",
+            detail: "Cycling is my main sport now. Mountain, road, gravel, indoor trainer; I ride whenever I can.",
             url: "https://www.strava.com/athletes/3303002",
             external: true
           },
@@ -71,7 +71,7 @@ export default {
             icon: "family-play",
             label: "Family",
             sub: "Family",
-            detail: "Most of my free time is spent with my family, balancing youth sports, outdoor bike rides, and gaming together.",
+            detail: "Most of my free time is spent with my family, balancing sports, bike rides, and gaming together.",
             url: null
           },
           {
@@ -93,7 +93,7 @@ export default {
       },
       connect: {
         heading: "Get in touch",
-        subtext: "For engineering work, music projects, or anything in between.",
+        subtext: "Engineering, music, or anything you'd like to discuss.",
         cta: "Get in touch"
       }
     },
@@ -351,7 +351,7 @@ export default {
               "Embedded on-site at AstraZeneca, supporting the global pharmaceutical regulatory submission team through documentation packaging and internal web development.",
               "• Designed and built the global regulatory intranet site to centralize team content.",
               "• Packaged regulatory and compliance documentation for official FDA submissions.",
-              "• Managed project timelines and documentation workflows across the team.",
+              "• Managed project timelines and documentation workflows for the team.",
               "<strong>Tech:</strong> HTML, CSS, JavaScript, Adobe FrameMaker, Adobe Photoshop, Adobe Illustrator, Microsoft Project"
             ]
           }
@@ -386,7 +386,7 @@ export default {
         heading: "Additional Experience",
         headingLevel: 2,
         content: [
-          "In addition to my engineering career, music has been a major parallel career, including touring, studio tracking, sync placements, event work, and remote session recording. The deeper drum portfolio, current videos, selected credits, studio details, and booking information live at <a href='https://tyleringersolldrums.com' target='_blank' rel='noopener noreferrer'>tyleringersolldrums.com</a>."
+          "Music has run in parallel with engineering for most of my career: touring, studio tracking, sync placements, events, and remote sessions. Current videos, credits, studio details, booking info, and the deeper drum portfolio live at <a href='https://tyleringersolldrums.com' target='_blank' rel='noopener noreferrer'>tyleringersolldrums.com</a>."
         ]
       },
       {
@@ -413,8 +413,8 @@ export default {
         type: "hero",
         heading: "Musical Background",
         content: [
-          "My background includes more than three decades of professional performance, primarily as a session and touring drummer, alongside tracking bass for independent studio releases.",
-          "This page provides a timeline of that work. My active tracking portfolio, video clips, and full home studio production layout live on my drum site."
+          "I’ve played professionally for more than 30 years, mainly as a session and touring drummer, with some bass tracking for independent studio releases.",
+          "This page is the timeline. For active drum work, videos, and my home studio setup, go to my drum site."
         ],
         src: "/images/studio_kit.webp",
         cta: {
@@ -427,8 +427,8 @@ export default {
         heading: "Selected Highlights",
         headingLevel: 2,
         content: [
-          "Earlier in my career, I signed with Wind-up Records, toured nationally, and tracked drums in studios in New York, Philadelphia, and Los Angeles with producers and engineers including Don Gilmore, Gregg Wattenberg, Phil Nicolo, and Nick DiDia. That work included placements connected to the Fantastic Four soundtrack, Madden NFL 07, Super Bowl XLII broadcast usage, network television, radio airplay, and stadium playback.",
-          "Today, my active drum work is focused on tracking, collaborations, and select live performance projects."
+          "Earlier in my career, I signed with Wind-up Records, toured nationally, and tracked drums in New York, Philadelphia, and Los Angeles with producers and engineers including Don Gilmore, Gregg Wattenberg, Phil Nicolo, and Nick DiDia. That work included placements tied to the Fantastic Four soundtrack, Madden NFL 07, Super Bowl XLII broadcast usage, network television, radio airplay, and stadium playback.",
+          "Today, I focus on tracking, collaborations, and a small number of live projects."
         ],
         cta: {
           label: "View current videos, credits, and session details",
@@ -449,11 +449,11 @@ export default {
           {
             subheading: "Session Drummer · Kennett Square, PA",
             content: [
-              "Focusing on session tracking and engineering hybrid acoustic-digital drum recordings from my home studio.",
-              "• Engineered a hybrid tracking system combining multi-microphone acoustic capture for cymbals with synchronized MIDI triggers for drum shells.",
-              "• Managed full signal paths, acoustic treatment, and hardware preamp configurations to deliver clean, mix-ready tracking assets.",
-              "• Optimized digital delivery workflows to provide collaborators with organized, phase-aligned audio stems and MIDI data.",
-              "Visit <a href='https://tyleringersolldrums.com' target='_blank' rel='noopener noreferrer'>tyleringersolldrums.com</a> for current videos, session credits, and studio specifications."
+              "Tracking sessions from my home studio, with a hybrid acoustic-digital drum setup.",
+              "• Built a hybrid rig: multi-mic acoustic cymbal capture plus synchronized MIDI triggers for shells.",
+              "• Manage signal paths, acoustic treatment, and preamp settings to deliver clean, mix-ready tracks.",
+              "• Send collaborators organized, phase-aligned stems and MIDI data.",
+              "Visit <a href='https://tyleringersolldrums.com' target='_blank' rel='noopener noreferrer'>tyleringersolldrums.com</a> for current videos, session credits, and studio specs."
             ]
           }
         ]
@@ -466,10 +466,10 @@ export default {
           {
             subheading: "Drummer · World Cafe Live, Philadelphia",
             content: [
-              "Rejoined Omnisoul for a 20-year anniversary performance built around the band's album Happy Outside, with proceeds from the event donated to charity.",
-              "• Performed a full retrospective set with the original band and guest musicians.",
-              "• Played a separate set of songs that singer Derek Fuhrmann wrote for other artists, including Phillip Phillips, the Goo Goo Dolls, Kygo, and O.A.R.",
-              "• Supported the archival re-release of Happy Outside, including remastered audio, bonus tracks, and updated artwork."
+              "Rejoined Omnisoul for a 20-year anniversary show centered on the band's album Happy Outside. Proceeds went to charity.",
+              "• Played a full retrospective set with the original band and guest musicians.",
+              "• Played a second set of songs singer Derek Fuhrmann wrote for other artists, including Phillip Phillips, the Goo Goo Dolls, Kygo, and O.A.R.",
+              "• Helped support the archival re-release of Happy Outside, including remastered audio, bonus tracks, and updated artwork."
             ]
           }
         ]
@@ -482,7 +482,7 @@ export default {
           {
             subheading: "Drummer · Studio session",
             content: [
-              "Tracked live drums at The Deep End Studio in Baltimore for Brad Cox's Veteran Avenue project on the single \"Nothing Left to Burn.\" Produced and engineered by Tony Correlli."
+              "Tracked live drums at The Deep End Studio in Baltimore for Brad Cox's Veteran Avenue single \"Nothing Left to Burn.\" Produced and engineered by Tony Correlli."
             ]
           }
         ]
@@ -495,7 +495,7 @@ export default {
           {
             subheading: "Bassist",
             content: [
-              "Played bass in the in-house band at Trellist, a marketing agency in Wilmington, DE. The band played shows at multiple tech industry events in Wilmington and Philadelphia."
+              "Played bass in the in-house band at Trellist, a Wilmington, DE marketing agency, with shows at tech events in Wilmington and Philadelphia."
             ]
           }
         ]
@@ -508,7 +508,7 @@ export default {
           {
             subheading: "Bassist · Studio session",
             content: [
-              "Tracked bass on \"A Night in Hell & A Sunday Morning\" for Skitzo Calypso's LP Ghosts. Produced and engineered by Tony Correlli at The Deep End Studio. I had previously played bass and drums on the band's late-90s releases."
+              "Tracked bass on \"A Night in Hell & A Sunday Morning\" for Skitzo Calypso's LP Ghosts. Produced and engineered by Tony Correlli at The Deep End Studio. I had also played bass and drums on the band's late-90s releases."
             ]
           }
         ]
@@ -521,9 +521,9 @@ export default {
           {
             subheading: "Drummer, DJ, and Co-Founder",
             content: [
-              "Co-founded and performed in a working event band that moved from the regional club circuit into corporate events, universities, weddings, private events, and a residency in Key West.",
-              "• Played drums and handled DJ responsibilities across club, private, and corporate work.",
-              "• Built and ran click-driven arrangements and live sequences that were used as part of the show."
+              "Co-founded a working event band that grew from regional clubs into corporate events, university shows, weddings, private parties, and a Key West residency.",
+              "• Played drums and handled DJ duties for club, private, and corporate dates.",
+              "• Built and ran click-driven arrangements and live sequences for the show."
             ]
           }
         ]
@@ -536,7 +536,7 @@ export default {
           {
             subheading: "Drummer · Philadelphia",
             content: [
-              "Played drums in a Philadelphia punk-rock band that ran alongside The Crash Motive, leaning into heavy live improvisation.",
+              "Played drums in a Philadelphia punk-rock band that ran alongside The Crash Motive. Loud songs. Heavy improvisation.",
               "• Won a battle of the bands at North Star Bar in Philadelphia.",
               "• Opened for Taylor Hawkins and the Coattail Riders."
             ]
@@ -551,9 +551,9 @@ export default {
           {
             subheading: "Drummer, Studio Musician & Founding Member",
             content: [
-              "Signed with Wind-up Records, toured nationally, and recorded major-label releases after years of regional development and label showcases.",
-              "• Signed a multi-album contract with Wind-up Records following competitive interest from major industry labels.",
-              "• Tracked major-label releases at studios in New York, Philadelphia, and Los Angeles, working under the direction of producers and engineers including Don Gilmore and Gregg Wattenberg.",
+              "Signed with Wind-up Records, toured nationally, and recorded major-label releases after years of regional shows and label showcases.",
+              "• Signed a multi-album deal with Wind-up Records after interest from major labels.",
+              "• Tracked releases in studios in New York, Philadelphia, and Los Angeles with producers and engineers including Don Gilmore and Gregg Wattenberg.",
               "• Opened for national touring acts and filmed a music video in Los Angeles.",
               "• Contributed to media licensing and broadcast placements, including the Fantastic Four soundtrack, Madden NFL 07, Super Bowl XLII broadcast usage, network television, national radio airplay, and stadium playback."
             ]
@@ -568,10 +568,10 @@ export default {
           {
             subheading: "Drummer & Founding Member",
             content: [
-              "Helped build a regional independent band from the college circuit into label showcases, radio momentum, and studio work.",
-              "• Logged over a year of heavy radio rotation on WSTW 93.7 FM, including a station record for the most-requested song.",
-              "• Tracked foundational studio demos with producer Phil Nicolo to generate competitive major-label interest.",
-              "• Performed regional shows, college dates, and label showcases, including opening for Sugar Ray and playing multiple showcases across New York City."
+              "Helped build a regional independent band from college shows into label showcases, radio momentum, and studio work.",
+              "• Spent more than a year in heavy rotation on WSTW 93.7 FM, including a station record for the most-requested song.",
+              "• Tracked early studio demos with producer Phil Nicolo to build major-label interest.",
+              "• Played regional shows, college dates, and label showcases, including opening for Sugar Ray and playing multiple showcases across New York City."
             ]
           }
         ]
@@ -584,10 +584,10 @@ export default {
           {
             subheading: "Drummer",
             content: [
-              "Played drums in an experimental jam band that built a local following around the University of Delaware and later moved onto larger outdoor stages and festival bills.",
+              "Played drums in an experimental jam band that built a local following around the University of Delaware, then moved to larger outdoor stages and festival bills.",
               "• Played regularly at venues including Deer Park Tavern and The East End Cafe.",
               "• Shared festival bills with acts including The Disco Biscuits and Lake Trout, and performed at Phish’s Camp Oswego festival.",
-              "• Developed a stronger sense of listening, improvising, and shaping dynamics in real time."
+              "• Got sharper at listening, improvising, and shaping dynamics in real time."
             ]
           }
         ]
@@ -600,7 +600,7 @@ export default {
           {
             subheading: "Drummer, Bassist, and Early Recording Collaborator",
             content: [
-              "Started tracking drums and bass for independent regional alt-rock projects while playing live club dates.",
+              "Started tracking drums and bass for regional alt-rock projects while playing club dates.",
               "• Tracked both drum and bass parts across early independent EPs and full-length releases."
             ]
           }
@@ -610,7 +610,7 @@ export default {
         heading: "Current Drum Work",
         headingLevel: 2,
         content: [
-          "For current videos, remote session details, studio setup, credits, and booking information, visit my dedicated drum site."
+          "For current videos, remote session details, setup, credits, and booking, visit my drum site."
         ],
         cta: {
           label: "Visit tyleringersolldrums.com",
@@ -624,18 +624,18 @@ export default {
     },
     footer: {
       socialHeading: "Connect with me",
-      socialTagline: "For my engineering background, visit the resume. For current drum work or remote session details, visit <a href='https://tyleringersolldrums.com' target='_blank' rel='noopener noreferrer'>tyleringersolldrums.com</a>.",
+      socialTagline: "For engineering, start with the resume. For current drum work and remote sessions, visit <a href='https://tyleringersolldrums.com' target='_blank' rel='noopener noreferrer'>tyleringersolldrums.com</a>.",
       socialIcons: [
         {
           svg: "<svg class=\"github\" fill=\"#000000\" xmlns=\"http://www.w3.org/2000/svg\"  viewBox=\"0 0 64 64\" width=\"64px\" height=\"64px\"><path d=\"M32 6C17.641 6 6 17.641 6 32c0 12.277 8.512 22.56 19.955 25.286-.592-.141-1.179-.299-1.755-.479V50.85c0 0-.975.325-2.275.325-3.637 0-5.148-3.245-5.525-4.875-.229-.993-.827-1.934-1.469-2.509-.767-.684-1.126-.686-1.131-.92-.01-.491.658-.471.975-.471 1.625 0 2.857 1.729 3.429 2.623 1.417 2.207 2.938 2.577 3.721 2.577.975 0 1.817-.146 2.397-.426.268-1.888 1.108-3.57 2.478-4.774-6.097-1.219-10.4-4.716-10.4-10.4 0-2.928 1.175-5.619 3.133-7.792C19.333 23.641 19 22.494 19 20.625c0-1.235.086-2.751.65-4.225 0 0 3.708.026 7.205 3.338C28.469 19.268 30.196 19 32 19s3.531.268 5.145.738c3.497-3.312 7.205-3.338 7.205-3.338.567 1.474.65 2.99.65 4.225 0 2.015-.268 3.19-.432 3.697C46.466 26.475 47.6 29.124 47.6 32c0 5.684-4.303 9.181-10.4 10.4 1.628 1.43 2.6 3.513 2.6 5.85v8.557c-.576.181-1.162.338-1.755.479C49.488 54.56 58 44.277 58 32 58 17.641 46.359 6 32 6zM33.813 57.93C33.214 57.972 32.61 58 32 58 32.61 58 33.213 57.971 33.813 57.93zM37.786 57.346c-1.164.265-2.357.451-3.575.554C35.429 57.797 36.622 57.61 37.786 57.346zM32 58c-.61 0-1.214-.028-1.813-.07C30.787 57.971 31.39 58 32 58zM29.788 57.9c-1.217-.103-2.411-.289-3.574-.554C27.378 57.61 28.571 57.797 29.788 57.9z\"/></svg>",
           alt: "GitHub",
-          title: "Check out my GitHub",
+          title: "See my GitHub",
           url: "https://github.com/tyleringersoll"
         },
         {
           svg: "<svg class=\"linkedin\" role=\"img\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z\"/></svg>",
           alt: "LinkedIn",
-          title: "Connect with me on LinkedIn",
+          title: "Connect on LinkedIn",
           url: "https://www.linkedin.com/in/tyleringersoll"
         },
         {
@@ -653,7 +653,7 @@ export default {
       ],
       legal: [
         "Copyright ©{YEAR} <a href='https://ingersoll.dev'>Tyler Ingersoll</a>. All rights reserved.",
-        "Built with Vue & Nuxt 3 (<a href='/architecture'>View Site Architecture</a>). Hosted on <a href='https://www.netlify.com/' target='_blank'>Netlify</a>."
+        "Built with Vue and Nuxt 3 (<a href='/architecture'>View Site Architecture</a>). Hosted on <a href='https://www.netlify.com/' target='_blank'>Netlify</a>."
       ]
     }
   }
