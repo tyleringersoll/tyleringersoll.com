@@ -5,17 +5,25 @@
 [build.environment]
   NODE_VERSION = "24"
 
+# The music page now lives at tyleringersolldrums.com. Keep old links working.
+[[redirects]]
+  from = "/music"
+  to = "https://tyleringersolldrums.com"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/music/*"
+  to = "https://tyleringersolldrums.com"
+  status = 301
+  force = true
+
 # Serve sub-pages without redirecting to the trailing-slash form.
-# Netlify's default would 301 /music → /music/, which trips Lighthouse and
+# Netlify's default would 301 /resume → /resume/, which trips Lighthouse and
 # costs a network round-trip on every external link to the site.
 [[redirects]]
   from = "/resume"
   to = "/resume/index.html"
-  status = 200
-
-[[redirects]]
-  from = "/music"
-  to = "/music/index.html"
   status = 200
 
 [[redirects]]
