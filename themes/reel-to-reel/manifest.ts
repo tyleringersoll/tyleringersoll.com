@@ -4,7 +4,6 @@ import Header from "~/themes/reel-to-reel/components/Header.vue";
 import Footer from "~/themes/reel-to-reel/components/Footer.vue";
 import HomeView from "~/themes/reel-to-reel/views/Home.vue";
 import ResumeView from "~/themes/reel-to-reel/views/Resume.vue";
-import MusicView from "~/themes/reel-to-reel/views/Music.vue";
 import ArchitectureView from "~/themes/reel-to-reel/views/Architecture.vue";
 import { getThemeMeta } from "../meta";
 
@@ -21,7 +20,6 @@ const reelToReelTheme: ThemeManifest = {
     Footer,
     HomeView,
     ResumeView,
-    MusicView,
     ArchitectureView,
   },
 };

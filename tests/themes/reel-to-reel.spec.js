@@ -6,7 +6,6 @@ import EditorialHeader from "~/themes/reel-to-reel/components/Header.vue";
 import EditorialFooter from "~/themes/reel-to-reel/components/Footer.vue";
 import HomeView from "~/themes/reel-to-reel/views/Home.vue";
 import ResumeView from "~/themes/reel-to-reel/views/Resume.vue";
-import MusicView from "~/themes/reel-to-reel/views/Music.vue";
 import ArchitectureView from "~/themes/reel-to-reel/views/Architecture.vue";
 import reelToReelTheme from "~/themes/reel-to-reel/manifest";
 
@@ -19,7 +18,7 @@ describe("editorial theme", () => {
     expect(reelToReelTheme.id).toBe("reel-to-reel");
     expect(reelToReelTheme.supportsModes).toBe(false);
     expect(Object.keys(reelToReelTheme.components).sort()).toEqual(
-      ["ArchitectureView", "Footer", "Header", "HomeView", "MusicView", "ResumeView"].sort()
+      ["ArchitectureView", "Footer", "Header", "HomeView", "ResumeView"].sort()
     );
   });
 
@@ -73,13 +72,6 @@ describe("editorial theme", () => {
     // Tech line becomes chips, bullets become dash list items
     expect(wrapper.findAll(".chip").length).toBeGreaterThan(0);
     expect(wrapper.findAll(".role li").length).toBeGreaterThan(0);
-  });
-
-  it("Music renders the hero, stat row, and timeline entries", async () => {
-    const wrapper = await mountSuspended(MusicView);
-    expect(wrapper.find(".mhero").exists()).toBe(true);
-    expect(wrapper.findAll(".statrow .st").length).toBeGreaterThan(0);
-    expect(wrapper.findAll(".entry").length).toBeGreaterThan(0);
   });
 
   it("Architecture renders arch rows and the Lighthouse scores grid", async () => {

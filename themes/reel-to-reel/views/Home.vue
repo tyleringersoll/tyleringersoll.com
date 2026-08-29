@@ -12,7 +12,7 @@
           <span class="kick">Portfolio — Est. 2000</span>
           <h1 class="bigname">{{ name.first }}<span class="l2">{{ name.rest }}</span></h1>
           <div class="roleline">
-            <span class="dot" />Frontend Engineer<span>+</span>Drummer<span>·</span>Three decades on both
+            <span class="dot" />Frontend Engineering Leader<span>+</span>Drummer<span>·</span>Three decades on both
           </div>
           <div class="introbox">
             <p v-for="(p, i) in hero.paragraphs" :key="i">{{ p }}</p>
@@ -90,9 +90,14 @@
         </div>
         <div class="txt">
           <p>{{ mus.body }}</p>
-          <NuxtLink class="link" :to="mus.ctaUrl || '/music'">
+          <a
+            class="link"
+            :href="mus.ctaUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             {{ mus.cta }} <span class="ed-ico" v-html="icons.arrow" />
-          </NuxtLink>
+          </a>
           <div class="statrow statrow--two">
             <div v-for="s in musicStats" :key="s.l" class="st">
               <div class="v">{{ s.v }}</div>
@@ -123,7 +128,7 @@
         <h3>{{ connect.heading }}</h3>
         <div class="sub">{{ connect.subtext }}</div>
       </div>
-      <a class="cbtn" href="mailto:tyler@ingersoll.dev">
+      <a class="cbtn" href="mailto:hello@tyleringersoll.com">
         {{ connect.cta }} <span class="ed-ico" v-html="icons.arrow" />
       </a>
     </section>
