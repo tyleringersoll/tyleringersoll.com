@@ -5,7 +5,6 @@
       "url": [
         "http://localhost/index.html",
         "http://localhost/resume/index.html",
-        "http://localhost/music/index.html",
         "http://localhost/architecture/index.html"
       ],
       "numberOfRuns": 3,

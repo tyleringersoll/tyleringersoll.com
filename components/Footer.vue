@@ -21,7 +21,7 @@
         </div>
 
         <div class="footer-cta-wrap">
-          <a href="mailto:tyler@ingersoll.dev" class="footer-btn">{{ connect.cta }}</a>
+          <a href="mailto:hello@tyleringersoll.com" class="footer-btn">{{ connect.cta }}</a>
         </div>
       </div>
     </section>

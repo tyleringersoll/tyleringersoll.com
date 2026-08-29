@@ -107,9 +107,13 @@
             <h2 class="hv2-music__heading">{{ mus.heading }}</h2>
             <p v-html="mus.body" />
             <div class="hv2-btn-wrap">
-              <NuxtLink :to="mus.ctaUrl" class="hv2-btn hv2-btn--primary">{{
-                mus.cta
-              }} <span class="hv2-btn__icon" aria-hidden="true">→</span></NuxtLink>
+              <component
+                :is="linkTag(musCta)"
+                v-bind="linkAttrs(musCta)"
+                class="hv2-btn hv2-btn--primary"
+              >{{ mus.cta }}
+                <span class="hv2-btn__icon" aria-hidden="true">{{ linkIcon(musCta) }}</span>
+              </component>
             </div>
             <component
               v-if="hasCalloutContent(mus.studio)"
@@ -184,6 +188,13 @@ const hero = computed(() => home.value.hero || {});
 const eng = computed(() => home.value.engineering || {});
 const mus = computed(() => home.value.drums || {});
 const bey = computed(() => home.value.beyond || {});
+
+// The music CTA points off-site (tyleringersolldrums.com), so it runs through the
+// same link helpers as the callouts rather than being a hard-coded NuxtLink.
+const musCta = computed(() => ({
+  url: mus.value.ctaUrl,
+  external: mus.value.ctaExternal,
+}));
 
 const activeCard = ref(null);
 
@@ -399,6 +410,9 @@ const icons = {
 
 // ─── Hero section ─────────────────────────────────────────────────────────────
 
+// Clear space held between the hero copy and the portrait at every width.
+$hero-copy-gutter: clamp(2.5rem, 5vw, 4rem);
+
 .hv2-hero {
   --hero-glass-bg: rgba(31, 39, 45, 0.5);
   --hero-glow-color: rgba(0, 183, 255, 0.2);
@@ -412,40 +426,61 @@ const icons = {
     --hero-glow-secondary: rgba(100, 180, 220, 0.06);
   }
 
+  // The portrait stays beside the text down to the phone breakpoint. On tablets it
+  // shrinks and takes a narrower column rather than wrapping under the copy.
   &__grid {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: auto 1fr;
     align-items: start;
 
-    @include respond-below(md) {
+    @include respond-below(sm) {
       grid-template-columns: 1fr;
       grid-template-rows: none;
     }
   }
 
+  // The copy columns carry their own right gutter: the grid has no column gap, and
+  // on desktop the text and portrait columns deliberately overlap, so without this
+  // the paragraphs run flush into the circle.
   &__kicker {
     grid-column: 1 / 8;
     grid-row: 1;
+    padding-right: $hero-copy-gutter;
     position: relative;
     z-index: 2;
 
-    @include respond-below(md) {
+    @include respond-to(sm) {
+      @include respond-below(md) {
+        grid-column: 1 / 9;
+      }
+    }
+
+    @include respond-below(sm) {
       grid-column: 1 / -1;
       grid-row: auto;
+      padding-right: 0;
     }
   }
 
   &__text {
     grid-column: 1 / 8;
     grid-row: 2;
+    padding-right: $hero-copy-gutter;
     position: relative;
     z-index: 2;
 
-    @include respond-below(md) {
+    @include respond-to(sm) {
+      @include respond-below(md) {
+        grid-column: 1 / 9;
+      }
+    }
+
+    @include respond-below(sm) {
       grid-column: 1 / -1;
       grid-row: auto;
       order: 2;
+      padding-right: 0;
     }
   }
 
@@ -511,7 +546,13 @@ const icons = {
       }
     }
 
-    @include respond-below(md) {
+    @include respond-to(sm) {
+      @include respond-below(md) {
+        grid-column: 9 / -1;
+      }
+    }
+
+    @include respond-below(sm) {
       grid-column: 1 / -1;
       grid-row: auto;
       order: 1;
@@ -534,6 +575,12 @@ const icons = {
     aspect-ratio: 1 / 1;
     object-fit: cover;
     border-radius: 50%;
+
+    @include respond-to(sm) {
+      @include respond-below(md) {
+        width: 100%;
+      }
+    }
 
     html[data-mode="light"] & {
       filter: drop-shadow(0 16px 40px rgba(0, 0, 0, 0.12));
