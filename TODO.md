@@ -4,202 +4,115 @@
 50/50 engineering/music framing, but the deep music content moves to tyleringersolldrums.com.
 Architecture joins the main nav. Fix the SEO bugs found during the audit.
 
-**Audience for this file:** an implementation agent (cheaper model). Each task lists exact files
-and acceptance criteria. Copy marked `DRAFT` was written for Tyler to approve — do not invent
-alternative copy; use it verbatim or ask.
+**Status (2026-08-29):** Phases 1, 2, and 3 are done, plus 4.8. Phase 4 is what remains, and
+every open item is blocked on content only Tyler can supply.
 
-**Guardrails for the implementing agent:**
-- Do NOT add dependencies. This site's 100/100/100/100 Lighthouse score is a showcased feature
-  (see the Architecture page); every task must keep Lighthouse CI green (`.lighthouserc.json`).
-- Do NOT restyle anything. These are content/routing/meta changes only.
-- Both themes (`themes/signal-flow/`, `themes/reel-to-reel/`) render every page — changes to a
-  page mean touching both themes' views and both manifests.
-- Run `npm run test` after each phase; the suite must stay green. Update or delete specs that
-  reference removed things — never skip them.
-- Work on a feature branch off `main`; do not push to `main` directly.
+- This repo: branch `site-refocus`, commit `45d8774`. 172 tests pass. Lighthouse median of 3
+  runs is 100 / 100 / 100 / 100 on all three routes.
+- Drums repo: branch `work-timeline`, commit `6038c17`. Build passes, timeline verified in
+  both light and dark mode.
 
----
+Neither branch is pushed or merged. Review, then merge when ready.
 
-## Phase 1 — Remove /music, redirect to tyleringersolldrums.com
-
-The music page and its timeline leave this site. `/music` 301s to the drums site so existing
-backlinks and bookmarks keep working. The homepage "Music" section STAYS (it already links out).
-
-- [ ] **1.1 Data:** In `data/content.js`:
-  - Delete the entire `drums: [ … ]` array (the music page content, lines ~410–621). Do NOT
-    touch `home.drums` (the homepage Music section) — that stays.
-  - `navigation`: replace `{ name: "Music", url: "/music" }` with
-    `{ name: "Architecture", url: "/architecture" }` so nav = Home, Resume, Architecture.
-  - `home.drums.cta` / `home.drums.ctaUrl`: currently "View my musical history" → `/music`.
-    Change to `cta: "View my music career"` and
-    `ctaUrl: "https://tyleringersolldrums.com"` with `ctaExternal: true` — follow however the
-    theme Home views render the existing external `home.drums.studio.url` link (target=_blank,
-    rel=noopener). Check both themes' `views/Home.vue` render this CTA as external correctly
-    (reel-to-reel's Home.vue has a fallback `:to="mus.ctaUrl || '/music'"` — remove the
-    `/music` fallback).
-- [ ] **1.2 Routes/views:** Delete `pages/music.vue`, `themes/signal-flow/views/Music.vue`,
-  `themes/reel-to-reel/views/Music.vue`, and remove the Music view registration from
-  `themes/signal-flow/manifest.ts` and `themes/reel-to-reel/manifest.ts`.
-- [ ] **1.3 Prerender:** In `nuxt.config.ts` remove `"/music"` from `nitro.prerender.routes`.
-- [ ] **1.4 Redirect:** In `netlify.toml`, delete the `/music` → `/music/index.html` 200 rewrite
-  and add (above the remaining rewrites):
-  ```toml
-  [[redirects]]
-    from = "/music"
-    to = "https://tyleringersolldrums.com"
-    status = 301
-    force = true
-
-  [[redirects]]
-    from = "/music/*"
-    to = "https://tyleringersolldrums.com"
-    status = 301
-    force = true
-  ```
-- [ ] **1.5 Lighthouse CI:** Remove the `/music/index.html` URL from `.lighthouserc.json`.
-- [ ] **1.6 Tests:** Delete `tests/pages/music.spec.js`. Update fixtures in
-  `tests/components/Header.spec.js` (nav item Music → Architecture) and
-  `tests/pages/index.spec.js` (`ctaUrl: "/music"` → the new external URL). Grep the whole
-  `tests/` dir for `music` and fix any other references. Suite must pass with coverage
-  thresholds intact.
-- [ ] **1.7 Sitemap:** Remove the `/music` entry from `public/sitemap.xml` (domain fix is 2.1).
-- [ ] **1.8 Sweep:** `grep -ri "/music" --include="*.vue" --include="*.js" --include="*.ts"` the
-  repo (excluding node_modules/.nuxt/.output/.lighthouseci) and resolve every remaining hit.
-
-**Acceptance:** `npm run generate` succeeds with no `/music` output; `npm run test` green;
-nav shows Home / Resume / Architecture in both themes; homepage Music section links out to
-tyleringersolldrums.com.
-
-## Phase 2 — SEO & identity fixes (bugs found in audit)
-
-The live primary domain is `https://www.tyleringersoll.com` (apex 301s to www — verified
-2026-08-29). Canonical tags in `app.vue` already use www; everything else disagrees.
-
-- [ ] **2.1 Wrong domain in sitemap/robots (copy-paste from ingersoll.dev):**
-  `public/sitemap.xml` and the `Sitemap:` line in `public/robots.txt` point at
-  `https://ingersoll.dev`. Change all URLs to `https://www.tyleringersoll.com` (and drop
-  `/music` per 1.7, add nothing else).
-- [ ] **2.2 og:url / twitter host mismatch:** In `nuxt.config.ts`, `og:url` and `og:image`
-  URLs use the apex domain. Change to `https://www.tyleringersoll.com/…`.
-- [ ] **2.3 Per-page titles & descriptions:** Today all four routes share one global
-  title/description. Add `useSeoMeta({ title, description, ogTitle, ogDescription })` in a
-  `<script setup>` block in each page wrapper (`pages/index.vue`, `pages/resume.vue`,
-  `pages/architecture.vue`) — the wrappers are theme-independent, so this is the right layer.
-  DRAFT copy (Tyler may edit):
-  - Home — title: `Tyler Ingersoll | Frontend Engineering Leader & Drummer`;
-    description: `Tyler Ingersoll leads frontend engineering teams building enterprise fintech
-    applications, and has spent three decades as a touring and session drummer.`
-  - Resume — title: `Resume | Tyler Ingersoll — Frontend Engineering Leader`;
-    description: `25+ years across frontend architecture, design systems, and engineering
-    leadership: Best Egg, Vanguard, Agilent, and enterprise agency work.`
-  - Architecture — title: `How This Site Is Built | Tyler Ingersoll`;
-    description: `The architecture of tyleringersoll.com: Nuxt 3 prerendering, a multi-theme
-    design system, 100/100/100/100 Lighthouse scores, and a 99%-coverage test suite.`
-  Keep the global fallback in `nuxt.config.ts` as-is.
-- [ ] **2.4 JSON-LD Person schema:** In `app.vue`, add one `useHead` script block, rendered on
-  every route:
-  ```json
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Tyler Ingersoll",
-    "url": "https://www.tyleringersoll.com",
-    "jobTitle": "Director of Software Engineering",
-    "knowsAbout": ["Frontend Architecture", "Design Systems", "Engineering Leadership", "Web Performance", "Drums"],
-    "sameAs": [
-      "https://github.com/tyleringersoll",
-      "https://www.linkedin.com/in/tyleringersoll",
-      "https://tyleringersolldrums.com",
-      "https://ingersoll.dev",
-      "https://www.strava.com/athletes/3303002"
-    ]
-  }
-  ```
-- [ ] **2.5 Positioning nudge (copy only, one edit):** The hero/masthead keeps the dual
-  identity, but nothing on the homepage says Tyler leads teams — the engineering blurb is
-  pure-IC voice while the resume opens with "Director". In `data/content.js`, change the first
-  sentence of `home.engineering.body` from
-  `"I build frontend applications with Vue, Angular, and TypeScript."` to DRAFT:
-  `"I'm an engineering director who still builds: I lead customer-facing engineering teams and
-  ship production code in Vue, Angular, and TypeScript."` Leave the rest of the paragraph
-  unchanged. Also in `content.meta.tag`, change `<span>Frontend engineer</span>` to
-  `<span>Engineering leader</span>` (OPEN QUESTION #2 — skip if Tyler says no).
-
-**Acceptance:** `curl` each generated page: unique `<title>`, one canonical, og:url on www,
-JSON-LD present and valid (paste into https://validator.schema.org). Lighthouse SEO stays ≥95.
-
-## Phase 3 — Port missing music content INTO ../tyleringersolldrums.com
-
-Audit result: the drums site already covers most of the timeline (Wind-up era, producers
-Gilmore/Wattenberg/Nicolo/DiDia, Madden/Super Bowl/Fantastic Four placements, SpeakerCity,
-Healthy Doses, discography). These items exist ONLY on tyleringersoll.com's music page and
-would be lost when Phase 1 deletes it. Port them into the drums repo
-(`/Users/tyleringersoll/GitHub/tyleringersolldrums.com` — it has its own CLAUDE.md; follow its
-content conventions, likely `data/pages/work.js` / `session.js`):
-
-Posible idea to add to Work page on tyleringersolldrums.com -- add a historical timeline that we have on this site to under the press section. Take the style and look feel from this page, and it would be cool because I can add events as they occur going forward.
-
-- [ ] **3.1 Omnisoul 2024 reunion** (currently only an image-alt on the drums site!). Source
-  copy from this repo's `data/content.js` (`drums` array, "Omnisoul Reunion" entry): 20-year
-  anniversary of *Happy Outside* at World Cafe Live, Philadelphia; proceeds to charity; full
-  retrospective set with original band and guests; separate set of songs Derek Fuhrmann wrote
-  for Phillip Phillips, Goo Goo Dolls, Kygo, and O.A.R.; archival re-release with remastered
-  audio, bonus tracks, updated artwork.
-- [ ] **3.2 Curtiss Helldiver (2006)** — missing entirely from the drums site, and it includes
-  a marquee drum-world credit: **opened for Taylor Hawkins and the Coattail Riders**; won a
-  battle of the bands at North Star Bar, Philadelphia; punk-rock band alongside The Crash
-  Motive with heavy live improvisation.
-- [ ] **3.3 Optional color (Tyler's call, low priority):** Healthy Doses shared festival bills
-  with The Disco Biscuits and Lake Trout (drums site mentions Camp Oswego but not these);
-  Omnisoul's WSTW "station record for most-requested song" claim (drums site has the #12
-  year-end ranking only); Trellist Agency Band 2015–2017 (bass, corporate events — probably
-  off-brand for a drum-session site, include only if Tyler wants it).
-- [ ] **3.4 Verify a discrepancy before porting anything Skitzo-related:** this repo says bass
-  on "A Night in Hell & A Sunday Morning" for LP *Ghosts* (2013); the drums site lists
-  *Ghosts: The Beyond* (2016). Ask Tyler which is correct — do not guess.
-
-**Acceptance:** drums-site build passes its own checks; new entries match the surrounding
-voice and structure; nothing duplicated.
-
-## Phase 4 — Competitive-analysis enhancements (prioritized; most need Tyler's input)
-
-What director/staff-level engineers' personal sites consistently have that this one lacks,
-ranked by payoff. None of these block Phases 1–3.
-
-
-- [ ] **4.3 `/now` page (LOW effort).** A dated "what I'm doing now" page (Derek Sivers
-  convention): current role focus, current build projects, current music projects, current
-  reads. Freshness signal for a not-job-searching site. Add to footer, not main nav.
-- [ ] **4.4 `/uses` page (LOW effort, strong fit).** Frontend-community convention
-  (uses.tech). Tyler's dev setup + AI tooling; cross-link the drums site's gear page for the
-  studio side — plays perfectly with the audiophile/hi-fi identity already on the homepage.
-- [ ] **4.5 Downloadable PDF resume (LOW).** One link on `/resume`. Even not-searching, people
-  Tyler meets will ask. Tyler supplies the PDF; agent adds the link (skip @media print
-  gymnastics).
-- [ ] **4.7 Per-page OG images (LOW, cosmetic).** One shared og-image today; per-page variants
-  make shared links look intentional.
-- [ ] **4.8 Contact identity cleanup (LOW — OPEN QUESTION #4).** Footer email is
-  `tyler@ingersoll.dev`; the drums site uses `hello@tyleringersoll.com`. Pick one public
-  address per property, or one overall. use hello@tyleringersoll.com <--
-
-**Deliberately NOT doing** (anti-patterns from the competitive review): skill bars/percentage
-meters, a project-thumbnail grid (ingersoll.dev already owns that role), stock imagery, blog
-scaffolding with placeholder posts, newsletter popups, chatbots. The three-site structure is a
-strength — hub (this site) + code lab (ingersoll.dev) + music (drums site) — keep each focused
-and cross-linked, which Phases 1–2 complete.
+**Guardrails (still apply to any further work):**
+- Do NOT add dependencies. The 100/100/100/100 Lighthouse score is a showcased feature.
+- Do NOT restyle anything unless the task says to.
+- Both themes (`themes/signal-flow/`, `themes/reel-to-reel/`) render every page.
+- Run `npm run test` after each change; update specs rather than skipping them.
 
 ---
 
-## Open questions for Tyler
+## Phase 1 — Remove /music, redirect to tyleringersolldrums.com ✅ DONE
 
-1. **Phase 2.3 draft titles/descriptions and 2.5 copy** — approve or edit before the agent
-   applies them (they're the only invented copy in this plan).
-2. **Masthead tag** — keep "Frontend engineer / Drummer" or move to "Engineering leader /
-   Drummer"? (2.5 assumes the change; easy to skip.) I modified the titles, use new titles
-4. **Public email** — consolidate on one address? yes I commented hello@tyleringersoll.com
-5. **Skitzo Calypso *Ghosts*** — 2013 LP or 2016 *Ghosts: The Beyond*? (blocks 3.4) are they both releases? I recorded it in probably 2013 but the album released 2016 (do some research if you can on dates)
+- [x] **1.1 Data:** Removed the `drums` array from `data/content.js`. Nav item Music →
+  Architecture. Homepage music CTA now reads "View my music career" and points at
+  `https://tyleringersolldrums.com` with `ctaExternal: true`. `home.drums` itself untouched.
+- [x] **1.2 Routes/views:** Deleted `pages/music.vue` and both themes' `views/Music.vue`;
+  removed `MusicView` from both manifests.
+- [x] **1.3 Prerender:** `/music` removed from `nitro.prerender.routes`.
+- [x] **1.4 Redirect:** `netlify.toml` now 301s `/music` and `/music/*` to the drum site with
+  `force = true`. The old status-200 rewrite is gone.
+- [x] **1.5 Lighthouse CI:** `/music/index.html` removed from `.lighthouserc.json`.
+- [x] **1.6 Tests:** Deleted `tests/pages/music.spec.js`; updated `Header.spec.js`,
+  `index.spec.js`, and `tests/themes/reel-to-reel.spec.js`. Added a spec asserting the music
+  CTA renders as an external anchor with `target="_blank"` and `rel="noopener noreferrer"`.
+- [x] **1.7 Sitemap:** `/music` entry removed.
+- [x] **1.8 Sweep:** No `/music` references remain outside the intentional redirect rules.
 
-## Suggested execution order
+**Extra, not in the original plan:** both themes rendered the music CTA as a `NuxtLink`, which
+would have emitted a broken internal link to an external URL. signal-flow now routes it through
+its existing `linkTag`/`linkAttrs` helpers; reel-to-reel uses a plain external anchor matching
+its own callout pattern. The Architecture page also used `/music` as its worked example of the
+trailing-slash rewrite, so that now uses `/resume` and gains a short "Retired Routes" bullet
+describing the redirect.
 
-Phase 1 and 2 together as one PR on this repo (they touch the same files). Phase 3 as one PR
-on the drums repo. Phase 4 items individually, only after Tyler answers the open questions.
+## Phase 2 — SEO & identity fixes ✅ DONE
+
+Live primary domain confirmed as `https://www.tyleringersoll.com` (apex 301s to www).
+
+- [x] **2.1** `sitemap.xml` and `robots.txt` moved off `ingersoll.dev` onto the www host.
+- [x] **2.2** `og:url` and `og:image` moved to the www host; global title/description updated
+  to the new positioning.
+- [x] **2.3** Per-page `useSeoMeta` on all three page wrappers, using Tyler's edited titles.
+  Verified unique `<title>` per route in the built HTML.
+- [x] **2.4** JSON-LD `Person` schema in `app.vue`, rendered on every route.
+- [x] **2.5** Homepage engineering blurb now opens with the leadership role. `content.meta.tag`
+  updated to "Frontend engineering leader / Drummer" — note this key turned out to be dead
+  data, nothing renders it. The reel-to-reel masthead roleline, which IS rendered, was changed
+  from "Frontend Engineer" to "Frontend Engineering Leader" to match. Revert that one line in
+  `themes/reel-to-reel/views/Home.vue` if you'd rather it stayed.
+
+## Phase 3 — Music content ported to the drums site ✅ DONE
+
+Implemented as Tyler's suggested career timeline on the Work page, below Press, collapsible so
+the section stays short. The newest entry is open by default. New events go in
+`data/pages/work.js` under `timelineSection.items`. Ten entries, written to that repo's
+CLAUDE.md voice rules (no em dashes, en-dash year ranges, cities spelled out).
+
+- [x] **3.1 Omnisoul 2024 reunion** — was only an image alt-text on the drums site.
+- [x] **3.2 Curtiss Helldiver (2006)** — was missing entirely, including the Taylor Hawkins and
+  the Coattail Riders opener and the North Star Bar battle of the bands.
+- [x] **3.3 Optional color** — included the Disco Biscuits / Lake Trout festival bills and the
+  WSTW most-requested-song record, both taken from your own copy. **Left out** the Trellist
+  Agency Band, since you flagged it as probably off-brand for a drum site. Say the word and
+  it's a four-line addition.
+- [x] **3.4 Skitzo Calypso discrepancy — RESOLVED.** They are two different releases, and the
+  drums site was right. *Ghosts* (January 2, 2012) is a five-track record that does not contain
+  your song. "A Night in Hell & A Sunday Morning" is track 4 on *Ghosts: The Beyond*
+  (November 1, 2016), mixed and mastered by Tony Correlli at The Deep End Studio. So a 2013
+  tracking date and a 2016 release are consistent. The timeline entry is filed under 2016 to
+  match the discography. Worth knowing: Bandcamp's credits for that record don't list you at
+  all, so if you want the credit visible publicly, Bandcamp is the place to fix it.
+
+## Phase 4 — Remaining enhancements (all blocked on Tyler)
+
+- [x] **4.8 Contact identity cleanup.** Consolidated on `hello@tyleringersoll.com` in all three
+  places it appeared: the footer social icon, `components/Footer.vue`, and the reel-to-reel
+  home connect button. Nothing points at `tyler@ingersoll.dev` any more.
+
+- [ ] **4.3 `/now` page.** Ready to build; I need the content. Roughly five bullets: what
+  you're focused on at work right now, what you're building personally, current music
+  projects, what you're riding/reading/listening to. Include a date; the convention is to
+  stamp "Last updated" on it. Link from the footer, not the main nav.
+- [ ] **4.4 `/uses` page.** Ready to build; I have the software half already (Angular, Vue,
+  Nuxt, TypeScript, Cursor, Copilot, Claude Code, Figma, DataDog, Netlify, GitHub Actions,
+  all from your resume). I need the hardware: machine, monitor, keyboard, mouse, desk, audio
+  interface, headphones. I'd cross-link the drums site's gear page for the studio side rather
+  than duplicating it.
+- [ ] **4.5 Downloadable PDF resume.** Drop a PDF in `public/` and I'll wire the link into the
+  resume page header. One line of work once the file exists.
+- [ ] **4.7 Per-page OG images.** Cosmetic. Needs a design decision from you on what the
+  variants should look like; the current single `og-image.png` is not broken, just generic.
+
+**Deliberately NOT doing:** skill bars, project-thumbnail grids (ingersoll.dev owns that),
+stock imagery, blog scaffolding with placeholder posts, newsletter popups, chatbots.
+
+---
+
+## Suggested next steps
+
+1. Review both branches and merge (`site-refocus` here, `work-timeline` on the drums repo).
+2. After deploy, confirm `https://www.tyleringersoll.com/music` 301s to the drum site.
+3. Resubmit the sitemap in Google Search Console. It has been pointing at `ingersoll.dev`, so
+   this site's pages may never have been properly submitted.
+4. Send me content for `/now` and `/uses` when you want those built.
