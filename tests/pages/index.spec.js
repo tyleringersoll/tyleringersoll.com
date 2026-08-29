@@ -29,7 +29,8 @@ vi.mock("~/data/content.js", () => ({
           heading: "Music",
           body: "I drum.",
           cta: "Music",
-          ctaUrl: "/music",
+          ctaUrl: "https://tyleringersolldrums.com",
+          ctaExternal: true,
           studioLabel: "Studio",
           studio: { text: "Hybrid", ctaText: "Tour", url: "https://example.com/studio" },
         },
@@ -107,6 +108,16 @@ describe("pages/index", () => {
     expect(fourth.find(".hv2-comp-icon").exists()).toBe(true);
     // No SVG rendered for missing icon key
     expect(fourth.find(".hv2-comp-icon svg").exists()).toBe(false);
+  });
+
+  it("renders the music CTA as an external link to the drum site", async () => {
+    const wrapper = await mountSuspended(Index);
+    const cta = wrapper.find(".hv2-music .hv2-btn--primary");
+    expect(cta.element.tagName).toBe("A");
+    expect(cta.attributes("href")).toBe("https://tyleringersolldrums.com");
+    expect(cta.attributes("target")).toBe("_blank");
+    expect(cta.attributes("rel")).toBe("noopener noreferrer");
+    expect(cta.text()).toContain("↗");
   });
 
   it("renders the music section with studio callout (external)", async () => {

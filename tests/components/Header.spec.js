@@ -33,7 +33,7 @@ describe("Header", () => {
         navigation: [
           { name: "Home", url: "/" },
           { name: "Resume", url: "/resume" },
-          { name: "Music", url: "/music" },
+          { name: "Architecture", url: "/architecture" },
         ],
       },
     });

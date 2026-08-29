@@ -107,9 +107,13 @@
             <h2 class="hv2-music__heading">{{ mus.heading }}</h2>
             <p v-html="mus.body" />
             <div class="hv2-btn-wrap">
-              <NuxtLink :to="mus.ctaUrl" class="hv2-btn hv2-btn--primary">{{
-                mus.cta
-              }} <span class="hv2-btn__icon" aria-hidden="true">→</span></NuxtLink>
+              <component
+                :is="linkTag(musCta)"
+                v-bind="linkAttrs(musCta)"
+                class="hv2-btn hv2-btn--primary"
+              >{{ mus.cta }}
+                <span class="hv2-btn__icon" aria-hidden="true">{{ linkIcon(musCta) }}</span>
+              </component>
             </div>
             <component
               v-if="hasCalloutContent(mus.studio)"
@@ -184,6 +188,13 @@ const hero = computed(() => home.value.hero || {});
 const eng = computed(() => home.value.engineering || {});
 const mus = computed(() => home.value.drums || {});
 const bey = computed(() => home.value.beyond || {});
+
+// The music CTA points off-site (tyleringersolldrums.com), so it runs through the
+// same link helpers as the callouts rather than being a hard-coded NuxtLink.
+const musCta = computed(() => ({
+  url: mus.value.ctaUrl,
+  external: mus.value.ctaExternal,
+}));
 
 const activeCard = ref(null);
 
