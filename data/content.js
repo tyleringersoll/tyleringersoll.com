@@ -101,10 +101,10 @@ export default {
     architecture: [
       {
         id: "intro",
-        heading: "Architecture",
+        heading: "Site Architecture",
         headingLevel: 2,
         content: [
-          "This site is a personal website built with Vue and Nuxt. Since most of my professional work lives in private enterprise systems, I use this project to show how I structure a frontend application, manage content, and handle performance and accessibility.",
+          "This site is my personal website built with Vue and Nuxt. Since most of my professional work lives in private enterprise systems, I use this project to show how I structure a frontend application, manage content, and handle performance and accessibility.",
           "• <strong>Nuxt 3 & Static Pre-rendering:</strong> Every page is pre-rendered to static HTML at build time, which keeps the site fast, simple to host, and easy for search engines to crawl.",
           "• <strong>Vue 3 Composition API:</strong> I use the Composition API and script setup to keep component logic easier to follow.",
           "• <strong>Pinia State Management:</strong> Dedicated stores manage static content distribution and global application theme states without prop drilling.",
