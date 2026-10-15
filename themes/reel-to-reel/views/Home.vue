@@ -119,7 +119,7 @@
         <div v-for="(c, i) in bey.cards" :key="c.label" class="bcol">
           <span class="num">{{ pad(i + 1) }} / {{ pad(bey.cards.length) }}</span>
           <span class="ed-ico" v-html="icons[c.icon]" />
-          <h4>{{ c.label }}</h4>
+          <h3>{{ c.label }}</h3>
           <div class="sub">{{ c.sub }}</div>
           <p class="det">{{ c.detail }}</p>
         </div>
@@ -129,7 +129,7 @@
     <!-- ===================== CONNECT ===================== -->
     <section class="connect">
       <div>
-        <h3>{{ connect.heading }}</h3>
+        <h2>{{ connect.heading }}</h2>
         <div class="sub">{{ connect.subtext }}</div>
       </div>
       <a class="cbtn" href="mailto:hello@tyleringersoll.com">

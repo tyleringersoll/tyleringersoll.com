@@ -1,0 +1,75 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Start here/Inside the site" />
+
+<div className="workshop-intro">
+  <p className="workshop-kicker">TYLER INGERSOLL / COMPONENT WORKSHOP</p>
+  <h1>A look under the hood.</h1>
+  <p className="workshop-intro-lede">
+    {
+      "I like building interfaces that are easy to use and easy to keep working on. This is a working collection of the pieces behind my personal site."
+    }
+  </p>
+  <div className="workshop-intro-links">
+    <a href="?path=/story/foundations-design-language--themes">
+      {"Explore the themes →"}
+    </a>
+    <a href="/resume" target="_top">
+      {"Read my resume →"}
+    </a>
+  </div>
+</div>
+
+## A five-minute tour
+
+Start with the parts that interest you. Every example uses the components and styles from the application.
+
+| Stop                                                                 | What to try                                                     | What it shows                                                                                        |
+| -------------------------------------------------------------------- | --------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| [Two themes](?path=/story/foundations-design-language--themes)       | Switch between Signal Flow and Reel-to-Reel.                    | Shared content with different component layouts, plus a fallback for components without an override. |
+| [Live tokens](?path=/story/foundations-design-language--colors)      | Change Appearance in the toolbar.                               | Semantic color roles read from the rendered CSS, including light mode.                               |
+| [Timeline](?path=/story/components-timeline--keyboard-interaction)   | Open the Interactions panel, then try Enter and Space yourself. | A parent-controlled disclosure with keyboard support and inert collapsed content.                    |
+| [Appearance](?path=/story/patterns-appearance--playground)           | Open the drawer or search for a theme.                          | Shared state, focus management, and two ways into the same feature.                                  |
+| [Page compositions](?path=/story/pages-compositions--editorial-home) | Compare the homepage themes at phone and desktop sizes.         | How the smaller pieces hold together with real content.                                              |
+
+## Why this exists
+
+A personal site is small enough to understand end to end. It is also a useful place to make decisions visible: what belongs in shared components, what a theme can replace, and what should stay simple.
+
+I built the site with Vue, Nuxt, Pinia, and Sass. Content lives in one module. Themes share semantic CSS tokens and can replace named components through a registry. Some components are broadly reusable; others are specific to this site. The documentation calls out that distinction.
+
+This workshop is built alongside the portfolio and served at `/storybook/`. It has its own bundle, so opening the homepage does not load Storybook.
+
+## How to use the workshop
+
+- **Canvas** shows a single running example. The toolbar changes appearance and viewport size.
+- **Docs** explains the component contract and includes generated prop controls and source examples.
+- **Controls** lets you change inputs without editing source.
+- **Interactions** shows the assertions in stories that exercise behavior.
+- **Accessibility** runs automated checks on the rendered example. A passing scan is one check, not a complete accessibility review.
+
+The Appearance toolbar sets a story’s starting state. If you change a theme with a component inside the preview, the toolbar label stays at that starting value. Preferences are intentionally kept inside the preview and are not saved to your portfolio settings.
+
+## What this does and does not demonstrate
+
+These are actual application components running with Nuxt context. Content, tokens, and theme manifests are imported from source. The specimen cards and explanatory buttons are workshop fixtures; they are not extra components shipped on the homepage.
+
+Storybook gives a close look at rendering and interaction. The running site remains the place to verify routing, initial page load, metadata, consent behavior, and saved preferences. Those boundaries are documented in [Engineering](?path=/docs/engineering-how-it-fits-together--docs).
+
+<div className="workshop-footer-links">
+  <a href="/" target="_top">
+    {"View the portfolio"}
+  </a>
+  {" · "}
+  <a href="/architecture" target="_top">
+    {"Read the architecture notes"}
+  </a>
+  {" · "}
+  <a
+    href="https://github.com/tyleringersoll/ingersoll.dev"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    {"Browse the source"}
+  </a>
+</div>

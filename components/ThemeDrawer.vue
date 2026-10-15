@@ -25,7 +25,7 @@
       v-bind="ui.drawerOpen ? {} : { inert: '' }"
       @click.self="ui.closeDrawer()"
     >
-      <aside
+      <div
         id="theme-drawer-panel"
         ref="panel"
         class="theme-drawer__panel"
@@ -93,7 +93,7 @@
             Design tokens
             <span class="theme-drawer__label-note">{{ store.activeTheme.label }} · {{ store.mode }}</span>
           </h3>
-          <pre class="tokens" aria-live="polite"><code><span v-for="t in tokens" :key="t.name" class="tokens__row"><span v-if="isColor(t.value)" class="tokens__chip" :style="{ background: t.value }" aria-hidden="true" /><span class="tokens__name">{{ t.name }}</span><span class="tokens__sep">: </span><span class="tokens__val">{{ t.value }}</span><span class="tokens__sep">;</span>
+          <pre class="tokens" tabindex="0" role="region" aria-label="Current design tokens" aria-live="polite"><code><span v-for="t in tokens" :key="t.name" class="tokens__row"><span v-if="isColor(t.value)" class="tokens__chip" :style="{ background: t.value }" aria-hidden="true" /><span class="tokens__name">{{ t.name }}</span><span class="tokens__sep">: </span><span class="tokens__val">{{ t.value }}</span><span class="tokens__sep">;</span>
 </span></code></pre>
         </section>
 
@@ -102,7 +102,7 @@
             Search themes <kbd>{{ modKey }}</kbd><kbd>K</kbd>
           </button>
         </footer>
-      </aside>
+      </div>
     </div>
   </div>
 </template>
@@ -269,9 +269,9 @@ onUnmounted(() => {
   font-size: 0.72rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--color-text-muted);
+  color: var(--color-text-secondary);
 }
-.theme-drawer__label-note { text-transform: none; letter-spacing: 0.02em; color: var(--color-text-muted); }
+.theme-drawer__label-note { text-transform: none; letter-spacing: 0.02em; color: var(--color-text-secondary); }
 
 .theme-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: $spacing-xs; }
 .theme-card {
@@ -297,7 +297,7 @@ onUnmounted(() => {
   }
   &__meta { display: flex; flex-direction: column; min-width: 0; flex: 1; }
   &__name { font-weight: 700; color: var(--color-text-primary); }
-  &__tag { font-size: 0.78rem; color: var(--color-text-muted); }
+  &__tag { font-size: 0.78rem; color: var(--color-text-secondary); }
   &__check { color: var(--color-accent-line); display: flex; flex-shrink: 0; }
 }
 
@@ -332,7 +332,14 @@ onUnmounted(() => {
   font-size: 0.72rem;
   line-height: 1.7;
 
-  code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: inherit;
+    padding: 0;
+    border: 0;
+    background: transparent;
+  }
+  &:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 3px; }
   &__row { display: block; white-space: pre; }
   &__chip {
     display: inline-block;
@@ -344,7 +351,7 @@ onUnmounted(() => {
     border: 1px solid var(--color-border);
   }
   &__name { color: var(--color-accent-line); }
-  &__sep { color: var(--color-text-muted); }
+  &__sep { color: var(--color-text-secondary); }
   &__val { color: var(--color-text-primary); }
 }
 
@@ -355,7 +362,7 @@ onUnmounted(() => {
   gap: 0.4rem;
   background: none;
   border: 0;
-  color: var(--color-text-muted);
+  color: var(--color-text-secondary);
   font: inherit;
   font-size: 0.8rem;
   cursor: pointer;

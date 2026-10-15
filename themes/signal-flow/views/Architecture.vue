@@ -11,6 +11,7 @@
           class="arch-intro__body"
           v-html="para"
         />
+        <p class="arch-intro__body"><a href="/storybook/" target="_blank" rel="noopener noreferrer">Explore the component workshop</a></p>
         <ul v-if="bullets(introSection).length" class="arch-list">
           <li v-for="(item, i) in bullets(introSection)" :key="i" v-html="item" />
         </ul>

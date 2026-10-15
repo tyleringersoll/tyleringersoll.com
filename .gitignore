@@ -368,3 +368,6 @@ coverage/
 
 # Lighthouse CI run artifacts
 .lighthouseci/
+
+# Storybook build output
+.storybook-static/
