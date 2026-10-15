@@ -50,7 +50,7 @@ describe("pages/architecture", () => {
     const wrapper = await mountSuspended(Architecture);
     const intro = wrapper.find(".arch-intro");
     expect(intro.exists()).toBe(true);
-    expect(intro.find("h2").text()).toBe("Introduction");
+    expect(intro.find("h1").text()).toBe("Introduction");
     expect(intro.findAll(".arch-intro__body")).toHaveLength(2);
     const bullets = intro.findAll(".arch-list li");
     expect(bullets).toHaveLength(2);

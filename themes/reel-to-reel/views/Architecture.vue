@@ -13,7 +13,7 @@
         <div class="ph-intro"><p>{{ introOverview }}</p></div>
         <a
           class="link"
-          href="https://github.com/tyleringersoll"
+          href="https://github.com/tyleringersoll/ingersoll.dev"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -31,7 +31,7 @@
     <section v-for="(s, i) in sections" :id="s.id" :key="s.id" class="arch">
       <div class="arch-l">
         <span class="aidx">{{ pad(i + 1) }}</span>
-        <h3 v-html="s.heading" />
+        <h2 v-html="s.heading" />
       </div>
       <div class="arch-r">
         <p
@@ -91,10 +91,10 @@ const archLines = (arr) =>
 const metaRow = [
   { l: "Stack", v: "Nuxt 3 / Vue 3 / Pinia" },
   { l: "Hosting", v: "Netlify Edge CDN" },
-  { l: "Lighthouse", v: "100 / 100 / 100 / 100" },
+  { l: "Checks", v: "Vitest / Lighthouse CI" },
 ];
 const facts = [
-  { v: "100", l: "Lighthouse Performance" },
-  { v: "99%", l: "Unit Test Coverage" },
+  { v: "3", l: "Pre-rendered pages" },
+  { v: "2", l: "Layouts with shared content" },
 ];
 </script>

@@ -56,3 +56,15 @@ npm run test:coverage  # with coverage report
 ## Content
 
 Static site content lives in [data/content.js](data/content.js).
+
+The downloadable resume is generated from that same file. After changing career
+content, regenerate and visually check the PDF before deploying:
+
+```bash
+python3 -m venv /tmp/tyler-resume-venv
+/tmp/tyler-resume-venv/bin/pip install -r scripts/requirements-resume.txt
+/tmp/tyler-resume-venv/bin/python scripts/generate_resume.py
+```
+
+The generator writes `public/Tyler_Ingersoll_Resume.pdf`. It keeps recent roles
+in detail and condenses earlier roles; the web resume retains the full history.

@@ -16,6 +16,11 @@
               class="hv2-hero__body"
               v-html="para"
             />
+            <div v-if="hero.ctaUrl" class="hv2-btn-wrap">
+              <NuxtLink :to="hero.ctaUrl" class="hv2-btn hv2-btn--primary">
+                {{ hero.cta }} <span class="hv2-btn__icon" aria-hidden="true">→</span>
+              </NuxtLink>
+            </div>
           </div>
 
           <!-- Profile portrait -->
@@ -41,6 +46,7 @@
         <div class="hv2-two-col">
           <div class="hv2-engineering__left">
             <p v-html="eng.body" />
+            <p v-if="eng.approach" v-html="eng.approach" />
             <div class="hv2-btn-wrap">
               <NuxtLink :to="eng.ctaUrl" class="hv2-btn hv2-btn--primary">{{
                 eng.cta
@@ -140,22 +146,14 @@
         <h2 class="hv2-section-header">{{ bey.heading }}</h2>
         <div class="hv2-beyond__cards">
           <component
-            v-for="(card, cIdx) in bey.cards"
+            v-for="card in bey.cards"
             :is="linkTag(card)"
             :key="card.label"
             v-bind="linkAttrs(card)"
             class="hv2-beyond-card"
             :class="{
               'hv2-beyond-card--linked': hasLink(card),
-              'hv2-beyond-card--active': activeCard === cIdx,
             }"
-            @mouseenter="activeCard = cIdx"
-            @mouseleave="activeCard = null"
-            @focus="activeCard = cIdx"
-            @blur="activeCard = null"
-            :tabindex="hasLink(card) ? undefined : 0"
-            :role="hasLink(card) ? undefined : 'button'"
-            :aria-expanded="activeCard === cIdx"
           >
             <div class="hv2-beyond-card__front">
               <div
@@ -166,7 +164,7 @@
               <span class="hv2-beyond-card__label">{{ card.label }}</span>
               <span class="hv2-beyond-card__sub">{{ card.sub }}</span>
             </div>
-            <div class="hv2-beyond-card__detail" :aria-hidden="activeCard !== cIdx">
+            <div class="hv2-beyond-card__detail">
               <p>{{ card.detail }}</p>
             </div>
           </component>
@@ -195,8 +193,6 @@ const musCta = computed(() => ({
   url: mus.value.ctaUrl,
   external: mus.value.ctaExternal,
 }));
-
-const activeCard = ref(null);
 
 const hasLink = (item) => !!item?.url;
 
@@ -479,7 +475,7 @@ $hero-copy-gutter: clamp(2.5rem, 5vw, 4rem);
     @include respond-below(sm) {
       grid-column: 1 / -1;
       grid-row: auto;
-      order: 2;
+      order: 1;
       padding-right: 0;
     }
   }
@@ -555,7 +551,7 @@ $hero-copy-gutter: clamp(2.5rem, 5vw, 4rem);
     @include respond-below(sm) {
       grid-column: 1 / -1;
       grid-row: auto;
-      order: 1;
+      order: 2;
       max-width: 100%;
       margin: 1.5rem 0;
     }
@@ -750,7 +746,7 @@ $hero-copy-gutter: clamp(2.5rem, 5vw, 4rem);
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
-    min-height: 500px;
+    min-height: 340px;
     border-radius: 10px;
     overflow: visible;
 
@@ -989,17 +985,7 @@ $hero-copy-gutter: clamp(2.5rem, 5vw, 4rem);
   }
 
   &__detail {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1.25rem;
-    background-color: var(--color-bg-surface);
-    opacity: 0;
-    transform: translateY(6px);
-    transition: opacity 0.25s ease, transform 0.25s ease;
-    pointer-events: none;
+    margin-top: 0.5rem;
 
     p {
       margin: 0;
@@ -1009,20 +995,10 @@ $hero-copy-gutter: clamp(2.5rem, 5vw, 4rem);
     }
   }
 
-  &--active,
-  &:hover {
+  &--linked:hover {
     border-color: var(--color-accent-line);
     transform: translateY(-2px);
 
-    .hv2-beyond-card__front {
-      opacity: 0;
-    }
-
-    .hv2-beyond-card__detail {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
-    }
   }
 
   @media (prefers-reduced-motion: reduce) {
