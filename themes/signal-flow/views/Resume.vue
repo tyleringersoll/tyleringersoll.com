@@ -11,12 +11,10 @@
           <!-- First entry: flex header with download button + intro paragraph -->
           <article v-if="!entry.roles && !entry.skills && idx === 0" class="article resume-intro">
             <div class="resume-header">
-              <h2 class="first-heading" v-html="entry.heading" />
-              <!--
+              <h1 class="first-heading" v-html="entry.heading" />
               <a
                 href="/Tyler_Ingersoll_Resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
+                download
                 class="resume-download"
               >
                 <svg class="resume-download__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -26,7 +24,6 @@
                 </svg>
                 Download PDF
               </a>
-              -->
             </div>
             <p
               v-for="(para, paraIdx) in entry.content"
@@ -145,7 +142,14 @@ const sections = computed(() => {
   return groups;
 });
 
+// Show the latest employer's work immediately, including in pre-rendered HTML.
 const expandedRoles = ref(new Set());
+watch(resumeContent, (entries) => {
+  const firstEmployer = (entries || []).findIndex((entry) => entry.roles?.length);
+  expandedRoles.value = new Set(
+    firstEmployer < 0 ? [] : entries[firstEmployer].roles.map((_, roleIdx) => `${firstEmployer}-${roleIdx}`)
+  );
+}, { immediate: true });
 
 const roleTitle = (subheading) => subheading.split(' · ')[0];
 const roleDates = (subheading) => subheading.split(' · ')[1] ?? '';
@@ -286,7 +290,7 @@ watch(resumeContent, () => handleHash(route.hash));
   gap: $spacing-sm;
   flex-wrap: wrap;
 
-  h2 {
+  h1 {
     margin-bottom: 0;
   }
 }

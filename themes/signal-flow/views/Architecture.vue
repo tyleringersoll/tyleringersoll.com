@@ -4,7 +4,7 @@
     <!-- Page intro -->
     <section v-if="introSection" class="arch-section arch-intro">
       <div class="arch-inner">
-        <h2>{{ introSection.heading }}</h2>
+        <h1>{{ introSection.heading }}</h1>
         <p
           v-for="(para, i) in prose(introSection)"
           :key="i"
@@ -142,7 +142,7 @@ const circ = 2 * Math.PI * 34;
 // ─── Intro section ──────────────────────────────────────────────────────────
 
 .arch-intro {
-  h2 {
+  h1 {
     margin-bottom: 1.25rem;
   }
 }

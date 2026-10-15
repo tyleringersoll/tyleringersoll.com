@@ -12,11 +12,14 @@
           <span class="kick">Portfolio — Est. 2000</span>
           <h1 class="bigname">{{ name.first }}<span class="l2">{{ name.rest }}</span></h1>
           <div class="roleline">
-            <span class="dot" />Frontend Engineering Leader<span>+</span>Drummer<span>·</span>Three decades on both
+            <span class="dot" />Frontend Engineering Leader<span>+</span>Drummer
           </div>
           <div class="introbox">
             <p v-for="(p, i) in hero.paragraphs" :key="i">{{ p }}</p>
           </div>
+          <NuxtLink v-if="hero.ctaUrl" class="link" :to="hero.ctaUrl">
+            {{ hero.cta }} <span class="ed-ico" v-html="icons.arrow" />
+          </NuxtLink>
         </div>
         <div class="heroR">
           <div class="portrait">
@@ -43,6 +46,7 @@
       <div class="eng">
         <div class="body">
           <p>{{ eng.body }}</p>
+          <p v-if="eng.approach">{{ eng.approach }}</p>
           <NuxtLink class="link" :to="eng.ctaUrl || '/resume'">
             {{ eng.cta }} <span class="ed-ico" v-html="icons.arrow" />
           </NuxtLink>
