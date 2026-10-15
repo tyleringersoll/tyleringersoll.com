@@ -22,6 +22,7 @@
           class="cmdk__input"
           placeholder="Search themes…"
           role="combobox"
+          aria-label="Search themes"
           aria-expanded="true"
           aria-controls="cmdk-list"
           :aria-activedescendant="active ? `cmdk-opt-${active.id}` : undefined"
@@ -54,8 +55,8 @@
           </span>
           <span v-if="t.id === store.activeThemeId" class="cmdk__current">current</span>
         </li>
-        <li v-if="!results.length" class="cmdk__empty">No themes match “{{ query }}”.</li>
       </ul>
+      <p v-if="!results.length" class="cmdk__empty" role="status">No themes match “{{ query }}”.</p>
     </div>
   </div>
 </template>
@@ -164,7 +165,7 @@ onUnmounted(() => {
   padding: 0.9rem 1rem;
   border-bottom: 1px solid var(--color-border);
 }
-.cmdk__icon { color: var(--color-text-muted); flex-shrink: 0; }
+.cmdk__icon { color: var(--color-text-secondary); flex-shrink: 0; }
 .cmdk__input {
   flex: 1;
   min-width: 0;
@@ -175,7 +176,7 @@ onUnmounted(() => {
   font: inherit;
   font-size: 1rem;
 
-  &::placeholder { color: var(--color-text-muted); }
+  &::placeholder { color: var(--color-text-secondary); }
 }
 .cmdk__esc {
   font-family: ui-monospace, monospace;
@@ -183,7 +184,7 @@ onUnmounted(() => {
   padding: 0.15rem 0.4rem;
   border: 1px solid var(--color-border);
   border-radius: 4px;
-  color: var(--color-text-muted);
+  color: var(--color-text-secondary);
 }
 
 .cmdk__list {
@@ -209,7 +210,7 @@ onUnmounted(() => {
 }
 .cmdk__opt-meta { display: flex; flex-direction: column; min-width: 0; flex: 1; }
 .cmdk__opt-name { font-weight: 700; color: var(--color-text-primary); }
-.cmdk__opt-tag { font-size: 0.78rem; color: var(--color-text-muted); }
+.cmdk__opt-tag { font-size: 0.78rem; color: var(--color-text-secondary); }
 .cmdk__current {
   font-size: 0.65rem;
   letter-spacing: 0.12em;
@@ -217,7 +218,7 @@ onUnmounted(() => {
   color: var(--color-accent-line);
   flex-shrink: 0;
 }
-.cmdk__empty { padding: 1rem 0.7rem; color: var(--color-text-muted); }
+.cmdk__empty { padding: 1rem 0.7rem; color: var(--color-text-secondary); }
 
 @media (prefers-reduced-motion: reduce) {
   .cmdk { backdrop-filter: none; }

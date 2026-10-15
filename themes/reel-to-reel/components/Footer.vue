@@ -15,8 +15,7 @@
         :target="link.url.startsWith('mailto') ? null : '_blank'"
         :rel="link.url.startsWith('mailto') ? null : 'noopener noreferrer'"
         :aria-label="link.title || link.alt"
-        v-html="link.svg"
-      />
+      ><span aria-hidden="true" v-html="link.svg" /></a>
     </div>
   </footer>
 </template>

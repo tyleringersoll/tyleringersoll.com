@@ -52,5 +52,11 @@ describe("CommandPalette", () => {
     const opts = wrapper.findAll(".cmdk__opt");
     expect(opts.length).toBe(1);
     expect(opts[0].text()).toContain("Reel-to-Reel");
+
+    await wrapper.find(".cmdk__input").setValue("no matching theme");
+    expect(wrapper.find('[role="combobox"]').attributes("aria-label")).toBe("Search themes");
+    expect(wrapper.findAll('[role="option"]')).toHaveLength(0);
+    expect(wrapper.find('[role="status"]').text()).toBe('No themes match “no matching theme”.');
+    expect(wrapper.find('[role="listbox"]').element.children).toHaveLength(0);
   });
 });

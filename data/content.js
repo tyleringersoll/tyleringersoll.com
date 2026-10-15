@@ -14,7 +14,7 @@ export default {
         heading: "Hi, I’m Tyler",
         eyebrow: "Frontend Engineering & Leadership",
         paragraphs: [
-          "I’m an engineering director who still builds. At Best Egg, I lead a customer-facing engineering team and contribute directly to frontend development. I especially enjoy making complicated legacy applications easier to maintain.",
+          "I’m an engineering manager who still builds. Most of that building now happens in Claude Code, Codex, and Cursor: I write the prompts, then review what comes back as closely as I’d review any engineer’s pull request. At Best Egg, I lead a customer-facing engineering team and contribute directly to frontend development.",
           "I’ve also played drums for more than 30 years, from touring and studio work to recording sessions from home."
         ],
         cta: "View my resume",
@@ -24,15 +24,15 @@ export default {
         heading: "Engineering",
         headingLevel: 4,
         body: "My work spans payment flows, design systems, and interfaces for scientific instruments. At Best Egg, I’ve led frontend integrations with MX and Method Financial and helped build quick pay and autopay features. At Vanguard, I worked on a shared component library that teams could use across Vue, Angular, and Adobe Experience Manager.",
-        approach: "I work mainly in Angular, Vue, and TypeScript. I use frameworks where they help and built-in browser features where they’re enough. I like leaving a codebase easier for the next person to work in.",
+        approach: "Most of my code now starts as a prompt, so the real work has moved to review. I read AI-written changes and my team’s pull requests closely, checking edge cases, accessibility, and whether the change fits the patterns already in place. Staying current with these tools is part of the job. I work mainly in Angular, Vue, and TypeScript, and I especially enjoy making complicated legacy applications easier to maintain.",
         cta: "View my full resume",
         ctaUrl: "/resume",
         competenciesLabel: "What I work on",
         competencies: [
+          { icon: "pull-request", label: "AI-Assisted Development", url: "/architecture#ai-workflow" },
           { icon: "layers", label: "Frontend Architecture", url: "/resume#best-egg" },
           { icon: "users", label: "Engineering Leadership", url: "/resume#best-egg" },
           { icon: "grid", label: "Design Systems", url: "/resume#vanguard" },
-          { icon: "zap", label: "Performance Optimization", url: "/architecture#performance" },
           { icon: "plug", label: "Fintech Integration", url: "/resume#best-egg" },
           { icon: "refresh", label: "Frontend Modernization", url: "/resume#best-egg" }
         ],
@@ -103,6 +103,18 @@ export default {
           "This is a small personal site built with Vue and Nuxt. Most of my professional work lives in private enterprise systems, so this project gives me a public place to show how I organize a frontend, handle theming, and test interactions.",
           "I use Nuxt to generate static HTML for the home, resume, and architecture pages. Netlify serves the generated files. Vue handles the interactive parts, including the resume timeline and theme controls.",
           "The theme system is more involved than a portfolio strictly needs. I keep it here as a working example of shared design tokens and interchangeable layouts."
+        ]
+      },
+      {
+        id: "ai-workflow",
+        heading: "Built by Hand, Extended with AI",
+        headingLevel: 2,
+        content: [
+          "I built this site by hand in Vue. The design system, theme tokens, content store, and most of the components were in place before I brought in AI tools. Since then, Codex and Claude Code have written most of the changes from my prompts, and I review every diff before it merges.",
+          "That foundation is what keeps the AI-written code consistent. The agents follow what they find: new work uses the existing tokens, the shared content file, and both themes’ layouts instead of inventing its own. The <a href=\"/storybook/\" target=\"_blank\" rel=\"noopener noreferrer\">component workshop</a> was built this way.",
+          "To me, reviewing AI code means trusting the patterns and verifying the behavior. The unit suite, Lighthouse CI, and accessibility checks on every Storybook story have to pass, and I still check the result in a browser. Two catches from building the workshop, neither visible in the diff:",
+          "• Codex set up browser tests for every story, but the test runner could not load its configuration, so no story had actually been tested. The setup looked finished. Running it showed it had never worked.",
+          "• The new workshop link opened a Page Not Found page in local development, because the workshop is only added to the site during the production build."
         ]
       },
       {
@@ -215,7 +227,7 @@ export default {
           {
             subheading: "Director II, Software Engineering · 2026 - Present",
             content: [
-              "Manage three direct reports—one frontend engineer and two backend engineers—working on customer verification, servicing, and authentication.",
+              "Manage three engineers (one frontend, two backend) working on customer verification, servicing, and authentication, and have also managed co-op students and interns.",
               "• Balance project priorities and workload across the team so engineers can focus on the right work without becoming overwhelmed.",
               "• Work with product, design, and operations to plan delivery and coordinate frontend and backend implementation.",
               "• Support engineer development and participate in cross-functional interview panels.",

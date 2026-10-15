@@ -28,6 +28,17 @@ const themeBootConfig = {
 const themePrePaintScript = `(function(c){try{var d=document.documentElement;var st=document.createElement('style');st.appendChild(document.createTextNode(c.bootStyle));document.head.appendChild(st);function ls(k){try{return localStorage.getItem(k)}catch(e){return null}}function cookie(k){try{var p=k+'=';var parts=document.cookie?document.cookie.split(';'):[];for(var i=0;i<parts.length;i++){var part=parts[i].trim();if(part.indexOf(p)===0){try{return decodeURIComponent(part.slice(p.length))}catch(e){return part.slice(p.length)}}}}catch(e){}return null}function theme(id){id=id&&c.legacyThemeIds[id]||id;return c.themes[id]?id:c.defaultThemeId}function mode(id,m){var t=c.themes[id]||c.themes[c.defaultThemeId];if(t.supportsModes===false)return t.defaultMode||'dark';if(m==='light'||m==='dark')return m;return window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}var id=theme(ls(c.storageTheme)||cookie(c.storageTheme));var rendered=theme(d.getAttribute('data-theme'));var m=mode(id,ls(c.storageMode)||cookie(c.storageMode)||ls(c.legacyMode)||cookie(c.legacyMode));if(id!==rendered)d.classList.add('theme-boot-cloaked');d.setAttribute('data-theme',id);d.setAttribute('data-mode',m)}catch(e){}})(${JSON.stringify(themeBootConfig)})`;
 
 export default defineNuxtConfig({
+  // Storybook loads the real Nuxt pipeline, but owns preview state and its head.
+  ...(process.env.STORYBOOK === "true" ? {
+    hooks: {
+      "app:resolve": (app) => {
+        app.plugins = app.plugins.filter((plugin) =>
+          !/\/plugins\/(theme\.(client|server)|analytics\.client)\./.test(plugin.src)
+        );
+      },
+    },
+  } : {}),
+  debug: false,
   compatibilityDate: "2024-11-01",
   ssr: true,
 
@@ -133,6 +144,16 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       routes: ["/", "/resume", "/architecture"],
+      // Built separately after Nuxt; do not crawl it as a portfolio route.
+      ignore: ["/storybook", "/storybook/"],
+    },
+  },
+
+  // `nuxt dev` would otherwise send /storybook/ to the catch-all 404 page.
+  // Serve the last `npm run build-storybook` output there instead.
+  $development: {
+    nitro: {
+      publicAssets: [{ dir: "../.storybook-static", baseURL: "/storybook", maxAge: 0 }],
     },
   },
 });

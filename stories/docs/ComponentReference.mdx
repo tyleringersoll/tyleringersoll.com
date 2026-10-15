@@ -1,0 +1,46 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Engineering/Component reference" />
+
+# Component reference
+
+This inventory covers the components in `components/`. The story names describe their purpose; the filenames below map them back to the application.
+
+## Content and structure
+
+| Component          | Inputs and output                                                                               | Contract                                                                                                                                                                                                       |
+| ------------------ | ----------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Article.vue`      | `article` object, optional `index`, default slot                                                | Renders authored HTML, optional heading/subheading, and CTA. Internal CTAs use NuxtLink; external CTAs open a new tab with a safe rel attribute. The caller chooses heading level and ensures HTML is trusted. |
+| `Timeline.vue`     | Default slot                                                                                    | Supplies the date/axis/content grid variables. Wrap TimelineItem children in this component.                                                                                                                   |
+| `TimelineItem.vue` | `dates`, `title`, `titleTag`, `titleId`, `expandable`, `expanded`; emits `toggle`; default slot | Parent owns expansion. The slot remains mounted while collapsed but is inert and hidden. Stable `titleId` values support links into resume content.                                                            |
+| `Themed.vue`       | Required `name`; forwarded attributes and default slot                                          | Resolves against the active theme manifest. Falls back to Signal Flow, and keys the rendered component by theme to force a remount. A remount discards local component state.                                  |
+
+[Article examples](?path=/docs/components-article--docs) · [Timeline examples](?path=/docs/components-timeline--docs) · [Theme compositions](?path=/story/pages-compositions--home)
+
+## Navigation and site chrome
+
+| Component        | Inputs and dependencies                                                       | Contract                                                                                                                                                                                                                    |
+| ---------------- | ----------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Header.vue`     | `content` metadata, `navigation` items; theme store                           | Signal Flow header with desktop links, avatar, mobile menu, and supported mode control. Reel-to-Reel supplies its own header through the registry.                                                                          |
+| `Footer.vue`     | `content` footer model; content store                                         | Social links and legal copy come from props; connection heading, description, and CTA come from the home content model. Replaces the year placeholder at render time. This is a site composition, not a generic footer API. |
+| `MobileNav.vue`  | `content` array of name/url pairs; route and theme store; emits `nav:clicked` | Owns its open state. Closes after link selection or route change, on Escape, and when the viewport grows to desktop size. Restores trigger focus on dismissal.                                                              |
+| `Navigation.vue` | `content` array; theme toggle                                                 | Older standalone navigation retained in source. The current layout uses Header.                                                                                                                                             |
+
+[Site chrome examples](?path=/docs/components-site-chrome--docs) · [Mobile navigation](?path=/docs/patterns-mobile-navigation--docs)
+
+## Appearance controls
+
+| Component            | Inputs and dependencies                                             | Contract                                                                                                                                                   |
+| -------------------- | ------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ThemeToggle.vue`    | Theme store; no props                                               | Toggles light/dark mode. Callers hide it for a theme that does not support both. Accessible name describes the next action.                                |
+| `ThemeSwatch.vue`    | Required `swatch` with primary, secondary, background colors        | Decorative only, hidden from assistive technology. Provide a visible theme name alongside it. Width/height can be adjusted with its CSS custom properties. |
+| `ThemeDrawer.vue`    | Theme registry, theme/UI stores, token reader, focus trap; no props | Floating trigger plus modal drawer. Shows supported modes and current token values. Shared UI state closes the palette when the drawer opens.              |
+| `CommandPalette.vue` | Theme registry, theme/UI stores, focus trap; no props               | Filters labels and taglines. Arrow keys wrap through results; Enter applies the active theme. An unmatched query announces an empty state.                 |
+
+[Mode toggle](?path=/docs/components-theme-toggle--docs) · [Swatches](?path=/docs/components-theme-swatch--docs) · [Appearance patterns](?path=/docs/patterns-appearance--docs)
+
+## What belongs in a new shared component?
+
+Extract a component when it owns a useful behavior or a repeated content contract. A single page’s section does not need a public API just because it has a border and a heading. Theme-specific page layouts stay in their theme folders until there is a clear shared responsibility to extract.
+
+A reusable component should make its dependencies visible. If it reads a store or assumes a parent grid, say so in its docs. Defaults should make the common case simple, while heading levels, controlled state, and slots leave the surrounding page in charge.

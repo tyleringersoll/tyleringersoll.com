@@ -1,0 +1,63 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Engineering/How it fits together" />
+
+# How it fits together
+
+The portfolio and workshop use the same source. Storybook supplies the surrounding development UI and a small amount of preview setup.
+
+```text
+data/content.js ──→ content store ──→ theme views
+                                         ↑
+themes/meta.ts ──→ theme store ──→ Themed.vue
+                                         ↓
+                                themes/registry.ts
+                                  ↙            ↘
+                            Signal Flow     Reel-to-Reel
+                                  ↘            ↙
+                             semantic CSS tokens
+```
+
+## The component boundary
+
+| Layer                | Source                                         | Responsibility                                                               |
+| -------------------- | ---------------------------------------------- | ---------------------------------------------------------------------------- |
+| Content              | `data/content.js`, `stores/content.js`         | One authored content model for both layouts.                                 |
+| Shared UI            | `components/`                                  | Articles, timeline rows, mobile navigation, and appearance controls.         |
+| Theme selection      | `themes/meta.ts`, `stores/theme.js`            | Valid theme IDs, supported modes, transitions, and persistence.              |
+| Component resolution | `themes/registry.ts`, `components/Themed.vue`  | Resolve a named component; fall back to Signal Flow when no override exists. |
+| Theme styles         | `themes/*/tokens.scss`, `themes/*/shared.scss` | Semantic colors, font choices, and layout-specific treatments.               |
+| Page views           | `themes/*/views/`                              | Compose the content into each theme’s layout.                                |
+| Workshop             | `.storybook/`, `stories/`                      | Document and exercise those pieces without duplicating them.                 |
+
+## Why a registry?
+
+A color switch alone would not cover the editorial layout. The registry lets a theme replace the header, footer, or page view while keeping route wrappers and content stable. `Themed` forwards attributes and slots and remounts when the active theme changes.
+
+The tradeoff is explicit: a second page layout means a second implementation to maintain. Both themes are imported eagerly. That makes switching synchronous, but it also puts both implementations in the application bundle. With more themes, I would revisit that choice and measure the cost.
+
+## What the preview changes
+
+The Nuxt Storybook framework supplies Nuxt context, component auto-imports, the router adapter, Pinia, and the application’s global styles. This avoids maintaining a second collection of component mocks.
+
+The preview deliberately excludes the production analytics and theme bootstrap plugins. It uses the real theme store, but replaces its persistence action with a no-op inside the preview app. The toolbar sets the initial theme; UI state resets between stories. A story can therefore exercise theme actions without writing the portfolio’s cookies or saved preferences.
+
+Docs use separate story iframes. Each example gets its own root theme attributes and modal surface, which matters when a component reads tokens from `html` or locks body scrolling.
+
+The router adapter provides component context. Storybook is not a substitute for end-to-end tests of the portfolio’s URLs, active-route classes, or browser history.
+
+## Static delivery
+
+`npm run generate` builds the portfolio, builds Storybook, and places the result in `.output/public/storybook`. Netlify publishes the existing `dist` output. Storybook’s own assets use relative paths so the build works under that directory.
+
+Nuxt Fonts normally emits font files during the site build. Development also generates those assets before startup and serves them through Storybook’s static middleware, avoiding an H3-event mismatch in the Nuxt Fonts preview middleware. The workshop build copies those generated files into its own `_fonts` directory and checks that each referenced font exists and is nonempty. There are no separate font declarations to keep in sync.
+
+The architecture page links to the workshop with a regular anchor. That lets the browser load Storybook’s separate application. No Storybook code is imported by a production page.
+
+## Deliberate limits
+
+- This is the component set for one site, not a published design-system package with a versioned API.
+- Some older Sass colors remain alongside semantic tokens. The token explorer documents the current contract; it does not imply every component has finished that migration.
+- Article content uses authored HTML. It must not receive untrusted HTML without sanitization.
+- Reel-to-Reel is dark-only. There is no artificial light-mode example for a mode the theme does not support.
+- A static example cannot demonstrate the site’s server rendering and hydration sequence. Those checks belong to the generated portfolio.

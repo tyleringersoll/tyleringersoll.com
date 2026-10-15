@@ -11,6 +11,11 @@
         <span class="kick">How this site was built</span>
         <h1 class="ph-title">Archi<span class="o">tecture</span></h1>
         <div class="ph-intro"><p>{{ introOverview }}</p></div>
+        <p>
+          <a class="link" href="/storybook/" target="_blank" rel="noopener noreferrer">
+            Explore the component workshop <span class="ed-ico" v-html="icons.arrow" />
+          </a>
+        </p>
         <a
           class="link"
           href="https://github.com/tyleringersoll/ingersoll.dev"

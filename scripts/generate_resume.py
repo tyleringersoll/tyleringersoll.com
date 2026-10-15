@@ -65,7 +65,7 @@ def employer(entry, detailed):
                 add(paragraph)
 
 add(data["meta"]["name"], "name")
-add("Engineering Director | Frontend Architecture", "title")
+add("Engineering Manager | Frontend Architecture", "title")
 add('<a href="mailto:hello@tyleringersoll.com">hello@tyleringersoll.com</a>  |  '
     '<a href="https://www.tyleringersoll.com">tyleringersoll.com</a><br/>'
     '<a href="https://www.linkedin.com/in/tyleringersoll">linkedin.com/in/tyleringersoll</a>  |  '

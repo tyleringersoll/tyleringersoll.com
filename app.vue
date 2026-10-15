@@ -14,7 +14,7 @@ const personSchema = {
   "@type": "Person",
   name: "Tyler Ingersoll",
   url: SITE_URL,
-  jobTitle: "Director of Software Engineering",
+  jobTitle: "Engineering Manager",
   knowsAbout: [
     "Frontend Architecture",
     "Design Systems",

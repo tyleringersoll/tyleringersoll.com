@@ -1,0 +1,63 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Engineering/Working on the workshop" />
+
+# Working on the workshop
+
+## Run it
+
+Use the Node version in `.nvmrc`, then install the lockfile dependencies.
+
+```sh
+npm ci
+npm run storybook
+```
+
+The command first generates the site’s font and image assets, then starts Storybook on port 6006. This keeps the authoring preview on the same self-hosted assets as the published workshop. The normal Nuxt development server is still `npm run dev`. Both use the same source; run them separately because they share Nuxt’s generated build directory.
+
+```sh
+npm run generate        # Portfolio and workshop, ready for Netlify
+npm run build-storybook # Builds site assets, then the standalone workshop
+npm run test:coverage   # Existing component and store suite
+```
+
+The standalone output is `.storybook-static`. The integrated build also copies it into `.output/public/storybook`. Generated output is ignored by Git.
+
+## Add a component story
+
+Create `stories/components/Name.stories.ts`. Import the production component directly. Describe where it is used, its inputs, and any dependency on a store, router, or parent layout.
+
+```ts
+import Component from "../../components/Component.vue";
+
+export default {
+  title: "Components/Component",
+  component: Component,
+  tags: ["autodocs"],
+  parameters: {
+    docs: { description: { component: "What it does and when to use it." } },
+  },
+};
+
+export const Default = { args: {/* real inputs */} };
+```
+
+Start with the normal state. Add meaningful variations: long content, an empty result, a disabled or collapsed state, and any interactive behavior. Avoid a story for every prop combination just to make the sidebar longer.
+
+Use a play function for a behavior that should remain true. Prefer roles and accessible names over CSS selectors. Put supporting fixture components under `stories/`; do not move a fixture into application code merely to document it.
+
+## Theme changes
+
+Color values belong in the theme token files. Metadata, labels, and mode support belong in `themes/meta.ts`. Component overrides belong in the manifest. The foundations pages import metadata and read computed tokens, so ordinary value changes appear automatically.
+
+A new semantic token should also be added to the explorer’s curated list with a clear role. A new theme needs a toolbar option, a representative page story, and a review of fallback components. Automation can expose the values; it cannot decide whether the explanation is still correct.
+
+## Before sharing a change
+
+- Build the integrated output and open `/storybook/`, including a direct story URL.
+- Check the changed component at phone and desktop widths and in each supported appearance.
+- Run its interaction stories and inspect the Accessibility panel.
+- Run the existing test suite when production behavior changes.
+- Check that docs describe what the code does today and that source links still point to the right place.
+
+The workshop is public. Examples use the site’s own content and synthetic explanatory text. Keep employer-internal data and implementation details out of fixtures.
