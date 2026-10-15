@@ -1,5 +1,6 @@
 import remarkGfm from "remark-gfm";
 import type { StorybookConfig } from "@storybook-vue/nuxt";
+import { sitePublicDir, siteAssetDirs } from "../scripts/site-output.mjs";
 
 const config: StorybookConfig = {
   stories: ["../stories/**/*.mdx", "../stories/**/*.stories.ts"],
@@ -17,8 +18,7 @@ const config: StorybookConfig = {
   staticDirs: [
     "../public",
     // Serve actual generated font binaries before Nuxt Fonts' dev middleware.
-    { from: "../.output/public/_fonts", to: "/_fonts" },
-    { from: "../.output/public/_ipx", to: "/_ipx" },
+    ...siteAssetDirs().map((dir) => ({ from: `../${sitePublicDir}/${dir}`, to: `/${dir}` })),
   ],
   core: { disableTelemetry: true },
 };
