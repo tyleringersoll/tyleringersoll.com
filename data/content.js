@@ -47,7 +47,7 @@ export default {
       drums: {
         heading: "Music",
         headingLevel: 4,
-        body: "I’ve played in independent bands, toured nationally, and recorded in studios around the country. These days, I record remote sessions from my home studio. My drum site has recent playing, credits, and details about the setup.",
+        body: "I’ve played in independent bands, toured nationally, and recorded in studios around the country. These days, I record remote sessions from my home studio, where I’ve also been writing, producing, and mixing my own music. My drum site has recent playing, credits, and details about the setup.",
         cta: "Visit my drum site",
         ctaUrl: "https://tyleringersolldrums.com",
         ctaExternal: true
