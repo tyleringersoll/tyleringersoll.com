@@ -12,30 +12,33 @@ export default {
     home: {
       hero: {
         heading: "Hi, I’m Tyler",
-        eyebrow: "Frontend Engineering",
+        eyebrow: "Frontend Engineering & Leadership",
         paragraphs: [
-          "I design and build enterprise-scale frontend applications with a focus on web performance, clean architecture, and maintainability.",
-          "Alongside my engineering work, I have spent more than three decades as a drummer, with experience across national touring, label-supported studio tracking, sync placements, event work, and modern session work."
-        ]
+          "I’m an engineering manager who still builds. Most of that building now happens in Claude Code, Codex, and Cursor: I write the prompts, then review what comes back as closely as I’d review any engineer’s pull request. At Best Egg, I lead a customer-facing engineering team and contribute directly to frontend development.",
+          "I’ve also played drums for more than 30 years, from touring and studio work to recording sessions from home."
+        ],
+        cta: "View my resume",
+        ctaUrl: "/resume"
       },
       engineering: {
         heading: "Engineering",
         headingLevel: 4,
-        body: "I’m an engineering director who still builds: I lead customer-facing engineering teams and ship production code in Vue, Angular, and TypeScript. My approach is to adopt frameworks when they provide a clear architectural advantage, and lean on platform-native browser capabilities when a lighter solution is better. My work has included public-facing marketing sites, payment flows, fintech integrations, design systems, and specialized interfaces for scientific hardware. One of my favorite parts of the job is reducing technical debt and moving legacy frontend systems toward maintainable, modern architectures.",
+        body: "My work spans payment flows, design systems, and interfaces for scientific instruments. At Best Egg, I’ve led frontend integrations with MX and Method Financial and helped build quick pay and autopay features. At Vanguard, I worked on a shared component library that teams could use across Vue, Angular, and Adobe Experience Manager.",
+        approach: "Most of my code now starts as a prompt, so the real work has moved to review. I read AI-written changes and my team’s pull requests closely, checking edge cases, accessibility, and whether the change fits the patterns already in place. Staying current with these tools is part of the job. I work mainly in Angular, Vue, and TypeScript, and I especially enjoy making complicated legacy applications easier to maintain.",
         cta: "View my full resume",
         ctaUrl: "/resume",
-        competenciesLabel: "Competencies",
+        competenciesLabel: "What I work on",
         competencies: [
+          { icon: "pull-request", label: "AI-Assisted Development", url: "/architecture#ai-workflow" },
           { icon: "layers", label: "Frontend Architecture", url: "/resume#best-egg" },
           { icon: "users", label: "Engineering Leadership", url: "/resume#best-egg" },
           { icon: "grid", label: "Design Systems", url: "/resume#vanguard" },
-          { icon: "zap", label: "Performance Optimization", url: "/architecture#performance" },
           { icon: "plug", label: "Fintech Integration", url: "/resume#best-egg" },
           { icon: "refresh", label: "Frontend Modernization", url: "/resume#best-egg" }
         ],
         projectsLabel: "Current Projects",
         projects: {
-          text: "For performance-focused personal builds, browser-native experiments, and live project demos, visit my projects site.",
+          text: "I build things for my own use, too: a daily timer and task tracker, a word puzzle, and a food-rating app. You can try them on my projects site.",
           url: "https://ingersoll.dev",
           external: true,
           ctaText: "Visit ingersoll.dev"
@@ -44,17 +47,10 @@ export default {
       drums: {
         heading: "Music",
         headingLevel: 4,
-        body: "I have played drums for more than three decades, from regional independent bands to national touring, label-supported studio work, sync placements, event work, and remote session recording. My current drum work, videos, studio setup, and selected credits live on my dedicated drum site.",
-        cta: "View my music career",
+        body: "I’ve played in independent bands, toured nationally, and recorded in studios around the country. These days, I record remote sessions from my home studio, where I’ve also been writing, producing, and mixing my own music. My drum site has recent playing, credits, and details about the setup.",
+        cta: "Visit my drum site",
         ctaUrl: "https://tyleringersolldrums.com",
-        ctaExternal: true,
-        studioLabel: "Current Projects",
-        studio: {
-          text: "For drum videos, remote session details, setup specs, and selected credits, visit my dedicated drum tracking site.",
-          url: "https://tyleringersolldrums.com",
-          external: true,
-          ctaText: "Visit tyleringersolldrums.com"
-        }
+        ctaExternal: true
       },
       beyond: {
         heading: "Beyond work",
@@ -71,7 +67,7 @@ export default {
           {
             icon: "family-play",
             label: "Family",
-            sub: "Family",
+            sub: "Sports, rides & games",
             detail: "Most of my free time is spent with my family, balancing youth sports, outdoor bike rides, and gaming together.",
             url: null
           },
@@ -104,13 +100,21 @@ export default {
         heading: "Site Architecture",
         headingLevel: 2,
         content: [
-          "This site is my personal website built with Vue and Nuxt. Since most of my professional work lives in private enterprise systems, I use this project to show how I structure a frontend application, manage content, and handle performance and accessibility.",
-          "• <strong>Nuxt 3 & Static Pre-rendering:</strong> Every page is pre-rendered to static HTML at build time, which keeps the site fast, simple to host, and easy for search engines to crawl.",
-          "• <strong>Vue 3 Composition API:</strong> I use the Composition API and script setup to keep component logic easier to follow.",
-          "• <strong>Pinia State Management:</strong> Dedicated stores manage static content distribution and global application theme states without prop drilling.",
-          "• <strong>SCSS & CSS Custom Properties:</strong> The design system uses scoped SCSS modules and CSS custom properties to support theming and responsive layout.",
-          "• <strong>SCSS Auto-injection via Vite:</strong> Variables and mixins are injected into each component’s style block through Vite config, which keeps shared styling tools available without repetitive imports.",
-          "• <strong>Page Transitions:</strong> A simple global fade transition is configured in <code>nuxt.config.ts</code>, with a dedicated partial handling the route transition classes."
+          "This is a small personal site built with Vue and Nuxt. Most of my professional work lives in private enterprise systems, so this project gives me a public place to show how I organize a frontend, handle theming, and test interactions.",
+          "I use Nuxt to generate static HTML for the home, resume, and architecture pages. Netlify serves the generated files. Vue handles the interactive parts, including the resume timeline and theme controls.",
+          "The theme system is more involved than a portfolio strictly needs. I keep it here as a working example of shared design tokens and interchangeable layouts."
+        ]
+      },
+      {
+        id: "ai-workflow",
+        heading: "Built by Hand, Extended with AI",
+        headingLevel: 2,
+        content: [
+          "I built this site by hand in Vue. The design system, theme tokens, content store, and most of the components were in place before I brought in AI tools. Since then, Codex and Claude Code have written most of the changes from my prompts, and I review every diff before it merges.",
+          "That foundation is what keeps the AI-written code consistent. The agents follow what they find: new work uses the existing tokens, the shared content file, and both themes’ layouts instead of inventing its own. The <a href=\"/storybook/\" target=\"_blank\" rel=\"noopener noreferrer\">component workshop</a> was built this way.",
+          "To me, reviewing AI code means trusting the patterns and verifying the behavior. The unit suite, Lighthouse CI, and accessibility checks on every Storybook story have to pass, and I still check the result in a browser. Two catches from building the workshop, neither visible in the diff:",
+          "• Codex set up browser tests for every story, but the test runner could not load its configuration, so no story had actually been tested. The setup looked finished. Running it showed it had never worked.",
+          "• The new workshop link opened a Page Not Found page in local development, because the workshop is only added to the site during the production build."
         ]
       },
       {
@@ -118,115 +122,86 @@ export default {
         heading: "Performance & Lighthouse",
         headingLevel: 2,
         content: [
-          "This site is pre-rendered, keeps JavaScript light, and avoids extra dependencies where native browser behavior is sufficient. Lighthouse CI runs against every push and pull request, gating deploys behind 100 Performance, 95+ Accessibility, 90+ Best Practices, and 95+ SEO across every prerendered route."
-        ],
-        scores: [
-          { label: "Performance", value: 100 },
-          { label: "Accessibility", value: 100 },
-          { label: "Best Practices", value: 100 },
-          { label: "SEO", value: 100 }
-        ],
-        optimizations: [
-          "• <strong>Pre-rendered HTML:</strong> Nuxt generates fully-formed HTML at build time, so browsers render content immediately without waiting for client-side JavaScript.",
-          "• <strong>Optimized Image Pipeline:</strong> <code>@nuxt/image</code> generates responsive WebP variants at build time. Each <code>NuxtImg</code> ships a <code>srcset</code> so the browser pulls the smallest variant for the actual display size, and the hero image uses <code>fetchpriority=\"high\"</code> to win the LCP race.",
-          "• <strong>Self-Hosted Fonts:</strong> <code>@nuxt/fonts</code> downloads Roboto Condensed at build time, inlines the <code>@font-face</code> declarations into the HTML, and generates size-adjusted fallback fonts so any pre-swap render does not shift the layout. No render-blocking request to Google Fonts.",
-          "• <strong>Deferred Analytics:</strong> Google Analytics loads through a client plugin scheduled via <code>requestIdleCallback</code>, so the gtag script never blocks the initial paint.",
-          "• <strong>Inline SVG Icons:</strong> Every icon on the site (engineering competencies, beyond-work cards, social links, theme toggle, and architecture gauges) is inlined directly into the component. Zero icon-font or icon-library requests.",
-          "• <strong>Minimal JavaScript:</strong> No heavy UI libraries or animation frameworks. The bundle stays light by leaning on native browser APIs and Vite's default tree-shaking."
+          "The pages are pre-rendered so their content is available before client-side JavaScript runs. The studio image uses responsive variants from @nuxt/image, fonts are self-hosted, and icons are inline SVGs.",
+          "Lighthouse CI audits the three pages with the desktop preset, using three runs per page. The configured minimum scores are 90 Performance, 95 Accessibility, 90 Best Practices, and 95 SEO. These are CI thresholds, not measured scores for every visitor or device.",
+          "The <a href=\"https://github.com/tyleringersoll/ingersoll.dev/blob/main/.lighthouserc.json\" target=\"_blank\" rel=\"noopener noreferrer\">Lighthouse configuration</a> defines those checks. Reports are uploaded as artifacts on the <a href=\"https://github.com/tyleringersoll/ingersoll.dev/actions/workflows/lighthouse.yml\" target=\"_blank\" rel=\"noopener noreferrer\">Lighthouse workflow runs</a>.",
+          "Google Analytics is scheduled with requestIdleCallback, with a timeout fallback. This defers the script request; it does not make analytics free of runtime cost."
         ]
       },
       {
         id: "content-architecture",
-        heading: "Content-Driven Architecture",
+        heading: "Content & Components",
         headingLevel: 2,
         content: [
-          "All page content lives in a single <code>data/content.js</code> file as a plain JavaScript export. A Pinia store wraps it so components can access the content they need without passing data through multiple layers.",
-          "It is a simple content-driven setup that keeps structure and presentation separate. If I ever wanted to swap this for a CMS or an external API, that change would mostly happen in the store layer rather than across the component tree.",
-          "The pre-render config in <code>nuxt.config.ts</code> only includes routes that exist in the data layer, which keeps the build output predictable."
+          "The main copy lives in data/content.js. A Pinia store makes it available to both themes, so a resume edit does not have to be repeated in each layout. Theme-specific labels live with their components.",
+          "For a site this size, a JavaScript content file is enough. If editing needs grow, the store gives me a place to introduce a CMS without changing every view."
         ]
       },
       {
         id: "theming",
-        heading: "Multi-Theme Design System",
+        heading: "Two Themes, Shared Content",
         headingLevel: 2,
         content: [
-          "Theming is treated as a first-class architecture concern rather than a single light/dark switch. The site ships multiple complete themes that swap live, changing colors, type, and in some cases entire layouts. The floating <strong>Customize</strong> panel and a command palette (<code>⌘K</code> on Mac, <code>Ctrl+K</code> elsewhere) both drive the same engine, and you are looking at it right now.",
-          "• <strong>Token-Driven by Default:</strong> No component hard-codes a color. Every surface reads CSS custom properties like <code>--color-bg-primary</code> and <code>--color-accent-line</code>. Switching a theme rewrites those token values on the root <code>&lt;html&gt;</code> element through a single <code>data-theme</code> attribute, so the whole site re-skins in one paint with zero per-component work.",
-          "• <strong>Two Orthogonal Axes:</strong> <code>data-theme</code> selects the skin and <code>data-mode</code> selects light or dark. Each theme declares whether light/dark is even meaningful for it, so the mode toggle only appears when a theme actually supports one.",
-          "• <strong>Themes Can Swap Components, Not Just Colors:</strong> A theme registry maps each theme to a set of Vue components, and a <code>&lt;Themed&gt;</code> resolver renders the active theme's version while falling back to the default for anything a theme leaves untouched. The “Reel-to-Reel” theme ships its own masthead, footer, and page layouts. That is a different information design, not a re-paint.",
-          "• <strong>Hydration-Safe Swapping:</strong> Because every page is prerendered with the default theme, applying a saved theme too early would mismatch the static HTML and blank the view. Instead the saved theme is applied once hydration settles, on Nuxt’s <code>app:suspense:resolve</code> hook, and the component tree swaps in a single reactive update behind a brief cross-fade, the same transition used between routes.",
-          "• <strong>The Engine on Display:</strong> The Customize drawer reads the live computed token values straight off the DOM and renders them as a read-only code block, so the design variables visibly change as you switch themes. That command palette makes the same switch keyboard-first, the way a real design tool would."
+          "The Customize panel and keyboard command palette both use the same theme store. CSS custom properties provide shared colors, spacing, and typography, while a component registry lets each theme supply its own layouts.",
+          "I keep theme and mode separate: data-theme selects the design and data-mode selects light or dark where the theme supports it. Components fall back to the default theme when an override is absent.",
+          "The tradeoff is extra code: both themes are imported eagerly so switching layouts is synchronous. For a larger collection of themes, I would revisit that loading strategy."
         ]
       },
       {
         id: "anti-fouc",
-        heading: "Anti-FOUC Theme Initialization",
+        heading: "Remembering a Theme",
         headingLevel: 2,
         content: [
-          "Theme persistence is mirrored to both <code>localStorage</code> and cookies. Dynamic SSR can read the cookie and render the selected theme immediately; static prerendered pages still have a deterministic default HTML payload.",
-          "For static pages, a tiny inline script in <code>nuxt.config.ts</code> runs before first paint, reads the saved preference, sets <code>data-theme</code> and <code>data-mode</code>, and only adds a short boot cloak when the saved theme's component tree differs from the prerendered tree. After hydration, the client plugin applies the saved theme and removes that cloak on the next Vue patch tick, so returning visitors never see a flash of the wrong layout."
+          "The selected theme is saved in localStorage and a cookie. An inline script applies the saved color attributes before paint. If the saved layout differs from the pre-rendered layout, it briefly hides the app while the client plugin applies that layout after hydration.",
+          "This avoids swapping component trees during hydration. The theme plugin also handles cleanup of the temporary cloak."
         ]
       },
-
       {
         id: "deep-linking",
-        heading: "Hash-Based Deep Linking",
+        heading: "Links into the Resume",
         headingLevel: 2,
         content: [
-          "The resume timeline supports URL hash navigation, so a link like <code>/resume#best-egg</code> opens the relevant employer section and scrolls directly to it.",
-          "The implementation watches <code>route.hash</code>, matches it against a slugified employer heading, and adds the relevant entries to an <code>expandedRoles</code> Set. A custom <code>useScrollToHash</code> composable waits for the DOM to finish updating before calculating scroll position, and it accounts for the sticky header so section headings are not hidden."
+          "Links such as /resume#best-egg expand the matching employer’s roles and scroll to that section. The scroll helper waits for the DOM update and accounts for the sticky header.",
+          "The latest employer’s roles are open on an ordinary visit, so recent work is visible without a click. Older roles can be expanded individually."
         ]
       },
       {
         id: "cicd-delivery",
-        heading: "CI/CD & Edge Delivery",
+        heading: "Checks & Deployment",
         headingLevel: 2,
         content: [
-          "Every push and pull request runs through GitHub Actions before anything reaches production. Two workflows guard the main branch:",
-          "• <strong>Unit Tests:</strong> Vitest runs the full suite on every commit, then uploads coverage to Codecov so the README badge reflects current state.",
-          "• <strong>Lighthouse CI:</strong> The workflow builds the site, serves it on the runner, and audits each route. A build fails if any page drops below 100 Performance, 95 Accessibility, 90 Best Practices, or 95 SEO. Regressions never reach <code>main</code>.",
-          "Production deploys are handled by Netlify. A push to <code>main</code> triggers a fresh static generate that gets served from Netlify’s global CDN."
+          "GitHub Actions runs the unit suite and Lighthouse checks on pull requests and pushes to main. The test workflow uploads coverage to Codecov; Lighthouse uploads its reports as workflow artifacts.",
+          "Netlify runs the static generation command when main changes. The workflow definitions live in .github/workflows, and netlify.toml defines the production build and redirects."
         ]
       },
       {
         id: "url-handling",
-        heading: "URL Handling & SEO",
+        heading: "URLs & Metadata",
         headingLevel: 2,
         content: [
-          "URLs that lead to the same page should resolve in one hop, not two. Two pieces work together to make that true.",
-          "• <strong>Trailing-Slash Rewrites:</strong> Netlify’s default behavior 301-redirects <code>/resume</code> to <code>/resume/</code> when it finds a subdirectory. The <code>netlify.toml</code> rewrites use status 200 instead, so the no-trailing-slash form serves the file directly. A direct hit or a Lighthouse audit gets the content immediately, with no redirect round-trip.",
-          "• <strong>Retired Routes:</strong> The music timeline moved to my dedicated drum site, so <code>/music</code> and anything below it now 301-redirect to <code>tyleringersolldrums.com</code>. Old links and bookmarks keep resolving instead of hitting a 404.",
-          "• <strong>Canonical Tags:</strong> A small <code>useHead</code> setup in <code>app.vue</code> injects a <code>rel=\"canonical\"</code> link on every prerendered route, computed from the current path. Search engines that follow either URL form consolidate ranking signals onto the canonical version."
+          "Netlify rewrites /resume and /architecture to their generated HTML files. Old /music URLs redirect to my drum site.",
+          "Each page has a title and description, and app.vue supplies a canonical URL based on the current route. The site also includes a sitemap and Person structured data."
         ]
       },
       {
         id: "testing",
-        heading: "Testing & Coverage",
+        heading: "Testing",
         headingLevel: 2,
         content: [
-          "The site is covered by a Vitest unit suite running in the Nuxt test environment with happy-dom. Components, pages, stores, the layout, the router scroll behavior, the theme plugin, and the scroll-to-hash composable all have their own specs.",
-          "• <strong>Vitest + @nuxt/test-utils:</strong> Tests boot a real Nuxt context via <code>mountSuspended</code>, so auto-imports, composables, and Pinia all resolve the same way they do at runtime.",
-          "• <strong>Coverage Targets:</strong> The v8 coverage reporter tracks every source file under <code>components/</code>, <code>pages/</code>, <code>stores/</code>, <code>composables/</code>, <code>plugins/</code>, <code>layouts/</code>, and <code>app/</code>. The suite hits 99% lines, 99% statements, 99% functions, and 91% branches. Remaining gaps are defensive optional chains and the SSR guard.",
-          "• <strong>Focus on Behavior:</strong> Tests assert rendered output, route-driven state (hash-based timeline expansion), and user interactions (theme toggle, mobile menu open/close, focus trap) rather than implementation details.",
-          "• <strong>Fast Local Loop:</strong> The full suite runs in about a second and a half via <code>npm run test</code>, with <code>npm run test:watch</code> for iteration and <code>npm run test:coverage</code> to refresh the report."
+          "Vitest runs in the Nuxt test environment with happy-dom. The suite covers components, stores, theme initialization, navigation, and hash-driven resume expansion.",
+          "I use interaction tests for behaviors such as opening a menu, switching a theme, and expanding a role. The coverage report includes the theme components as well as the shared application code.",
+          "Run npm run test for the suite or npm run test:coverage for a fresh coverage report. Unit tests do not replace checking the rendered site in a browser."
         ]
       },
       {
         id: "accessibility",
-        heading: "Accessibility (A11Y)",
+        heading: "Accessibility",
         headingLevel: 2,
         content: [
-          "Accessibility was part of the build from the start.",
-          "• <strong>Skip Navigation:</strong> A skip-to-content link lets keyboard and screen reader users bypass the header and jump straight to the page content.",
-          "• <strong>Semantic HTML:</strong> Proper heading hierarchy, landmark elements, and native interactive controls throughout.",
-          "• <strong>Keyboard Navigation:</strong> Every interactive element, including the expanding resume timeline and mobile navigation, is fully operable via keyboard with visible focus indicators. The mobile menu traps focus while open and closes on Escape.",
-          "• <strong>Inert on Collapsed Panels:</strong> The timeline uses the <code>inert</code> attribute on collapsed content panels rather than just <code>aria-hidden</code>. <code>inert</code> removes keyboard focus, pointer events, and accessibility tree presence in one attribute, which is what this pattern actually needs.",
-          "• <strong>Reduced Motion:</strong> A global <code>prefers-reduced-motion</code> media query disables animations and transitions for users who request it.",
-          "• <strong>ARIA and State Attributes:</strong> Custom components like the timeline toggle, theme switch, and mobile menu use appropriate roles, labels, and state attributes for assistive technologies.",
-          "• <strong>Dual-Theme Contrast:</strong> Both the dark and light themes use color pairings chosen to maintain readable contrast ratios."
+          "The site includes a skip-to-content link, landmarks, visible keyboard focus styles, and reduced-motion styles. Collapsed resume panels use inert so their contents leave the tab order and accessibility tree.",
+          "The navigation and appearance controls support keyboard input. Lighthouse provides an automated accessibility check, but its score is not a complete accessibility assessment."
         ]
-      },
-
+      }
     ],
     resume: [
       {
@@ -241,6 +216,10 @@ export default {
         }
       },
       {
+        heading: "Experience",
+        headingLevel: 2
+      },
+      {
         heading: "Best Egg",
         headingLevel: 3,
         years: "2022 - Present",
@@ -248,11 +227,12 @@ export default {
           {
             subheading: "Director II, Software Engineering · 2026 - Present",
             content: [
-              "Engineering leader for a customer-facing team, balancing technical direction, frontend execution, team management, and delivery planning.",
-              "• Partner with product, design, and operations teams to define priorities, shape delivery plans, and split work across frontend and backend implementation.",
-              "• Manage a team supporting customer verification, servicing, and authentication work, including delivery planning, cross-functional interview panels, and engineer development.",
+              "Manage three engineers (one frontend, two backend) working on customer verification, servicing, and authentication, and have also managed co-op students and interns.",
+              "• Balance project priorities and workload across the team so engineers can focus on the right work without becoming overwhelmed.",
+              "• Work with product, design, and operations to plan delivery and coordinate frontend and backend implementation.",
+              "• Support engineer development and participate in cross-functional interview panels.",
               "• Set technical direction for core customer-facing applications while continuing to contribute directly to frontend implementation.",
-              "<strong>Tech:</strong> Angular, TypeScript, DataDog, Figma, Miro, Jira, Confluence, FullStory, GitHub, AI Development Tools (Claude/Cursor)"
+              "<strong>Tech:</strong> Angular, TypeScript, Datadog, Figma, Miro, Jira, Confluence, FullStory, GitHub, AI Development Tools (Claude/Cursor)"
             ]
           },
           {
@@ -270,7 +250,7 @@ export default {
             content: [
               "Focused on updating Angular codebases and establishing consistent frontend patterns.",
               "• Led architectural updates to introduce lazy-loaded modules, optimize main bundle sizes, and transition UI components from Bootstrap to Angular Material.",
-              "• Helped architect and launch a no-auth quick pay feature and auto pay scheduling to simplify the payment experience for customers.",
+              "• Helped architect and launch a quick pay feature that customers can use without signing in, along with autopay scheduling to simplify the payment experience for customers.",
               "• Golden Egg Award winner for \"BE a Builder of Great Teams\" (Q3 2023).",
               "<strong>Tech:</strong> Angular, TypeScript, Tailwind CSS, Angular Material, Docker, Nginx, Jasmine"
             ]
@@ -334,7 +314,7 @@ export default {
       {
         heading: "Technical Writers, Inc.",
         headingLevel: 3,
-        years: "2007 - 2014",
+        years: "2003 - 2005, 2007 - 2014",
         roles: [
           {
             subheading: "Frontend Developer / Senior Technical Writer · 2007 - 2014",
@@ -388,7 +368,7 @@ export default {
         heading: "Additional Experience",
         headingLevel: 2,
         content: [
-          "In addition to my engineering career, music has been a major parallel career, including touring, studio tracking, sync placements, event work, and remote session recording. The deeper drum portfolio, current videos, selected credits, studio details, and booking information live at <a href='https://tyleringersolldrums.com' target='_blank' rel='noopener noreferrer'>tyleringersolldrums.com</a>."
+          "I also play drums and record remote sessions. My music background, recent playing, and studio details are at <a href='https://tyleringersolldrums.com' target='_blank' rel='noopener noreferrer'>tyleringersolldrums.com</a>."
         ]
       },
       {
@@ -404,7 +384,7 @@ export default {
         skills: {
           languages: ["JavaScript", "TypeScript", "HTML5", "CSS/SCSS", "Python", "SQL"],
           frameworks: ["Angular", "Vue.js", "Nuxt 3", "NestJS", "Django", "Tailwind CSS", "Angular Material"],
-          infrastructure: ["Node.js", "Nginx", "Docker", "AWS", "GitHub Actions", "Netlify", "DataDog", "Figma", "Cursor AI", "GitHub Copilot", "Claude Code"],
+          infrastructure: ["Node.js", "Nginx", "Docker", "AWS", "GitHub Actions", "Netlify", "Datadog", "Figma", "Cursor AI", "GitHub Copilot", "Claude Code"],
           concepts: ["Web Components", "Design Systems", "SSR", "Accessibility (WCAG)", "CI/CD", "State Management"]
         }
       }

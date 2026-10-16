@@ -16,6 +16,11 @@
               class="hv2-hero__body"
               v-html="para"
             />
+            <div v-if="hero.ctaUrl" class="hv2-btn-wrap">
+              <NuxtLink :to="hero.ctaUrl" class="hv2-btn hv2-btn--primary">
+                {{ hero.cta }} <span class="hv2-btn__icon" aria-hidden="true">→</span>
+              </NuxtLink>
+            </div>
           </div>
 
           <!-- Profile portrait -->
@@ -41,6 +46,7 @@
         <div class="hv2-two-col">
           <div class="hv2-engineering__left">
             <p v-html="eng.body" />
+            <p v-if="eng.approach" v-html="eng.approach" />
             <div class="hv2-btn-wrap">
               <NuxtLink :to="eng.ctaUrl" class="hv2-btn hv2-btn--primary">{{
                 eng.cta
@@ -140,22 +146,14 @@
         <h2 class="hv2-section-header">{{ bey.heading }}</h2>
         <div class="hv2-beyond__cards">
           <component
-            v-for="(card, cIdx) in bey.cards"
+            v-for="card in bey.cards"
             :is="linkTag(card)"
             :key="card.label"
             v-bind="linkAttrs(card)"
             class="hv2-beyond-card"
             :class="{
               'hv2-beyond-card--linked': hasLink(card),
-              'hv2-beyond-card--active': activeCard === cIdx,
             }"
-            @mouseenter="activeCard = cIdx"
-            @mouseleave="activeCard = null"
-            @focus="activeCard = cIdx"
-            @blur="activeCard = null"
-            :tabindex="hasLink(card) ? undefined : 0"
-            :role="hasLink(card) ? undefined : 'button'"
-            :aria-expanded="activeCard === cIdx"
           >
             <div class="hv2-beyond-card__front">
               <div
@@ -166,7 +164,7 @@
               <span class="hv2-beyond-card__label">{{ card.label }}</span>
               <span class="hv2-beyond-card__sub">{{ card.sub }}</span>
             </div>
-            <div class="hv2-beyond-card__detail" :aria-hidden="activeCard !== cIdx">
+            <div class="hv2-beyond-card__detail">
               <p>{{ card.detail }}</p>
             </div>
           </component>
@@ -196,8 +194,6 @@ const musCta = computed(() => ({
   external: mus.value.ctaExternal,
 }));
 
-const activeCard = ref(null);
-
 const hasLink = (item) => !!item?.url;
 
 const hasCalloutContent = (item) => !!(item?.text || item?.ctaText || item?.url);
@@ -225,6 +221,7 @@ watch(() => route.hash, scrollToHash);
 watch(home, () => scrollToHash(route.hash));
 
 const icons = {
+  "pull-request": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M13 6h3a2 2 0 0 1 2 2v7"/><path d="m15 3-3 3 3 3"/><line x1="6" y1="9" x2="6" y2="21"/></svg>`,
   layers: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>`,
   users: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="3"/><path d="M3.5 21v-1a5.5 5.5 0 0 1 11 0v1"/><path d="M16 4.5a3 3 0 0 1 0 5"/><path d="M18 14a4.5 4.5 0 0 1 3 4.25V21"/></svg>`,
   grid: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>`,
@@ -479,7 +476,7 @@ $hero-copy-gutter: clamp(2.5rem, 5vw, 4rem);
     @include respond-below(sm) {
       grid-column: 1 / -1;
       grid-row: auto;
-      order: 2;
+      order: 1;
       padding-right: 0;
     }
   }
@@ -555,7 +552,7 @@ $hero-copy-gutter: clamp(2.5rem, 5vw, 4rem);
     @include respond-below(sm) {
       grid-column: 1 / -1;
       grid-row: auto;
-      order: 1;
+      order: 2;
       max-width: 100%;
       margin: 1.5rem 0;
     }
@@ -750,7 +747,7 @@ $hero-copy-gutter: clamp(2.5rem, 5vw, 4rem);
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
-    min-height: 500px;
+    min-height: 340px;
     border-radius: 10px;
     overflow: visible;
 
@@ -989,17 +986,7 @@ $hero-copy-gutter: clamp(2.5rem, 5vw, 4rem);
   }
 
   &__detail {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1.25rem;
-    background-color: var(--color-bg-surface);
-    opacity: 0;
-    transform: translateY(6px);
-    transition: opacity 0.25s ease, transform 0.25s ease;
-    pointer-events: none;
+    margin-top: 0.5rem;
 
     p {
       margin: 0;
@@ -1009,20 +996,10 @@ $hero-copy-gutter: clamp(2.5rem, 5vw, 4rem);
     }
   }
 
-  &--active,
-  &:hover {
+  &--linked:hover {
     border-color: var(--color-accent-line);
     transform: translateY(-2px);
 
-    .hv2-beyond-card__front {
-      opacity: 0;
-    }
-
-    .hv2-beyond-card__detail {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
-    }
   }
 
   @media (prefers-reduced-motion: reduce) {

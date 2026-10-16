@@ -4,13 +4,14 @@
     <!-- Page intro -->
     <section v-if="introSection" class="arch-section arch-intro">
       <div class="arch-inner">
-        <h2>{{ introSection.heading }}</h2>
+        <h1>{{ introSection.heading }}</h1>
         <p
           v-for="(para, i) in prose(introSection)"
           :key="i"
           class="arch-intro__body"
           v-html="para"
         />
+        <p class="arch-intro__body"><a href="/storybook/" target="_blank" rel="noopener noreferrer">Explore the component workshop</a></p>
         <ul v-if="bullets(introSection).length" class="arch-list">
           <li v-for="(item, i) in bullets(introSection)" :key="i" v-html="item" />
         </ul>
@@ -142,7 +143,7 @@ const circ = 2 * Math.PI * 34;
 // ─── Intro section ──────────────────────────────────────────────────────────
 
 .arch-intro {
-  h2 {
+  h1 {
     margin-bottom: 1.25rem;
   }
 }

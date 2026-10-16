@@ -164,43 +164,15 @@ describe("pages/index", () => {
     expect(wrapper.find(".hv2-studio-callout__cta").exists()).toBe(false);
   });
 
-  it("renders beyond cards with click/hover state toggles", async () => {
+  it("makes personal details readable without hover and keeps only linked cards interactive", async () => {
     const wrapper = await mountSuspended(Index);
     const cards = wrapper.findAll(".hv2-beyond-card");
     expect(cards).toHaveLength(2);
-    expect(cards[0].attributes("aria-expanded")).toBe("false");
-
-    await cards[0].trigger("mouseenter");
-    expect(cards[0].attributes("aria-expanded")).toBe("true");
-    expect(cards[0].classes()).toContain("hv2-beyond-card--active");
-
-    await cards[0].trigger("mouseleave");
-    expect(cards[0].attributes("aria-expanded")).toBe("false");
-
-    await cards[0].trigger("focus");
-    expect(cards[0].attributes("aria-expanded")).toBe("true");
-
-    await cards[0].trigger("blur");
-    expect(cards[0].attributes("aria-expanded")).toBe("false");
-  });
-
-  it("renders a non-linked beyond card as a button with tabindex=0", async () => {
-    const wrapper = await mountSuspended(Index);
-    const cards = wrapper.findAll(".hv2-beyond-card");
-    // First card has no url → role=button, tabindex=0
-    expect(cards[0].attributes("role")).toBe("button");
-    expect(cards[0].attributes("tabindex")).toBe("0");
-    expect(cards[0].classes()).not.toContain("hv2-beyond-card--linked");
-  });
-
-  it("renders a linked beyond card without role/tabindex (it's a real link)", async () => {
-    const wrapper = await mountSuspended(Index);
-    const cards = wrapper.findAll(".hv2-beyond-card");
-    // Second card has url="/extras" → internal NuxtLink, no role/tabindex
+    expect(cards[0].find(".hv2-beyond-card__detail").text()).toBe("I ride bikes");
+    expect(cards[0].find(".hv2-beyond-card__detail").attributes("aria-hidden")).toBeUndefined();
+    expect(cards[0].attributes("role")).toBeUndefined();
+    expect(cards[0].attributes("tabindex")).toBeUndefined();
     expect(cards[1].attributes("href")).toBe("/extras");
-    expect(cards[1].attributes("role")).toBeUndefined();
-    expect(cards[1].attributes("tabindex")).toBeUndefined();
-    expect(cards[1].classes()).toContain("hv2-beyond-card--linked");
   });
 
   it("renders empty home object without crashing", async () => {
