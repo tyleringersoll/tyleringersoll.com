@@ -5,7 +5,6 @@
       <div class="hv2-inner">
         <div class="hv2-hero__grid">
           <div class="hv2-hero__kicker">
-            <p class="hv2-eyebrow">{{ hero.eyebrow }}</p>
             <h1 class="hv2-hero__heading">{{ hero.heading }}</h1>
           </div>
 
@@ -47,11 +46,11 @@
           <div class="hv2-engineering__left">
             <p v-html="eng.body" />
             <p v-if="eng.approach" v-html="eng.approach" />
-            <div class="hv2-btn-wrap">
-              <NuxtLink :to="eng.ctaUrl" class="hv2-btn hv2-btn--primary">{{
+            <p class="hv2-engineering__more">
+              <NuxtLink :to="eng.ctaUrl" class="hv2-text-link">{{
                 eng.cta
-              }} <span class="hv2-btn__icon" aria-hidden="true">→</span></NuxtLink>
-            </div>
+              }} <span aria-hidden="true">→</span></NuxtLink>
+            </p>
           </div>
 
           <div class="hv2-engineering__right">
@@ -382,13 +381,21 @@ const icons = {
   color: var(--color-accent-line);
 }
 
-.hv2-eyebrow {
-  margin: 0 0 0.5rem;
-  font-size: 0.75rem;
+.hv2-text-link {
   font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-accent-line);
+  color: var(--color-link);
+  text-decoration: none;
+  @include transition(color);
+
+  &:hover {
+    color: var(--color-link-hover);
+    text-decoration: underline;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 3px;
+  }
 }
 
 .hv2-section-header {
@@ -482,7 +489,7 @@ $hero-copy-gutter: clamp(2.5rem, 5vw, 4rem);
   }
 
   &__heading {
-    margin: 0.25rem 0 1.25rem;
+    margin: 0 0 1.25rem;
     font-size: clamp(4rem, 8vw, 6rem);
     font-weight: 700;
     line-height: 1.05;
@@ -610,6 +617,10 @@ $hero-copy-gutter: clamp(2.5rem, 5vw, 4rem);
       font-size: 1rem;
       line-height: 1.7;
       color: var(--color-text-secondary);
+    }
+
+    .hv2-engineering__more {
+      margin: 1.5rem 0 0;
     }
   }
 }

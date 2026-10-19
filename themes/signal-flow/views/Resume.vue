@@ -8,12 +8,13 @@
     >
       <div class="resume-inner">
         <template v-for="{ entry, idx } in section.entries" :key="idx">
-          <!-- First entry: flex header with download button + intro paragraph -->
+          <!-- First entry: flex header (download button when pdfUrl is set) + intro paragraph -->
           <article v-if="!entry.roles && !entry.skills && idx === 0" class="article resume-intro">
             <div class="resume-header">
               <h1 class="first-heading" v-html="entry.heading" />
               <a
-                href="/Tyler_Ingersoll_Resume.pdf"
+                v-if="entry.pdfUrl"
+                :href="entry.pdfUrl"
                 download
                 class="resume-download"
               >
@@ -59,7 +60,7 @@
               </div>
             </div>
           </article>
-          <!-- Regular article without roles (Education, Additional Experience) -->
+          <!-- Regular article without roles (e.g. Education) -->
           <Article v-else-if="!entry.roles" :article="entry" :index="idx" />
           <!-- Employer with roles -->
           <article v-else class="article employer">

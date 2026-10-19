@@ -8,7 +8,6 @@ vi.mock("~/data/content.js", () => ({
     content: {
       home: {
         hero: {
-          eyebrow: "Eyebrow",
           heading: "Hi I'm Tyler",
           paragraphs: ["Para 1", "Para 2"],
         },
@@ -62,18 +61,20 @@ describe("pages/index", () => {
   beforeEach(() => setActivePinia(createPinia()));
   afterEach(() => restoreContent());
 
-  it("renders the hero with eyebrow, heading, and paragraphs", async () => {
+  it("renders the hero with heading and paragraphs, without an eyebrow", async () => {
     const wrapper = await mountSuspended(Index);
-    expect(wrapper.find(".hv2-eyebrow").text()).toBe("Eyebrow");
+    expect(wrapper.find(".hv2-eyebrow").exists()).toBe(false);
     expect(wrapper.find(".hv2-hero__heading").text()).toBe("Hi I'm Tyler");
     expect(wrapper.findAll(".hv2-hero__body")).toHaveLength(2);
   });
 
-  it("renders the engineering section with body + CTA link + competencies", async () => {
+  it("renders the engineering section with body + text link + competencies", async () => {
     const wrapper = await mountSuspended(Index);
     const eng = wrapper.find(".hv2-engineering");
     expect(eng.find("h2").text()).toBe("Engineering");
-    expect(eng.find(".hv2-btn--primary").text()).toContain("Resume");
+    // The hero already has the resume button, so this one is a text link, not a second button.
+    expect(eng.find(".hv2-btn--primary").exists()).toBe(false);
+    expect(eng.find(".hv2-text-link").text()).toContain("Resume");
     const comps = eng.findAll(".hv2-comp-item");
     expect(comps).toHaveLength(4);
   });
