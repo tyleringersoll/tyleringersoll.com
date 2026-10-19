@@ -13,7 +13,7 @@
         <div class="ph-intro">
           <p v-for="(p, i) in intro.content || []" :key="i" v-html="p" />
         </div>
-        <p><a class="link" href="/Tyler_Ingersoll_Resume.pdf" download>Download PDF <span class="ed-ico" v-html="icons.arrow" /></a></p>
+        <p v-if="intro.pdfUrl"><a class="link" :href="intro.pdfUrl" download>Download PDF <span class="ed-ico" v-html="icons.arrow" /></a></p>
         <NuxtLink v-if="intro.cta" class="link" :to="intro.cta.url">
           {{ intro.cta.label }} <span class="ed-ico" v-html="icons.arrow" />
         </NuxtLink>

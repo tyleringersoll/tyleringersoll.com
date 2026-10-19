@@ -5,7 +5,7 @@
 <script setup>
 const title = "Tyler Ingersoll | Frontend Engineering Leader & Drummer";
 const description =
-  "Tyler Ingersoll is an engineering manager at Best Egg who leads a team and builds frontend applications. Explore his experience, projects, and drumming.";
+  "Tyler Ingersoll is an engineering manager at Best Egg who still writes frontend code. He’s also played drums for more than 30 years.";
 
 useSeoMeta({
   title,

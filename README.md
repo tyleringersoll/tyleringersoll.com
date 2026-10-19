@@ -57,8 +57,12 @@ npm run test:coverage  # with coverage report
 
 Static site content lives in [data/content.js](data/content.js).
 
-The downloadable resume is generated from that same file. After changing career
-content, regenerate and visually check the PDF before deploying:
+The PDF resume download is hidden for now while a new, template-based version is
+made. To bring it back, put the PDF in `public/` and add `pdfUrl` (for example
+`"/Tyler_Ingersoll_Resume.pdf"`) to the first `resume` entry in `data/content.js`;
+both themes show the download link only when that key is set.
+
+The old generator still builds a PDF from that same file:
 
 ```bash
 python3 -m venv /tmp/tyler-resume-venv

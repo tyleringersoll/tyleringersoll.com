@@ -94,6 +94,11 @@ describe("pages/resume", () => {
     expect(cta.text()).toContain("↗");
   });
 
+  it("hides the PDF download link when the intro has no pdfUrl", async () => {
+    const wrapper = await mountSuspended(Resume);
+    expect(wrapper.find(".resume-download").exists()).toBe(false);
+  });
+
   it("renders an internal NuxtLink CTA with → icon for a non-external URL", async () => {
     const wrapper = await mountSuspended(Resume);
     // Education entry has cta with url "/u" (no external flag, no http prefix)

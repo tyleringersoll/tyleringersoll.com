@@ -12,9 +12,8 @@ export default {
     home: {
       hero: {
         heading: "Hi, I’m Tyler",
-        eyebrow: "Frontend Engineering & Leadership",
         paragraphs: [
-          "I’m an engineering manager who still builds. Most of that building now happens in Claude Code, Codex, and Cursor: I write the prompts, then review what comes back as closely as I’d review any engineer’s pull request. At Best Egg, I lead a customer-facing engineering team and contribute directly to frontend development.",
+          "I’m an engineering manager at Best Egg. My team works on customer verification, servicing, and login, and I still write a fair amount of the frontend myself.",
           "I’ve also played drums for more than 30 years, from touring and studio work to recording sessions from home."
         ],
         cta: "View my resume",
@@ -23,8 +22,8 @@ export default {
       engineering: {
         heading: "Engineering",
         headingLevel: 4,
-        body: "My work spans payment flows, design systems, and interfaces for scientific instruments. At Best Egg, I’ve led frontend integrations with MX and Method Financial and helped build quick pay and autopay features. At Vanguard, I worked on a shared component library that teams could use across Vue, Angular, and Adobe Experience Manager.",
-        approach: "Most of my code now starts as a prompt, so the real work has moved to review. I read AI-written changes and my team’s pull requests closely, checking edge cases, accessibility, and whether the change fits the patterns already in place. Staying current with these tools is part of the job. I work mainly in Angular, Vue, and TypeScript, and I especially enjoy making complicated legacy applications easier to maintain.",
+        body: "At Best Egg, I’ve led frontend integrations with MX and Method Financial and helped build quick pay and autopay. Before that, I worked on a shared component library at Vanguard that teams used across Vue, Angular, and Adobe Experience Manager. Earlier still, I built the web interfaces for Agilent’s lab instruments.",
+        approach: "I work mostly in Angular, Vue, and TypeScript. My favorite work is taking an old, tangled frontend and leaving it in better shape for whoever touches it next.",
         cta: "View my full resume",
         ctaUrl: "/resume",
         competenciesLabel: "What I work on",
@@ -47,7 +46,7 @@ export default {
       drums: {
         heading: "Music",
         headingLevel: 4,
-        body: "I’ve played in independent bands, toured nationally, and recorded in studios around the country. These days, I record remote sessions from my home studio, where I’ve also been writing, producing, and mixing my own music. My drum site has recent playing, credits, and details about the setup.",
+        body: "I’ve toured nationally with independent bands and recorded in studios around the country. These days I mostly record remote sessions from my home studio, where I’ve also been writing, producing, and mixing my own music. Recent playing and credits are on my drum site.",
         cta: "Visit my drum site",
         ctaUrl: "https://tyleringersolldrums.com",
         ctaExternal: true
@@ -68,14 +67,14 @@ export default {
             icon: "family-play",
             label: "Family",
             sub: "Sports, rides & games",
-            detail: "Most of my free time is spent with my family, balancing youth sports, outdoor bike rides, and gaming together.",
+            detail: "Most of my free time goes to my family. A lot of it is youth sports, and the rest is bike rides or gaming together.",
             url: null
           },
           {
             icon: "vinyl",
             label: "Hi-Fi",
             sub: "Vinyl & Audio",
-            detail: "I’m an audiophile and record collector, always tweaking my gear setup, hunting for vinyl pressings, and making time to really listen to music.",
+            detail: "I’m an audiophile and record collector. I’m usually tweaking my setup or hunting for a good pressing.",
             url: 'https://www.discogs.com/user/TylerIngersoll/collection',
             external: true
           },
@@ -83,14 +82,14 @@ export default {
             icon: "grill",
             label: "Cooking",
             sub: "Griddle & Smoker",
-            detail: "I love cooking, especially outside on the griddle and smoker. That usually means making a big meal, putting on music, and enjoying time with family and friends.",
+            detail: "I love cooking outside on the griddle and smoker, usually a big meal with music on and family and friends over.",
             url: null
           }
         ]
       },
       connect: {
         heading: "Get in touch",
-        subtext: "For engineering work, music projects, or anything in between.",
+        subtext: "Email is the easiest way to reach me, whether it’s about engineering or music.",
         cta: "Get in touch"
       }
     },
@@ -107,13 +106,13 @@ export default {
       },
       {
         id: "ai-workflow",
-        heading: "Built by Hand, Extended with AI",
+        heading: "Where AI Fits In",
         headingLevel: 2,
         content: [
           "I built this site by hand in Vue. The design system, theme tokens, content store, and most of the components were in place before I brought in AI tools. Since then, Codex and Claude Code have written most of the changes from my prompts, and I review every diff before it merges.",
           "That foundation is what keeps the AI-written code consistent. The agents follow what they find: new work uses the existing tokens, the shared content file, and both themes’ layouts instead of inventing its own. The <a href=\"/storybook/\" target=\"_blank\" rel=\"noopener noreferrer\">component workshop</a> was built this way.",
           "To me, reviewing AI code means trusting the patterns and verifying the behavior. The unit suite, Lighthouse CI, and accessibility checks on every Storybook story have to pass, and I still check the result in a browser. Two catches from building the workshop, neither visible in the diff:",
-          "• Codex set up browser tests for every story, but the test runner could not load its configuration, so no story had actually been tested. The setup looked finished. Running it showed it had never worked.",
+          "• Codex set up browser tests for every story, but the test runner could not load its configuration, so no story had actually been tested. It looked finished, but it had never actually run.",
           "• The new workshop link opened a Page Not Found page in local development, because the workshop is only added to the site during the production build."
         ]
       },
@@ -125,7 +124,7 @@ export default {
           "The pages are pre-rendered so their content is available before client-side JavaScript runs. The studio image uses responsive variants from @nuxt/image, fonts are self-hosted, and icons are inline SVGs.",
           "Lighthouse CI audits the three pages with the desktop preset, using three runs per page. The configured minimum scores are 90 Performance, 95 Accessibility, 90 Best Practices, and 95 SEO. These are CI thresholds, not measured scores for every visitor or device.",
           "The <a href=\"https://github.com/tyleringersoll/ingersoll.dev/blob/main/.lighthouserc.json\" target=\"_blank\" rel=\"noopener noreferrer\">Lighthouse configuration</a> defines those checks. Reports are uploaded as artifacts on the <a href=\"https://github.com/tyleringersoll/ingersoll.dev/actions/workflows/lighthouse.yml\" target=\"_blank\" rel=\"noopener noreferrer\">Lighthouse workflow runs</a>.",
-          "Google Analytics is scheduled with requestIdleCallback, with a timeout fallback. This defers the script request; it does not make analytics free of runtime cost."
+          "Google Analytics loads through requestIdleCallback, with a timeout fallback, so it waits until the page is idle."
         ]
       },
       {
@@ -190,7 +189,7 @@ export default {
         content: [
           "Vitest runs in the Nuxt test environment with happy-dom. The suite covers components, stores, theme initialization, navigation, and hash-driven resume expansion.",
           "I use interaction tests for behaviors such as opening a menu, switching a theme, and expanding a role. The coverage report includes the theme components as well as the shared application code.",
-          "Run npm run test for the suite or npm run test:coverage for a fresh coverage report. Unit tests do not replace checking the rendered site in a browser."
+          "Run npm run test for the suite or npm run test:coverage for a fresh coverage report."
         ]
       },
       {
@@ -199,7 +198,7 @@ export default {
         headingLevel: 2,
         content: [
           "The site includes a skip-to-content link, landmarks, visible keyboard focus styles, and reduced-motion styles. Collapsed resume panels use inert so their contents leave the tab order and accessibility tree.",
-          "The navigation and appearance controls support keyboard input. Lighthouse provides an automated accessibility check, but its score is not a complete accessibility assessment."
+          "The navigation and appearance controls work from the keyboard, and Lighthouse runs an automated accessibility check in CI."
         ]
       }
     ],
@@ -208,7 +207,7 @@ export default {
         heading: "Resume",
         headingLevel: 2,
         content: [
-          "I lead frontend engineering and architecture for customer-facing enterprise applications. My background spans fintech platforms, design systems, and instrumentation software. The work I enjoy most is taking complicated legacy frontends and turning them into systems that are easier to understand, maintain, and extend."
+          "I’ve been building professionally for the web since 2000. I started with sites for my band and other Philadelphia bands, then moved into intranet sites and product demos, and later technical documentation. Today I manage an engineering team at Best Egg and still work hands-on in the frontend space."
         ],
         cta: {
           label: "View how this site was built",
@@ -228,7 +227,7 @@ export default {
             subheading: "Director II, Software Engineering · 2026 - Present",
             content: [
               "Manage three engineers (one frontend, two backend) working on customer verification, servicing, and authentication, and have also managed co-op students and interns.",
-              "• Balance project priorities and workload across the team so engineers can focus on the right work without becoming overwhelmed.",
+              "• Balance project priorities and workload across the team.",
               "• Work with product, design, and operations to plan delivery and coordinate frontend and backend implementation.",
               "• Support engineer development and participate in cross-functional interview panels.",
               "• Set technical direction for core customer-facing applications while continuing to contribute directly to frontend implementation.",
@@ -268,8 +267,8 @@ export default {
               "Worked on a four-person team building a design system and shared frontend foundation for Vanguard Financial Advisor Services applications.",
               "• Built a web component library with custom element wrappers so the system could be used across Vue, Angular, and Adobe Experience Manager without separate framework-specific implementations.",
               "• Partnered with leadership and development teams during a division-wide rebrand to drive adoption of the design system and improve UI consistency across products.",
-              "• Designed and built a Vue/NestJS reference application with CI, content structure, environment setup, and third-party integrations already in place, so teams could start from a working application instead of assembling the stack from scratch.",
-              "• Set up AWS-based CI/CD pipelines for automated Storybook documentation deployments so teams had a shared place to reference the latest components and usage patterns.",
+              "• Designed and built a Vue/NestJS reference application with CI, environment setup, and third-party integrations already wired up, giving teams a working starting point.",
+              "• Set up AWS-based CI/CD pipelines that deployed the Storybook documentation automatically.",
               "<strong>Tech:</strong> Vue.js, NestJS, Web Components, Storybook, Angular, Custom Elements, AWS, CI/CD"
             ]
           }
@@ -362,13 +361,6 @@ export default {
               "<strong>Tech:</strong> HTML, CSS, JavaScript, Microsoft Access"
             ]
           }
-        ]
-      },
-      {
-        heading: "Additional Experience",
-        headingLevel: 2,
-        content: [
-          "I also play drums and record remote sessions. My music background, recent playing, and studio details are at <a href='https://tyleringersolldrums.com' target='_blank' rel='noopener noreferrer'>tyleringersolldrums.com</a>."
         ]
       },
       {
