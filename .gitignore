@@ -350,7 +350,7 @@ MigrationBackup/
 .ionide/
 
 # Nuxt / Vue.js / Node.js
-dist/
+dist
 .DS_Store
 *.local
 .env.local
@@ -368,3 +368,6 @@ coverage/
 
 # Lighthouse CI run artifacts
 .lighthouseci/
+
+# Storybook build output
+.storybook-static/

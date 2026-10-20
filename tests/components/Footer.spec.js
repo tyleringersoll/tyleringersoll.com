@@ -14,7 +14,6 @@ const Footer = (await import("~/components/Footer.vue")).default;
 const { useContentStore } = await import("~/stores/content");
 
 const footerContent = {
-  socialHeading: "Connect",
   socialIcons: [
     { alt: "github", url: "https://github.com/x", svg: "<svg id='gh'/>", title: "GitHub" },
     { alt: "email", url: "mailto:hi@example.com", svg: "<svg id='em'/>" },

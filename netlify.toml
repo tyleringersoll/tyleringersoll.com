@@ -18,6 +18,9 @@
   status = 301
   force = true
 
+# /storybook/ is emitted as a static directory with its own index.html.
+# Let Netlify normalize the directory URL; slash-only redirects loop here.
+
 # Serve sub-pages without redirecting to the trailing-slash form.
 # Netlify's default would 301 /resume → /resume/, which trips Lighthouse and
 # costs a network round-trip on every external link to the site.

@@ -1,0 +1,35 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Engineering/Interaction and accessibility" />
+
+# Interaction and accessibility
+
+The interesting states often happen after the first render. These stories make those states easy to reach and repeat.
+
+## Behavior map
+
+| Component           | Keyboard contract                                                                                              | Example                                                                           |
+| ------------------- | -------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| Timeline disclosure | Tab to the trigger. Enter or Space toggles it. Collapsed content leaves the accessibility tree and tab order.  | [Keyboard interaction](?path=/story/components-timeline--keyboard-interaction)    |
+| Mode toggle         | Native button activation changes mode. The name describes the next action and pressed state tracks light mode. | [Toggle twice](?path=/story/components-theme-toggle--toggle-twice)                |
+| Command palette     | ⌘K / Ctrl+K opens it within the preview. Type to filter; arrows select; Enter applies; Escape dismisses.       | [Search and select](?path=/story/patterns-appearance--search-and-select)          |
+| Empty search        | An unmatched query leaves no selectable themes and displays a message.                                         | [No results](?path=/story/patterns-appearance--search-no-results)                 |
+| Focus restoration   | Dismissing the palette returns focus to the control that opened it.                                            | [Escape restores focus](?path=/story/patterns-appearance--escape-restores-focus)  |
+| Mobile navigation   | Open the menu below 768px. Tab stays inside; Escape dismisses and returns focus to the trigger.                | [Keyboard dismissal](?path=/story/patterns-mobile-navigation--keyboard-dismissal) |
+
+Stories with play functions run their assertions when opened in Canvas. The Interactions panel shows individual steps. The Accessibility panel checks the rendered state with axe. A story may be intentionally left open or filtered so that state can be inspected.
+
+## Review beyond the automated checks
+
+1. Use only the keyboard. Check the order, visible focus, and whether you can leave each interaction.
+2. Test with a screen reader. Check names, heading order, selected options, and whether state changes make sense.
+3. Try both Signal Flow modes and Reel-to-Reel. Check text against its actual surface, not just a swatch.
+4. Try a phone viewport and browser zoom. Long headings and CTA labels should wrap without hiding information.
+5. Turn on reduced motion. Repeat disclosures and theme changes.
+6. Verify complete pages on the portfolio. Isolated components do not establish page-level conformance.
+
+## How checks are divided
+
+The existing Vitest suite covers component and store behavior. Storybook adds visible, repeatable browser scenarios and automated accessibility scans. CI builds the workshop and runs its stories in Chromium, including their play functions and axe checks. That covers the declared stories, not every possible combination of input, theme, and viewport.
+
+A check should fail for a meaningful regression. Assertions here focus on what a visitor can perceive or operate: accessible names, expanded state, visible results, and restored focus. Visual and assistive-technology review still require judgment.

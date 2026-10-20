@@ -85,13 +85,18 @@ describe("pages/resume", () => {
     const wrapper = await mountSuspended(Resume);
     const intro = wrapper.find(".resume-intro");
     expect(intro.exists()).toBe(true);
-    expect(intro.find("h2.first-heading").text()).toBe("About");
+    expect(intro.find("h1.first-heading").text()).toBe("About");
     expect(intro.findAll("p").length).toBeGreaterThanOrEqual(2);
     const cta = intro.find(".resume-intro__cta");
     expect(cta.exists()).toBe(true);
     expect(cta.attributes("target")).toBe("_blank");
     expect(cta.text()).toContain("Download CV");
     expect(cta.text()).toContain("↗");
+  });
+
+  it("hides the PDF download link when the intro has no pdfUrl", async () => {
+    const wrapper = await mountSuspended(Resume);
+    expect(wrapper.find(".resume-download").exists()).toBe(false);
   });
 
   it("renders an internal NuxtLink CTA with → icon for a non-external URL", async () => {
@@ -185,18 +190,17 @@ describe("pages/resume", () => {
     expect(bulletItems).toContain("Shipped multiple customer products.");
   });
 
-  it("toggles role expansion on click", async () => {
-    const wrapper = await mountSuspended(Resume);
-    const articleEl = wrapper.find("h3#best-egg").element.closest("article");
-    const items = articleEl.querySelectorAll(".timeline-item");
-    const first = items[0];
-    expect(first.classList.contains("timeline-item--expanded")).toBe(false);
-    first.querySelector(".timeline-item__trigger").click();
-    await nextTick();
-    expect(first.classList.contains("timeline-item--expanded")).toBe(true);
-    first.querySelector(".timeline-item__trigger").click();
-    await nextTick();
-    expect(first.classList.contains("timeline-item--expanded")).toBe(false);
+  it("shows the latest employer by default and still lets readers collapse and reopen a role", async () => {
+    const wrapper = await mountSuspended(Resume, { route: "/resume" });
+    const items = wrapper.findAll(".timeline-item");
+    for (const item of items) {
+      expect(item.classes()).toContain("timeline-item--expanded");
+      expect(item.find(".timeline-item__trigger").attributes("aria-expanded")).toBe("true");
+    }
+    await items[0].find(".timeline-item__trigger").trigger("click");
+    expect(items[0].classes()).not.toContain("timeline-item--expanded");
+    await items[0].find(".timeline-item__trigger").trigger("click");
+    expect(items[0].classes()).toContain("timeline-item--expanded");
   });
 
   it("auto-expands all roles for the employer whose slug matches route.hash", async () => {

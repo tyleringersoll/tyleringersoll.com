@@ -74,11 +74,10 @@ describe("editorial theme", () => {
     expect(wrapper.findAll(".role li").length).toBeGreaterThan(0);
   });
 
-  it("Architecture renders arch rows and the Lighthouse scores grid", async () => {
+  it("Architecture renders documentation without undated score claims", async () => {
     const wrapper = await mountSuspended(ArchitectureView);
     expect(wrapper.findAll(".arch").length).toBeGreaterThan(0);
-    expect(wrapper.find(".scores").exists()).toBe(true);
-    expect(wrapper.findAll(".scores .sc")).toHaveLength(4);
-    expect(wrapper.findAll(".arch-r p.bul").length).toBeGreaterThan(0);
+    expect(wrapper.find(".scores").exists()).toBe(false);
+    expect(wrapper.text()).toContain("CI thresholds");
   });
 });

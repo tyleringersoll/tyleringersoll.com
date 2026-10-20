@@ -99,8 +99,10 @@ CLAUDE.md voice rules (no em dashes, en-dash year ranges, cities spelled out).
   all from your resume). I need the hardware: machine, monitor, keyboard, mouse, desk, audio
   interface, headphones. I'd cross-link the drums site's gear page for the studio side rather
   than duplicating it.
-- [ ] **4.5 Downloadable PDF resume.** Drop a PDF in `public/` and I'll wire the link into the
-  resume page header. One line of work once the file exists.
+- [ ] **4.5 Downloadable PDF resume.** Hidden as of 2026-10-19. Tyler wants a polished PDF built
+  from his own Word template rather than the reportlab generator. Once it exists, drop it in
+  `public/` and set `pdfUrl` on the first `resume` entry in `data/content.js`; both themes
+  render the link only when that key is set.
 - [ ] **4.7 Per-page OG images.** Cosmetic. Needs a design decision from you on what the
   variants should look like; the current single `og-image.png` is not broken, just generic.
 
