@@ -12,7 +12,7 @@
     </main>
   </div>
   <Themed
-    v-if="content.footer && content.footer.socialHeading"
+    v-if="content.footer?.socialIcons?.length"
     name="Footer"
     class="app-sticky-bottom"
     :content="content.footer"
@@ -34,7 +34,6 @@ const content = computed(() => {
       meta: {},
       navigation: [],
       footer: {
-        socialHeading: "",
         socialIcons: [],
         legal: [],
       },

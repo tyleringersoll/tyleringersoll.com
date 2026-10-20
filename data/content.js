@@ -1,8 +1,7 @@
 export default {
   content: {
     meta: {
-      name: "Tyler Ingersoll",
-      tag: "<span>Frontend engineering leader</span> <span>/</span> <span>Drummer</span>"
+      name: "Tyler Ingersoll"
     },
     navigation: [
       { name: "Home", url: "/" },
@@ -13,17 +12,16 @@ export default {
       hero: {
         heading: "Hi, I’m Tyler",
         paragraphs: [
-          "I’m an engineering manager at Best Egg. My team works on customer verification, servicing, and login, and I still write a fair amount of the frontend myself.",
-          "I’ve also played drums for more than 30 years, from touring and studio work to recording sessions from home."
+          "I’m an engineering manager at Best Egg. My team works on customer verification, servicing, and authentication, and I still contribute a fair amount of the frontend code.",
+          "I’ve also played drums for more than 30 years, from touring and studio work to recording sessions at home."
         ],
         cta: "View my resume",
         ctaUrl: "/resume"
       },
       engineering: {
         heading: "Engineering",
-        headingLevel: 4,
-        body: "At Best Egg, I’ve led frontend integrations with MX and Method Financial and helped build quick pay and autopay. Before that, I worked on a shared component library at Vanguard that teams used across Vue, Angular, and Adobe Experience Manager. Earlier still, I built the web interfaces for Agilent’s lab instruments.",
-        approach: "I work mostly in Angular, Vue, and TypeScript. My favorite work is taking an old, tangled frontend and leaving it in better shape for whoever touches it next.",
+        body: "At Best Egg, I’ve led frontend integrations with MX and Method Financial and helped build quick pay and autopay features for our customer servicing site. Before that, I worked on a shared component library at Vanguard that teams used across Vue, Angular, and Adobe Experience Manager. I’ve also built the web interfaces and documentation delivery systems for Agilent’s lab instruments.",
+        approach: "I work mostly in Angular, Vue, and TypeScript. My favorite work is taking an old frontend codebase and cleaning it up and modernizing it.",
         cta: "View my full resume",
         ctaUrl: "/resume",
         competenciesLabel: "What I work on",
@@ -45,21 +43,19 @@ export default {
       },
       drums: {
         heading: "Music",
-        headingLevel: 4,
-        body: "I’ve toured nationally with independent bands and recorded in studios around the country. Now I mostly record remote sessions from my home studio, where I’ve also been writing, producing, and mixing my own music. Recent playing and credits are on my drum site.",
+        body: "I’ve toured nationally with independent bands and recorded in studios around the country. Now I mostly record remote sessions from my home studio, where I’ve also been writing, producing, and mixing my own music. You can see my recent playing and credits on my drum site.",
         cta: "Visit my drum site",
         ctaUrl: "https://tyleringersolldrums.com",
         ctaExternal: true
       },
       beyond: {
         heading: "Beyond work",
-        headingLevel: 3,
         cards: [
           {
             icon: "bicycle",
             label: "Cycling",
             sub: "Road, Gravel, MTB",
-            detail: "Cycling is my favorite sport now. I ride mountain, road, and gravel bikes or jump on the trainer as much as possible.",
+            detail: "Cycling is my favorite sport now. I ride outside whenever I can and jump on the trainer when weather or sunlight is against me.",
             url: "https://www.strava.com/athletes/3303002",
             external: true
           },
@@ -82,7 +78,7 @@ export default {
             icon: "grill",
             label: "Cooking",
             sub: "Griddle & Smoker",
-            detail: "I love cooking outside on the griddle and smoker, usually a big meal with music on and family and friends over.",
+            detail: "I love cooking outside on the griddle and smoker, usually for a big group of family and friends.",
             url: null
           }
         ]
@@ -90,7 +86,7 @@ export default {
       connect: {
         heading: "Get in touch",
         subtext: "Email is the easiest way to reach me, whether it’s about engineering or music.",
-        cta: "Get in touch"
+        cta: "Email me"
       }
     },
     architecture: [
@@ -346,7 +342,7 @@ export default {
           {
             subheading: "Tech Support, Level 1 · 2001 - 2003",
             content: [
-              "Transitioned from an internship into a full-time support role, balancing first-level help desk responsibilities with serving as the primary developer for the division's intranet applications.",
+              "Transitioned from an internship into a full-time support role, balancing first-level help desk responsibilities with serving as the primary developer for the division’s intranet applications.",
               "• Redesigned and developed the IT Service & Support Division intranet website.",
               "• Designed and developed the Online Portfolio Trust Management Group intranet site.",
               "• Designed and developed a custom call logging front-end application with Microsoft Access, Visual Basic, and SQL Server, used in production across multiple service and support departments.",
@@ -381,12 +377,7 @@ export default {
         }
       }
     ],
-    icons: {
-      close: "<svg xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"xmlns=\"http://www.w3.org/2000/svg\"xmlns:cc=\"http://creativecommons.org/ns#\"xmlns:dc=\"http://purl.org/dc/elements/1.1/\"xmlns:svg=\"http://www.w3.org/2000/svg\"xmlns:inkscape=\"http://www.inkscape.org/namespaces/inkscape\"xmlns:sodipodi=\"http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd\"xmlns:ns1=\"http://sozi.baierouge.fr\"xmlns:xlink=\"http://www.w3.org/1999/xlink\"id=\"svg2\"viewBox=\"0 0 744.09 1052.4\"version=\"1.1\"><g id=\"layer1\"><path id=\"svg-bg\" class=\"svg-bg\" d=\"m814.29 606.65a314.29 314.29 0 1 1 -628.57 0 314.29 314.29 0 1 1 628.57 0z\" stroke=\"#000\" stroke-width=\"5\" transform=\"matrix(1.1048 0 0 1.1048 -179.21 -162.53)\"/><g id=\"g3763\" transform=\"matrix(.91837 0 0 .91837 47.587 10.944)\" stroke=\"#fff\" stroke-linecap=\"round\" stroke-width=\"133.87\" fill=\"none\" > <path id=\"path2991\" class=\"svg-x\" d=\"m176.51 362.87 356.13 356.13\" /> <path id=\"path2993\" class=\"svg-x\" d=\"m532.64 362.87-356.13 356.13\" /></g></g></svg>"
-    },
     footer: {
-      socialHeading: "Connect with me",
-      socialTagline: "For my engineering background, visit the resume. For current drum work or remote session details, visit <a href='https://tyleringersolldrums.com' target='_blank' rel='noopener noreferrer'>tyleringersolldrums.com</a>.",
       socialIcons: [
         {
           svg: "<svg class=\"github\" fill=\"#000000\" xmlns=\"http://www.w3.org/2000/svg\"  viewBox=\"0 0 64 64\" width=\"64px\" height=\"64px\"><path d=\"M32 6C17.641 6 6 17.641 6 32c0 12.277 8.512 22.56 19.955 25.286-.592-.141-1.179-.299-1.755-.479V50.85c0 0-.975.325-2.275.325-3.637 0-5.148-3.245-5.525-4.875-.229-.993-.827-1.934-1.469-2.509-.767-.684-1.126-.686-1.131-.92-.01-.491.658-.471.975-.471 1.625 0 2.857 1.729 3.429 2.623 1.417 2.207 2.938 2.577 3.721 2.577.975 0 1.817-.146 2.397-.426.268-1.888 1.108-3.57 2.478-4.774-6.097-1.219-10.4-4.716-10.4-10.4 0-2.928 1.175-5.619 3.133-7.792C19.333 23.641 19 22.494 19 20.625c0-1.235.086-2.751.65-4.225 0 0 3.708.026 7.205 3.338C28.469 19.268 30.196 19 32 19s3.531.268 5.145.738c3.497-3.312 7.205-3.338 7.205-3.338.567 1.474.65 2.99.65 4.225 0 2.015-.268 3.19-.432 3.697C46.466 26.475 47.6 29.124 47.6 32c0 5.684-4.303 9.181-10.4 10.4 1.628 1.43 2.6 3.513 2.6 5.85v8.557c-.576.181-1.162.338-1.755.479C49.488 54.56 58 44.277 58 32 58 17.641 46.359 6 32 6zM33.813 57.93C33.214 57.972 32.61 58 32 58 32.61 58 33.213 57.971 33.813 57.93zM37.786 57.346c-1.164.265-2.357.451-3.575.554C35.429 57.797 36.622 57.61 37.786 57.346zM32 58c-.61 0-1.214-.028-1.813-.07C30.787 57.971 31.39 58 32 58zM29.788 57.9c-1.217-.103-2.411-.289-3.574-.554C27.378 57.61 28.571 57.797 29.788 57.9z\"/></svg>",
