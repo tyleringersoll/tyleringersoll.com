@@ -20,7 +20,7 @@ jobs:
       - run: npm ci
 
       - name: Build static site
-        run: npm run generate
+        run: npm run generate:site
 
       - name: Audit with Lighthouse
         uses: treosh/lighthouse-ci-action@v12

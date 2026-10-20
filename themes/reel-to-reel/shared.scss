@@ -595,7 +595,7 @@
       // row so it stacks above the heading instead of sitting beside the number.
       .ed-ico { display: flex; margin: 18px 0 16px; }
       svg { width: 26px; height: 26px; color: var(--amber); display: block; }
-      h4 { font-weight: 800; font-size: 19px; letter-spacing: 0.01em; text-transform: uppercase; }
+      h3 { font-weight: 800; font-size: 19px; letter-spacing: 0.01em; text-transform: uppercase; }
       .sub {
         font-family: var(--font-family-mono);
         font-size: 10px;
@@ -617,7 +617,7 @@
     padding: 48px 56px;
     flex-wrap: wrap;
 
-    h3 {
+    h2 {
       font-weight: 900;
       font-size: clamp(32px, 4.4vw, 46px);
       letter-spacing: -0.02em;
@@ -869,7 +869,7 @@
       border-right: 1px solid var(--rule);
 
       .aidx { font-weight: 900; font-size: 34px; color: var(--amber); letter-spacing: -0.02em; }
-      h3 {
+      h2 {
         font-weight: 800;
         font-size: 23px;
         line-height: 1.1;
@@ -1009,7 +1009,7 @@
       h2 { font-size: 24px; }
       &.lg h2 { font-size: clamp(26px, 8vw, 40px); }
     }
-    .connect h3 { font-size: clamp(26px, 8vw, 38px); }
+    .connect h2 { font-size: clamp(26px, 8vw, 38px); }
     .scores .sc .v { font-size: 34px; }
   }
 

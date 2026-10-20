@@ -7,14 +7,14 @@
 <script setup>
 const SITE_URL = "https://www.tyleringersoll.com";
 const route = useRoute();
-const canonicalPath = route.path.replace(/\/+$/, "") || "/";
+const canonicalPath = computed(() => route.path.replace(/\/+$/, "") || "/");
 
 const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Tyler Ingersoll",
   url: SITE_URL,
-  jobTitle: "Director of Software Engineering",
+  jobTitle: "Engineering Manager",
   knowsAbout: [
     "Frontend Architecture",
     "Design Systems",
@@ -31,13 +31,13 @@ const personSchema = {
   ],
 };
 
-useHead({
-  link: [{ rel: "canonical", href: `${SITE_URL}${canonicalPath}` }],
+useHead(() => ({
+  link: [{ rel: "canonical", href: `${SITE_URL}${canonicalPath.value}` }],
   script: [
     {
       type: "application/ld+json",
       innerHTML: JSON.stringify(personSchema),
     },
   ],
-});
+}));
 </script>

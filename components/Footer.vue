@@ -15,7 +15,7 @@
             class="footer-social-circle"
             :aria-label="link.title || link.alt"
           >
-            <div class="footer-social-circle__disk" v-html="link.svg" />
+            <div class="footer-social-circle__disk" aria-hidden="true" v-html="link.svg" />
             <span>{{ link.alt }}</span>
           </a>
         </div>
@@ -199,7 +199,7 @@ const processedLegal = computed(() => {
   text-decoration: none;
   cursor: pointer;
   background-color: var(--color-accent-line);
-  color: #0d1014;
+  color: var(--color-btn-primary-text);
   border: 2px solid var(--color-accent-line);
   @include transition(all);
 

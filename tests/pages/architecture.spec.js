@@ -50,8 +50,12 @@ describe("pages/architecture", () => {
     const wrapper = await mountSuspended(Architecture);
     const intro = wrapper.find(".arch-intro");
     expect(intro.exists()).toBe(true);
-    expect(intro.find("h2").text()).toBe("Introduction");
-    expect(intro.findAll(".arch-intro__body")).toHaveLength(2);
+    expect(intro.find("h1").text()).toBe("Introduction");
+    expect(intro.findAll(".arch-intro__body")).toHaveLength(3);
+    const workshop = intro.find('a[href="/storybook/"]');
+    expect(workshop.text()).toBe("Explore the component workshop");
+    expect(workshop.attributes("target")).toBe("_blank");
+    expect(workshop.attributes("rel")).toBe("noopener noreferrer");
     const bullets = intro.findAll(".arch-list li");
     expect(bullets).toHaveLength(2);
     expect(bullets[0].text()).toBe("A bullet point");
