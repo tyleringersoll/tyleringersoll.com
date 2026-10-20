@@ -9,7 +9,6 @@ vi.mock("~/data/content.js", () => ({
       meta: { name: "Tyler" },
       navigation: [{ name: "Home", url: "/" }],
       footer: {
-        socialHeading: "Connect",
         socialIcons: [{ alt: "x", url: "https://x.com", svg: "<svg/>" }],
         legal: ["© 2026"],
       },
@@ -39,7 +38,7 @@ describe("layouts/default", () => {
     useContentStore().content = null;
     await nextTick();
     // Header still renders because the fallback meta={} is truthy.
-    // Footer hides because the fallback socialHeading="" is falsy.
+    // Footer hides because the fallback has no social icons.
     expect(wrapper.find("footer.footer").exists()).toBe(false);
     expect(wrapper.find("main#main-content").exists()).toBe(true);
   });
