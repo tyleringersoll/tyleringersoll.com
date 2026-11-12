@@ -575,7 +575,7 @@
 
   .beyond {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     border-bottom: 1.5px solid var(--rule2);
 
     .bcol {
@@ -956,7 +956,6 @@
     .heroband, .eng, .music, .pagehead, .entry, .mhero, .arch {
       grid-template-columns: 1fr;
     }
-    .beyond { grid-template-columns: repeat(2, 1fr); }
     .skillgrid { grid-template-columns: repeat(2, 1fr); }
     .entry .ent-l, .eng .body, .music .pic, .mhero .mh-text, .arch .arch-l, .pagehead .ph-left {
       border-right: 0;
