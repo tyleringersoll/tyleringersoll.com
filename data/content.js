@@ -12,16 +12,16 @@ export default {
       hero: {
         heading: "Hi, I’m Tyler",
         paragraphs: [
-          "I’m an engineering manager at Best Egg. My team works on customer verification, servicing, and authentication, and I still contribute a fair amount of the frontend code.",
-          "I’ve also played drums for more than 30 years, from touring and studio work to recording sessions at home."
+          "I’m an engineering manager and frontend lead at Best Egg, a fintech company focused on consumer lending. My team works on customer verification, servicing, and authentication, and I still contribute a fair amount of the frontend code.",
+          "I’ve also played drums professionally for more than 30 years."
         ],
         cta: "View my resume",
         ctaUrl: "/resume"
       },
       engineering: {
         heading: "Engineering",
-        body: "At Best Egg, I’ve led frontend integrations with MX and Method Financial and helped build quick pay and autopay features for our customer servicing site. Before that, I worked on a shared component library at Vanguard that teams used across Vue, Angular, and Adobe Experience Manager. I’ve also built the web interfaces and documentation delivery systems for Agilent’s lab instruments.",
-        approach: "I work mostly in Angular, Vue, and TypeScript. My favorite work is taking an old frontend codebase and cleaning it up and modernizing it.",
+        body: "At Best Egg, I manage a small team of frontend and backend engineers and set the frontend direction for our customer-facing apps. I’ve led the frontend for third-party fintech integrations and high-traffic A/B tests across both new and legacy features. Before that, I worked on a shared component library at Vanguard that teams used across Vue, Angular, and Adobe Experience Manager. I’ve also built the web interfaces and documentation delivery systems for Agilent’s lab instruments.",
+        approach: "I’ve been building for the web since 2000 and work mostly in Angular, Vue, and TypeScript. My favorite work is taking an old frontend codebase and modernizing it. Lately, I’ve been using Claude Code and Cursor heavily, with code review and tests as the guardrails.",
         cta: "View my full resume",
         ctaUrl: "/resume",
         competenciesLabel: "What I work on",
@@ -43,7 +43,7 @@ export default {
       },
       drums: {
         heading: "Music",
-        body: "I’ve toured nationally with independent bands and recorded in studios around the country. Now I mostly record remote sessions from my home studio, where I’ve also been writing, producing, and mixing my own music. You can see my recent playing and credits on my drum site.",
+        body: "I’ve toured nationally with independent bands and recorded in studios around the country. Now I mostly record remote sessions from my home studio, where I also write, produce, and mix my own music, playing guitar, bass, and synths alongside drums. You can see my recent playing and credits on my drum site.",
         cta: "Visit my drum site",
         ctaUrl: "https://tyleringersolldrums.com",
         ctaExternal: true
@@ -55,7 +55,7 @@ export default {
             icon: "bicycle",
             label: "Cycling",
             sub: "Road, Gravel, MTB",
-            detail: "Cycling is my favorite sport now. I ride outside whenever I can and jump on the trainer when weather or sunlight is against me.",
+            detail: "Cycling is my favorite sport. I ride outside whenever I can and jump on the trainer when weather or sunlight is against me.",
             url: "https://www.strava.com/athletes/3303002",
             external: true
           },
@@ -73,19 +73,12 @@ export default {
             detail: "I’m an audiophile and record collector. I’m usually tweaking my setup or hunting for a good pressing.",
             url: 'https://www.discogs.com/user/TylerIngersoll/collection',
             external: true
-          },
-          {
-            icon: "grill",
-            label: "Cooking",
-            sub: "Griddle & Smoker",
-            detail: "I love cooking outside on the griddle and smoker, usually for a big group of family and friends.",
-            url: null
           }
         ]
       },
       connect: {
         heading: "Get in touch",
-        subtext: "Email is the easiest way to reach me, whether it’s about engineering or music.",
+        subtext: "Email is the easiest way to reach me, whether it’s about work, music, or anything else.",
         cta: "Email me"
       }
     },
@@ -117,10 +110,10 @@ export default {
         heading: "Performance & Lighthouse",
         headingLevel: 2,
         content: [
-          "The pages are pre-rendered so their content is available before client-side JavaScript runs. The studio image uses responsive variants from @nuxt/image, fonts are self-hosted, and icons are inline SVGs.",
+          "The pages are pre-rendered so their content is available before client-side JavaScript runs. The studio photo on the home page uses responsive variants from @nuxt/image, fonts are self-hosted, and icons are inline SVGs.",
           "Lighthouse CI audits the three pages with the desktop preset, using three runs per page. The configured minimum scores are 90 Performance, 95 Accessibility, 90 Best Practices, and 95 SEO. These are CI thresholds, not measured scores for every visitor or device.",
           "The <a href=\"https://github.com/tyleringersoll/ingersoll.dev/blob/main/.lighthouserc.json\" target=\"_blank\" rel=\"noopener noreferrer\">Lighthouse configuration</a> defines those checks. Reports are uploaded as artifacts on the <a href=\"https://github.com/tyleringersoll/ingersoll.dev/actions/workflows/lighthouse.yml\" target=\"_blank\" rel=\"noopener noreferrer\">Lighthouse workflow runs</a>.",
-          "Google Analytics loads through requestIdleCallback, with a timeout fallback, so it waits until the page is idle."
+          "Google Analytics loads through requestIdleCallback, with a timeout fallback, so it waits until the page is idle. A Netlify edge function checks the visitor’s country, and visitors from the EU and UK see a consent banner, with analytics cookies off until they choose."
         ]
       },
       {
@@ -130,6 +123,14 @@ export default {
         content: [
           "The main copy lives in data/content.js. A Pinia store makes it available to both themes, so a resume edit does not have to be repeated in each layout. Theme-specific labels live with their components.",
           "For a site this size, a JavaScript content file is enough. If editing needs grow, the store gives me a place to introduce a CMS without changing every view."
+        ]
+      },
+      {
+        id: "component-workshop",
+        heading: "Component Workshop",
+        headingLevel: 2,
+        content: [
+          "The <a href=\"/storybook/\" target=\"_blank\" rel=\"noopener noreferrer\">component workshop</a> is a Storybook build of the site’s foundations, patterns, and components, published alongside the site. It renders the real Nuxt components, with a toolbar for switching between both themes, and every story runs an accessibility check in CI."
         ]
       },
       {
@@ -165,8 +166,8 @@ export default {
         heading: "Checks & Deployment",
         headingLevel: 2,
         content: [
-          "GitHub Actions runs the unit suite and Lighthouse checks on pull requests and pushes to main. The test workflow uploads coverage to Codecov; Lighthouse uploads its reports as workflow artifacts.",
-          "Netlify runs the static generation command when main changes. The workflow definitions live in .github/workflows, and netlify.toml defines the production build and redirects."
+          "GitHub Actions runs three workflows on pull requests and pushes to main: the unit suite, the Lighthouse audits, and the component workshop, which builds the full site and runs every Storybook story with accessibility checks. The test workflow uploads coverage to Codecov; Lighthouse uploads its reports as workflow artifacts.",
+          "Netlify runs the static generation command when main changes. That command builds the site and the component workshop together, so the workshop ships at /storybook/. The workflow definitions live in .github/workflows, and netlify.toml defines the production build and redirects."
         ]
       },
       {
@@ -194,7 +195,7 @@ export default {
         headingLevel: 2,
         content: [
           "The site includes a skip-to-content link, landmarks, visible keyboard focus styles, and reduced-motion styles. Collapsed resume panels use inert so their contents leave the tab order and accessibility tree.",
-          "The navigation and appearance controls work from the keyboard, and Lighthouse runs an automated accessibility check in CI."
+          "The navigation and appearance controls work from the keyboard. In CI, Lighthouse runs an accessibility audit on each page, and an accessibility violation in any Storybook story fails the workshop build."
         ]
       }
     ],
@@ -203,7 +204,7 @@ export default {
         heading: "Resume",
         headingLevel: 2,
         content: [
-          "I’ve been building professionally for the web since 2000. I started with sites for my band and other Philadelphia bands, then moved into intranet sites and product demos, and later technical documentation. Today I manage an engineering team at Best Egg and still work hands-on in the frontend space."
+          "I manage an engineering team at Best Egg and still write frontend code. I’ve been building for the web since 2000, starting with sites for my band and other Philadelphia bands. Along the way I’ve built a design system for Vanguard, instrument control interfaces for Agilent, high-traffic sites for Bank of America and Blue Cross Blue Shield Global, and internal systems for DuPont and Chemours."
         ],
         cta: {
           label: "View how this site was built",
@@ -222,12 +223,13 @@ export default {
           {
             subheading: "Director II, Software Engineering · 2026 - Present",
             content: [
-              "Manage three engineers (one frontend, two backend) working on customer verification, servicing, and authentication, and have also managed co-op students and interns.",
+              "Manage a small team of frontend and backend engineers working on customer verification, servicing, and authentication, and have also managed co-op students and interns.",
               "• Balance project priorities and workload across the team.",
               "• Work with product, design, and operations to plan delivery and coordinate frontend and backend implementation.",
               "• Support engineer development and participate in cross-functional interview panels.",
               "• Set technical direction for core customer-facing applications while continuing to contribute directly to frontend implementation.",
-              "<strong>Tech:</strong> Angular, TypeScript, Datadog, Figma, Miro, Jira, Confluence, FullStory, GitHub, AI Development Tools (Claude/Cursor)"
+              "• Build and run high-traffic A/B tests across new and legacy features, using feature flags to control rollout and events in our proprietary event platform and FullStory to track and monitor results.",
+              "<strong>Tech:</strong> Angular, TypeScript, Datadog, Figma, Miro, Jira, Confluence, FullStory, GitHub, Claude Code, Cursor, Codex"
             ]
           },
           {
@@ -237,7 +239,7 @@ export default {
               "• Led the frontend side of third-party fintech integrations including MX and Method Financial, from architecture through implementation and rollout.",
               "• Integrated multiple A/B test UIs via feature flags to support product experimentation and release management.",
               "• Mentored engineers beyond the immediate team and helped guide frontend direction across adjacent work.",
-              "<strong>Tech:</strong> Angular, TypeScript, Node.js, Python, Django, Cursor AI, GitHub Copilot"
+              "<strong>Tech:</strong> Angular, TypeScript, Node.js, Python, Django, Cursor, GitHub Copilot"
             ]
           },
           {
@@ -296,7 +298,7 @@ export default {
             subheading: "Digital Development Services · 2014 - 2017",
             content: [
               "Worked across agency projects spanning web, email, SharePoint, and internal enterprise systems for brands including Bank of America, David’s Bridal, Chemours, Blue Cross Blue Shield Global, and DuPont.",
-              "• Built responsive websites and landing pages for enterprise clients including Bank of America, David’s Bridal, NASA Federal Credit Union, and Chemours.",
+              "• Built responsive websites and landing pages for enterprise clients including Blue Cross Blue Shield Global, Bank of America, David’s Bridal, NASA Federal Credit Union, and Chemours.",
               "• Developed adaptive HTML email campaigns for Bank of America rewards and retention programs, with a focus on deliverability and cross-client consistency.",
               "• Served as Systems Owner for DuPont’s SharePoint security auditing system, including weekly reporting and a server migration alongside IBM consultants.",
               "• Developed SharePoint intranet solutions for Chemours and Everything But Water.",
@@ -371,9 +373,9 @@ export default {
         headingLevel: 2,
         skills: {
           languages: ["JavaScript", "TypeScript", "HTML5", "CSS/SCSS", "Python", "SQL"],
-          frameworks: ["Angular", "Vue.js", "Nuxt 3", "NestJS", "Django", "Tailwind CSS", "Angular Material"],
-          infrastructure: ["Node.js", "Nginx", "Docker", "AWS", "GitHub Actions", "Netlify", "Datadog", "Figma", "Cursor AI", "GitHub Copilot", "Claude Code"],
-          concepts: ["Web Components", "Design Systems", "SSR", "Accessibility (WCAG)", "CI/CD", "State Management"]
+          frameworks: ["Angular", "Vue.js", "Nuxt 3", "Pinia", "NestJS", "Django", "Tailwind CSS", "Angular Material", "Vitest", "Jasmine"],
+          infrastructure: ["Node.js", "Nginx", "Docker", "AWS", "GitHub Actions", "Netlify", "Datadog", "FullStory", "Storybook", "Lighthouse CI", "Figma", "Cursor", "GitHub Copilot", "Claude Code", "Codex"],
+          concepts: ["Web Components", "Design Systems", "Design Tokens & Theming", "SSR", "Accessibility (WCAG)", "Performance Optimization", "Feature Flags & A/B Testing", "Automated Testing", "Responsive Design", "CI/CD", "State Management"]
         }
       }
     ],
