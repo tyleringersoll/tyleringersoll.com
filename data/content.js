@@ -112,7 +112,7 @@ export default {
         content: [
           "The pages are pre-rendered so their content is available before client-side JavaScript runs. The studio photo on the home page uses responsive variants from @nuxt/image, fonts are self-hosted, and icons are inline SVGs.",
           "Lighthouse CI audits the three pages with the desktop preset, using three runs per page. The configured minimum scores are 90 Performance, 95 Accessibility, 90 Best Practices, and 95 SEO. These are CI thresholds, not measured scores for every visitor or device.",
-          "The <a href=\"https://github.com/tyleringersoll/ingersoll.dev/blob/main/.lighthouserc.json\" target=\"_blank\" rel=\"noopener noreferrer\">Lighthouse configuration</a> defines those checks. Reports are uploaded as artifacts on the <a href=\"https://github.com/tyleringersoll/ingersoll.dev/actions/workflows/lighthouse.yml\" target=\"_blank\" rel=\"noopener noreferrer\">Lighthouse workflow runs</a>.",
+          "The <a href=\"https://github.com/tyleringersoll/tyleringersoll.com/blob/main/.lighthouserc.json\" target=\"_blank\" rel=\"noopener noreferrer\">Lighthouse configuration</a> defines those checks. Reports are uploaded as artifacts on the <a href=\"https://github.com/tyleringersoll/tyleringersoll.com/actions/workflows/lighthouse.yml\" target=\"_blank\" rel=\"noopener noreferrer\">Lighthouse workflow runs</a>.",
           "Google Analytics loads through requestIdleCallback, with a timeout fallback, so it waits until the page is idle. A Netlify edge function checks the visitor’s country, and visitors from the EU and UK see a consent banner, with analytics cookies off until they choose."
         ]
       },

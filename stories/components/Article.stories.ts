@@ -81,7 +81,7 @@ export const ExternalLink = {
       content: ["The source is available on GitHub."],
       cta: {
         label: "View the repository",
-        url: "https://github.com/tyleringersoll/ingersoll.dev",
+        url: "https://github.com/tyleringersoll/tyleringersoll.com",
       },
     },
   },

@@ -18,7 +18,7 @@
         </p>
         <a
           class="link"
-          href="https://github.com/tyleringersoll/ingersoll.dev"
+          href="https://github.com/tyleringersoll/tyleringersoll.com"
           target="_blank"
           rel="noopener noreferrer"
         >

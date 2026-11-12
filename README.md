@@ -1,10 +1,10 @@
-# ingersoll.dev
+# tyleringersoll.com
 
 <!-- Deploy + CI -->
 [![Netlify Status](https://api.netlify.com/api/v1/badges/cb5e5fbb-8b81-48e7-8f60-d49785a701a4/deploy-status)](https://app.netlify.com/sites/tyleringersoll/deploys)
-[![Tests](https://github.com/tyleringersoll/ingersoll.dev/actions/workflows/test.yml/badge.svg)](https://github.com/tyleringersoll/ingersoll.dev/actions/workflows/test.yml)
-[![Lighthouse](https://github.com/tyleringersoll/ingersoll.dev/actions/workflows/lighthouse.yml/badge.svg)](https://github.com/tyleringersoll/ingersoll.dev/actions/workflows/lighthouse.yml)
-[![codecov](https://codecov.io/gh/tyleringersoll/ingersoll.dev/branch/main/graph/badge.svg)](https://codecov.io/gh/tyleringersoll/ingersoll.dev)
+[![Tests](https://github.com/tyleringersoll/tyleringersoll.com/actions/workflows/test.yml/badge.svg)](https://github.com/tyleringersoll/tyleringersoll.com/actions/workflows/test.yml)
+[![Lighthouse](https://github.com/tyleringersoll/tyleringersoll.com/actions/workflows/lighthouse.yml/badge.svg)](https://github.com/tyleringersoll/tyleringersoll.com/actions/workflows/lighthouse.yml)
+[![codecov](https://codecov.io/gh/tyleringersoll/tyleringersoll.com/branch/main/graph/badge.svg)](https://codecov.io/gh/tyleringersoll/tyleringersoll.com)
 
 <!-- Meta -->
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
@@ -17,7 +17,7 @@
 ![Sass](https://img.shields.io/badge/Sass-styling-CC6699?logo=sass&logoColor=white)
 ![Vitest](https://img.shields.io/badge/Vitest-tested-6E9F18?logo=vitest&logoColor=white)
 
-Personal portfolio website built with Nuxt 3, hosted on Netlify.
+Source for [tyleringersoll.com](https://www.tyleringersoll.com), built with Nuxt 3 and hosted on Netlify.
 
 ## Tech Stack
 
