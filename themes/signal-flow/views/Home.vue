@@ -830,7 +830,7 @@ $hero-copy-gutter: clamp(2.5rem, 5vw, 4rem);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--glass-border);
   border-left: 3px solid var(--color-link);
-  border-radius: 8px;
+  border-radius: 0 8px 8px 0;
   text-decoration: none;
   color: inherit;
   cursor: default;
@@ -953,11 +953,11 @@ $hero-copy-gutter: clamp(2.5rem, 5vw, 4rem);
 
   &__cards {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.25rem;
 
-    @include respond-below(md) {
-      grid-template-columns: repeat(2, 1fr);
+    @include respond-below(sm) {
+      grid-template-columns: 1fr;
     }
   }
 }
