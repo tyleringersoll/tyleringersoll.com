@@ -36,8 +36,8 @@ describe("editorial theme", () => {
     // Brand name renders (v-html lives on a span inside the link, not the NuxtLink).
     expect(wrapper.find(".name").text()).toContain("Tyler Ingersoll");
     expect(wrapper.findAll(".masthead__link")).toHaveLength(2);
-    // Theme switching now lives in the global Customize drawer / ⌘K palette,
-    // so the masthead no longer carries an in-nav theme switcher.
+    // Theme switching lives in the global Customize drawer / ⌘K palette,
+    // not in the masthead.
     expect(wrapper.find(".masthead .theme-cycle").exists()).toBe(false);
   });
 

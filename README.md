@@ -57,12 +57,11 @@ npm run test:coverage  # with coverage report
 
 Static site content lives in [data/content.js](data/content.js).
 
-The PDF resume download is hidden for now while a new, template-based version is
-made. To bring it back, put the PDF in `public/` and add `pdfUrl` (for example
-`"/Tyler_Ingersoll_Resume.pdf"`) to the first `resume` entry in `data/content.js`;
-both themes show the download link only when that key is set.
+The resume page shows a PDF download link only when the first `resume` entry in
+`data/content.js` has a `pdfUrl` (for example `"/Tyler_Ingersoll_Resume.pdf"`)
+pointing to a file in `public/`.
 
-The old generator still builds a PDF from that same file:
+A generator builds that PDF from the same content file:
 
 ```bash
 python3 -m venv /tmp/tyler-resume-venv

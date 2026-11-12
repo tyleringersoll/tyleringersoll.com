@@ -5,7 +5,7 @@
 [build.environment]
   NODE_VERSION = "24"
 
-# The music page now lives at tyleringersolldrums.com. Keep old links working.
+# /music links redirect to tyleringersolldrums.com.
 [[redirects]]
   from = "/music"
   to = "https://tyleringersolldrums.com"
