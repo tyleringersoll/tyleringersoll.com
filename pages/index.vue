@@ -3,9 +3,9 @@
 </template>
 
 <script setup>
-const title = "Tyler Ingersoll | Frontend Engineering Leader & Drummer";
+const title = "Tyler Ingersoll | Engineering Manager & Drummer";
 const description =
-  "Tyler Ingersoll is an engineering manager at Best Egg who still writes frontend code. He’s also played drums for more than 30 years.";
+  "Tyler Ingersoll is an engineering manager at Best Egg who still contributes daily to frontend code. He’s also played drums for more than 30 years.";
 
 useSeoMeta({
   title,
