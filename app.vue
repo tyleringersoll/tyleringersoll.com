@@ -18,7 +18,7 @@ const personSchema = {
   knowsAbout: [
     "Frontend Architecture",
     "Design Systems",
-    "Engineering Leadership",
+    "Engineering Management",
     "Web Performance",
     "Drums",
   ],
@@ -31,8 +31,12 @@ const personSchema = {
   ],
 };
 
+const canonicalUrl = computed(() => `${SITE_URL}${canonicalPath.value}`);
+
+useSeoMeta({ ogUrl: canonicalUrl });
+
 useHead(() => ({
-  link: [{ rel: "canonical", href: `${SITE_URL}${canonicalPath.value}` }],
+  link: [{ rel: "canonical", href: canonicalUrl.value }],
   script: [
     {
       type: "application/ld+json",

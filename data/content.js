@@ -12,7 +12,7 @@ export default {
       hero: {
         heading: "Hi, I’m Tyler",
         paragraphs: [
-          "I’m an engineering manager and frontend lead at Best Egg, a fintech company focused on consumer lending. My team works on customer verification, servicing, and authentication, and I still contribute a fair amount of the frontend code.",
+          "I’m an engineering manager and frontend lead at Best Egg, a fintech company focused on consumer lending. My team works on customer verification, servicing, and authentication, and I still contribute daily to frontend code.",
           "I’ve also played drums professionally for more than 30 years."
         ],
         cta: "View my resume",

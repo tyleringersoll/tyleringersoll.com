@@ -5,7 +5,7 @@
 <script setup>
 const title = "How This Site Is Built | Tyler Ingersoll";
 const description =
-  "The architecture of tyleringersoll.com: Nuxt 3 prerendering, a multi-theme design system, 100/100/100/100 Lighthouse scores, and a 99%-coverage test suite.";
+  "How tyleringersoll.com is built: prerendered Nuxt pages, two themes on shared design tokens, a Storybook component workshop, and Lighthouse and accessibility checks in CI.";
 
 useSeoMeta({
   title,
