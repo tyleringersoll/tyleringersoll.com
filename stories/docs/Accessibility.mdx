@@ -4,7 +4,7 @@ import { Meta } from "@storybook/addon-docs/blocks";
 
 # Interaction and accessibility
 
-The interesting states often happen after the first render. These stories make those states easy to reach and repeat.
+I use interaction stories to check behaviors such as opening a menu, switching a theme, and expanding a resume entry. They make those states easy to reach again while reviewing a change.
 
 ## Behavior map
 
@@ -30,6 +30,8 @@ Stories with play functions run their assertions when opened in Canvas. The Inte
 
 ## How checks are divided
 
-The existing Vitest suite covers component and store behavior. Storybook adds visible, repeatable browser scenarios and automated accessibility scans. CI builds the workshop and runs its stories in Chromium, including their play functions and axe checks. That covers the declared stories, not every possible combination of input, theme, and viewport.
+Vitest covers components, stores, theme initialization, navigation, and hash-driven resume expansion. Storybook adds browser scenarios and automated accessibility scans. CI builds the workshop and runs every story in Chromium, including play functions and axe checks. An accessibility violation fails the workshop workflow. That covers the declared stories, not every possible combination of input, theme, and viewport.
+
+Lighthouse separately audits the generated home, resume, and architecture pages. I still review changes in a browser; the automated checks do not cover every interaction or establish page-level accessibility on their own.
 
 A check should fail for a meaningful regression. Assertions here focus on what a visitor can perceive or operate: accessible names, expanded state, visible results, and restored focus. Visual and assistive-technology review still require judgment.

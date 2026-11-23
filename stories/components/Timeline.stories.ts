@@ -2,6 +2,12 @@ import { ref, watch } from "vue";
 import { expect, userEvent, within, waitFor } from "storybook/test";
 import Timeline from "../../components/Timeline.vue";
 import TimelineItem from "../../components/TimelineItem.vue";
+import data from "../../data/content";
+
+const currentEmployer = data.content.resume.find((entry) => entry.roles?.length);
+const currentRole = currentEmployer.roles[0];
+const [roleTitle, roleDates] = currentRole.subheading.split(" · ");
+
 export default {
   title: "Components/Timeline",
   component: TimelineItem,
@@ -11,13 +17,13 @@ export default {
     docs: {
       description: {
         component:
-          "Timeline supplies the shared grid. TimelineItem displays a date, heading, and slot. Expansion is controlled by the parent: the item emits toggle and never mutates its expanded prop. Collapsed content is both aria-hidden and inert, so links inside it leave the tab order.",
+          "The resume uses Timeline for the shared grid and TimelineItem for each role’s dates, heading, and details. This example reads the latest role from data/content.js. The parent controls expansion: the item emits toggle. Collapsed content stays mounted but is aria-hidden and inert, so its links leave the tab order.",
       },
     },
   },
   args: {
-    dates: "2025 – Present",
-    title: "Engineering Manager",
+    dates: roleDates,
+    title: roleTitle,
     titleTag: "h2",
     expandable: true,
     expanded: false,
@@ -49,6 +55,7 @@ export default {
       return {
         args,
         expanded,
+        roleSummary: currentRole.content[0],
         toggle: () => {
           expanded.value = !expanded.value;
           args.onToggle?.();
@@ -56,7 +63,7 @@ export default {
       };
     },
     template:
-      '<div class="specimen"><Timeline><TimelineItem v-bind="args" :expanded="expanded" @toggle="toggle"><p>I lead a frontend engineer and two backend engineers. I help keep priorities clear and projects balanced.</p><a href="/resume">Read the full resume</a></TimelineItem></Timeline></div>',
+      '<div class="specimen"><Timeline><TimelineItem v-bind="args" :expanded="expanded" @toggle="toggle"><p>{{ roleSummary }}</p><a href="/resume">Read the full resume</a></TimelineItem></Timeline></div>',
   }),
 };
 export const Collapsed = {};

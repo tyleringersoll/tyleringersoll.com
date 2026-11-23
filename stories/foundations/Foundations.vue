@@ -3,6 +3,7 @@ import { ref, onMounted, watch, nextTick } from "vue";
 import { useThemeStore } from "../../stores/theme";
 import { THEME_META } from "../../themes/meta";
 import ThemeSwatch from "../../components/ThemeSwatch.vue";
+import data from "../../data/content";
 const props = defineProps({ section: { type: String, default: "colors" } });
 const theme = useThemeStore();
 const tokens = ref([]);
@@ -71,11 +72,11 @@ watch(
   { flush: "post" },
 );
 const labels = {
-  colors: "Color in context",
-  typography: "Type with a purpose",
+  colors: "Design tokens",
+  typography: "Typography",
   layout: "Space and structure",
-  motion: "Movement and layers",
-  themes: "Two ways to tell the same story",
+  motion: "Motion and layers",
+  themes: "Two themes, shared content",
 };
 </script>
 <template>
@@ -131,20 +132,27 @@ const labels = {
       >
         <p class="eyebrow" :style="{ fontFamily: 'inherit' }">{{ family }}</p>
         <p class="font-display" :style="{ fontFamily: 'inherit' }">
-          Engineering.<br />With a sense of rhythm.
+          {{ data.content.home.hero.heading }}
         </p>
         <p :style="{ fontFamily: 'inherit' }">
           Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm<br />0123456789 / &amp; → — . ,
           ! ?
         </p>
         <p :style="{ fontFamily: 'inherit', fontWeight: 700 }">
-          Priorities clear. Room to do good work.
+          {{ data.content.home.hero.cta }}
         </p>
       </section>
       <h2>Semantic hierarchy</h2>
       <p>
         The page gets one h1. Sections use h2, and entries beneath those use h3.
         Choose heading level for the document structure; adjust size with CSS.
+      </p>
+      <h2>Reading width</h2>
+      <p>
+        The architecture page caps its body copy at 60ch, so paragraphs stay
+        readable on wide screens. Signal Flow centers that column; Reel-to-Reel
+        keeps its section headings beside the text. The column shrinks with the
+        viewport on smaller screens.
       </p>
       <table>
         <thead>

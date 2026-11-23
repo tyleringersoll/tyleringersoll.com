@@ -13,7 +13,7 @@ const theme = useThemeStore();
 <template>
   <main class="specimen" style="min-height: 600px">
     <p class="eyebrow">Interaction / Appearance</p>
-    <h1>Make it feel like you.</h1>
+    <h1>Themes and color modes</h1>
     <p class="lede">
       Choose a theme with the drawer, or search by name with the command
       palette. Both use the same store.

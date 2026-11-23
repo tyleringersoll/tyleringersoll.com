@@ -21,7 +21,7 @@ npm run build-storybook # Builds site assets, then the standalone workshop
 npm run test:coverage   # Existing component and store suite
 ```
 
-The standalone output is `.storybook-static`. The integrated build also copies it into `.output/public/storybook`. Generated output is ignored by Git.
+The standalone output is `.storybook-static`. The integrated build also copies it into `.output/public/storybook` locally and in GitHub Actions, or `dist/storybook` on Netlify. Generated output is ignored by Git. `npm run dev` serves the last built workshop at `/storybook/`; rebuild it when story content changes.
 
 ## Add a component story
 
@@ -54,6 +54,8 @@ A new semantic token should also be added to the explorer’s curated list with 
 
 ## Before sharing a change
 
+- Match the site’s voice: write plainly, describe concrete behavior, and explain tradeoffs. Use the shared content file for personal details so examples do not drift from the site.
+- When using AI tools, follow the existing tokens, content model, and theme layouts. Review the diff and verify the result in a browser; generated code still needs the same checks.
 - Build the integrated output and open `/storybook/`, including a direct story URL.
 - Check the changed component at phone and desktop widths and in each supported appearance.
 - Run its interaction stories and inspect the Accessibility panel.

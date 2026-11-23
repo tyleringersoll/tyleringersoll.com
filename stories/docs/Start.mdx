@@ -4,18 +4,18 @@ import { Meta } from "@storybook/addon-docs/blocks";
 
 <div className="workshop-intro">
   <p className="workshop-kicker">TYLER INGERSOLL / COMPONENT WORKSHOP</p>
-  <h1>A look under the hood.</h1>
+  <h1>Inside this site</h1>
   <p className="workshop-intro-lede">
     {
-      "I like building interfaces that are easy to use and easy to keep working on. This is a working collection of the pieces behind my personal site."
+      "Most of my professional work lives in private enterprise systems. This workshop gives me a public place to show how I organize a frontend, handle theming, and test interactions on a small personal site."
     }
   </p>
   <div className="workshop-intro-links">
     <a href="?path=/story/foundations-design-language--themes">
-      {"Explore the themes →"}
+      {"Explore the themes"}
     </a>
     <a href="/resume" target="_top">
-      {"Read my resume →"}
+      {"Read my resume"}
     </a>
   </div>
 </div>
@@ -34,11 +34,17 @@ Start with the parts that interest you. Every example uses the components and st
 
 ## Why this exists
 
-A personal site is small enough to understand end to end. It is also a useful place to make decisions visible: what belongs in shared components, what a theme can replace, and what should stay simple.
+I manage an engineering team at Best Egg and still contribute daily to frontend code. This site is a smaller example of the frontend work I do: shared components, theme layouts, and tests for the interactions people use.
 
-I built the site with Vue, Nuxt, Pinia, and Sass. Content lives in one module. Themes share semantic CSS tokens and can replace named components through a registry. Some components are broadly reusable; others are specific to this site. The documentation calls out that distinction.
+I built the site with Vue, Nuxt, Pinia, and Sass. The main copy lives in one content file. The two themes share design tokens and can supply their own layouts through a component registry. The theme system is more involved than a portfolio strictly needs; I keep it as a working example of those choices and their tradeoffs.
 
 This workshop is built alongside the portfolio and served at `/storybook/`. It has its own bundle, so opening the homepage does not load Storybook.
+
+## Where AI fits in
+
+I built the design system, theme tokens, content store, and most of the components by hand before bringing in AI tools. Since then, Codex and Claude Code have written most of the changes from my prompts, including this workshop. I review every diff before it merges.
+
+The existing patterns give those tools a foundation to follow. Review also means checking behavior: the unit suite, Lighthouse audits, and Storybook interaction and accessibility checks all have a part, and I still check the result in a browser. The <a href="/architecture#ai-workflow" target="_top">architecture page</a> describes two problems from building the workshop that were not apparent in the diff.
 
 ## How to use the workshop
 
@@ -50,7 +56,7 @@ This workshop is built alongside the portfolio and served at `/storybook/`. It h
 
 The Appearance toolbar sets a story’s starting state. If you change a theme with a component inside the preview, the toolbar label stays at that starting value. Preferences are intentionally kept inside the preview and are not saved to your portfolio settings.
 
-## What this does and does not demonstrate
+## What to check on the running site
 
 These are actual application components running with Nuxt context. Content, tokens, and theme manifests are imported from source. The specimen cards and explanatory buttons are workshop fixtures; they are not extra components shipped on the homepage.
 

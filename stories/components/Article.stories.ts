@@ -1,4 +1,9 @@
 import Article from "../../components/Article.vue";
+import data from "../../data/content";
+
+const currentEmployer = data.content.resume.find((entry) => entry.roles?.length);
+const currentRole = currentEmployer.roles[0];
+
 export default {
   title: "Components/Article",
   component: Article,
@@ -7,7 +12,7 @@ export default {
     docs: {
       description: {
         component:
-          "Content renderer used by resume and architecture sections. It accepts authored HTML from data/content.js, a heading level, paragraphs, and an optional call to action. This is a trusted-content boundary: never pass unsanitized user input. Use the slot for richer markup rather than putting an entire layout in a string.",
+          "Content renderer used for supporting resume sections and catch-all content pages. The architecture page has its own section layout. Article accepts authored HTML, a heading level, paragraphs, and an optional call to action. Personal details in these examples come from data/content.js. Use the slot for richer markup, and sanitize any untrusted HTML before passing it in.",
       },
     },
   },
@@ -32,24 +37,19 @@ export default {
 export const Paragraphs = {
   args: {
     article: {
-      heading: "Keeping the work manageable",
+      heading: data.content.home.hero.heading,
       headingLevel: 2,
-      content: [
-        "I lead three engineers: one frontend and two backend.",
-        "A big part of the job is keeping priorities clear and balancing projects so the team has room to do the work.",
-      ],
+      content: data.content.home.hero.paragraphs,
     },
   },
 };
 export const Subheading = {
   args: {
     article: {
-      heading: "Engineering Manager",
+      heading: currentRole.subheading.split(" · ")[0],
       headingLevel: 2,
-      subheading: "Best Egg",
-      content: [
-        "Frontend delivery, team priorities, and a sustainable project balance.",
-      ],
+      subheading: currentEmployer.heading,
+      content: [currentRole.content[0]],
     },
   },
 };

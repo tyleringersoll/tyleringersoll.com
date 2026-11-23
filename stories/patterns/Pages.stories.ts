@@ -20,7 +20,17 @@ export default {
 };
 export const Home = { args: { name: "HomeView" } };
 export const Resume = { args: { name: "ResumeView" } };
-export const Architecture = { args: { name: "ArchitectureView" } };
+export const Architecture = {
+  args: { name: "ArchitectureView" },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "The architecture notes use the current site copy, including the AI workflow and CI thresholds. Body copy is capped at 60ch. Compare desktop and phone viewports to review reading width, paragraph spacing, and heading wrapping.",
+      },
+    },
+  },
+};
 export const EditorialHome = {
   ...Home,
   globals: { appearance: "reel-to-reel:dark" },

@@ -4,7 +4,7 @@ import { Meta } from "@storybook/addon-docs/blocks";
 
 # How it fits together
 
-The portfolio and workshop use the same source. Storybook supplies the surrounding development UI and a small amount of preview setup.
+I use this workshop to show the components behind my personal site. It imports the same content, theme registry, and styles as the portfolio. Storybook adds the surrounding development UI and preview setup.
 
 ```text
 data/content.js ──→ content store ──→ theme views
@@ -22,7 +22,7 @@ themes/meta.ts ──→ theme store ──→ Themed.vue
 
 | Layer                | Source                                         | Responsibility                                                               |
 | -------------------- | ---------------------------------------------- | ---------------------------------------------------------------------------- |
-| Content              | `data/content.js`, `stores/content.js`         | One authored content model for both layouts.                                 |
+| Content              | `data/content.js`, `stores/content.js`         | Main site copy shared by both layouts; theme-specific labels stay with their components. |
 | Shared UI            | `components/`                                  | Articles, timeline rows, mobile navigation, and appearance controls.         |
 | Theme selection      | `themes/meta.ts`, `stores/theme.js`            | Valid theme IDs, supported modes, transitions, and persistence.              |
 | Component resolution | `themes/registry.ts`, `components/Themed.vue`  | Resolve a named component; fall back to Signal Flow when no override exists. |
@@ -32,7 +32,9 @@ themes/meta.ts ──→ theme store ──→ Themed.vue
 
 ## Why a registry?
 
-A color switch alone would not cover the editorial layout. The registry lets a theme replace the header, footer, or page view while keeping route wrappers and content stable. `Themed` forwards attributes and slots and remounts when the active theme changes.
+I keep theme and mode separate. `data-theme` selects the design; `data-mode` selects light or dark where the theme supports it. Signal Flow supports both modes, and Reel-to-Reel is dark-only.
+
+The registry lets a theme replace the header, footer, or page view while keeping route wrappers and content stable. `Themed` forwards attributes and slots and remounts when the active theme changes.
 
 The tradeoff is explicit: a second page layout means a second implementation to maintain. Both themes are imported eagerly. That makes switching synchronous, but it also puts both implementations in the application bundle. With more themes, I would revisit that choice and measure the cost.
 
@@ -46,13 +48,17 @@ Docs use separate story iframes. Each example gets its own root theme attributes
 
 The router adapter provides component context. Storybook is not a substitute for end-to-end tests of the portfolio’s URLs, active-route classes, or browser history.
 
-## Static delivery
+## Checks and deployment
 
-`npm run generate` builds the portfolio, builds Storybook, and places the result in `.output/public/storybook`. Netlify publishes the existing `dist` output. Storybook’s own assets use relative paths so the build works under that directory.
+I use Nuxt to generate static HTML for the home, resume, and architecture pages. `npm run generate` builds those pages and Storybook together, then places the workshop at `/storybook/` in the output. Local and GitHub Actions builds write to `.output/public`; Netlify builds write to `dist`. Netlify serves the generated files.
+
+GitHub Actions runs the unit suite, Lighthouse audits, and the component workshop workflow on pull requests and pushes to `main`. The workshop workflow builds the integrated output and runs every story in Chromium, including play functions and accessibility checks. An accessibility violation fails that workflow.
+
+Lighthouse audits the three portfolio pages with the desktop preset and three runs per page. Its minimum scores are 90 Performance, 95 Accessibility, 90 Best Practices, and 95 SEO. These are CI thresholds, not measured scores for every visitor or device. The <a href="/architecture#performance" target="_top">architecture notes</a> link to the configuration and workflow reports.
 
 Nuxt Fonts normally emits font files during the site build. Development also generates those assets before startup and serves them through Storybook’s static middleware, avoiding an H3-event mismatch in the Nuxt Fonts preview middleware. The workshop build copies those generated files into its own `_fonts` directory and checks that each referenced font exists and is nonempty. There are no separate font declarations to keep in sync.
 
-The architecture page links to the workshop with a regular anchor. That lets the browser load Storybook’s separate application. No Storybook code is imported by a production page.
+The architecture page links to the workshop with a regular anchor. That lets the browser load Storybook’s separate application. No Storybook code is imported by a production page. `npm run dev` serves the last built workshop at `/storybook/`; rebuild it to see story changes there, or use `npm run storybook` while editing stories.
 
 ## Deliberate limits
 
