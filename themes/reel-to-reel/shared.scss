@@ -880,9 +880,19 @@
     }
     .arch-r {
       padding: 34px 56px 38px 40px;
+      min-width: 0;
+      font-size: 1rem;
+      overflow-wrap: anywhere;
+
+      // Keep the editorial grid, but give prose a readable measure even when
+      // the section spans the full frame at tablet widths.
+      > p,
+      > .scores {
+        max-width: 60ch;
+      }
 
       p {
-        font-size: 15.5px;
+        font-size: inherit;
         line-height: 1.64;
         color: var(--color-text-secondary);
         margin: 0 0 14px;

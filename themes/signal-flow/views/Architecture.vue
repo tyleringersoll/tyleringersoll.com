@@ -129,10 +129,14 @@ const circ = 2 * Math.PI * 34;
 }
 
 .arch-inner {
-  max-width: 1200px;
+  // Size the reading column to the type, not the viewport. Include the gutters
+  // in the cap because the site's reset uses border-box sizing.
+  max-width: calc(60ch + #{$container-padding-x * 2});
   width: 100%;
   margin: 0 auto;
   padding: 0 $container-padding-x;
+  font-size: 1.0625rem;
+  overflow-wrap: anywhere;
 
   :deep(article) {
     margin-top: 0;
@@ -145,11 +149,13 @@ const circ = 2 * Math.PI * 34;
 .arch-intro {
   h1 {
     margin-bottom: 1.25rem;
+    line-height: 1.15;
+    text-wrap: balance;
   }
 }
 
 .arch-intro__body {
-  font-size: 1rem;
+  font-size: inherit;
   line-height: 1.7;
   color: var(--color-text-secondary);
   margin: 0 0 1rem;
@@ -169,15 +175,17 @@ const circ = 2 * Math.PI * 34;
   &__title {
     color: var(--color-accent-line);
     margin: 0;
+    line-height: 1.25;
+    text-wrap: balance;
   }
 
   &__body {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 1rem;
 
     p {
-      font-size: 0.95rem;
+      font-size: inherit;
       line-height: 1.75;
       color: var(--color-text-secondary);
       margin: 0;
@@ -199,7 +207,7 @@ const circ = 2 * Math.PI * 34;
     position: relative;
     margin: 0;
     padding: 0 0 0 1.5rem;
-    font-size: 0.9rem;
+    font-size: inherit;
     line-height: 1.75;
     color: var(--color-text-secondary);
 
@@ -230,11 +238,13 @@ const circ = 2 * Math.PI * 34;
 // ─── Lighthouse gauges ──────���────────────────────────��──────────────────────
 
 .gauges {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
-  flex-wrap: nowrap;
-  max-width: 400px;
+
+  @include respond-to(sm) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
 
   &__item {
     display: flex;
@@ -244,7 +254,7 @@ const circ = 2 * Math.PI * 34;
   }
 
   &__label {
-    font-size: 0.6rem;
+    font-size: 0.875rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.1em;
