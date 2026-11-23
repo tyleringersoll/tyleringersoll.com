@@ -167,7 +167,7 @@ export default {
         headingLevel: 2,
         content: [
           "GitHub Actions runs three workflows on pull requests and pushes to main: the unit suite, the Lighthouse audits, and the component workshop, which builds the full site and runs every Storybook story with accessibility checks. The test workflow uploads coverage to Codecov; Lighthouse uploads its reports as workflow artifacts.",
-          "Netlify runs the static generation command when main changes. That command builds the site and the component workshop together, so the workshop ships at /storybook/. The workflow definitions live in .github/workflows, and netlify.toml defines the production build and redirects."
+          "Netlify runs the static generation command when main changes. That command builds the site and the component workshop together, so the workshop ships at /storybook/. The workflow definitions live in .github/workflows. Routing rules live in public/_redirects, and netlify.toml defines the production build and edge function."
         ]
       },
       {

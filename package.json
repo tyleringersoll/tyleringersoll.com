@@ -17,7 +17,8 @@
     "build-storybook": "node scripts/build-site.mjs --storybook-only",
     "generate:site": "nuxt generate",
     "storybook:bundle": "STORYBOOK=true storybook build -o .storybook-static --disable-telemetry",
-    "test:storybook": "test-storybook"
+    "test:storybook": "test-storybook",
+    "test:seo": "node scripts/verify-seo.mjs"
   },
   "devDependencies": {
     "@nuxt/fonts": "^0.14.0",

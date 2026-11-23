@@ -1,0 +1,12 @@
+# Keep site rules ahead of Nitro's generated catch-all 404. Netlify processes
+# this file before netlify.toml, so rules in that file would be unreachable.
+/music      https://tyleringersolldrums.com  301!
+/music/*    https://tyleringersolldrums.com  301!
+
+# Serve the canonical, extensionless paths even when a static directory exists.
+# Do not redirect slash-only variants: Netlify treats them as the same path.
+/resume        /resume/index.html        200!
+/architecture  /architecture/index.html  200!
+
+# Nitro appends the non-forced /* /404.html 404 fallback during Netlify builds.
+# Existing static assets, including /storybook/, continue to serve normally.

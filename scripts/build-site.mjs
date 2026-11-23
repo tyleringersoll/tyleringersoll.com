@@ -2,6 +2,13 @@ import { spawnSync } from "node:child_process";
 import { cp, rm, access } from "node:fs/promises";
 import { sitePublicDir, siteAssetDirs } from "./site-output.mjs";
 
+// The Netlify prerenderer also scans .output/public left by local builds.
+// Empty both outputs so it renders current source instead of serving old HTML.
+await rm(sitePublicDir, { recursive: true, force: true });
+if (sitePublicDir !== ".output/public") {
+  await rm(".output/public", { recursive: true, force: true });
+}
+
 for (const script of ["generate:site", "storybook:bundle"]) {
   const result = spawnSync("npm", ["run", script], {
     stdio: "inherit",
@@ -25,4 +32,5 @@ await access(".storybook-static/iframe.html");
 if (process.argv.includes("--storybook-only")) process.exit(0);
 await rm(`${sitePublicDir}/storybook`, { recursive: true, force: true });
 await cp(".storybook-static", `${sitePublicDir}/storybook`, { recursive: true });
+await import("./verify-seo.mjs");
 console.log(`Portfolio and Storybook are ready in ${sitePublicDir}.`);

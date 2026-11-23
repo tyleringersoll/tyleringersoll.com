@@ -51,11 +51,21 @@ npm run build
 npm run test           # one-shot
 npm run test:watch     # watch mode
 npm run test:coverage  # with coverage report
+npm run test:seo       # validates the last generated site's sitemap and metadata
 ```
 
 ## Content
 
 Static site content lives in [data/content.js](data/content.js).
+
+The three public pages are listed in `public/sitemap.xml`; `public/robots.txt`
+advertises that sitemap. Keep the sitemap URLs aligned with the canonical tags.
+`npm run generate` checks the generated metadata, social image, and structured
+data automatically; `npm run test:seo` repeats that check on an existing build.
+Set `NETLIFY=true` for either command to use the Netlify `dist` output.
+
+Routing rules live in `public/_redirects` so they precede Nitro’s generated 404
+fallback. Rules in `netlify.toml` would run after that fallback and never match.
 
 The resume page shows a PDF download link only when the first `resume` entry in
 `data/content.js` has a `pdfUrl` (for example `"/Tyler_Ingersoll_Resume.pdf"`)

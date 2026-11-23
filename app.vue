@@ -5,16 +5,24 @@
 </template>
 
 <script setup>
+import data from "~/data/content";
+
 const SITE_URL = "https://www.tyleringersoll.com";
 const route = useRoute();
 const canonicalPath = computed(() => route.path.replace(/\/+$/, "") || "/");
+const indexablePage = computed(() =>
+  ["/", "/resume", "/architecture"].includes(canonicalPath.value)
+);
+const currentRole = data.content.resume.find((entry) => entry.roles?.length)?.roles[0];
 
 const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
-  name: "Tyler Ingersoll",
-  url: SITE_URL,
-  jobTitle: "Engineering Manager",
+  "@id": `${SITE_URL}/#person`,
+  name: data.content.meta.name,
+  url: `${SITE_URL}/`,
+  image: `${SITE_URL}/profile_avatar.webp`,
+  jobTitle: currentRole?.subheading.split(" · ")[0],
   knowsAbout: [
     "Frontend Architecture",
     "Design Systems",
@@ -31,17 +39,34 @@ const personSchema = {
   ],
 };
 
-const canonicalUrl = computed(() => `${SITE_URL}${canonicalPath.value}`);
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${SITE_URL}/#website`,
+  name: data.content.meta.name,
+  url: `${SITE_URL}/`,
+  publisher: { "@id": personSchema["@id"] },
+};
+
+const canonicalUrl = computed(() =>
+  indexablePage.value ? `${SITE_URL}${canonicalPath.value}` : undefined
+);
 
 useSeoMeta({ ogUrl: canonicalUrl });
 
 useHead(() => ({
-  link: [{ rel: "canonical", href: canonicalUrl.value }],
-  script: [
+  link: indexablePage.value ? [{ rel: "canonical", href: canonicalUrl.value }] : [],
+  script: indexablePage.value ? [
     {
+      key: "person-schema",
       type: "application/ld+json",
       innerHTML: JSON.stringify(personSchema),
     },
-  ],
+    ...(canonicalPath.value === "/" ? [{
+      key: "website-schema",
+      type: "application/ld+json",
+      innerHTML: JSON.stringify(websiteSchema),
+    }] : []),
+  ] : [],
 }));
 </script>
